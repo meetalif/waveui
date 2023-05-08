@@ -21,9 +21,7 @@ dependencies:
   tapped:
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  lints:
+  flutter_lints: ^2.0.0
 
 flutter:
   assets:
