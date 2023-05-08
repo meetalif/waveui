@@ -17,7 +17,6 @@ dependencies:
   bindings_compatible: ^1.0.1
   fluentui_system_icons: ^1.1.197
   get: ^4.6.5
-  loading_animation_widget:
   tapped:
 
 dev_dependencies:

@@ -228,6 +228,7 @@ DialogTheme _dialogTheme() {
 InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
     InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      labelStyle: Get.textTheme.bodyMedium,
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Get.theme.dividerColor),
         borderRadius: BorderRadius.circular(WaveConstants.radius),

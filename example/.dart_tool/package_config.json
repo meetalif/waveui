@@ -98,12 +98,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "loading_animation_widget",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/loading_animation_widget-1.2.0+4",
-      "packageUri": "lib/",
-      "languageVersion": "2.16"
-    },
-    {
       "name": "lpinyin",
       "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/lpinyin-2.0.3",
       "packageUri": "lib/",
@@ -218,7 +212,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-05-08T07:09:19.402835Z",
+  "generated": "2023-05-08T16:46:29.528708Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-83.0.dev"
 }
