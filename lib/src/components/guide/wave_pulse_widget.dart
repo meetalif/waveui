@@ -23,13 +23,13 @@ class _PulseWidgetState extends State<PulseWidget>
   void initState() {
     super.initState();
     _scaleController = AnimationController(
-      duration: Duration(milliseconds: 1400),
+      duration: const Duration(milliseconds: 1400),
       upperBound: 1,
       lowerBound: 0,
       vsync: this,
     );
     _fadeController = AnimationController(
-      duration: Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 700),
       upperBound: 1,
       lowerBound: 0,
       vsync: this,
@@ -41,7 +41,7 @@ class _PulseWidgetState extends State<PulseWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       height: widget.height,
       child: Stack(

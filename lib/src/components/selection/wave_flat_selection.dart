@@ -51,11 +51,11 @@ class WaveFlatSelection extends StatefulWidget {
       this.controller,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveSelectionConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveSelectionConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .selectionConfig
-        .merge(this.themeData!);
+        .merge(themeData!);
   }
 
   @override
@@ -64,7 +64,7 @@ class WaveFlatSelection extends StatefulWidget {
 
 class _WaveFlatSelectionState extends State<WaveFlatSelection>
     with SingleTickerProviderStateMixin {
-  List<WaveSelectionEntity> _originalSelectedItemsList = [];
+  final List<WaveSelectionEntity> _originalSelectedItemsList = [];
 
   StreamController<FlatClearEvent> clearController =
       StreamController.broadcast();
@@ -77,8 +77,9 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
     super.initState();
 
     if (widget.isNeedConfigChild) {
-      widget.entityDataList
-          .forEach((f) => f.configRelationshipAndDefaultValue());
+      for (var f in widget.entityDataList) {
+        f.configRelationshipAndDefaultValue();
+      }
     }
     widget.controller?.addListener(_handleFlatControllerTick);
 
@@ -159,16 +160,16 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
       WaveSelectionUtil.resetSelectionDatas(entity);
     }
     //把数据还原
-    _originalSelectedItemsList.forEach((data) {
+    for (var data in _originalSelectedItemsList) {
       data.isSelected = true;
       if (data.customMap != null) {
         // originalCustomMap 是用来存临时状态数据, customMap 用来展示 ui
-        data.customMap = Map<String, String>();
+        data.customMap = <String, String>{};
         data.originalCustomMap.forEach((key, value) {
           data.customMap![key.toString()] = value.toString();
         });
       }
-    });
+    }
   }
 
   /// 重置
@@ -189,15 +190,15 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
       return;
     }
 
-    widget.entityDataList.forEach((data) {
+    for (var data in widget.entityDataList) {
       if (data.selectedList().isNotEmpty) {
         data.isSelected = true;
       } else {
         data.isSelected = false;
       }
-    });
+    }
     if (widget.confirmCallback != null) {
-      widget.confirmCallback!(DefaultSelectionConverter()
+      widget.confirmCallback!(const DefaultSelectionConverter()
           .convertSelectedData(widget.entityDataList));
     }
   }
@@ -206,7 +207,7 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
   Widget _buildSelectionListView() {
     var contentWidget = Material(
         color: Colors.transparent,
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: ListView.builder(
             shrinkWrap: true,
@@ -230,7 +231,7 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
   /// 清空UI效果
   void _clearUIData(WaveSelectionEntity entity) {
     entity.isSelected = false;
-    entity.customMap = Map<String, String>();
+    entity.customMap = <String, String>{};
     if (WaveSelectionFilterType.range == entity.filterType) {
       entity.title = '';
     }
@@ -251,9 +252,9 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
             WaveIntl.of(context).localizedResource.enterRangeError, context);
         return;
       }
-      node.children.forEach((data) {
+      for (var data in node.children) {
         tmp.add(data);
-      });
+      }
     }
   }
 }

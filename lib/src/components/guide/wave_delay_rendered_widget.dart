@@ -32,7 +32,7 @@ class _DelayRenderedWidgetState extends State<_DelayRenderedWidget> {
   late Timer timer;
 
   /// Time interval between animations
-  final Duration durationInterval = Duration(milliseconds: 100);
+  final Duration durationInterval = const Duration(milliseconds: 100);
 
   @override
   void initState() {

@@ -49,7 +49,7 @@ class WaveToast {
     VoidCallback? onDismiss,
     WaveToastGravity? gravity,
   }) {
-    final OverlayState? overlayState = Overlay.of(context);
+    final OverlayState overlayState = Overlay.of(context);
     if (overlayState == null) return;
 
     preToastView?._dismiss();
@@ -94,7 +94,7 @@ class WaveToast {
     WaveToastGravity? gravity,
     double? verticalOffset,
   }) {
-    final double _verticalOffset = verticalOffset ?? 0;
+    final double verticalOffset0 = verticalOffset ?? 0;
     final double defaultOffset;
     switch (gravity) {
       case WaveToastGravity.bottom:
@@ -110,7 +110,7 @@ class WaveToast {
         defaultOffset = verticalOffset ?? 0;
     }
 
-    return defaultOffset + _verticalOffset;
+    return defaultOffset + verticalOffset0;
   }
 }
 

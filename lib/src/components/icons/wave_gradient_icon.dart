@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waveui/src/theme/wave_app_config.dart';
 
 class WaveGradientIcon extends StatelessWidget {
-  WaveGradientIcon({
+  const WaveGradientIcon({super.key, 
     required this.icon,
     this.size = 28,
     this.gradient,

@@ -74,7 +74,7 @@ class _FilterCommonTypeWidget extends StatefulWidget {
   final StreamController<ClearEvent>? clearController;
   final WaveSelectionConfig themeData;
 
-  _FilterCommonTypeWidget({
+  const _FilterCommonTypeWidget({
     Key? key,
     required this.selectionEntity,
     this.clearController,
@@ -147,7 +147,7 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
                     .currentShowTagByExpanded(isExpanded)
                     .isNotEmpty,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.only(top: 12),
                   child: _buildSelectionTag(),
                 ),
               )
@@ -213,7 +213,7 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
       childAspectRatio: 2.4,
       mainAxisSpacing: 10,
       crossAxisSpacing: 10,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: widget.selectionEntity
           .currentShowTagByExpanded(isExpanded)
           .map((WaveSelectionEntity data) {
@@ -324,7 +324,7 @@ class _MoreArrow extends StatefulWidget {
 
   final WaveSelectionConfig? themeData;
 
-  _MoreArrow({
+  const _MoreArrow({
     Key? key,
     this.valueNotifier,
     this.themeData,
@@ -352,7 +352,7 @@ class __MoreArrowState extends State<_MoreArrow> {
         });
       },
       child: Container(
-        padding: EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -363,7 +363,7 @@ class __MoreArrowState extends State<_MoreArrow> {
             Container(
               height: 16,
               width: 16,
-              padding: EdgeInsets.only(left: 4),
+              padding: const EdgeInsets.only(left: 4),
               child: WaveUITools.getAssetImage(
                 asset,
               ),
@@ -388,7 +388,7 @@ class _MoreRangeWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  _MoreRangeWidget({
+  const _MoreRangeWidget({
     Key? key,
     required this.rangeEntity,
     this.streamController,
@@ -428,9 +428,7 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
       maxController.clear();
     });
 
-    if (widget.rangeEntity.customMap == null) {
-      widget.rangeEntity.customMap = Map<String, String>();
-    }
+    widget.rangeEntity.customMap ??= <String, String>{};
 
     minController.text = widget.rangeEntity.customMap!['min']?.toString() ?? '';
     maxController.text = widget.rangeEntity.customMap!['max']?.toString() ?? '';
@@ -448,9 +446,7 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
       }
       String minInput = minController.text;
 
-      if (widget.rangeEntity.customMap == null) {
-        widget.rangeEntity.customMap = {};
-      }
+      widget.rangeEntity.customMap ??= {};
 
       widget.rangeEntity.customMap!['min'] = minInput;
 
@@ -462,9 +458,7 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
         return;
       }
       String maxInput = maxController.text;
-      if (widget.rangeEntity.customMap == null) {
-        widget.rangeEntity.customMap = {};
-      }
+      widget.rangeEntity.customMap ??= {};
 
       widget.rangeEntity.customMap!['max'] = maxInput;
 
@@ -593,7 +587,7 @@ class FilterLayerTypeWidget extends StatefulWidget {
   final WaveOnCustomFloatingLayerClick? onCustomFloatingLayerClick;
   final WaveSelectionConfig themeData;
 
-  FilterLayerTypeWidget({
+  const FilterLayerTypeWidget({
     Key? key,
     required this.selectionEntity,
     this.onCustomFloatingLayerClick,
@@ -669,7 +663,7 @@ class _FilterLayerTypeWidgetState extends State<FilterLayerTypeWidget> {
                           : widget.themeData.optionTextStyle
                               .generateTextStyle()),
                 ),
-                Container(
+                SizedBox(
                   height: 16,
                   width: 16,
                   child: WaveUITools.getAssetImage(WaveAsset.iconRightArrow),
@@ -678,7 +672,7 @@ class _FilterLayerTypeWidgetState extends State<FilterLayerTypeWidget> {
             ),
           ),
         ),
-        Padding(padding: EdgeInsets.only(top: 15), child: WaveLine())
+        const Padding(padding: EdgeInsets.only(top: 15), child: WaveLine())
       ],
     );
   }

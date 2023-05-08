@@ -22,7 +22,7 @@ enum SelectMode { single, range }
 /// 1、点击不同月份日期，自动切换到最新选中日期所在月份。
 /// 2、日历组件支持时间范围展示，仅展示范围内的日历视图，范围外日期置灰不可点击。日期范围边界后不可再翻页。
 class WaveCalendarView extends StatefulWidget {
-  WaveCalendarView(
+  const WaveCalendarView(
       {Key? key,
       this.selectMode = SelectMode.single,
       this.displayMode = DisplayMode.month,
@@ -39,7 +39,7 @@ class WaveCalendarView extends StatefulWidget {
             selectMode == SelectMode.range && rangeDateChange != null),
         super(key: key);
 
-  WaveCalendarView.single(
+  const WaveCalendarView.single(
       {Key? key,
       this.displayMode = DisplayMode.month,
       this.weekNames,
@@ -50,11 +50,11 @@ class WaveCalendarView extends StatefulWidget {
       required this.dateChange,
       this.minDate,
       this.maxDate})
-      : this.selectMode = SelectMode.single,
-        this.rangeDateChange = null,
+      : selectMode = SelectMode.single,
+        rangeDateChange = null,
         super(key: key);
 
-  WaveCalendarView.range(
+  const WaveCalendarView.range(
       {Key? key,
       this.displayMode = DisplayMode.month,
       this.weekNames,
@@ -65,8 +65,8 @@ class WaveCalendarView extends StatefulWidget {
       required this.rangeDateChange,
       this.minDate,
       this.maxDate})
-      : this.selectMode = SelectMode.range,
-        this.dateChange = null,
+      : selectMode = SelectMode.range,
+        dateChange = null,
         super(key: key);
 
   /// 展示模式， Week, Month
@@ -168,21 +168,19 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          _controllerBar(),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Row(
-              children: _getDaysNameUI(),
-            ),
+    return Column(
+      children: <Widget>[
+        _controllerBar(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Row(
+            children: _getDaysNameUI(),
           ),
-          Column(
-            children: _getDaysNoUI(),
-          ),
-        ],
-      ),
+        ),
+        Column(
+          children: _getDaysNoUI(),
+        ),
+      ],
     );
   }
 
@@ -203,7 +201,8 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
                         DateTime(_currentDate.year, _currentDate.month, 0);
                     _setListOfMonthDate(_currentDate);
                   } else if (_displayMode == DisplayMode.week) {
-                    _currentDate = _currentDate.subtract(Duration(days: 7));
+                    _currentDate =
+                        _currentDate.subtract(const Duration(days: 7));
                     _setListOfWeekDate(_currentDate);
                   }
                 });
@@ -212,12 +211,13 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
                 height: 25,
                 width: 40,
                 color: Colors.transparent,
-                padding: EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15),
+                alignment: Alignment.center,
                 child: isPreIconEnable
                     ? WaveUITools.getAssetImage(WaveAsset.iconCalendarPreMonth)
                     : WaveUITools.getAssetImageWithColor(
-                        WaveAsset.iconCalendarPreMonth, Color(0xFFCCCCCC)),
-                alignment: Alignment.center,
+                        WaveAsset.iconCalendarPreMonth,
+                        const Color(0xFFCCCCCC)),
               ),
             ),
             Expanded(
@@ -246,7 +246,7 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
                         DateTime(_currentDate.year, _currentDate.month + 2, 0);
                     _setListOfMonthDate(_currentDate);
                   } else if (_displayMode == DisplayMode.week) {
-                    _currentDate = _currentDate.add(Duration(days: 7));
+                    _currentDate = _currentDate.add(const Duration(days: 7));
                     _setListOfWeekDate(_currentDate);
                   }
                 });
@@ -255,12 +255,13 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
                 height: 25,
                 width: 40,
                 color: Colors.transparent,
-                padding: EdgeInsets.only(right: 15),
+                padding: const EdgeInsets.only(right: 15),
+                alignment: Alignment.center,
                 child: isNextIconEnable
                     ? WaveUITools.getAssetImage(WaveAsset.iconCalendarNextMonth)
                     : WaveUITools.getAssetImageWithColor(
-                        WaveAsset.iconCalendarNextMonth, Color(0xFFCCCCCC)),
-                alignment: Alignment.center,
+                        WaveAsset.iconCalendarNextMonth,
+                        const Color(0xFFCCCCCC)),
               ),
             )
           ],
@@ -352,149 +353,140 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
           Expanded(
             child: AspectRatio(
               aspectRatio: 1.0,
-              child: Container(
-                child: Stack(
-                  children: <Widget>[
-                    // 范围颜色条
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, bottom: 3),
+              child: Stack(
+                children: <Widget>[
+                  // 范围颜色条
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 5,
+                          bottom: 5,
+                          left: _isStartDateRadius(date) ? 8 : 0,
+                          right: _isEndDateRadius(date) ? 8 : 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: _currentStartSelectedDate != null &&
+                                  _currentEndSelectedDate != null
+                              ? (_getIsItStartAndEndDate(date) ||
+                                      _getIsInRange(date)
+                                  ? Get.theme.colorScheme.primary
+                                      .withOpacity(0.14)
+                                  : Colors.transparent)
+                              : Colors.transparent,
+                          // 范围选择两端圆角
+                          borderRadius: BorderRadius.horizontal(
+                            left: _isStartDateRadius(date)
+                                ? const Radius.circular(24.0)
+                                : const Radius.circular(0.0),
+                            right: _isEndDateRadius(date)
+                                ? const Radius.circular(24.0)
+                                : const Radius.circular(0.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3),
+                    child: Material(
+                      color: Colors.transparent,
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            top: 5,
-                            bottom: 5,
-                            left: _isStartDateRadius(date) ? 8 : 0,
-                            right: _isEndDateRadius(date) ? 8 : 0),
+                        padding: const EdgeInsets.only(
+                            top: 5, bottom: 5, left: 8, right: 8),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: _currentStartSelectedDate != null &&
-                                    _currentEndSelectedDate != null
-                                ? (_getIsItStartAndEndDate(date) ||
-                                        _getIsInRange(date)
-                                    ? Get.theme.colorScheme.primary
-                                        .withOpacity(0.14)
-                                    : Colors.transparent)
-                                : Colors.transparent,
-                            // 范围选择两端圆角
-                            borderRadius: BorderRadius.horizontal(
-                              left: _isStartDateRadius(date)
-                                  ? const Radius.circular(24.0)
-                                  : const Radius.circular(0.0),
-                              right: _isEndDateRadius(date)
-                                  ? const Radius.circular(24.0)
-                                  : const Radius.circular(0.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, bottom: 3),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              top: 5, bottom: 5, left: 8, right: 8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: _getIsItStartAndEndDate(date)
-                                  ? Get.theme.colorScheme.primary
-                                  : Colors.transparent,
-                              borderRadius:
-                                  // 选中色圆角
-                                  const BorderRadius.all(Radius.circular(32.0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          final DateTime newMinimumDate = DateTime(
-                              _minDate.year, _minDate.month, _minDate.day - 1);
-                          final DateTime newMaximumDate = DateTime(
-                              _maxDate.year, _maxDate.month, _maxDate.day + 1);
-                          if (date.isAfter(newMinimumDate) &&
-                              date.isBefore(newMaximumDate)) {
-                            _currentDate = date;
-                            if (_displayMode == DisplayMode.week) {
-                              _setListOfWeekDate(_currentDate);
-                            } else if (_displayMode == DisplayMode.month) {
-                              _setListOfMonthDate(_currentDate);
-                            }
-                            if (widget.selectMode == SelectMode.single) {
-                              _onSingleDateClick(date);
-                            } else {
-                              _onRangeDateClick(date);
-                            }
-                          }
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.zero,
-                          child: Container(
-                            child: Center(
-                              child: Text(
-                                date.day > 9 ? '${date.day}' : '0${date.day}',
-                                style: TextStyle(
-                                    color: _displayMode == DisplayMode.month
-                                        ? (_getIsItStartAndEndDate(date)
-                                            ? Colors.white
-                                            : _currentDate.month ==
-                                                        date.month &&
-                                                    0 <=
-                                                        date.compareTo(
-                                                            _minDate) &&
-                                                    date.compareTo(_maxDate) <=
-                                                        0
-                                                ? WaveThemeConfigurator.instance
-                                                    .getConfig()
-                                                    .commonConfig
-                                                    .colorTextBase
-                                                : WaveThemeConfigurator.instance
-                                                    .getConfig()
-                                                    .commonConfig
-                                                    .colorTextHint)
-                                        : (_getIsItStartAndEndDate(date)
-                                            ? Colors.white
-                                            : (0 <= date.compareTo(_minDate) &&
-                                                    date.compareTo(_maxDate) <=
-                                                        0
-                                                ? WaveThemeConfigurator.instance
-                                                    .getConfig()
-                                                    .commonConfig
-                                                    .colorTextBase
-                                                : WaveThemeConfigurator.instance
-                                                    .getConfig()
-                                                    .commonConfig
-                                                    .colorTextHint)),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 12,
-                      right: 0,
-                      left: 0,
-                      child: Container(
-                        height: 4,
-                        width: 4,
-                        decoration: BoxDecoration(
-                            color: DateTime.now().day == date.day &&
-                                    DateTime.now().month == date.month &&
-                                    DateTime.now().year == date.year
+                            color: _getIsItStartAndEndDate(date)
                                 ? Get.theme.colorScheme.primary
                                 : Colors.transparent,
-                            shape: BoxShape.circle),
+                            borderRadius:
+                                // 选中色圆角
+                                const BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        final DateTime newMinimumDate = DateTime(
+                            _minDate.year, _minDate.month, _minDate.day - 1);
+                        final DateTime newMaximumDate = DateTime(
+                            _maxDate.year, _maxDate.month, _maxDate.day + 1);
+                        if (date.isAfter(newMinimumDate) &&
+                            date.isBefore(newMaximumDate)) {
+                          _currentDate = date;
+                          if (_displayMode == DisplayMode.week) {
+                            _setListOfWeekDate(_currentDate);
+                          } else if (_displayMode == DisplayMode.month) {
+                            _setListOfMonthDate(_currentDate);
+                          }
+                          if (widget.selectMode == SelectMode.single) {
+                            _onSingleDateClick(date);
+                          } else {
+                            _onRangeDateClick(date);
+                          }
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.zero,
+                        child: Center(
+                          child: Text(
+                            date.day > 9 ? '${date.day}' : '0${date.day}',
+                            style: TextStyle(
+                                color: _displayMode == DisplayMode.month
+                                    ? (_getIsItStartAndEndDate(date)
+                                        ? Colors.white
+                                        : _currentDate.month == date.month &&
+                                                0 <= date.compareTo(_minDate) &&
+                                                date.compareTo(_maxDate) <= 0
+                                            ? WaveThemeConfigurator.instance
+                                                .getConfig()
+                                                .commonConfig
+                                                .colorTextBase
+                                            : WaveThemeConfigurator.instance
+                                                .getConfig()
+                                                .commonConfig
+                                                .colorTextHint)
+                                    : (_getIsItStartAndEndDate(date)
+                                        ? Colors.white
+                                        : (0 <= date.compareTo(_minDate) &&
+                                                date.compareTo(_maxDate) <= 0
+                                            ? WaveThemeConfigurator.instance
+                                                .getConfig()
+                                                .commonConfig
+                                                .colorTextBase
+                                            : WaveThemeConfigurator.instance
+                                                .getConfig()
+                                                .commonConfig
+                                                .colorTextHint)),
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 12,
+                    right: 0,
+                    left: 0,
+                    child: Container(
+                      height: 4,
+                      width: 4,
+                      decoration: BoxDecoration(
+                          color: DateTime.now().day == date.day &&
+                                  DateTime.now().month == date.month &&
+                                  DateTime.now().year == date.year
+                              ? Get.theme.colorScheme.primary
+                              : Colors.transparent,
+                          shape: BoxShape.circle),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -592,12 +584,8 @@ class _CustomCalendarViewState extends State<WaveCalendarView> {
       _currentEndSelectedDate = null;
     } else {
       // 当为 ③、④ 其中有一个有值时，在选择 date 后，将 date 赋值给为空的一方
-      if (_currentStartSelectedDate == null) {
-        _currentStartSelectedDate = date;
-      }
-      if (_currentEndSelectedDate == null) {
-        _currentEndSelectedDate = date;
-      }
+      _currentStartSelectedDate ??= date;
+      _currentEndSelectedDate ??= date;
     }
 
     // 根据 start、end 时间大小，交换其值

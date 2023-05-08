@@ -26,7 +26,7 @@ class GifImage extends StatefulWidget {
   final bool excludeFromSemantics;
   final Widget? defaultImage;
 
-  GifImage({
+  const GifImage({super.key, 
     required this.image,
     required this.controller,
     this.semanticLabel,
@@ -50,7 +50,7 @@ class GifImage extends StatefulWidget {
 }
 
 class GifImageState extends State<GifImage> {
-  ValueNotifier<List<ImageInfo>> _images = ValueNotifier<List<ImageInfo>>([]);
+  final ValueNotifier<List<ImageInfo>> _images = ValueNotifier<List<ImageInfo>>([]);
   double _curValue = 0.0;
 
   @override
@@ -89,13 +89,13 @@ class GifImageState extends State<GifImage> {
 
   Widget _buildImage(List<ImageInfo>? imageInfo) {
     int length = (imageInfo?.length ?? 0);
-    int _curIndex = (_curValue * length).toInt();
+    int curIndex = (_curValue * length).toInt();
     int index = -1;
     if (length > 0) {
-      index = length == _curIndex ? length - 1 : _curIndex;
+      index = length == curIndex ? length - 1 : curIndex;
     }
     if (index != -1 && imageInfo?[index].image != null) {
-      RawImage _image = RawImage(
+      RawImage image = RawImage(
         image: imageInfo?[index].image,
         width: widget.width,
         height: widget.height,
@@ -109,13 +109,13 @@ class GifImageState extends State<GifImage> {
         matchTextDirection: widget.matchTextDirection,
       );
       if (widget.excludeFromSemantics) {
-        return _image;
+        return image;
       } else {
         return Semantics(
           container: widget.semanticLabel != null,
           image: true,
-          label: widget.semanticLabel == null ? '' : widget.semanticLabel,
-          child: _image,
+          label: widget.semanticLabel ?? '',
+          child: image,
         );
       }
     }
@@ -126,7 +126,7 @@ class GifImageState extends State<GifImage> {
     List<ImageInfo> infos = [];
     if (provider is AssetImage) {
       dynamic data;
-      AssetBundleImageKey key = await provider.obtainKey(ImageConfiguration());
+      AssetBundleImageKey key = await provider.obtainKey(const ImageConfiguration());
       data = await key.bundle.load(key.name);
       ui.Codec codec = await usePaintingBinding()
           .instantiateImageCodec(data.buffer.asUint8List());

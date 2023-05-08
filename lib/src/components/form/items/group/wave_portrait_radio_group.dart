@@ -48,19 +48,19 @@ class WavePortraitRadioGroup extends StatefulWidget {
     this.onChanged,
     this.themeData,
     this.isCollapseContent = false,
-  })  : this.options = options
+  })  : options = options
             .map((item) => WavePortraitRadioGroupOption(title: item))
             .toList(),
-        this.selectedOption = options.indexOf(selectedOption) > -1
+        selectedOption = options.contains(selectedOption)
             ? WavePortraitRadioGroupOption(
                 title: options[options.indexOf(selectedOption)])
             : WavePortraitRadioGroupOption(),
         super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   /// 通过 [WavePortraitRadioGroupOption] 类型的数组 [options]，构造纵向单选视图。
@@ -74,11 +74,11 @@ class WavePortraitRadioGroup extends StatefulWidget {
     this.isCollapseContent = false,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -115,7 +115,7 @@ class WavePortraitRadioGroupState extends State<WavePortraitRadioGroup> {
       return result;
     }
 
-    result.add(WaveLine(
+    result.add(const WaveLine(
       leftInset: 20,
     ));
 
@@ -123,21 +123,11 @@ class WavePortraitRadioGroupState extends State<WavePortraitRadioGroup> {
       option = options[index];
       result.add(
         Container(
-          padding: EdgeInsets.only(top: 14, bottom: 14, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 14, bottom: 14, left: 20, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               WaveRadioButton(
-                child: Flexible(
-                  fit: FlexFit.tight,
-                  child: Text(
-                    option.title ?? '',
-                    overflow:
-                        widget.isCollapseContent ? TextOverflow.ellipsis : null,
-                    maxLines: widget.isCollapseContent ? 1 : null,
-                    style: getOptionTextStyle(option, index),
-                  ),
-                ),
                 childOnRight: false,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
@@ -155,11 +145,21 @@ class WavePortraitRadioGroupState extends State<WavePortraitRadioGroup> {
                   }
                   setState(() {});
                 },
+                child: Flexible(
+                  fit: FlexFit.tight,
+                  child: Text(
+                    option.title ?? '',
+                    overflow:
+                        widget.isCollapseContent ? TextOverflow.ellipsis : null,
+                    maxLines: widget.isCollapseContent ? 1 : null,
+                    style: getOptionTextStyle(option, index),
+                  ),
+                ),
               ),
               Visibility(
                 visible: option.subTitle != null && option.subTitle!.isNotEmpty,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 4, right: 20),
+                  padding: const EdgeInsets.only(top: 4, right: 20),
                   child: Text(
                     option.subTitle ?? '',
                     overflow:
@@ -174,7 +174,7 @@ class WavePortraitRadioGroupState extends State<WavePortraitRadioGroup> {
         ),
       );
 
-      result.add(WaveLine(
+      result.add(const WaveLine(
         leftInset: 20,
         rightInset: 20,
       ));

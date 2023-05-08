@@ -50,7 +50,7 @@ class WaveCheckbox extends StatefulWidget {
   final HitTestBehavior behavior;
 
   const WaveCheckbox(
-      {Key? key,
+      {super.key,
       required this.radioIndex,
       required this.onValueChangedAtIndex,
       this.disable = false,
@@ -105,7 +105,6 @@ class WaveCheckboxState extends State<WaveCheckbox> {
           WaveUITools.getAssetImage(WaveAsset.iconRadioDisableSingleSelected),
       disUnselectedImage:
           WaveUITools.getAssetImage(WaveAsset.iconRadioDisableUnselected),
-      child: widget.child,
       onRadioItemClick: () {
         setState(() {
           _isSelected = !_isSelected;
@@ -113,6 +112,7 @@ class WaveCheckboxState extends State<WaveCheckbox> {
         widget.onValueChangedAtIndex(widget.radioIndex, _isSelected);
       },
       behavior: widget.behavior,
+      child: widget.child,
     );
   }
 }

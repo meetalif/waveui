@@ -62,7 +62,7 @@ class WaveShareActionSheet extends StatelessWidget {
   /// 点击事件拦截回调（如果配置了此项，返回值为是否拦截，如果为true，则进行拦截，不进行默认回调）
   final WaveShareActionSheetOnItemClickInterceptor? clickInterceptor;
 
-  WaveShareActionSheet({
+  const WaveShareActionSheet({super.key, 
     this.firstShareChannels,
     this.secondShareChannels,
     this.mainTitle,
@@ -76,7 +76,7 @@ class WaveShareActionSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: ShapeDecoration(
+        decoration: const ShapeDecoration(
           color: Color(0xffffffff),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -143,12 +143,12 @@ class WaveShareActionSheet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: image,
+            SizedBox(
               width: itemsWidth,
               height: itemsWidth,
+              child: image,
             ),
-            Divider(
+            const Divider(
               height: 8,
               color: Colors.transparent,
             ),
@@ -209,7 +209,7 @@ class WaveShareActionSheet extends StatelessWidget {
     // 添加title
     tiles.add(Container(
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(top: 16, left: 20),
+      padding: const EdgeInsets.only(top: 16, left: 20),
       child: Text(
         mainTitle ?? WaveIntl.of(context).localizedResource.shareTo,
         maxLines: 1,
@@ -241,8 +241,8 @@ class WaveShareActionSheet extends StatelessWidget {
     // 添加分割线
     tiles.add(Container(
       // 分割线左右填充20
-      padding: EdgeInsets.only(left: 20, right: 20),
-      child: WaveLine(),
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: const WaveLine(),
     ));
 
     // 添加“自定义分享”容器
@@ -261,14 +261,14 @@ class WaveShareActionSheet extends StatelessWidget {
 
     // 添加分割线
     tiles.add(
-      WaveLine(),
+      const WaveLine(),
     );
 
     // 添加"取消"按钮
     tiles.add(GestureDetector(
         behavior: HitTestBehavior.opaque,
         child: Container(
-          padding: EdgeInsets.only(left: 61, right: 61, top: 12, bottom: 12),
+          padding: const EdgeInsets.only(left: 61, right: 61, top: 12, bottom: 12),
           child: Center(
             child: Text(
               cancelTitle ?? WaveIntl.of(context).localizedResource.cancel,

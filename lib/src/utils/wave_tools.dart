@@ -103,7 +103,7 @@ class WaveUITools {
 
   /// 根据 TextStyle 计算 text 宽度。
   static Size textSize(String text, TextStyle style) {
-    if (isEmpty(text)) return Size(0, 0);
+    if (isEmpty(text)) return const Size(0, 0);
     final TextPainter textPainter = TextPainter(
       text: TextSpan(text: text, style: style),
       maxLines: 1,

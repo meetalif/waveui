@@ -77,9 +77,8 @@ class WaveMultiColumnPicker extends StatefulWidget {
       this.pickerTitleConfig = WavePickerTitleConfig.Default,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WavePickerConfig();
-    this.themeData = this
-        .themeData!
+    themeData ??= WavePickerConfig();
+    themeData = themeData!
         .merge(WaveThemeConfigurator.instance.getConfig().pickerConfig);
   }
 
@@ -89,7 +88,7 @@ class WaveMultiColumnPicker extends StatefulWidget {
 
 class _WaveSelectionGroupViewState extends State<WaveMultiColumnPicker> {
   static const WaveMultiRangeSelConverter defaultConverter =
-      const WaveMultiRangeSelConverter();
+      WaveMultiRangeSelConverter();
   List<WavePickerEntity> _firstList = [];
   List<WavePickerEntity>? _secondList = [];
   List<WavePickerEntity>? _thirdList = [];
@@ -506,7 +505,7 @@ class _WaveSelectionGroupViewState extends State<WaveMultiColumnPicker> {
   }
 
   Color _getSelectBgColorByColumnIndex(int listIndex) {
-    Color deepSelectBgColor = Color(0xFFF8F8F8);
+    Color deepSelectBgColor = const Color(0xFFF8F8F8);
     Color middleSelectBgColor = Colors.white;
     Color lightSelectBgColor = Colors.white;
     if (_columnCount == 1) {
@@ -530,8 +529,8 @@ class _WaveSelectionGroupViewState extends State<WaveMultiColumnPicker> {
   }
 
   Color getBgColorByColumnIndex(int listIndex) {
-    Color deepNormalBgColor = Color(0xFFF0F0F0);
-    Color middleNormalBgColor = Color(0xFFF8F8F8);
+    Color deepNormalBgColor = const Color(0xFFF0F0F0);
+    Color middleNormalBgColor = const Color(0xFFF8F8F8);
     Color lightNormalBgColor = Colors.white;
     if (_columnCount == 1) {
       return lightNormalBgColor;

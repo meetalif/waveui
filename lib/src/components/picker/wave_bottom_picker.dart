@@ -108,9 +108,9 @@ class WaveBottomPickerWidgetState extends State<WaveBottomPickerWidget>
     super.initState();
     //用于动画
     _controller =
-        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+        AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
     _animation =
-        Tween(end: Offset.zero, begin: Offset(0.0, 1.0)).animate(_controller);
+        Tween(end: Offset.zero, begin: const Offset(0.0, 1.0)).animate(_controller);
     _controller.forward();
   }
 
@@ -122,7 +122,7 @@ class WaveBottomPickerWidgetState extends State<WaveBottomPickerWidget>
         return true;
       },
       child: Scaffold(
-        backgroundColor: Color(0x33999999),
+        backgroundColor: const Color(0x33999999),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -250,7 +250,7 @@ class WaveBottomPickerWidgetState extends State<WaveBottomPickerWidget>
         }
       },
       child: Container(
-        color: Color(0x33999999),
+        color: const Color(0x33999999),
       ),
     );
   }

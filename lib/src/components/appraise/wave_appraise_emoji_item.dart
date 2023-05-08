@@ -36,7 +36,7 @@ class WaveAppraiseEmojiItem extends StatefulWidget {
   /// item的padding，默认 EdgeInsets.only(horizontal: 7)
   final EdgeInsets padding;
 
-  WaveAppraiseEmojiItem(
+  const WaveAppraiseEmojiItem(
       {Key? key,
       required this.selectedName,
       required this.unselectedName,
@@ -66,8 +66,8 @@ class _WaveAppraiseEmojiItemState extends State<WaveAppraiseEmojiItem>
     _selectedIndex = widget.selectedIndex;
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
-      reverseDuration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
+      reverseDuration: const Duration(milliseconds: 1000),
     );
     _gif = GifImage(
       controller: _controller,
@@ -102,13 +102,13 @@ class _WaveAppraiseEmojiItemState extends State<WaveAppraiseEmojiItem>
           children: <Widget>[
             _getIcon(),
             Padding(
-              padding: EdgeInsets.only(top: 6),
+              padding: const EdgeInsets.only(top: 6),
               child: Text(
                 widget.title ?? '',
                 style: TextStyle(
                   color: widget.index == widget.selectedIndex
-                      ? Color(0xffffc300)
-                      : Color(0xff999999),
+                      ? const Color(0xffffc300)
+                      : const Color(0xff999999),
                   fontSize: 12.0,
                   fontWeight: FontWeight.w600,
                 ),

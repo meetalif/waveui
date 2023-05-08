@@ -79,7 +79,7 @@ typedef OnDefaultParamsPrepared = void Function(
 
 /// 默认筛选参数转换器，对传入的筛选数据做处理，返回 Map 参数对象。
 const WaveSelectionConverterDelegate _defaultConverter =
-    const DefaultSelectionConverter();
+    DefaultSelectionConverter();
 
 // ignore: must_be_immutable
 class WaveSelectionView extends StatefulWidget {
@@ -125,11 +125,11 @@ class WaveSelectionView extends StatefulWidget {
       this.extraScrollController,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveSelectionConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveSelectionConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .selectionConfig
-        .merge(this.themeData!);
+        .merge(themeData!);
   }
 
   @override
@@ -137,7 +137,7 @@ class WaveSelectionView extends StatefulWidget {
 }
 
 class WaveSelectionViewState extends State<WaveSelectionView> {
-  Map<String, String> _customParams = Map();
+  final Map<String, String> _customParams = {};
   WaveSelectionViewController? _selectionViewController;
 
   @override
@@ -145,8 +145,9 @@ class WaveSelectionViewState extends State<WaveSelectionView> {
     super.initState();
     _selectionViewController =
         widget.selectionViewController ?? WaveSelectionViewController();
-    widget.originalSelectionData
-        .forEach((f) => f.configRelationshipAndDefaultValue());
+    for (var f in widget.originalSelectionData) {
+      f.configRelationshipAndDefaultValue();
+    }
 
     if (widget.onDefaultParamsPrepared != null) {
       widget.onDefaultParamsPrepared!(widget.selectionConverterDelegate
@@ -157,7 +158,9 @@ class WaveSelectionViewState extends State<WaveSelectionView> {
   @override
   Widget build(BuildContext context) {
     if (widget.originalSelectionData.isNotEmpty) {
-      widget.originalSelectionData.forEach((f) => f.configRelationship());
+      for (var f in widget.originalSelectionData) {
+        f.configRelationship();
+      }
       return WaveSelectionMenuWidget(
         context: context,
         data: widget.originalSelectionData,

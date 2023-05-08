@@ -115,7 +115,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
 
   WaveAbnormalStateConfig? themeData;
 
-  WaveAbnormalStateWidget({
+  WaveAbnormalStateWidget({super.key, 
     this.img,
     this.title,
     this.content,
@@ -129,18 +129,18 @@ class WaveAbnormalStateWidget extends StatelessWidget {
     this.topPercent = 0.08,
     this.themeData,
   }) {
-    this.themeData ??= WaveAbnormalStateConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveAbnormalStateConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .abnormalStateConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          if (this.enablePageTap && action != null) {
+          if (enablePageTap && action != null) {
             action!(0);
           }
         },
@@ -181,7 +181,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
     return title != null
         ? Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.fromLTRB(60, 24, 60, 0),
+            padding: const EdgeInsets.fromLTRB(60, 24, 60, 0),
             child: Text(title!,
                 textAlign: TextAlign.center,
                 style: themeData!.titleTextStyle.generateTextStyle()),
@@ -194,7 +194,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
     return content != null
         ? Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.fromLTRB(60, 12, 60, 0),
+            padding: const EdgeInsets.fromLTRB(60, 12, 60, 0),
             child: Text(content!,
                 textAlign: TextAlign.center,
                 style: themeData!.contentTextStyle.generateTextStyle()),
@@ -206,7 +206,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
   _buildOperateWidget() {
     return operateTexts != null
         ? Container(
-            padding: EdgeInsets.only(top: 36),
+            padding: const EdgeInsets.only(top: 36),
             child: _buildOperateContentWidget(),
           )
         : const SizedBox.shrink();
@@ -221,7 +221,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
         },
         child: Container(
           constraints: BoxConstraints(minWidth: themeData!.singleMinWidth),
-          padding: EdgeInsets.fromLTRB(48, 16, 48, 16),
+          padding: const EdgeInsets.fromLTRB(48, 16, 48, 16),
           decoration: BoxDecoration(
               color: Get.theme.colorScheme.primary,
               borderRadius:
@@ -241,7 +241,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
             },
             child: Container(
               constraints: BoxConstraints(minWidth: themeData!.doubleMinWidth),
-              padding: EdgeInsets.fromLTRB(36, 16, 36, 16),
+              padding: const EdgeInsets.fromLTRB(36, 16, 36, 16),
               decoration: BoxDecoration(
                   color: Get.theme.colorScheme.primary.withAlpha(0x14),
                   borderRadius:
@@ -261,7 +261,7 @@ class WaveAbnormalStateWidget extends StatelessWidget {
             },
             child: Container(
               constraints: BoxConstraints(minWidth: themeData!.doubleMinWidth),
-              padding: EdgeInsets.fromLTRB(36, 16, 36, 16),
+              padding: const EdgeInsets.fromLTRB(36, 16, 36, 16),
               decoration: BoxDecoration(
                   color: Get.theme.colorScheme.primary.withAlpha(0x14),
                   borderRadius:

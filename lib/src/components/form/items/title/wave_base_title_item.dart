@@ -66,13 +66,12 @@ class WaveBaseTitle extends StatefulWidget {
     this.backgroundColor,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -97,7 +96,7 @@ class WaveTitleState extends State<WaveBaseTitle> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(

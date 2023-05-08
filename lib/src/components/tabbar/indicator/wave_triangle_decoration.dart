@@ -175,8 +175,8 @@ class _TriangleDecorationPainter extends BoxPainter {
 
   final WaveTriangleIndicator _decoration;
 
-  Paint _paint; //画笔
-  Path _path; //绘制路径
+  final Paint _paint; //画笔
+  final Path _path; //绘制路径
 
   void _paintTriangle(Canvas canvas, Offset offset, Rect rect,
       ImageConfiguration configuration) {
@@ -184,16 +184,16 @@ class _TriangleDecorationPainter extends BoxPainter {
     final width = _decoration.triWidth;
     final height = _decoration.triHeight;
 
-    double _vertexX = baseX;
-    double _vertexY = offset.dy + rect.height - height / 2;
+    double vertexX = baseX;
+    double vertexY = offset.dy + rect.height - height / 2;
 
-    _path.moveTo(_vertexX, _vertexY);
-    _path.lineTo(_vertexX - width / 2, _vertexY + height / 2);
-    _path.lineTo(_vertexX + width / 2, _vertexY + height / 2);
+    _path.moveTo(vertexX, vertexY);
+    _path.lineTo(vertexX - width / 2, vertexY + height / 2);
+    _path.lineTo(vertexX + width / 2, vertexY + height / 2);
     _path.close();
 
-    _paint..color = _decoration.color!;
-    _paint..strokeWidth = _decoration.lineWidth;
+    _paint.color = _decoration.color!;
+    _paint.strokeWidth = _decoration.lineWidth;
 
     canvas.drawPath(_path, _paint);
     _path.reset();

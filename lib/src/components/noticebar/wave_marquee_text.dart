@@ -26,7 +26,7 @@ class WaveMarqueeText extends StatefulWidget {
 
   double height;
 
-  WaveMarqueeText({
+  WaveMarqueeText({super.key, 
     required this.text,
     this.width = 0,
     this.height = 0,
@@ -55,7 +55,7 @@ class WaveMarqueeTextState extends State<WaveMarqueeText>
   @override
   void initState() {
     super.initState();
-    scroController = new ScrollController();
+    scroController = ScrollController();
     useWidgetsBinding().addPostFrameCallback((callback) {
       var size = context.findRenderObject()!.paintBounds.size;
       widget.width = (widget.width) > 0 ? widget.width : size.width;
@@ -80,7 +80,7 @@ class WaveMarqueeTextState extends State<WaveMarqueeText>
 
   void startTimer() {
     timer =
-        Timer.periodic(new Duration(milliseconds: widget.timerRest), (timer) {
+        Timer.periodic(Duration(milliseconds: widget.timerRest), (timer) {
       double maxScrollExtent = scroController.position.maxScrollExtent;
       double pixels = scroController.position.pixels;
       //当animateTo的距离大于最大滑动距离时，则要返回第一个child的特定位置，让末尾正好处于最右侧，然后继续滚动，造成跑马灯的假象
@@ -98,7 +98,7 @@ class WaveMarqueeTextState extends State<WaveMarqueeText>
       }
       position += _moveDistance;
       scroController.animateTo(position,
-          duration: new Duration(milliseconds: widget.timerRest),
+          duration: Duration(milliseconds: widget.timerRest),
           curve: Curves.linear);
     });
   }
@@ -111,16 +111,16 @@ class WaveMarqueeTextState extends State<WaveMarqueeText>
   Widget getBothEndsChild() {
     if (widget.scrollAxis == Axis.vertical) {
       String newString = widget.text.split("").join("\n");
-      return new Center(
-        child: new Text(
+      return Center(
+        child: Text(
           newString,
           style: widget.textStyle,
           textAlign: TextAlign.center,
         ),
       );
     }
-    return new Center(
-        child: new Text(
+    return Center(
+        child: Text(
       widget.text,
       style: widget.textStyle,
     ));
@@ -143,14 +143,14 @@ class WaveMarqueeTextState extends State<WaveMarqueeText>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       height: widget.height,
       key: _key,
       child: ListView(
         scrollDirection: widget.scrollAxis,
         controller: scroController,
-        physics: new NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           getBothEndsChild(),
           getCenterChild(),

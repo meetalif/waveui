@@ -87,6 +87,7 @@ class WaveCommonActionSheet extends StatelessWidget {
   WaveActionSheetConfig? themeData;
 
   WaveCommonActionSheet({
+    super.key,
     required this.actions,
     this.title,
     this.titleWidget,
@@ -108,14 +109,14 @@ class WaveCommonActionSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EdgeInsets padding = MediaQueryData.fromWindow(window).padding;
+    EdgeInsets padding = MediaQueryData.fromView(window).padding;
     double maxHeight =
         MediaQuery.of(context).size.height - padding.top - padding.bottom;
 
-    double _maxSheetHeight = 0;
+    double maxSheetHeight = 0;
 
     if (maxSheetHeight <= 0 || maxSheetHeight > maxHeight) {
-      _maxSheetHeight = maxHeight;
+      maxSheetHeight = maxHeight;
     }
     return GestureDetector(
       child: Container(
@@ -129,13 +130,13 @@ class WaveCommonActionSheet extends StatelessWidget {
             ),
           ),
           child:
-              SafeArea(child: _configActionWidgets(context, _maxSheetHeight))),
+              SafeArea(child: _configActionWidgets(context, maxSheetHeight))),
       onVerticalDragUpdate: (v) => {},
     );
   }
 
   /// 构建actionSheet的按钮
-  Widget _configActionWidgets(BuildContext context, double _maxSheetHeight) {
+  Widget _configActionWidgets(BuildContext context, double maxSheetHeight) {
     List<Widget> widgets = [];
     // 构建整体标题
     if (titleWidget != null) {
@@ -155,7 +156,7 @@ class WaveCommonActionSheet extends StatelessWidget {
     widgets.add(_configCancelAction(context));
 
     return Container(
-      constraints: BoxConstraints(maxHeight: _maxSheetHeight),
+      constraints: BoxConstraints(maxHeight: maxSheetHeight),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: widgets,
@@ -222,7 +223,7 @@ class WaveCommonActionSheet extends StatelessWidget {
     }
     return Flexible(
       child: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         children: tiles,
       ),
@@ -240,15 +241,15 @@ class WaveCommonActionSheet extends StatelessWidget {
         maxLines: 1,
         style: action.titleStyle ??
             (action.actionStyle == WaveCommonActionSheetItemStyle.alert
-                ? this.themeData!.itemTitleStyleAlert.generateTextStyle()
+                ? themeData!.itemTitleStyleAlert.generateTextStyle()
                 : (action.actionStyle == WaveCommonActionSheetItemStyle.link
-                    ? this.themeData!.itemTitleStyleLink.generateTextStyle()
-                    : this.themeData!.itemTitleStyle.generateTextStyle())),
+                    ? themeData!.itemTitleStyleLink.generateTextStyle()
+                    : themeData!.itemTitleStyle.generateTextStyle())),
       ),
     ));
     // 如果有辅助信息则添加辅助信息
     if (action.desc != null) {
-      tileElements.add(SizedBox(
+      tileElements.add(const SizedBox(
         height: 2,
       ));
       tileElements.add(
@@ -259,18 +260,17 @@ class WaveCommonActionSheet extends StatelessWidget {
             maxLines: 1,
             style: action.descStyle ??
                 (action.actionStyle == WaveCommonActionSheetItemStyle.alert
-                    ? this.themeData!.itemDescStyleAlert.generateTextStyle()
+                    ? themeData!.itemDescStyleAlert.generateTextStyle()
                     : (action.actionStyle == WaveCommonActionSheetItemStyle.link
-                        ? this.themeData!.itemDescStyleLink.generateTextStyle()
-                        : this.themeData!.itemDescStyle.generateTextStyle())),
+                        ? themeData!.itemDescStyleLink.generateTextStyle()
+                        : themeData!.itemDescStyle.generateTextStyle())),
           ),
         ),
       );
     }
-    return Container(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: tileElements),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: tileElements,
     );
   }
 
@@ -282,12 +282,12 @@ class WaveCommonActionSheet extends StatelessWidget {
         Navigator.of(context).pop();
       },
       child: Container(
-        color: Color(0xffffffff),
-        padding: EdgeInsets.only(top: 12, bottom: 12),
+        color: const Color(0xffffffff),
+        padding: const EdgeInsets.only(top: 12, bottom: 12),
         child: Center(
           child: Text(
             cancelTitle ?? WaveIntl.of(context).localizedResource.cancel,
-            style: this.themeData!.cancelStyle.generateTextStyle(),
+            style: themeData!.cancelStyle.generateTextStyle(),
           ),
         ),
       ),

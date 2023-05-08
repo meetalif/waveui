@@ -41,7 +41,7 @@ class WavePickerEntity {
       this.extMap,
       this.type,
       this.maxSelectedCount = WaveSelectionConstant.maxSelectCount}) {
-    this.filterType = this.parserFilterTypeWithType(this.type);
+    filterType = parserFilterTypeWithType(type);
   }
 
   static WavePickerEntity fromMap(Map<String, dynamic>? map) {
@@ -64,8 +64,8 @@ class WavePickerEntity {
     }
     entity.extMap = map['ext'] ?? {};
 //    entity.children = map['children'] ?? [];
-    entity.children = []..addAll((map['children'] as List? ?? [])
-        .map((o) => WavePickerEntity.fromMap(o)));
+    entity.children = [...(map['children'] as List? ?? [])
+        .map((o) => WavePickerEntity.fromMap(o))];
     return entity;
   }
 
@@ -75,8 +75,8 @@ class WavePickerEntity {
   }
 
   void configDefaultValue() {
-    if (this.children.isNotEmpty) {
-      for (WavePickerEntity entity in this.children) {
+    if (children.isNotEmpty) {
+      for (WavePickerEntity entity in children) {
         if (!WaveUITools.isEmpty(defaultValue)) {
           List<String> values = defaultValue!.split(',');
           entity.isSelected = values.contains(entity.value);
@@ -89,8 +89,8 @@ class WavePickerEntity {
   }
 
   void configRelationship() {
-    if (this.children.isNotEmpty) {
-      for (WavePickerEntity entity in this.children) {
+    if (children.isNotEmpty) {
+      for (WavePickerEntity entity in children) {
         entity.parent = this;
         entity.configRelationship();
       }
@@ -118,8 +118,8 @@ class WavePickerEntity {
   }
 
   void clearChildSelection() {
-    if (this.children.isNotEmpty) {
-      for (WavePickerEntity entity in this.children) {
+    if (children.isNotEmpty) {
+      for (WavePickerEntity entity in children) {
         entity.isSelected = false;
         entity.clearChildSelection();
       }
@@ -128,15 +128,15 @@ class WavePickerEntity {
 
   List<WavePickerEntity> selectedLastColumnList() {
     List<WavePickerEntity> list = [];
-    if (this.children.isNotEmpty) {
+    if (children.isNotEmpty) {
       List<WavePickerEntity> firstList = [];
-      for (WavePickerEntity firstEntity in this.children) {
+      for (WavePickerEntity firstEntity in children) {
         if (firstEntity.children.isNotEmpty) {
           List<WavePickerEntity> secondList = [];
           for (WavePickerEntity secondEntity in firstEntity.children) {
             if (secondEntity.children.isNotEmpty) {
               List<WavePickerEntity> thirds =
-                  this.currentSelectListForEntity(secondEntity);
+                  currentSelectListForEntity(secondEntity);
               if (thirds.isNotEmpty) {
                 list.addAll(thirds);
               } else if (secondEntity.isSelected) {
@@ -163,17 +163,17 @@ class WavePickerEntity {
 
   List<WavePickerEntity> selectedList() {
     List<WavePickerEntity> results = [];
-    List<WavePickerEntity> firstColumn = this.currentSelectListForEntity(this);
+    List<WavePickerEntity> firstColumn = currentSelectListForEntity(this);
     results.addAll(firstColumn);
     if (firstColumn.isNotEmpty) {
       for (WavePickerEntity firstEntity in firstColumn) {
         List<WavePickerEntity> secondColumn =
-            this.currentSelectListForEntity(firstEntity);
+            currentSelectListForEntity(firstEntity);
         results.addAll(secondColumn);
         if (secondColumn.isNotEmpty) {
           for (WavePickerEntity secondEntity in secondColumn) {
             List<WavePickerEntity> thirdColumn =
-                this.currentSelectListForEntity(secondEntity);
+                currentSelectListForEntity(secondEntity);
             results.addAll(thirdColumn);
           }
         }
@@ -245,9 +245,9 @@ class WavePickerEntity {
     while (tmp.isNotEmpty) {
       node = tmp.removeLast();
       node.isSelected = false;
-      node.children.forEach((data) {
+      for (var data in node.children) {
         tmp.add(data);
-      });
+      }
     }
   }
 

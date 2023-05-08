@@ -114,21 +114,4 @@ class BottomTabbarExampleState extends State<BottomTabbarExample>
       ),
     );
   }
-
-  List<BottomNavigationBarItem> _getTabBarItems({int count = 1}) {
-    return List<BottomNavigationBarItem>.generate(
-      count,
-      (index) => BottomNavigationBarItem(
-        icon: Icon(
-          icons[0],
-          color: Colors.grey,
-        ),
-        label: titles[0],
-        activeIcon: Icon(
-          icons[0],
-          color: Colors.blue,
-        ),
-      ),
-    );
-  }
 }

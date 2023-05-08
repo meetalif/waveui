@@ -98,13 +98,12 @@ class WaveRatioInputFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -132,7 +131,7 @@ class WaveRatioInputFormItemState extends State<WaveRatioInputFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -160,13 +159,13 @@ class WaveRatioInputFormItemState extends State<WaveRatioInputFormItem> {
                 Row(
                   children: <Widget>[
                     Container(
-                        padding: EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           "1 : ",
                           style:
                               WaveFormUtil.getTitleTextStyle(widget.themeData!),
                         )),
-                    Container(
+                    SizedBox(
                       width: 60,
                       child: TextField(
                         keyboardType:
@@ -185,12 +184,12 @@ class WaveRatioInputFormItemState extends State<WaveRatioInputFormItem> {
                                   .localizedResource
                                   .pleaseEnter,
                           counterText: "",
-                          contentPadding: EdgeInsets.all(0),
+                          contentPadding: const EdgeInsets.all(0),
                           isDense: true,
-                          enabledBorder: UnderlineInputBorder(
+                          enabledBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Colors.transparent)),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Colors.transparent)),
                         ),

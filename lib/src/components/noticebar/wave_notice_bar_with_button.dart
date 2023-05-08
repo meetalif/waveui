@@ -77,9 +77,9 @@ class WaveNoticeBarWithButton extends StatelessWidget {
   Widget build(BuildContext context) {
     //If there is no custom view, set the minimum height
     return Container(
-      constraints: BoxConstraints(minHeight: this.minHeight),
-      color: backgroundColor ?? Color(0x14FA5741),
-      padding: this.padding ?? EdgeInsets.symmetric(horizontal: 20),
+      constraints: BoxConstraints(minHeight: minHeight),
+      color: backgroundColor ?? const Color(0x14FA5741),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -104,11 +104,11 @@ class WaveNoticeBarWithButton extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.only(right: 8, top: 2),
+      padding: const EdgeInsets.only(right: 8, top: 2),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
         decoration: BoxDecoration(
-          color: leftTagBackgroundColor ?? Color(0xFFFA5741),
+          color: leftTagBackgroundColor ?? const Color(0xFFFA5741),
           borderRadius: BorderRadius.circular(2),
         ),
         child: Center(
@@ -136,7 +136,7 @@ class WaveNoticeBarWithButton extends StatelessWidget {
         height: 20,
         text: content,
         textStyle: TextStyle(
-          color: contentTextColor ?? Color(0xFF333333),
+          color: contentTextColor ?? const Color(0xFF333333),
           fontSize: 14,
         ),
       );
@@ -145,7 +145,7 @@ class WaveNoticeBarWithButton extends StatelessWidget {
         content,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: contentTextColor ?? Color(0xFF333333),
+          color: contentTextColor ?? const Color(0xFF333333),
           fontSize: 14,
         ),
       );
@@ -168,26 +168,26 @@ class WaveNoticeBarWithButton extends StatelessWidget {
         }
       },
       child: Padding(
-        padding: EdgeInsets.only(left: 8),
+        padding: const EdgeInsets.only(left: 8),
         child: Container(
           height: 30,
           alignment: Alignment.center,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             minWidth: 56,
           ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: rightButtonBorderColor ?? Color(0xFFFA5741),
+              color: rightButtonBorderColor ?? const Color(0xFFFA5741),
               width: 1.0,
             ),
             borderRadius: BorderRadius.circular(4),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Center(
             child: Text(
               rightButtonText!,
               style: TextStyle(
-                color: rightButtonTextColor ?? Color(0xFFFA5741),
+                color: rightButtonTextColor ?? const Color(0xFFFA5741),
                 fontSize: 12,
                 height: 1,
                 fontWeight: FontWeight.w600,

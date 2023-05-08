@@ -140,7 +140,7 @@ class WaveSelectionUtil {
 //设置数据为未选中状态
   static void resetSelectionDatas(WaveSelectionEntity entity) {
     entity.isSelected = false;
-    entity.customMap = Map();
+    entity.customMap = <String, String>{};
     for (WaveSelectionEntity subEntity in entity.children) {
       resetSelectionDatas(subEntity);
     }

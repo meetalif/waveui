@@ -108,15 +108,14 @@ class WaveTextSelectFormItem extends StatefulWidget {
     this.backgroundColor,
     this.themeData,
   }) : super(key: key) {
-    this._isAutoLayout = false;
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    _isAutoLayout = false;
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   WaveTextSelectFormItem.autoLayout(
@@ -141,15 +140,14 @@ class WaveTextSelectFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this._isAutoLayout = true;
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    _isAutoLayout = true;
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -230,11 +228,9 @@ class WaveTextSelectFormItemState extends State<WaveTextSelectFormItem> {
           ),
 
           // 文案选择区
-          Container(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: maxWidth),
-              child: _buildRightWidget(context),
-            ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth),
+            child: _buildRightWidget(context),
           ),
         ],
       );
@@ -251,20 +247,18 @@ class WaveTextSelectFormItemState extends State<WaveTextSelectFormItem> {
 
         WaveFormUtil.notifyTap(context, widget.onTap);
       },
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(child: buildText()),
-            Container(
-              height: calculateTextHeight(
-                  context, getCalculateText(), _fontSize, 1),
-              alignment: Alignment.center,
-              child: WaveFormUtil.getRightArrowIcon(),
-            ),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(child: buildText()),
+          Container(
+            height:
+                calculateTextHeight(context, getCalculateText(), _fontSize, 1),
+            alignment: Alignment.center,
+            child: WaveFormUtil.getRightArrowIcon(),
+          ),
+        ],
       ),
     );
   }
@@ -284,7 +278,7 @@ class WaveTextSelectFormItemState extends State<WaveTextSelectFormItem> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
-                padding: EdgeInsets.only(left: 6, right: 7),
+                padding: const EdgeInsets.only(left: 6, right: 7),
                 child: WaveFormUtil.getQuestionMarkIcon()),
             Container(
               constraints: BoxConstraints(
@@ -294,7 +288,7 @@ class WaveTextSelectFormItemState extends State<WaveTextSelectFormItem> {
               child: Text(
                 widget.tipLabel ?? "",
                 overflow: TextOverflow.ellipsis,
-                strutStyle: StrutStyle(
+                strutStyle: const StrutStyle(
                     forceStrutHeight: true,
                     height: 1,
                     leading: 0.5,

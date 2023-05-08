@@ -47,20 +47,20 @@ class WaveTimeRangeSideWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) <= 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
   State<StatefulWidget> createState() => _TimePickerWidgetState(
-      this.minDateTime,
-      this.maxDateTime,
-      this.initialStartDateTime,
-      this.minuteDivider,
-      this.onInitSelectChange);
+      minDateTime,
+      maxDateTime,
+      initialStartDateTime,
+      minuteDivider,
+      onInitSelectChange);
 }
 
 class _TimePickerWidgetState extends State<WaveTimeRangeSideWidget> {
@@ -93,34 +93,27 @@ class _TimePickerWidgetState extends State<WaveTimeRangeSideWidget> {
 
   void _initData(DateTime? minTime, DateTime? maxTime, DateTime? initStartTime,
       int? minuteDivider) {
-    if (minTime == null) {
-      minTime = DateTime.parse(datePickerMinDatetime);
-    }
-    if (maxTime == null) {
-      maxTime = DateTime.parse(datePickerMaxDatetime);
-    }
-    this._minTime = minTime;
-    this._maxTime = maxTime;
+    minTime ??= DateTime.parse(datePickerMinDatetime);
+    maxTime ??= DateTime.parse(datePickerMaxDatetime);
+    _minTime = minTime;
+    _maxTime = maxTime;
 
-    if (initStartTime == null) {
-      // init time is now
-      initStartTime = DateTime.now();
-    }
+    initStartTime ??= DateTime.now();
 
     if (minuteDivider == null || minuteDivider <= 0) {
-      this._minuteDivider = _defaultMinuteDivider;
+      _minuteDivider = _defaultMinuteDivider;
     } else {
-      this._minuteDivider = minuteDivider;
+      _minuteDivider = minuteDivider;
     }
 
-    this._currStartHour = initStartTime.hour;
-    this._hourRange = _calcHourRange();
-    this._currStartHour =
+    _currStartHour = initStartTime.hour;
+    _hourRange = _calcHourRange();
+    _currStartHour =
         min(max(_hourRange.first, _currStartHour), _hourRange.last);
 
-    this._currStartMinute = initStartTime.minute;
-    this._minuteRange = _calcMinuteRange();
-    this._currStartMinute =
+    _currStartMinute = initStartTime.minute;
+    _minuteRange = _calcMinuteRange();
+    _currStartMinute =
         min(max(_minuteRange.first, _currStartMinute), _minuteRange.last);
     _currStartMinute -= _currStartMinute % _minuteDivider;
 
@@ -200,7 +193,7 @@ class _TimePickerWidgetState extends State<WaveTimeRangeSideWidget> {
     List<Widget> pickers = [];
     List<String> formatArr =
         DateTimeFormatter.splitDateFormat(widget.dateFormat);
-    formatArr.forEach((format) {
+    for (var format in formatArr) {
       List<int>? valueRange = _findPickerItemRange(format);
 
       Widget pickerColumn = _renderDatePickerColumnComponent(
@@ -216,7 +209,7 @@ class _TimePickerWidgetState extends State<WaveTimeRangeSideWidget> {
         },
       );
       pickers.add(pickerColumn);
-    });
+    }
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween, children: pickers);
   }
@@ -360,9 +353,7 @@ class _TimePickerWidgetState extends State<WaveTimeRangeSideWidget> {
     int minMinute = 0, maxMinute = 59;
     int minHour = _minTime.hour;
     int maxHour = _maxTime.hour;
-    if (currHour == null) {
-      currHour = _currStartHour;
-    }
+    currHour ??= _currStartHour;
 
     if (minHour == currHour) {
       // selected minimum hour, limit minute range

@@ -70,17 +70,17 @@ class WaveBigOutlineButton extends StatelessWidget {
         .buttonConfig
         .merge(defaultThemeConfig);
 
-    Color? _lineColor =
-        lineColor ?? defaultThemeConfig.commonConfig.borderColorBase;
+    Color? lineColor =
+        this.lineColor ?? defaultThemeConfig.commonConfig.borderColorBase;
 
     return WaveNormalButton.outline(
       borderWith: _BBorderWith,
       radius: defaultThemeConfig.bigButtonRadius,
       text: title ?? WaveIntl.of(context).localizedResource.confirm,
-      disableLineColor: _lineColor,
-      lineColor: _lineColor,
+      disableLineColor: lineColor,
+      lineColor: lineColor,
       textColor: textColor ?? defaultThemeConfig.commonConfig.colorTextBase,
-      disableTextColor: Color(0xFFCCCCCC),
+      disableTextColor: const Color(0xFFCCCCCC),
       isEnable: isEnable,
       alignment: Alignment.center,
       fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class WaveBigOutlineButton extends StatelessWidget {
           height: defaultThemeConfig.bigButtonHeight),
       onTap: onTap,
       backgroundColor: Colors.white,
-      disableBackgroundColor: Color(0xffcccccc).withOpacity(0.1),
+      disableBackgroundColor: const Color(0xffcccccc).withOpacity(0.1),
     );
   }
 }

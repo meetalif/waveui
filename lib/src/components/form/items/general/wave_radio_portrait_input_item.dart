@@ -92,13 +92,12 @@ class WaveRadioPortraitInputFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -119,7 +118,7 @@ class WaveRadioPortraitInputFormItemState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -154,7 +153,7 @@ class WaveRadioPortraitInputFormItemState
           WaveFormUtil.buildErrorWidget(widget.error, widget.themeData!),
 
           Container(
-            padding: EdgeInsets.only(left: 20, top: 14),
+            padding: const EdgeInsets.only(left: 20, top: 14),
             child: Column(
               children: getRadioList(widget.options),
             ),
@@ -172,18 +171,14 @@ class WaveRadioPortraitInputFormItemState
       return result;
     }
 
-    result.add(WaveLine(leftInset: 20, rightInset: 20));
+    result.add(const WaveLine(leftInset: 20, rightInset: 20));
 
     for (int index = 0; index < options.length; ++index) {
       option = options[index];
       result.add(
         Container(
-          padding: EdgeInsets.only(top: 14, bottom: 14),
+          padding: const EdgeInsets.only(top: 14, bottom: 14),
           child: WaveRadioButton(
-            child: Text(
-              option!,
-              style: getOptionTextStyle(option, index),
-            ),
             childOnRight: false,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
@@ -200,11 +195,15 @@ class WaveRadioPortraitInputFormItemState
                   widget.onChanged, context, oldValue, widget.value);
               setState(() {});
             },
+            child: Text(
+              option!,
+              style: getOptionTextStyle(option, index),
+            ),
           ),
         ),
       );
 
-      result.add(WaveLine(leftInset: 20, rightInset: 20));
+      result.add(const WaveLine(leftInset: 20, rightInset: 20));
     }
 
     return result;

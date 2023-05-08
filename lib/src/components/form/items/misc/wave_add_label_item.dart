@@ -38,13 +38,12 @@ class WaveAddLabel extends StatefulWidget {
     this.onTap,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -67,7 +66,7 @@ class WaveAddLabelState extends State<WaveAddLabel> {
       },
       child: Container(
         color: widget.themeData!.backgroundColor,
-        padding: EdgeInsets.fromLTRB(20, 15, 0, 15),
+        padding: const EdgeInsets.fromLTRB(20, 15, 0, 15),
         child: Text(
           widget.title,
           style: TextStyle(

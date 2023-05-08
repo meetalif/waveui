@@ -33,15 +33,15 @@ class WaveContentExportWidget extends StatelessWidget {
   WaveDialogConfig? themeData;
 
   WaveContentExportWidget(this.contentWidget,
-      {this.title,
+      {super.key, this.title,
       required this.isClose,
       this.submitText,
       this.onSubmit,
       this.submitBgColor,
       required this.isShowOperateWidget,
       this.themeData}) {
-    this.themeData ??= WaveDialogConfig();
-    this.themeData = WaveThemeConfigurator.instance
+    themeData ??= WaveDialogConfig();
+    themeData = WaveThemeConfigurator.instance
         .getConfig(configId: themeData!.configId)
         .dialogConfig
         .merge(themeData);
@@ -53,16 +53,16 @@ class WaveContentExportWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0x33999999),
+        backgroundColor: const Color(0x33999999),
         body: Container(
           alignment: Alignment.center,
           child: SingleChildScrollView(
             child: Container(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 300),
+                    constraints: const BoxConstraints(maxWidth: 300),
                     decoration: BoxDecoration(
                       //背景
                       color: Colors.white,
@@ -100,7 +100,7 @@ class WaveContentExportWidget extends StatelessWidget {
               },
               behavior: HitTestBehavior.opaque,
               child: Padding(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: WaveUITools.getAssetImage(WaveAsset.iconPickerClose),
               )));
     }
@@ -111,8 +111,8 @@ class WaveContentExportWidget extends StatelessWidget {
   Widget _generateTitleWidget() {
     return Padding(
       padding: null != title && title!.isNotEmpty
-          ? EdgeInsets.fromLTRB(20, 28, 20, 12)
-          : EdgeInsets.only(top: 20),
+          ? const EdgeInsets.fromLTRB(20, 28, 20, 12)
+          : const EdgeInsets.only(top: 20),
       child: null != title && title!.isNotEmpty
           ? Text(
               title!,
@@ -126,8 +126,8 @@ class WaveContentExportWidget extends StatelessWidget {
   Widget _generateBottomWidget(BuildContext context) {
     return Padding(
         padding: isShowOperateWidget
-            ? EdgeInsets.fromLTRB(20, 12, 20, 20)
-            : EdgeInsets.only(top: 20),
+            ? const EdgeInsets.fromLTRB(20, 12, 20, 20)
+            : const EdgeInsets.only(top: 20),
         child: isShowOperateWidget
             ? GestureDetector(
                 child: Container(
@@ -135,13 +135,13 @@ class WaveContentExportWidget extends StatelessWidget {
                       //背景
                       color: submitBgColor ?? Get.theme.colorScheme.primary,
                       borderRadius:
-                          BorderRadius.all(Radius.circular(6.0)), //设置四周圆角 角度
+                          const BorderRadius.all(Radius.circular(6.0)), //设置四周圆角 角度
                     ),
                     alignment: Alignment.center,
                     height: 48,
                     child: Text(submitText ?? "",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                             fontSize: 18))),

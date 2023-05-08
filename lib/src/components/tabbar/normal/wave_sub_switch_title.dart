@@ -77,11 +77,11 @@ class _WaveSubSwitchTitleState extends State<WaveSubSwitchTitle>
     List<Widget> widgetChildren = widget.nameList.map((name) {
       Text tx = Text(name);
       return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
         ),
-        padding: widget.padding ?? EdgeInsets.only(right: 20),
+        padding: widget.padding ?? const EdgeInsets.only(right: 20),
         child: tx,
       );
     }).toList();
@@ -100,17 +100,17 @@ class _WaveSubSwitchTitleState extends State<WaveSubSwitchTitle>
               .commonConfig
               .colorTextBase
           : Get.theme.colorScheme.primary,
-      labelStyle: TextStyle(
+      labelStyle: const TextStyle(
         //选中态
         fontWeight: FontWeight.w600,
         fontSize: 14,
       ),
-      labelPadding: EdgeInsets.all(0),
+      labelPadding: const EdgeInsets.all(0),
       //未选中态颜色
       unselectedLabelColor:
           WaveThemeConfigurator.instance.getConfig().commonConfig.colorTextBase,
       //未选中态样式
-      unselectedLabelStyle: TextStyle(
+      unselectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 14,
       ),

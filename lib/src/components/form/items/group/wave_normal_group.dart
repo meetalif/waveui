@@ -71,11 +71,11 @@ class WaveNormalFormGroup extends StatefulWidget {
     this.deleteLabel,
     required this.children,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -93,56 +93,52 @@ class WaveNormalFormGroupState extends State<WaveNormalFormGroup> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 14),
+      padding: const EdgeInsets.only(top: 14),
       color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Offstage(
-                  offstage: (widget.title.isEmpty),
-                  child: Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.only(left: 20, right: 6),
-                            child: Text(
-                              widget.title,
-                              style: WaveFormUtil.getHeadTitleTextStyle(
-                                  widget.themeData!,
-                                  isBold: true),
-                            )),
-                      ],
-                    ),
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Offstage(
+                offstage: (widget.title.isEmpty),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                        padding: const EdgeInsets.only(left: 20, right: 6),
+                        child: Text(
+                          widget.title,
+                          style: WaveFormUtil.getHeadTitleTextStyle(
+                              widget.themeData!,
+                              isBold: true),
+                        )),
+                  ],
                 ),
-                Offstage(
-                  offstage: widget.deleteLabel == null,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (!WaveFormUtil.isEdit(widget.isEdit)) {
-                        return;
-                      }
+              ),
+              Offstage(
+                offstage: widget.deleteLabel == null,
+                child: GestureDetector(
+                  onTap: () {
+                    if (!WaveFormUtil.isEdit(widget.isEdit)) {
+                      return;
+                    }
 
-                      WaveFormUtil.notifyRemoveTap(context, widget.onRemoveTap);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        widget.deleteLabel ?? "",
-                        style: TextStyle(
-                          color: Color(0xFFFA3F3F),
-                          fontSize: WaveFonts.f16,
-                        ),
+                    WaveFormUtil.notifyRemoveTap(context, widget.onRemoveTap);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Text(
+                      widget.deleteLabel ?? "",
+                      style: const TextStyle(
+                        color: Color(0xFFFA3F3F),
+                        fontSize: WaveFonts.f16,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
 
           // 副标题
@@ -158,10 +154,8 @@ class WaveNormalFormGroupState extends State<WaveNormalFormGroup> {
             ),
           ),
 
-          Container(
-            child: Column(
-              children: getSubItem(),
-            ),
+          Column(
+            children: getSubItem(),
           ),
         ],
       ),
@@ -176,7 +170,7 @@ class WaveNormalFormGroupState extends State<WaveNormalFormGroup> {
     }
 
     for (Widget w in widget.children) {
-      result.add(WaveLine());
+      result.add(const WaveLine());
       result.add(w);
     }
 

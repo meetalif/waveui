@@ -36,7 +36,7 @@ class WaveSimpleSelection extends StatefulWidget {
   final bool isRadio;
 
   /// 单选构造函数
-  WaveSimpleSelection.radio({
+  const WaveSimpleSelection.radio({
     Key? key,
     required this.menuName,
     this.menuKey = _defaultMenuKey,
@@ -44,12 +44,12 @@ class WaveSimpleSelection extends StatefulWidget {
     required this.items,
     required this.onSimpleSelectionChanged,
     this.onMenuItemClick,
-  })  : this.isRadio = true,
-        this.maxSelectedCount = WaveSelectionConstant.maxSelectCount,
+  })  : isRadio = true,
+        maxSelectedCount = WaveSelectionConstant.maxSelectCount,
         super(key: key);
 
   /// 多选构造函数
-  WaveSimpleSelection.checkbox({
+  const WaveSimpleSelection.checkbox({
     Key? key,
     required this.menuName,
     this.menuKey = _defaultMenuKey,
@@ -58,7 +58,7 @@ class WaveSimpleSelection extends StatefulWidget {
     required this.items,
     required this.onSimpleSelectionChanged,
     this.onMenuItemClick,
-  })  : this.isRadio = false,
+  })  : isRadio = false,
         super(key: key);
 
   @override

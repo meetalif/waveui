@@ -75,7 +75,7 @@ class WaveEnhanceNumberCard extends StatelessWidget {
 
   final WaveEnhanceNumberCardConfig? themeData;
 
-  WaveEnhanceNumberCard({
+  const WaveEnhanceNumberCard({
     Key? key,
     this.itemChildren,
     this.rowCount = 3,
@@ -126,7 +126,7 @@ class WaveEnhanceNumberCard extends StatelessWidget {
               bool allCondition = condition1 || condition2;
 
               bool isFirst = (itemChildren!.indexOf(data) + 1) % count == 1;
-              return Container(
+              return SizedBox(
                   width: singleWidth,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -158,8 +158,8 @@ class WaveEnhanceNumberCard extends StatelessWidget {
 
         return Container(
           padding: padding,
-          child: contentWidget,
           color: backgroundColor,
+          child: contentWidget,
         );
       },
     );

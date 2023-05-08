@@ -37,13 +37,13 @@ class WaveTextButtonPanel extends StatefulWidget {
 }
 
 class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
-  GlobalKey _popWindowKey = GlobalKey();
+  final GlobalKey _popWindowKey = GlobalKey();
 
   /// 更多按钮的展开收起状态
   bool _isExpanded = false;
 
   /// 展示的文本按钮的最大数目，超过这个数目时展示更多
-  int _maxNum = 4;
+  final int _maxNum = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
             alignment: Alignment.center,
             height: 26,
             width: 1,
-            color: Color(0xFFf8f8f8),
+            color: const Color(0xFFf8f8f8),
           ),
         );
       }
@@ -109,7 +109,7 @@ class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
         behavior: HitTestBehavior.opaque,
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+          padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
           child: tx,
         ),
         onTap: () {
@@ -136,7 +136,7 @@ class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
             : WaveIntl.of(context).localizedResource.more,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14,
           color: Color(0xff999999),
         ),
@@ -148,16 +148,6 @@ class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
 
       return GestureDetector(
           behavior: HitTestBehavior.opaque,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              tx,
-              SizedBox(
-                width: 4,
-              ),
-              imageWidget
-            ],
-          ),
           key: _popWindowKey,
           onTap: () {
             WavePopupListWindow.showPopListWindow(context, _popWindowKey,
@@ -177,7 +167,17 @@ class _WaveTextButtonPanelState extends State<WaveTextButtonPanel> {
             setState(() {
               _isExpanded = true;
             });
-          });
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              tx,
+              const SizedBox(
+                width: 4,
+              ),
+              imageWidget
+            ],
+          ));
     } else {
       return const SizedBox.shrink();
     }

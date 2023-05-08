@@ -38,11 +38,11 @@ class WaveGuide {
   OverlayEntry? _overlayEntry;
   int _currentStepIndex = 0;
   late Widget _stepWidget;
-  List<Map> _configMap = [];
-  List<GlobalKey> _globalKeys = [];
+  final List<Map> _configMap = [];
+  final List<GlobalKey> _globalKeys = [];
   final Color _maskColor = Colors.black.withOpacity(.6);
-  final Duration _animationDuration = Duration(milliseconds: 300);
-  final _th = _Throttling(duration: Duration(milliseconds: 500));
+  final Duration _animationDuration = const Duration(milliseconds: 300);
+  final _th = _Throttling(duration: const Duration(milliseconds: 500));
   late Size _lastScreenSize;
 
   /// 当前处于第几步
@@ -111,13 +111,13 @@ class WaveGuide {
   }) {
     assert(stepsIndex
         .every((stepIndex) => stepIndex >= 0 && stepIndex < stepCount));
-    stepsIndex.forEach((index) {
+    for (var index in stepsIndex) {
       setStepConfig(
         index,
         padding: padding,
         borderRadius: borderRadius,
       );
-    });
+    }
   }
 
   void _getWidgetInfo(GlobalKey globalKey) {
@@ -161,18 +161,18 @@ class WaveGuide {
     );
     return AnimatedPositioned(
       duration: _animationDuration,
+      left: left,
+      top: top,
+      bottom: bottom,
+      right: right,
       child: AnimatedContainer(
         padding: padding,
         decoration: decoration,
         width: width,
         height: height,
-        child: child,
         duration: _animationDuration,
+        child: child,
       ),
-      left: left,
-      top: top,
-      bottom: bottom,
-      right: right,
     );
   }
 
@@ -229,7 +229,7 @@ class WaveGuide {
                           ],
                         ),
                       )
-                    : Row(),
+                    : const Row(),
                 _DelayRenderedWidget(
                   child: _stepWidget,
                 ),

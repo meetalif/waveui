@@ -93,13 +93,12 @@ class WaveMultiChoicePortraitInputFormItem extends StatefulWidget {
       this.onChanged,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -129,7 +128,7 @@ class WaveMultiChoicePortraitInputFormItemState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -164,7 +163,7 @@ class WaveMultiChoicePortraitInputFormItemState
           WaveFormUtil.buildErrorWidget(widget.error, widget.themeData!),
 
           Container(
-            padding: EdgeInsets.only(left: 20, top: 14),
+            padding: const EdgeInsets.only(left: 20, top: 14),
             child: Column(
               children: getCheckboxList(widget.options),
             ),
@@ -181,14 +180,13 @@ class WaveMultiChoicePortraitInputFormItemState
       return result;
     }
 
-    result.add(WaveLine(leftInset: 20, rightInset: 20));
+    result.add(const WaveLine(leftInset: 20, rightInset: 20));
 
     for (int index = 0; index < options.length; ++index) {
       result.add(Container(
-        padding: EdgeInsets.only(top: 11, bottom: 11),
+        padding: const EdgeInsets.only(top: 11, bottom: 11),
         child: WaveCheckbox(
           key: GlobalKey(),
-          child: Text(options[index], style: getOptionTextStyle(index)),
           childOnRight: false,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
@@ -198,7 +196,7 @@ class WaveMultiChoicePortraitInputFormItemState
               (index < _selectStatus.length) ? _selectStatus[index] : false,
           onValueChangedAtIndex: (position, value) {
             _selectStatus[position] = value;
-            List<String> oldValue = <String>[]..addAll(widget.value);
+            List<String> oldValue = <String>[...widget.value];
 
             setState(() {
               widget.value.clear();
@@ -212,10 +210,11 @@ class WaveMultiChoicePortraitInputFormItemState
                   widget.onChanged, context, oldValue, widget.value);
             });
           },
+          child: Text(options[index], style: getOptionTextStyle(index)),
         ),
       ));
 
-      result.add(WaveLine(leftInset: 20, rightInset: 20));
+      result.add(const WaveLine(leftInset: 20, rightInset: 20));
     }
 
     return result;

@@ -96,22 +96,22 @@ textPainter.textDirection = TextDirection.ltr;
             style: style);
         textPainter.layout(maxWidth: con.maxWidth);
         double textWidth = textPainter.width;
-        double _maxWidth = textWidth +
+        double maxWidth = textWidth +
             WaveButtonConstant.horizontalPadding *2 +
             2 *_BBorderWith;
 
-        double _minWidth = min(_BMinWidth, con.maxWidth);
-if (_maxWidth <= _minWidth) {
-          _maxWidth = _minWidth;
+        double minWidth = min(_BMinWidth, con.maxWidth);
+if (maxWidth <= minWidth) {
+          maxWidth = minWidth;
         }
-        if (_maxWidth > con.maxWidth) {
-          _maxWidth = con.maxWidth;
+        if (maxWidth > con.maxWidth) {
+          maxWidth = con.maxWidth;
         }
 
         return WaveNormalButton.outline(
           constraints: BoxConstraints(
-            minWidth: this.width ?? _minWidth,
-            maxWidth: this.width ?? _maxWidth,
+            minWidth: width ?? minWidth,
+            maxWidth: width ?? maxWidth,
           ),
           borderWith: _BBorderWith,
           radius: defaultThemeConfig.smallButtonRadius,
@@ -120,14 +120,14 @@ text: title ?? WaveIntl.of(context).localizedResource.confirm,
           lineColor:
               lineColor ?? defaultThemeConfig.commonConfig.borderColorBase,
           textColor: textColor ?? defaultThemeConfig.commonConfig.colorTextBase,
-          disableTextColor: Color(0xFFCCCCCC),
+          disableTextColor: const Color(0xFFCCCCCC),
           isEnable: isEnable,
           alignment: Alignment.center,
           fontWeight: fontWeight,
 fontSize: defaultThemeConfig.smallButtonFontSize,
           onTap: onTap,
           backgroundColor: Colors.white,
-          disableBackgroundColor: Color(0xffcccccc).withOpacity(0.1),
+          disableBackgroundColor: const Color(0xffcccccc).withOpacity(0.1),
         );
       },
     );

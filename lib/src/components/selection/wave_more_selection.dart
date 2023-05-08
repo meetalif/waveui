@@ -32,7 +32,7 @@ class WaveMoreSelectionPage extends StatefulWidget {
   final WaveOnCustomFloatingLayerClick? onCustomFloatingLayerClick;
   final WaveSelectionConfig themeData;
 
-  WaveMoreSelectionPage(
+  const WaveMoreSelectionPage(
       {Key? key,
       required this.entityData,
       this.confirmCallback,
@@ -46,10 +46,10 @@ class WaveMoreSelectionPage extends StatefulWidget {
 
 class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
     with SingleTickerProviderStateMixin {
-  List<WaveSelectionEntity> _originalSelectedItemsList = [];
+  final List<WaveSelectionEntity> _originalSelectedItemsList = [];
   late AnimationController _controller;
   late Animation<Offset> _animation;
-  StreamController<ClearEvent> _clearController = StreamController.broadcast();
+  final StreamController<ClearEvent> _clearController = StreamController.broadcast();
   bool isValid = true;
 
   @override
@@ -60,7 +60,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
       vsync: this,
     );
     _animation =
-        Tween(end: Offset.zero, begin: Offset(1.0, 0.0)).animate(_controller);
+        Tween(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(_controller);
     _controller.forward();
 
     _originalSelectedItemsList.addAll(widget.entityData.allSelectedList());
@@ -77,7 +77,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x660c0c0c),
+      backgroundColor: const Color(0x660c0c0c),
       body: Row(
         children: <Widget>[
           _buildLeftSlide(context),
@@ -94,7 +94,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
         ],
       ),
       //为了解决 键盘抬起按钮的问题 将按钮移动到 此区域
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 80 + _getBottomAreaHeight(),
         child: Row(
           children: <Widget>[
@@ -112,7 +112,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
-                    WaveLine(),
+                    const WaveLine(),
                     Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: _buildBottomButtons(),
@@ -141,16 +141,16 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
         onTap: () {
           WaveSelectionUtil.resetSelectionDatas(widget.entityData);
           //把数据还原
-          _originalSelectedItemsList.forEach((data) {
+          for (var data in _originalSelectedItemsList) {
             data.isSelected = true;
             if (data.customMap != null) {
               // originalCustomMap 是用来存临时状态数据, customMap 用来展示 ui
-              data.customMap = Map<String, String>();
+              data.customMap = <String, String>{};
               data.originalCustomMap.forEach((key, value) {
                 data.customMap![key.toString()] = value.toString();
               });
             }
-          });
+          }
           Navigator.maybePop(context);
         },
         child: Container(
@@ -166,7 +166,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
       width: 300,
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(top: 0),
+        padding: const EdgeInsets.only(top: 0),
         child: _buildSelectionListView(),
       ),
     );
@@ -204,13 +204,13 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
           return;
         }
 
-        widget.entityData.children.forEach((data) {
+        for (var data in widget.entityData.children) {
           if (data.selectedList().isNotEmpty) {
             data.isSelected = true;
           } else {
             data.isSelected = false;
           }
-        });
+        }
         if (widget.confirmCallback != null) {
           widget.confirmCallback!(data);
         }
@@ -222,7 +222,7 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
   //清空UI效果
   void _clearUIData(WaveSelectionEntity entity) {
     entity.isSelected = false;
-    entity.customMap = Map<String, String>();
+    entity.customMap = <String, String>{};
     if (WaveSelectionFilterType.range == entity.filterType) {
       entity.title = '';
     }
@@ -266,9 +266,9 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
           node.isSelected = false;
         }
       }
-      node.children.forEach((data) {
+      for (var data in node.children) {
         tmp.add(data);
-      });
+      }
     }
   }
 
@@ -284,7 +284,7 @@ class MoreBottomSelectionWidget extends StatelessWidget {
   final Function(WaveSelectionEntity)? conformCallback;
   final WaveSelectionConfig themeData;
 
-  MoreBottomSelectionWidget({
+  const MoreBottomSelectionWidget({
     Key? key,
     required this.entity,
     this.clearCallback,
@@ -304,12 +304,12 @@ class MoreBottomSelectionWidget extends StatelessWidget {
             }
           },
           child: Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                   height: 24,
                   width: 24,
                   child:

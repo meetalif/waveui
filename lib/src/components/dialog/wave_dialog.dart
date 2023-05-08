@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 typedef DialogIndexedActionClickCallback = void Function(int index);
 
 ///Icon spacing
-const EdgeInsetsGeometry cIconPadding = const EdgeInsets.only(top: 28.0);
+const EdgeInsetsGeometry cIconPadding = EdgeInsets.only(top: 28.0);
 
 ///The text style of the title
-const TextStyle cTitleTextStyle = const TextStyle(
+const TextStyle cTitleTextStyle = TextStyle(
     fontWeight: FontWeight.w600,
     inherit: true,
     fontSize: 18.0,
@@ -27,7 +27,7 @@ const TextAlign cTitleTextAlign = TextAlign.center;
 const TextAlign cContentTextAlign = TextAlign.center;
 
 ///The text style of the content part
-const TextStyle cContentTextStyle = const TextStyle(
+const TextStyle cContentTextStyle = TextStyle(
     inherit: true,
     fontSize: 14.0,
     color: Color(0xFF666666),
@@ -47,21 +47,21 @@ const TextAlign cWarningTextAlign = TextAlign.center;
 const Color cBackgroundColor = Colors.white;
 
 ///The border of the dialog box ----"Default rounded corner 5
-const ShapeBorder cShape = const RoundedRectangleBorder(
+const ShapeBorder cShape = RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(5.0)));
 
 ///The background color of the theme button---"white
 const Color cMainBackgroundColor = Colors.white;
 
 ///The text style of the theme button---"main color
-const TextStyle cMainTextStyle = const TextStyle(
+const TextStyle cMainTextStyle = TextStyle(
     color: Color(0xFF00AE66), fontWeight: FontWeight.w600, fontSize: 16);
 
 ///The background color of the gray button---"white
 const Color cGreyBackgroundColor = Colors.white;
 
 ///Non-button text style---"gray
-const TextStyle cGreyActionsTextStyle = const TextStyle(
+const TextStyle cGreyActionsTextStyle = TextStyle(
     color: Color(0xFF222222), fontWeight: FontWeight.w600, fontSize: 16);
 
 ///The height of the bottom button
@@ -69,10 +69,10 @@ const double cBottomHeight = 44.0;
 
 ///Horizontal split line content and button
 const VerticalDivider cVerticalDivider =
-    const VerticalDivider(width: 1.0, color: Color(0xF0F0F0F0));
+    VerticalDivider(width: 1.0, color: Color(0xF0F0F0F0));
 
 ///vertical split line button split
-const Divider cDividerLine = const Divider(
+const Divider cDividerLine = Divider(
   height: 1.0,
   color: Color(0xF0F0F0F0),
 );
@@ -171,7 +171,7 @@ class WaveDialog extends AlertDialog {
   ///The maximum number of lines for the title
   final int titleMaxLines;
 
-  WaveDialog({
+  const WaveDialog({
     Key? key,
     this.showIcon = false,
     this.iconImage,
@@ -246,8 +246,8 @@ class WaveDialog extends AlertDialog {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(
                       WaveDialogUtils.getDialogRadius(defaultConfig)))),
-              child: dialogChild,
               color: defaultConfig.backgroundColor,
+              child: dialogChild,
             )));
   }
 
@@ -371,7 +371,7 @@ class WaveDialog extends AlertDialog {
                               index == actionsText!.length - 1)
                       ? WaveDialogUtils.getDialogRadius(dialogConfig)
                       : 0)))),
-      constraints: BoxConstraints.tightFor(height: cBottomHeight),
+      constraints: const BoxConstraints.tightFor(height: cBottomHeight),
       child: DefaultTextStyle(
         style: dialogConfig.mainActionTextStyle.generateTextStyle(),
         child: Center(
@@ -388,7 +388,7 @@ class WaveDialog extends AlertDialog {
   Widget _generateGreyWidget(Widget widget, Color background, _ButtonType type,
       int index, WaveDialogConfig dialogConfig) {
     return Container(
-      constraints: BoxConstraints.tightFor(height: cBottomHeight),
+      constraints: const BoxConstraints.tightFor(height: cBottomHeight),
       decoration: ShapeDecoration(
           color: background,
           shape: RoundedRectangleBorder(
@@ -443,7 +443,7 @@ class WaveDialog extends AlertDialog {
                     type: _ButtonType.left)
                 : actionsWidget![0],
           ),
-          Container(
+          SizedBox(
             height: defaultConfig.bottomHeight,
             child: verticalDivider,
           ),
@@ -457,12 +457,12 @@ class WaveDialog extends AlertDialog {
         ],
       );
     } else {
-      return Container(
+      return SizedBox(
         height: 3 * (defaultConfig.bottomHeight + 1),
         width: double.maxFinite,
         child: ListView.separated(
             shrinkWrap: true,
-            physics: length > 3 ? null : NeverScrollableScrollPhysics(),
+            physics: length > 3 ? null : const NeverScrollableScrollPhysics(),
             itemBuilder: (context, i) {
               return showTextActions
                   ? _mapTextToGesWidget(

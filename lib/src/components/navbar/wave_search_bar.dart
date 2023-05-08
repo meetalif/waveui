@@ -80,7 +80,7 @@ class WaveSearchAppbar extends PreferredSize {
   final VoidCallback? onClearTap;
 
   const WaveSearchAppbar(
-      {this.controller,
+      {super.key, this.controller,
       this.focusNode,
       this.leading,
       this.leadClickCallback,
@@ -104,8 +104,9 @@ class WaveSearchAppbar extends PreferredSize {
       );
 
   @override
-  Size get preferredSize => Size.fromHeight(56);
+  Size get preferredSize => const Size.fromHeight(56);
 
+  @override
   Widget build(BuildContext context) {
     useWidgetsBinding().addPostFrameCallback((_) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
@@ -117,7 +118,7 @@ class WaveSearchAppbar extends PreferredSize {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Expanded(
@@ -266,7 +267,7 @@ class __SearchInputWidgetState extends State<_SearchInputWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 8.0),
                 child:
                     WaveUITools.getAssetSizeImage(WaveAsset.iconSearch, 16, 16),
               ),
@@ -290,7 +291,7 @@ class __SearchInputWidgetState extends State<_SearchInputWidget> {
                     decoration: InputDecoration(
                       // 边框属性，装饰的容器周围绘制的形状。
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.only(right: 6),
+                      contentPadding: const EdgeInsets.only(right: 6),
                       // 填充颜色属性，填充装饰容器的颜色。
                       fillColor: Colors.transparent,
                       // 是密集属性，输入子项是否是密集形式的一部分（即使用较少的垂直空间）。
@@ -376,7 +377,7 @@ class __SearchInputWidgetState extends State<_SearchInputWidget> {
                                   height: 1,
                                   fontWeight: FontWeight.w500),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         )
                       ],
@@ -392,10 +393,10 @@ class __SearchInputWidgetState extends State<_SearchInputWidget> {
   Widget _createLeading() {
     if (widget.leading is String) {
       return Padding(
-        padding: EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(right: 16),
         child: Text(
           widget.leading,
-          style: TextStyle(color: Colors.white, height: 1, fontSize: 16),
+          style: const TextStyle(color: Colors.white, height: 1, fontSize: 16),
         ),
       );
     }

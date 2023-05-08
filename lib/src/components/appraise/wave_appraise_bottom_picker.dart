@@ -35,7 +35,7 @@ class WaveAppraiseBottomPicker extends StatefulWidget {
   /// 评价组件的配置项
   final WaveAppraiseConfig config;
 
-  WaveAppraiseBottomPicker({
+  const WaveAppraiseBottomPicker({
     Key? key,
     this.title = '',
     this.headerType = WaveAppraiseHeaderType.spaceBetween,
@@ -57,7 +57,7 @@ class _WaveAppraiseBottomPickerState extends State<WaveAppraiseBottomPicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Color(0x99000000),
+      backgroundColor: const Color(0x99000000),
       body: Container(
         alignment: Alignment.bottomCenter,
         child: WaveAppraise(

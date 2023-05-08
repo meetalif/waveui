@@ -59,7 +59,7 @@ class WaveCloseWindowController {
   ///
   bool isShow = false;
 
-  StreamController<CloseWindowEvent> _closeController =
+  final StreamController<CloseWindowEvent> _closeController =
       StreamController.broadcast();
 
   StreamController<CloseWindowEvent> getCloseController() {

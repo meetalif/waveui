@@ -104,7 +104,7 @@ class WaveTabBar extends StatefulWidget {
 
   WaveTabBarConfig? themeData;
 
-  WaveTabBar({
+  WaveTabBar({super.key, 
     required this.tabs,
     this.mode = WaveTabBarBadgeMode.average,
     this.isScroll = false,
@@ -135,12 +135,12 @@ class WaveTabBar extends StatefulWidget {
     this.preLineTagCount,
     this.tagHeight,
   }) : assert(tabs != null) {
-    this.themeData ??= WaveTabBarConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveTabBarConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .tabBarConfig
-        .merge(this.themeData);
-    this.themeData = this.themeData!.merge(WaveTabBarConfig(
+        .merge(themeData);
+    themeData = themeData!.merge(WaveTabBarConfig(
           backgroundColor: backgroundcolor,
           tabHeight: tabHeight,
           indicatorHeight: indicatorWeight,
@@ -192,7 +192,7 @@ class WaveTabBarState extends State<WaveTabBar> {
   WaveCloseWindowController? _closeWindowController;
 
   WaveTabBarState(WaveCloseWindowController? closeController) {
-    this._closeWindowController = closeController;
+    _closeWindowController = closeController;
   }
 
   @override
@@ -244,7 +244,7 @@ class WaveTabBarState extends State<WaveTabBar> {
       child: widget.showMore
           ? Row(
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width - _moreSpacing,
                   child: _buildTabBar(),
                 ),
@@ -257,13 +257,13 @@ class WaveTabBarState extends State<WaveTabBar> {
 
   // 构建TabBar样式
   TabBar _buildTabBar() {
-    bool _isScrollable = widget.tabs!.length > _scrollableLimitTabLength ||
+    bool isScrollable = widget.tabs!.length > _scrollableLimitTabLength ||
         widget.tabWidth != null ||
         widget.isScroll;
     return TabBar(
-        tabs: fillWidgetByDataList(_isScrollable),
+        tabs: fillWidgetByDataList(isScrollable),
         controller: widget.controller,
-        isScrollable: _isScrollable,
+        isScrollable: isScrollable,
         labelColor: widget.labelColor ?? widget.themeData!.labelStyle.color,
         labelStyle: widget.labelStyle ??
             widget.themeData!.labelStyle.generateTextStyle(),
@@ -315,7 +315,7 @@ class WaveTabBarState extends State<WaveTabBar> {
         child: Container(
             width: _moreSpacing,
             height: widget.themeData!.tabHeight,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -378,7 +378,7 @@ class WaveTabBarState extends State<WaveTabBar> {
   // 原始的自适应的tab样式
   Widget _wrapOriginWidget(
       BadgeTab badgeTab, bool lastElement, bool isScrollable) {
-    var _contentWidget = LayoutBuilder(builder: (context, constraints) {
+    var contentWidget = LayoutBuilder(builder: (context, constraints) {
       caculateBadgeParams(badgeTab, constraints);
       return Container(
         alignment: Alignment.center,
@@ -403,7 +403,7 @@ class WaveTabBarState extends State<WaveTabBar> {
                       : false),
               label: Text(
                 _badgeText,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Color(0xFFFFFFFF), fontSize: 10, height: 1),
               ),
               backgroundColor: Colors.red,
@@ -416,7 +416,7 @@ class WaveTabBarState extends State<WaveTabBar> {
                 softWrap: true,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             )
           ],
@@ -427,9 +427,9 @@ class WaveTabBarState extends State<WaveTabBar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         isScrollable
-            ? _contentWidget
+            ? contentWidget
             : Expanded(
-                child: _contentWidget,
+                child: contentWidget,
               ),
         Visibility(
           visible: widget.hasDivider && !lastElement,
@@ -479,7 +479,7 @@ class WaveTabBarState extends State<WaveTabBar> {
                     backgroundColor: Colors.red,
                     label: Text(
                       _badgeText,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color(0xFFFFFFFF), fontSize: 10, height: 1),
                     ),
                     alignment: AlignmentDirectional(_paddingRight, _paddingTop),
@@ -490,7 +490,7 @@ class WaveTabBarState extends State<WaveTabBar> {
                         maxLines: 1,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 16)),
+                        style: const TextStyle(fontSize: 16)),
                   )
                 ],
               ),
@@ -500,7 +500,7 @@ class WaveTabBarState extends State<WaveTabBar> {
               child: Container(
                 width: 1,
                 height: 20,
-                color: Color(0xffe4e6f0),
+                color: const Color(0xffe4e6f0),
               ),
             )
           ],
@@ -515,25 +515,25 @@ class WaveTabBarState extends State<WaveTabBar> {
 
     if (badgeTab.badgeNum != null) {
       if (badgeTab.badgeNum! < 10) {
-        _badgePadding = EdgeInsets.only(left: 5.0, right: 5.0);
+        _badgePadding = const EdgeInsets.only(left: 5.0, right: 5.0);
         _largeSize = 16.0;
         _badgeText = badgeTab.badgeNum?.toString() ?? "";
       } else if (badgeTab.badgeNum! > 99) {
-        _badgePadding = EdgeInsets.fromLTRB(4, 3, 4, 2);
+        _badgePadding = const EdgeInsets.fromLTRB(4, 3, 4, 2);
         _largeSize = 16.0;
         _badgeText = "99+";
       } else {
-        _badgePadding = EdgeInsets.fromLTRB(4, 3, 4, 2);
+        _badgePadding = const EdgeInsets.fromLTRB(4, 3, 4, 2);
         _largeSize = 16.0;
         _badgeText = badgeTab.badgeNum?.toString() ?? "";
       }
     } else {
       if (badgeTab.badgeText != null && badgeTab.badgeText!.isNotEmpty) {
-        _badgePadding = EdgeInsets.fromLTRB(6, 3, 6, 3);
+        _badgePadding = const EdgeInsets.fromLTRB(6, 3, 6, 3);
         _largeSize = 16.0;
         _badgeText = badgeTab.badgeText?.toString() ?? "";
       } else {
-        _badgePadding = EdgeInsets.only(left: 4.0, right: 4.0);
+        _badgePadding = const EdgeInsets.only(left: 4.0, right: 4.0);
         _largeSize = 8.0;
         _badgeText = "";
         _paddingTop = 1.0;
@@ -542,41 +542,41 @@ class WaveTabBarState extends State<WaveTabBar> {
 
     // 获取 tabTextWidth
     TextStyle tabTextStyle =
-        TextStyle(overflow: TextOverflow.ellipsis, fontSize: 16);
-    TextPainter _tabTextPainter = TextPainter(
+        const TextStyle(overflow: TextOverflow.ellipsis, fontSize: 16);
+    TextPainter tabTextPainter = TextPainter(
         locale: Localizations.localeOf(context), textAlign: TextAlign.center);
-    _tabTextPainter.textDirection = TextDirection.ltr;
-    _tabTextPainter.maxLines = 1;
-    _tabTextPainter.text = TextSpan(text: badgeTab.text, style: tabTextStyle);
-    _tabTextPainter.layout(maxWidth: constraints.maxWidth);
-    double _tabTextWidth = _tabTextPainter.width;
+    tabTextPainter.textDirection = TextDirection.ltr;
+    tabTextPainter.maxLines = 1;
+    tabTextPainter.text = TextSpan(text: badgeTab.text, style: tabTextStyle);
+    tabTextPainter.layout(maxWidth: constraints.maxWidth);
+    double tabTextWidth = tabTextPainter.width;
 
     // 获取 badgeTextWidth
-    TextStyle badgeTextStyle = TextStyle(height: 1, fontSize: 10);
-    TextPainter _badgeTextPainter =
+    TextStyle badgeTextStyle = const TextStyle(height: 1, fontSize: 10);
+    TextPainter badgeTextPainter =
         TextPainter(textScaleFactor: MediaQuery.of(context).textScaleFactor);
-    _badgeTextPainter.textDirection = TextDirection.ltr;
-    _badgeTextPainter.maxLines = 1;
-    _badgeTextPainter.text = TextSpan(text: _badgeText, style: badgeTextStyle);
-    _badgeTextPainter.layout(maxWidth: constraints.maxWidth);
+    badgeTextPainter.textDirection = TextDirection.ltr;
+    badgeTextPainter.maxLines = 1;
+    badgeTextPainter.text = TextSpan(text: _badgeText, style: badgeTextStyle);
+    badgeTextPainter.layout(maxWidth: constraints.maxWidth);
     // 红点内 text 的宽度
-    double _badgeTextWidth = _badgeTextPainter.width;
+    double badgeTextWidth = badgeTextPainter.width;
 
-    double _badgeWidth = _badgeTextWidth + _badgePadding.horizontal;
+    double badgeWidth = badgeTextWidth + _badgePadding.horizontal;
 
     // 获取外部传入的tab padding值
-    EdgeInsets _labelPadding = widget.labelPadding.resolve(TextDirection.ltr);
+    EdgeInsets labelPadding = widget.labelPadding.resolve(TextDirection.ltr);
 
-    if ((_tabTextWidth + _badgeWidth) >
-        (constraints.maxWidth + _labelPadding.right)) {
+    if ((tabTextWidth + badgeWidth) >
+        (constraints.maxWidth + labelPadding.right)) {
       // 如果tab文字宽度 + 红点宽度  > 约束宽度（父容器宽度）+ 设置tab 右padding  则将红点左移 红点宽度偏移量
       // if(_badgeWidth > (constraints.maxWidth + _labelPadding.right)){
       //   _paddingRight = 0.0;
       // }else{
-      _paddingRight = constraints.maxWidth + _labelPadding.right - _badgeWidth;
+      _paddingRight = constraints.maxWidth + labelPadding.right - badgeWidth;
       // }
     } else {
-      _paddingRight = _tabTextWidth;
+      _paddingRight = tabTextWidth;
     }
   }
 
@@ -610,13 +610,13 @@ class WaveTabBarState extends State<WaveTabBar> {
                 width: MediaQuery.of(context).size.width,
                 left: 0,
                 child: Material(
-                  color: Color(0xB3000000),
-                  child: Container(
+                  color: const Color(0xB3000000),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height -
                         _waveTabbarController.top!,
                     child: Padding(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       child: _TabBarOverlayWidget(
                         tabs: widget.tabs,
                         moreWindowText: widget.moreWindowText,
@@ -693,7 +693,7 @@ class _TabBarOverlayWidgetState extends State<_TabBarOverlayWidget> {
   /// tag宽度
   double _tagWidth = _tagDefaultSize;
 
-  double _padding = 20;
+  final double _padding = 20;
 
   double _parentWidth = 0.0;
 
@@ -720,7 +720,7 @@ class _TabBarOverlayWidgetState extends State<_TabBarOverlayWidget> {
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -730,17 +730,17 @@ class _TabBarOverlayWidgetState extends State<_TabBarOverlayWidget> {
                         visible: widget.moreWindowText != null &&
                             widget.moreWindowText!.isNotEmpty,
                         child: Padding(
-                          padding: EdgeInsets.only(bottom: 16),
+                          padding: const EdgeInsets.only(bottom: 16),
                           child: Text(
                             widget.moreWindowText ?? "",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16,
                                 color: Color(0xff222222),
                                 fontWeight: FontWeight.w700),
                           ),
                         )),
                     Container(
-                      padding: EdgeInsets.only(top: 12),
+                      padding: const EdgeInsets.only(top: 12),
                       child: _createMoreItems(),
                     ),
                   ],

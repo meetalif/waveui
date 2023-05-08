@@ -120,7 +120,7 @@ abstract class WaveBaseResource {
 /// en resources
 ///
 class WaveResourceEn extends WaveBaseResource {
-  static Locale locale = Locale('en', 'US');
+  static Locale locale = const Locale('en', 'US');
 
   @override
   String get ok => 'Ok';

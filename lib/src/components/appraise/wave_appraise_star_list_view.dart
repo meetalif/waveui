@@ -18,7 +18,7 @@ class WaveAppraiseStarListView extends StatefulWidget {
   /// 点击回调
   final ValueChanged<int>? onTap;
 
-  WaveAppraiseStarListView(
+  const WaveAppraiseStarListView(
       {Key? key, this.count = 5, required this.titles, this.hint, this.onTap})
       : assert(count > 0 && count <= 5),
         assert(titles.length >= count),
@@ -30,10 +30,10 @@ class WaveAppraiseStarListView extends StatefulWidget {
 }
 
 class _WaveAppraiseStarListViewState extends State<WaveAppraiseStarListView> {
-  Image _star =
+  final Image _star =
       WaveUITools.getAssetImage(WaveAsset.iconStarSize, gaplessPlayback: true);
 
-  Image _selectedStar = WaveUITools.getAssetImage(
+  final Image _selectedStar = WaveUITools.getAssetImage(
       WaveAsset.iconStarSizeSelected,
       gaplessPlayback: true);
 
@@ -51,7 +51,7 @@ class _WaveAppraiseStarListViewState extends State<WaveAppraiseStarListView> {
       }
       if (subTitle?.isNotEmpty ?? false) {
         subWidget = Padding(
-          padding: EdgeInsets.only(top: 8),
+          padding: const EdgeInsets.only(top: 8),
           child: Text(
             subTitle ?? '',
             style: TextStyle(
@@ -78,7 +78,7 @@ class _WaveAppraiseStarListViewState extends State<WaveAppraiseStarListView> {
     for (int i = 0; i < widget.count; i++) {
       Widget item = GestureDetector(
         child: Padding(
-          padding: EdgeInsets.only(left: 6, right: 6, top: 4),
+          padding: const EdgeInsets.only(left: 6, right: 6, top: 4),
           child: (i <= _selectedIndex) ? _selectedStar : _star,
         ),
         onTap: () {

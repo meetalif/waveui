@@ -47,13 +47,13 @@ class WaveGalleryDetailConfig extends WaveBaseConfig {
     _appbarTitleStyle = WaveTextStyle(color: commonConfig.colorTextBaseInverse);
     _appbarBackgroundColor = Colors.black;
     _appbarBrightness = Brightness.dark;
-    _tabBarUnSelectedLabelStyle = WaveTextStyle(color: Color(0XFFCCCCCC));
+    _tabBarUnSelectedLabelStyle = WaveTextStyle(color: const Color(0XFFCCCCCC));
     _tabBarLabelStyle = WaveTextStyle(color: commonConfig.colorTextBaseInverse);
     _tabBarBackgroundColor = Colors.black;
     _pageBackgroundColor = Colors.black;
-    _bottomBackgroundColor = Color(0X88000000);
+    _bottomBackgroundColor = const Color(0X88000000);
     _titleStyle = WaveTextStyle(color: commonConfig.colorTextBaseInverse);
-    _contentStyle = WaveTextStyle(color: Color(0xFFCCCCCC));
+    _contentStyle = WaveTextStyle(color: const Color(0xFFCCCCCC));
     _actionStyle = WaveTextStyle(color: commonConfig.colorTextBaseInverse);
     _iconColor = Colors.white;
   }

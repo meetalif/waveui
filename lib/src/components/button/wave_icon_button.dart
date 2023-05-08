@@ -85,7 +85,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
     // 图文的方向 bottom、文字在下 icon在上 top、文字在上 icon在下
     // Left、文字在左 icon在右 right、文字在右 icon在左
     if (widget.direction == Direction.bottom) {
-      ctn = Container(
+      ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
           child: Column(
@@ -93,7 +93,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // 图片
-              Container(
+              SizedBox(
                   height: widget.iconHeight,
                   width: widget.iconWidth,
                   child: widget.iconWidget),
@@ -115,7 +115,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
             ],
           ));
     } else if (widget.direction == Direction.left) {
-      ctn = Container(
+      ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
           child: Row(
@@ -123,7 +123,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // 图片
-              Container(
+              SizedBox(
                   height: widget.iconHeight,
                   width: widget.iconWidth,
                   child: widget.iconWidget),
@@ -145,7 +145,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
             ],
           ));
     } else if (widget.direction == Direction.right) {
-      ctn = Container(
+      ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
           child: Row(
@@ -168,14 +168,14 @@ class _WaveIconButtonState extends State<WaveIconButton> {
                 ),
               ),
               // 图片
-              Container(
+              SizedBox(
                   height: widget.iconHeight,
                   width: widget.iconWidth,
                   child: widget.iconWidget),
             ],
           ));
     } else {
-      ctn = Container(
+      ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
           child: Column(
@@ -199,10 +199,10 @@ class _WaveIconButtonState extends State<WaveIconButton> {
               ),
 
               // 图片
-              Container(
-                child: widget.iconWidget,
+              SizedBox(
                 height: widget.iconHeight,
                 width: widget.iconWidth,
+                child: widget.iconWidget,
               ),
             ],
           ));

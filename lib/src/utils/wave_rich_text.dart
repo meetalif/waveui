@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class WaveRichTextGenerator {
   WaveRichTextGenerator();
 
-  List<InlineSpan> _spanList = [];
+  final List<InlineSpan> _spanList = [];
   int _maxLine = 100;
   TextOverflow? _overflow;
 

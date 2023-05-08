@@ -38,7 +38,7 @@ class WaveScrollableTextDialog extends Dialog {
   final bool isShowOperateWidget;
 
   const WaveScrollableTextDialog(
-      {this.title,
+      {super.key, this.title,
       this.isClose = true,
       required this.contentText,
       this.textColor = const Color(0xFF666666),
@@ -97,7 +97,7 @@ class WaveScrollableText extends StatelessWidget {
   final bool isShowOperateWidget;
 
   const WaveScrollableText(
-      {this.title,
+      {super.key, this.title,
       this.isClose = true,
       required this.contentText,
       this.textColor,
@@ -112,14 +112,14 @@ class WaveScrollableText extends StatelessWidget {
   Widget build(BuildContext context) {
     return WaveContentExportWidget(
       Padding(
-        padding: EdgeInsets.fromLTRB(20, 0, 8, 0),
+        padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
         child: Container(
-          constraints: BoxConstraints(maxHeight: 220),
+          constraints: const BoxConstraints(maxHeight: 220),
           child: Scrollbar(
-            radius: Radius.circular(2.0),
+            radius: const Radius.circular(2.0),
             thickness: 4.0,
             child: Padding(
-              padding: EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(right: 8),
               child: SingleChildScrollView(
                 child:
                     Column(mainAxisSize: MainAxisSize.min, children: <Widget>[

@@ -9,7 +9,7 @@ import 'package:waveui/waveui.dart';
 /// 4. 可以用在页面里面也可以使用在弹窗里面，使用在底部弹窗的参考[WaveAppraiseBottomPicker]
 /// /// /// /// /// /// /// /// /// /
 
-const WaveAppraiseConfig cConfig = const WaveAppraiseConfig();
+const WaveAppraiseConfig cConfig = WaveAppraiseConfig();
 
 class WaveAppraise extends StatefulWidget {
   /// 标题
@@ -81,7 +81,7 @@ class _WaveAppraiseState extends State<WaveAppraise> {
   @override
   Widget build(BuildContext context) {
     return WaveCard(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -99,8 +99,8 @@ class _WaveAppraiseState extends State<WaveAppraise> {
   Widget _headerArea(BuildContext context) {
     EdgeInsets defaultPadding =
         (widget.headerType == WaveAppraiseHeaderType.center)
-            ? EdgeInsets.only(top: 20, bottom: 20)
-            : EdgeInsets.only(left: 20, top: 16, right: 16, bottom: 20);
+            ? const EdgeInsets.only(top: 20, bottom: 20)
+            : const EdgeInsets.only(left: 20, top: 16, right: 16, bottom: 20);
     return WaveAppraiseHeader(
       showHeader: widget.config.showHeader,
       headerType: widget.headerType,
@@ -151,10 +151,10 @@ class _WaveAppraiseState extends State<WaveAppraise> {
       return const SizedBox.shrink();
     }
     return Padding(
-      padding: EdgeInsets.only(top: 24),
+      padding: const EdgeInsets.only(top: 24),
       child: WaveMultiSelectTags(
-        padding: EdgeInsets.all(0),
-        physics: NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(0),
+        physics: const NeverScrollableScrollPhysics(),
         tagPickerBean: WaveTagsPickerConfig(
           tagItemSource: string2Tag(widget.tags),
         ),
@@ -178,13 +178,13 @@ class _WaveAppraiseState extends State<WaveAppraise> {
   Widget _inputArea() {
     if (widget.config.showTextInput) {
       return Padding(
-        padding: EdgeInsets.only(top: 24),
+        padding: const EdgeInsets.only(top: 24),
         child: WaveInputText(
           maxLength: widget.config.maxLength,
           hint: widget.inputHintText,
           textString: (_inputText ?? widget.config.inputDefaultText) ?? '',
           maxHintLines: widget.config.maxHintLines,
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           onTextChange: (input) {
             _inputText = input;
             if (widget.config.inputTextChangeCallback != null) {
@@ -200,7 +200,7 @@ class _WaveAppraiseState extends State<WaveAppraise> {
   Widget _confirmButton() {
     if (widget.config.showConfirmButton) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: WaveBigMainButton(
           title: widget.config.confirmButtonText ??
               WaveIntl.of(context).localizedResource.submit,
@@ -232,9 +232,9 @@ class _WaveAppraiseState extends State<WaveAppraise> {
 
   List<String> tag2String(List<WaveTagItemBean> tags) {
     List<String> result = [];
-    tags.forEach((item) {
+    for (var item in tags) {
       result.add(item.name);
-    });
+    }
     return result;
   }
 }

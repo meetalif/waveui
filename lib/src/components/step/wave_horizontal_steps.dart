@@ -96,7 +96,7 @@ class WaveHorizontalStepsState extends State<WaveHorizontalSteps> {
     for (int i = 0; i < length; i += 1) {
       childrenList.add(_applyStepItem(steps[i], i));
     }
-    content = Container(
+    content = SizedBox(
       height: 78,
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -124,11 +124,11 @@ class WaveHorizontalStepsState extends State<WaveHorizontalSteps> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         index == 0
-            ? Expanded(child: const SizedBox.shrink())
+            ? const Expanded(child: SizedBox.shrink())
             : _applyLineItem(index, true),
         _applyStepIcon(step, index),
         index == widget.steps.length - 1
-            ? Expanded(child: const SizedBox.shrink())
+            ? const Expanded(child: SizedBox.shrink())
             : _applyLineItem(index, false),
       ],
     );
@@ -319,8 +319,8 @@ class WaveStepsController with ChangeNotifier {
   WaveStepsController({this.currentIndex = 0, this.isCompleted = false});
 
   /// 只有在当前包内调用，不开放给外部调用
-  void _setMaxCount(int _maxCount) {
-    this._maxCount = _maxCount;
+  void _setMaxCount(int maxCount) {
+    _maxCount = maxCount;
   }
 
   /// 设置当前步骤条的 index,从 0 开始。

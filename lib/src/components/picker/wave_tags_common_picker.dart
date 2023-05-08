@@ -33,11 +33,11 @@ abstract class CommonTagsPicker extends StatefulWidget {
       this.pickerTitleConfig = WavePickerTitleConfig.Default,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   void show() {
@@ -102,7 +102,7 @@ class _CommonPickerState extends State<CommonTagsPicker> {
       child: Container(
           color: Colors.white,
           child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: 168.0, maxHeight: 370.0),
+            constraints: const BoxConstraints(minHeight: 168.0, maxHeight: 370.0),
             child: Stack(
               children: <Widget>[
                 _createContentWidget(),
@@ -135,14 +135,12 @@ class _CommonPickerState extends State<CommonTagsPicker> {
     } else {
       contentWidget = widget.createBuilder(context, _onUpdate);
     }
-    if (contentWidget == null) {
-      contentWidget = Container(
+    contentWidget ??= const SizedBox(
         height: 200.0,
         child: Center(
           child: Text('未配置数据'),
         ),
       );
-    }
     return Container(
       padding: EdgeInsets.only(top: widget.themeData!.titleHeight), // 流出头部视图
       child: ListView(

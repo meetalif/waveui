@@ -50,7 +50,7 @@ class WaveActionCardTitle extends StatelessWidget {
 
   final WaveCardTitleConfig? themeData;
 
-  WaveActionCardTitle({
+  const WaveActionCardTitle({
     Key? key,
     required this.title,
     this.accessoryText,
@@ -72,8 +72,8 @@ class WaveActionCardTitle extends StatelessWidget {
       return _rowWidget(context, defaultConfig);
     }
     return GestureDetector(
-      child: _rowWidget(context, defaultConfig),
       onTap: onTap,
+      child: _rowWidget(context, defaultConfig),
     );
   }
 
@@ -101,16 +101,16 @@ class WaveActionCardTitle extends StatelessWidget {
     );
     return Container(
       color: defaultConfig.cardBackgroundColor,
-      child: row,
       padding: defaultConfig.cardTitlePadding,
+      child: row,
     );
   }
 
   Widget _titleWidget(WaveCardTitleConfig defaultConfig) {
     return Container(
-      padding: EdgeInsets.only(right: 8),
+      padding: const EdgeInsets.only(right: 8),
       child: Text(
-        this.title,
+        title,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: defaultConfig.titleTextStyle.generateTextStyle(),
@@ -126,8 +126,8 @@ class WaveActionCardTitle extends StatelessWidget {
 
     if (subTitle != null) {
       return Container(
-        constraints: BoxConstraints(maxWidth: 84),
-        child: Text(this.subTitle!,
+        constraints: const BoxConstraints(maxWidth: 84),
+        child: Text(subTitle!,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: subTextStyle(defaultConfig)),
@@ -150,7 +150,7 @@ class WaveActionCardTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            constraints: BoxConstraints(maxWidth: 84),
+            constraints: const BoxConstraints(maxWidth: 84),
             child: Text(
               accessoryText ?? "",
               overflow: TextOverflow.ellipsis,

@@ -29,11 +29,11 @@ class WaveDateTimeWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) < 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   final DateTime? minDateTime, maxDateTime, initDateTime;
@@ -47,7 +47,7 @@ class WaveDateTimeWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _WaveDateTimeWidgetState(
-      this.minDateTime, this.maxDateTime, this.initDateTime, minuteDivider);
+      minDateTime, maxDateTime, initDateTime, minuteDivider);
 }
 
 class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
@@ -78,17 +78,11 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
   _WaveDateTimeWidgetState(DateTime? minTime, DateTime? maxTime,
       DateTime? initTime, int? minuteDivider) {
     // check minTime value
-    if (minTime == null) {
-      minTime = DateTime.parse(datePickerMinDatetime);
-    }
+    minTime ??= DateTime.parse(datePickerMinDatetime);
     // check maxTime value
-    if (maxTime == null) {
-      maxTime = DateTime.parse(datePickerMaxDatetime);
-    }
+    maxTime ??= DateTime.parse(datePickerMaxDatetime);
     // check initTime value
-    if (initTime == null) {
-      initTime = DateTime.now();
-    }
+    initTime ??= DateTime.now();
     // limit initTime value
     if (initTime.compareTo(minTime) < 0) {
       initTime = minTime;
@@ -98,42 +92,42 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
     }
 
     if (minuteDivider == null || minuteDivider <= 0) {
-      this._minuteDivider = _defaultMinuteDivider;
+      _minuteDivider = _defaultMinuteDivider;
     } else {
-      this._minuteDivider = minuteDivider;
+      _minuteDivider = minuteDivider;
     }
 
-    this._minTime = minTime;
-    this._maxTime = maxTime;
-    this._currYear = initTime.year;
-    this._currMonth = initTime.month;
-    this._currDay = initTime.day;
-    this._currHour = initTime.hour;
-    this._currMinute = initTime.minute;
-    this._currSecond = initTime.second;
+    _minTime = minTime;
+    _maxTime = maxTime;
+    _currYear = initTime.year;
+    _currMonth = initTime.month;
+    _currDay = initTime.day;
+    _currHour = initTime.hour;
+    _currMinute = initTime.minute;
+    _currSecond = initTime.second;
 
     // limit the range of year
-    this._yearRange = _calcYearRange();
-    this._currYear = min(max(_minTime.year, _currYear), _maxTime.year);
+    _yearRange = _calcYearRange();
+    _currYear = min(max(_minTime.year, _currYear), _maxTime.year);
     // limit the range of month
-    this._monthRange = _calcMonthRange();
-    this._currMonth = min(max(_monthRange.first, _currMonth), _monthRange.last);
+    _monthRange = _calcMonthRange();
+    _currMonth = min(max(_monthRange.first, _currMonth), _monthRange.last);
     // limit the range of date
-    this._dayRange = _calcDayRange();
+    _dayRange = _calcDayRange();
 //    int currDate = initTime.difference(_baselineDate).inDays;
-    this._currDay = min(max(_dayRange.first, _currDay), _dayRange.last);
+    _currDay = min(max(_dayRange.first, _currDay), _dayRange.last);
     // limit the range of hour
-    this._hourRange = _calcHourRange();
-    this._currHour = min(max(_hourRange.first, _currHour), _hourRange.last);
+    _hourRange = _calcHourRange();
+    _currHour = min(max(_hourRange.first, _currHour), _hourRange.last);
     // limit the range of minute
-    this._minuteRange = _calcMinuteRange();
-    this._currMinute =
+    _minuteRange = _calcMinuteRange();
+    _currMinute =
         min(max(_minuteRange.first, _currMinute), _minuteRange.last);
     _currMinute -= _currMinute % _minuteDivider!;
 
     // limit the range of second
-    this._secondRange = _calcSecondRange();
-    this._currSecond =
+    _secondRange = _calcSecondRange();
+    _currSecond =
         min(max(_secondRange.first, _currSecond), _secondRange.last);
 
     // create scroll controller
@@ -269,7 +263,7 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
         DateTimeFormatter.splitDateFormat(widget.dateFormat);
 
     // render time picker column
-    formatArr.forEach((format) {
+    for (var format in formatArr) {
       List<int>? valueRange = _findPickerItemRange(format);
 
       Widget pickerColumn = _renderDatePickerColumnComponent(
@@ -294,7 +288,7 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
         },
       );
       pickers.add(pickerColumn);
-    });
+    }
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween, children: pickers);
   }
@@ -617,7 +611,7 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
   }
 
   /// Solar months of 31 days.
-  static const List<int> _solarMonthsOf31Days = const <int>[
+  static const List<int> _solarMonthsOf31Days = <int>[
     1,
     3,
     5,
@@ -649,9 +643,7 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
     int maxYear = _maxTime.year;
     int minMonth = _minTime.month;
     int maxMonth = _maxTime.month;
-    if (currMonth == null) {
-      currMonth = _currMonth;
-    }
+    currMonth ??= _currMonth;
     if (minYear == _currYear && minMonth == currMonth) {
       // selected minimum year and month, limit day range
       minDay = _minTime.day;
@@ -691,9 +683,7 @@ class _WaveDateTimeWidgetState extends State<WaveDateTimeWidget> {
   /// calculate the range of minute
   List<int> _calcMinuteRange({currHour}) {
     int minMinute = 0, maxMinute = 59;
-    if (currHour == null) {
-      currHour = _currHour;
-    }
+    currHour ??= _currHour;
 
     if (_currYear == _minTime.year &&
         _currMonth == _minTime.month &&

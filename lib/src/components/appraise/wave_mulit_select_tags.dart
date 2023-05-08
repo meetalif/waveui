@@ -60,7 +60,7 @@ class WaveMultiSelectTags extends StatefulWidget {
   /// 最小宽度，默认 75
   final double minWidth;
 
-  WaveMultiSelectTags({
+  const WaveMultiSelectTags({
     Key? key,
     required this.tagPickerBean,
     required this.tagText,
@@ -97,7 +97,7 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
       return _buildContent(context);
     } else {
       return widget.emptyWidget ??
-          Container(
+          SizedBox(
             height: 200,
             child: Center(
               child: Text(WaveIntl.of(context).localizedResource.noTagDataTip),
@@ -126,7 +126,7 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
 
     return Container(
       padding: widget.padding,
-      constraints: BoxConstraints(maxHeight: 322, minHeight: 120),
+      constraints: const BoxConstraints(maxHeight: 322, minHeight: 120),
       child: GridView.count(
         shrinkWrap: true,
         physics: widget.physics,
@@ -139,7 +139,7 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
         childAspectRatio: waveChildAspectRatio,
         children: _sourceTags.map((choice) {
           return _getItem(
-              choice, EdgeInsets.only(left: 8, right: 8, bottom: 1));
+              choice, const EdgeInsets.only(left: 8, right: 8, bottom: 1));
         }).toList(),
       ),
     );
@@ -154,7 +154,7 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
           runSpacing: 12,
           children: _sourceTags.map((choice) {
             return _getItem(choice,
-                EdgeInsets.only(left: 8, right: 8, top: 10.5, bottom: 11));
+                const EdgeInsets.only(left: 8, right: 8, top: 10.5, bottom: 11));
           }).toList(),
         ));
   }
@@ -178,9 +178,9 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
   void _clickTag(bool selected, WaveTagItemBean tagName) {
     if (!widget.multiSelect) {
       /// 单选
-      _sourceTags.forEach((tag) {
+      for (var tag in _sourceTags) {
         tag.isSelect = false;
-      });
+      }
       _selectedTags.clear();
       tagName.isSelect = true;
       _selectedTags.add(tagName);
@@ -208,7 +208,7 @@ class _WaveMultiSelectTagsState extends State<WaveMultiSelectTags> {
     Color tagTitleColor = widget.tagPickerBean.tagTitleColor ??
         WaveThemeConfigurator.instance.getConfig().commonConfig.colorTextBase;
     Color tagBackgroundColor =
-        widget.tagPickerBean.tagBackgroudColor ?? Color(0xFFF8F8F8);
+        widget.tagPickerBean.tagBackgroudColor ?? const Color(0xFFF8F8F8);
     Color selectedTagBackgroundColor =
         widget.tagPickerBean.selectedTagBackgroudColor ??
             Get.theme.colorScheme.primary.withAlpha(0x14);

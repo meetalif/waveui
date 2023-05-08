@@ -33,6 +33,7 @@ class _WaveSelectionAnimationWidgetState
         vsync: this);
   }
 
+  @override
   dispose() {
     widget.controller.removeListener(_onController);
     _animationController.dispose();
@@ -78,13 +79,13 @@ class _WaveSelectionAnimationWidgetState
       width: MediaQuery.of(context).size.width,
       left: 0,
       child: Material(
-        color: Color(0xB3000000),
-        child: Container(
+        color: const Color(0xB3000000),
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height -
               (widget.controller.listViewTop ?? 0),
           child: Padding(
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             child: widget.view,
           ),
         ),

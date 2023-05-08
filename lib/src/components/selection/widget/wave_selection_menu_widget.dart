@@ -37,7 +37,7 @@ class WaveSelectionMenuWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  WaveSelectionMenuWidget(
+  const WaveSelectionMenuWidget(
       {Key? key,
       required this.context,
       required this.data,
@@ -116,6 +116,7 @@ class _WaveSelectionMenuWidgetState extends State<WaveSelectionMenuWidget> {
     }
   }
 
+  @override
   dispose() {
     _scrollController?.removeListener(_closeSelectionPopupWindow);
     _refreshTitleSubscription.cancel();
@@ -181,7 +182,7 @@ class _WaveSelectionMenuWidgetState extends State<WaveSelectionMenuWidget> {
 
   List<Widget> _configMenuItems() {
     List<Widget> itemViewList = [];
-    itemViewList.add(Padding(
+    itemViewList.add(const Padding(
       padding: EdgeInsets.only(left: 14),
     ));
     for (int index = 0; index < titles.length; index++) {
@@ -191,7 +192,7 @@ class _WaveSelectionMenuWidgetState extends State<WaveSelectionMenuWidget> {
           _needRefreshTitle = false;
         }
       }
-      itemViewList.add(Padding(
+      itemViewList.add(const Padding(
         padding: EdgeInsets.only(left: 6),
       ));
       itemViewList.add(WaveSelectionMenuItemWidget(
@@ -259,11 +260,11 @@ class _WaveSelectionMenuWidgetState extends State<WaveSelectionMenuWidget> {
           });
         },
       ));
-      itemViewList.add(Padding(
+      itemViewList.add(const Padding(
         padding: EdgeInsets.only(left: 6),
       ));
     }
-    itemViewList.add(Padding(
+    itemViewList.add(const Padding(
       padding: EdgeInsets.only(left: 14),
     ));
     return itemViewList;

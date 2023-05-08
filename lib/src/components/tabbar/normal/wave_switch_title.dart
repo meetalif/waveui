@@ -55,7 +55,7 @@ class WaveSwitchTitle extends StatefulWidget {
 
 class _WaveSwitchTitleState extends State<WaveSwitchTitle>
     with TickerProviderStateMixin {
-  static final Color _color = Color(0XFF243238);
+  static const Color _color = Color(0XFF243238);
 
   TabController? _controller;
 
@@ -90,7 +90,7 @@ class _WaveSwitchTitleState extends State<WaveSwitchTitle>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _toggleButtonsWidget(context),
-          WaveLine(),
+          const WaveLine(),
         ],
       );
     } else {
@@ -122,7 +122,7 @@ class _WaveSwitchTitleState extends State<WaveSwitchTitle>
       );
     }).toList();
 
-    Decoration _indicator = CustomWidthUnderlineTabIndicator(
+    Decoration indicator = CustomWidthUnderlineTabIndicator(
       width: widget.indicatorWidth,
       insets: EdgeInsets.only(
           left: widget.padding.left, right: widget.padding.right),
@@ -143,7 +143,7 @@ class _WaveSwitchTitleState extends State<WaveSwitchTitle>
             ? _color
             : Get.theme.colorScheme.primary,
         labelStyle: widget.selectedTextStyle ??
-            TextStyle(
+            const TextStyle(
               //选中态
               fontWeight: FontWeight.w600,
               fontSize: 18,
@@ -154,11 +154,11 @@ class _WaveSwitchTitleState extends State<WaveSwitchTitle>
         unselectedLabelColor: _color,
         //未选中态样式
         unselectedLabelStyle: widget.unselectedTextStyle ??
-            TextStyle(
+            const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18,
             ),
-        indicator: widget.nameList.length == 1 ? BoxDecoration() : _indicator,
+        indicator: widget.nameList.length == 1 ? const BoxDecoration() : indicator,
         // weight 设置为0，让外部通过 padding 设置下划线和标题间的距离
         indicatorWeight: 0,
         onTap: (index) {

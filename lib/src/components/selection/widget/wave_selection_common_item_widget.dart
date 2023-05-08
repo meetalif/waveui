@@ -18,7 +18,7 @@ class WaveSelectionCommonItemWidget extends StatelessWidget {
 
   final WaveSelectionConfig? themeData;
 
-  WaveSelectionCommonItemWidget({
+  const WaveSelectionCommonItemWidget({
     Key? key,
     required this.item,
     this.backgroundColor,
@@ -36,7 +36,7 @@ class WaveSelectionCommonItemWidget extends StatelessWidget {
     if (!item.isUnLimit() && (item.children.isEmpty)) {
       if (item.isInLastLevel() && item.hasCheckBoxBrother()) {
         checkbox = Container(
-          padding: EdgeInsets.only(left: 6),
+          padding: const EdgeInsets.only(left: 6),
           width: 21,
           child: (item.isSelected)
               ? WaveUITools.getAssetImageWithBandColor(
@@ -57,7 +57,7 @@ class WaveSelectionCommonItemWidget extends StatelessWidget {
         }
       },
       child: Container(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
         color: getItemBGColor(),
         child: Align(
           alignment: Alignment.centerLeft,
@@ -105,9 +105,9 @@ class WaveSelectionCommonItemWidget extends StatelessWidget {
 
   Color? getItemBGColor() {
     if (isCurrentFocused) {
-      return this.selectedBackgroundColor;
+      return selectedBackgroundColor;
     } else {
-      return this.backgroundColor;
+      return backgroundColor;
     }
   }
 

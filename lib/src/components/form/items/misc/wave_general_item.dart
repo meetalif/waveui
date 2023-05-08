@@ -79,14 +79,13 @@ class WaveGeneralFormItem extends StatefulWidget {
     this.backgroundColor,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -116,7 +115,7 @@ class WaveGeneralFormItemState extends State<WaveGeneralFormItem> {
                       offstage:
                           widget.prefixIconType == WavePrefixIconType.normal,
                       child: Container(
-                        padding: EdgeInsets.only(right: 6),
+                        padding: const EdgeInsets.only(right: 6),
                         child: GestureDetector(
                           onTap: () {
                             if (!widget.isEdit) {
@@ -163,14 +162,13 @@ class WaveGeneralFormItemState extends State<WaveGeneralFormItem> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Container(
-                                padding: EdgeInsets.only(left: 6, right: 7),
+                                padding:
+                                    const EdgeInsets.only(left: 6, right: 7),
                                 child: WaveFormUtil.getQuestionMarkIcon()),
-                            Container(
-                              child: Text(
-                                widget.tipLabel ?? "",
-                                style: WaveFormUtil.getTipsTextStyle(
-                                    widget.themeData!),
-                              ),
+                            Text(
+                              widget.tipLabel ?? "",
+                              style: WaveFormUtil.getTipsTextStyle(
+                                  widget.themeData!),
                             ),
                           ],
                         ),

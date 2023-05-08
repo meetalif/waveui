@@ -73,7 +73,7 @@ class WaveInputText extends StatelessWidget {
   /// Background color of `WaveInputText`
   final Color? backgroundColor;
 
-  WaveInputText({
+  WaveInputText({super.key, 
     this.onTextChange,
     this.onSubmit,
     this.keyboardType,
@@ -105,20 +105,20 @@ class WaveInputText extends StatelessWidget {
       var sRunes = textData.runes;
       textData = String.fromCharCodes(sRunes, 0, maxLength);
     }
-    var _controller = textEditingController;
-    if (_controller == null) {
+    var controller = textEditingController;
+    if (controller == null) {
       if (textData.isNotEmpty) {
-        _controller = TextEditingController.fromValue(TextEditingValue(
+        controller = TextEditingController.fromValue(TextEditingValue(
             text: textData,
             selection: TextSelection.fromPosition(TextPosition(
                 affinity: TextAffinity.downstream, offset: textData.length))));
       } else {
-        _controller = TextEditingController();
+        controller = TextEditingController();
       }
     }
     return TextField(
       //Add to keep the cursor at the end of the text
-      controller: _controller,
+      controller: controller,
       keyboardType: keyboardType ?? TextInputType.multiline,
       maxLength: maxLength == 0 ? null : maxLength,
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
@@ -144,7 +144,7 @@ class WaveInputText extends StatelessWidget {
                     "$currentLength",
                     style: TextStyle(
                       color: (currentLength == 0
-                          ? Color(0xffcccccc)
+                          ? const Color(0xffcccccc)
                           : WaveThemeConfigurator.instance
                               .getConfig()
                               .commonConfig
@@ -154,7 +154,7 @@ class WaveInputText extends StatelessWidget {
                   ),
                   Text(
                     "/$maxLength",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xffcccccc),
                       fontSize: 16,
                     ),
@@ -168,9 +168,7 @@ class WaveInputText extends StatelessWidget {
         errorText: errorText,
         enabled: isEnabled,
         fillColor: isEnabled
-            ? backgroundColor == null
-                ? Get.theme.inputDecorationTheme.fillColor
-                : backgroundColor
+            ? backgroundColor ?? Get.theme.inputDecorationTheme.fillColor
             : Colors.grey.withOpacity(0.2),
       ),
       onSubmitted: (text) {

@@ -70,7 +70,7 @@ class WavePopupWindow extends StatefulWidget {
   /// 自动将 popWindow 在 targetView 上面弹出
   final double turnOverFromBottom;
 
-  WavePopupWindow(this.context,
+  const WavePopupWindow(this.context,
       {Key? key,
       this.text,
       required this.popKey,
@@ -169,7 +169,7 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
   late Size _screenSize;
 
   /// 箭头和左右侧边线间距
-  double _arrowSpacing = 18;
+  final double _arrowSpacing = 18;
 
   /// 是否向右侧延伸，true：向右侧延伸，false：向左侧延伸
   bool _expandedRight = true;
@@ -192,8 +192,8 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
   @override
   void initState() {
     super.initState();
-    this._showRect = _getWidgetGlobalRect(widget.popKey);
-    this._screenSize = window.physicalSize / window.devicePixelRatio;
+    _showRect = _getWidgetGlobalRect(widget.popKey);
+    _screenSize = window.physicalSize / window.devicePixelRatio;
     _borderColor = (widget.borderColor ?? Colors.transparent).withAlpha(255);
     _backgroundColor =
         (widget.backgroundColor ?? Colors.transparent).withAlpha(255);
@@ -313,7 +313,7 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
   // popWindow的弹出样式
   Widget _buildPopWidget() {
     // 状态栏高度
-    double statusBarHeight = MediaQueryData.fromWindow(window).padding.top;
+    double statusBarHeight = MediaQueryData.fromView(window).padding.top;
     return Positioned(
         left: _expandedRight ? _left : null,
         right: _expandedRight ? null : _right,
@@ -332,8 +332,7 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
                 maxHeight: _popDirection == WavePopupDirection.bottom
                     ? _screenSize.height - _top
                     : _screenSize.height - _bottom - statusBarHeight),
-            child: widget.widget == null
-                ? SingleChildScrollView(
+            child: widget.widget ?? SingleChildScrollView(
                     child: widget.canWrap
                         ? RichText(
                             text: TextSpan(children: <InlineSpan>[
@@ -343,11 +342,11 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
                                 ? WidgetSpan(
                                     alignment: PlaceholderAlignment.middle,
                                     child: Padding(
-                                      padding: EdgeInsets.only(left: 6),
+                                      padding: const EdgeInsets.only(left: 6),
                                       child: WaveUITools.getAssetImage(
                                           WaveAsset.iconPopupClose),
                                     ))
-                                : TextSpan(text: "")
+                                : const TextSpan(text: "")
                           ]))
                         : Row(
                             mainAxisSize: MainAxisSize.min,
@@ -363,14 +362,13 @@ class _WavePopupWindowState extends State<WavePopupWindow> {
                               ),
                               widget.isShowCloseIcon
                                   ? Padding(
-                                      padding: EdgeInsets.only(left: 6),
+                                      padding: const EdgeInsets.only(left: 6),
                                       child: WaveUITools.getAssetImage(
                                           WaveAsset.iconPopupClose),
                                     )
-                                  : Text("")
+                                  : const Text("")
                             ],
-                          ))
-                : widget.widget));
+                          ))));
   }
 }
 
@@ -431,7 +429,7 @@ class _TrianglePainter extends CustomPainter {
 }
 
 class WavePopupRoute extends PopupRoute {
-  final Duration _duration = Duration(milliseconds: 200);
+  final Duration _duration = const Duration(milliseconds: 200);
   Widget child;
 
   WavePopupRoute({required this.child});
@@ -492,7 +490,7 @@ class WavePopupListWindow {
             .colorTextBase,
         fontSize: 16);
     double arrowHeight = 6.0;
-    Color borderColor = Color(0xffCCCCCC);
+    Color borderColor = const Color(0xffCCCCCC);
     Color backgroundColor = Colors.white;
     double offset = 4;
     double spaceMargin = -10;
@@ -526,7 +524,7 @@ class WavePopupListWindow {
                       BoxConstraints(maxWidth: maxWidth, maxHeight: maxHeight),
                   child: SingleChildScrollView(
                     child: Container(
-                      padding: EdgeInsets.only(top: 6, bottom: 6),
+                      padding: const EdgeInsets.only(top: 6, bottom: 6),
                       child: Column(
                         children: _getItems(context, minWidth, maxWidth,
                             itemBuilder, textStyle, data!, (index, item) {
@@ -613,7 +611,7 @@ class WavePopupListWindow {
                       BoxConstraints(maxWidth: maxWidth, maxHeight: maxHeight),
                   child: SingleChildScrollView(
                     child: Container(
-                      padding: EdgeInsets.only(top: 6, bottom: 6),
+                      padding: const EdgeInsets.only(top: 6, bottom: 6),
                       child: Column(
                         children: _getItems(
                             context, minWidth, maxWidth, null, textStyle, data!,
@@ -666,7 +664,7 @@ class WavePopupListWindow {
               width: textMaxWidth,
               alignment: Alignment.center,
               color: Colors.transparent,
-              padding: EdgeInsets.only(left: 26, right: 26, top: 6, bottom: 6),
+              padding: const EdgeInsets.only(left: 26, right: 26, top: 6, bottom: 6),
               child: _getTextWidget(itemBuilder, data, f, textStyle)));
     }).toList();
   }

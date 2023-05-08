@@ -71,14 +71,13 @@ class WaveTitleFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -97,7 +96,7 @@ class WaveTitleFormItemState extends State<WaveTitleFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -111,12 +110,11 @@ class WaveTitleFormItemState extends State<WaveTitleFormItem> {
                       // 必填项
                       WaveFormUtil.buildRequireWidget(widget.isRequire),
                       // 主标题
-                      Container(
-                          child: Text(
+                      Text(
                         widget.title,
                         style: WaveFormUtil.getHeadTitleTextStyle(
                             widget.themeData!),
-                      )),
+                      ),
                       // 问号提示
                       WaveFormUtil.buildTipLabelWidget(
                           widget.tipLabel, widget.onTip, widget.themeData!),
@@ -136,7 +134,7 @@ class WaveTitleFormItemState extends State<WaveTitleFormItem> {
                       WaveFormUtil.notifyTap(context, widget.onTap);
                     },
                     child: Container(
-                        padding: EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.only(right: 20),
                         child: Text(
                           widget.operationLabel ?? "",
                           style: TextStyle(

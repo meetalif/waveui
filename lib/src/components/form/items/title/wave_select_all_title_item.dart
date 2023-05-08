@@ -83,14 +83,13 @@ class WaveSelectAllTitle extends StatefulWidget {
     this.customActionWidget,
     this.backgroundColor,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -126,7 +125,6 @@ class WaveSelectAllTitleState extends State<WaveSelectAllTitle> {
       titleWidget: widget.titleWidget,
       subTitleWidget: widget.subTitleWidget,
       customActionWidget: WaveCheckbox(
-        child: getSelectTextWidget(),
         radioIndex: 0,
         disable: !widget.isEdit,
         isSelected: _selectState,
@@ -141,6 +139,7 @@ class WaveSelectAllTitleState extends State<WaveSelectAllTitle> {
             widget.onSelectAll!(position, value);
           }
         },
+        child: getSelectTextWidget(),
       ),
       onTip: widget.onTip,
     );
@@ -150,11 +149,9 @@ class WaveSelectAllTitleState extends State<WaveSelectAllTitle> {
     if (widget.selectTextWidget != null) {
       return widget.selectTextWidget;
     } else {
-      return Container(
-        child: Text(
-          widget.selectText ?? "",
-          style: getOptionTextStyle(widget.themeData),
-        ),
+      return Text(
+        widget.selectText ?? "",
+        style: getOptionTextStyle(widget.themeData),
       );
     }
   }

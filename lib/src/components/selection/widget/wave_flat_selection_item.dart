@@ -42,7 +42,7 @@ class WaveFlatMoreSelection extends StatefulWidget {
   /// 主题配置
   final WaveSelectionConfig themeData;
 
-  WaveFlatMoreSelection({
+  const WaveFlatMoreSelection({
     Key? key,
     required this.selectionEntity,
     this.clearController,
@@ -90,7 +90,7 @@ class _FilterCommonTypeWidget extends StatefulWidget {
   final double parentWidth;
   final WaveSelectionConfig themeData;
 
-  _FilterCommonTypeWidget(
+  const _FilterCommonTypeWidget(
       {required this.selectionEntity,
       this.clearController,
       this.preLineTagSize = 3,
@@ -115,10 +115,10 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
   double _tagWidth = 0;
 
   /// 标签行间距
-  double _spacing = 12;
+  final double _spacing = 12;
 
   /// 行边距
-  double _padding = 20;
+  final double _padding = 20;
 
   @override
   void initState() {
@@ -182,7 +182,7 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
                     .currentShowTagByExpanded(isExpanded)
                     .isNotEmpty,
                 child: Container(
-                  padding: EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.only(top: 12),
                   child: _buildOptionWidgets(),
                 ),
               ),
@@ -366,7 +366,7 @@ class _MoreArrow extends StatefulWidget {
   final ValueNotifier<bool>? valueNotifier;
   final WaveSelectionConfig themeData;
 
-  _MoreArrow({this.valueNotifier, required this.themeData});
+  const _MoreArrow({this.valueNotifier, required this.themeData});
 
   @override
   __MoreArrowState createState() => __MoreArrowState();
@@ -390,7 +390,7 @@ class __MoreArrowState extends State<_MoreArrow> {
         });
       },
       child: Container(
-        padding: EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -399,7 +399,7 @@ class __MoreArrowState extends State<_MoreArrow> {
             Container(
               height: 16,
               width: 16,
-              padding: EdgeInsets.only(left: 4),
+              padding: const EdgeInsets.only(left: 4),
               child: WaveUITools.getAssetImage(
                 asset,
               ),
@@ -427,7 +427,7 @@ class _MoreRangeWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  _MoreRangeWidget({
+  const _MoreRangeWidget({
     Key? key,
     required this.rangeEntity,
     this.streamController,
@@ -468,9 +468,7 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
       maxController.clear();
     });
 
-    if (widget.rangeEntity.customMap == null) {
-      widget.rangeEntity.customMap = Map<String, String>();
-    }
+    widget.rangeEntity.customMap ??= <String, String>{};
 
     minController.text = (widget.rangeEntity.customMap!['min'] != null)
         ? widget.rangeEntity.customMap!['min']?.toString() ?? ''
@@ -567,15 +565,15 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
       children: <Widget>[
         _buildRangeField(WaveIntl.of(context).localizedResource.minValue,
             minController, minFocusNode, widget.width, widget.themeData),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 2),
         ),
         Container(
-          color: Color(0xffDDDDDD),
+          color: const Color(0xffDDDDDD),
           height: 1,
           width: 8,
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(right: 2),
         ),
         _buildRangeField(WaveIntl.of(context).localizedResource.maxValue,
@@ -592,7 +590,7 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
     WaveSelectionConfig themeData,
   ) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Color(0xFFF9F9F9),
           borderRadius: BorderRadius.all(Radius.circular(4.0))),
       height: 32,
@@ -621,8 +619,8 @@ class FilterLayerTypeWidget extends StatefulWidget {
   final WaveOnCustomFloatingLayerClick? onCustomFloatingLayerClick;
   final WaveSelectionConfig themeData;
 
-  FilterLayerTypeWidget(
-      {required this.selectionEntity,
+  const FilterLayerTypeWidget(
+      {super.key, required this.selectionEntity,
       this.onCustomFloatingLayerClick,
       required this.themeData});
 
@@ -696,7 +694,7 @@ class _FilterLayerTypeWidgetState extends State<FilterLayerTypeWidget> {
                           : widget.themeData.optionTextStyle
                               .generateTextStyle()),
                 ),
-                Container(
+                SizedBox(
                   height: 16,
                   width: 16,
                   child: WaveUITools.getAssetImage(WaveAsset.iconRightArrow),
@@ -705,7 +703,7 @@ class _FilterLayerTypeWidgetState extends State<FilterLayerTypeWidget> {
             ),
           ),
         ),
-        Padding(padding: EdgeInsets.only(top: 15), child: WaveLine())
+        const Padding(padding: EdgeInsets.only(top: 15), child: WaveLine())
       ],
     );
   }

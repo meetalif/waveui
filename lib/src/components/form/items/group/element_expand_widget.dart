@@ -41,14 +41,13 @@ class ExpansionElementWidget extends StatefulWidget {
     this.callback,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   /// The primary content of the list item.
@@ -119,7 +118,7 @@ class _ExpansionElementState extends State<ExpansionElementWidget>
         PageStorage.of(context).readState(context) ?? widget.initiallyExpanded;
 
     _controller = AnimationController(
-        duration: Duration(milliseconds: 200) /*_kExpand*/, vsync: this);
+        duration: const Duration(milliseconds: 200) /*_kExpand*/, vsync: this);
     _heightFactor = _controller.drive(_easeInTween);
     if (_isExpanded) {
       _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
@@ -169,12 +168,12 @@ class _ExpansionElementState extends State<ExpansionElementWidget>
   }
 
   Widget _buildHeader(BuildContext context, Widget? child) {
-    final Color borderSideColor = /*_borderColor.value ??*/ Colors.transparent;
+    const Color borderSideColor = /*_borderColor.value ??*/ Colors.transparent;
 
     return Container(
       decoration: BoxDecoration(
         color: widget.themeData!.backgroundColor,
-        border: Border(
+        border: const Border(
           top: BorderSide(color: borderSideColor),
           bottom: BorderSide(color: borderSideColor),
         ),
@@ -182,62 +181,60 @@ class _ExpansionElementState extends State<ExpansionElementWidget>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    _handleTap();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.only(left: 20, top: 14),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.only(right: 6),
-                            child: Text(
-                              widget.title,
-                              style: WaveFormUtil.getHeadTitleTextStyle(
-                                  widget.themeData!,
-                                  isBold: true),
-                            )),
-                        RotationTransition(
-                          turns: _iconTurns,
-                          child: arrowIcon,
-                        ),
-                      ],
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  _handleTap();
+                },
+                child: Container(
+                  padding: const EdgeInsets.only(left: 20, top: 14),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: Text(
+                            widget.title,
+                            style: WaveFormUtil.getHeadTitleTextStyle(
+                                widget.themeData!,
+                                isBold: true),
+                          )),
+                      RotationTransition(
+                        turns: _iconTurns,
+                        child: arrowIcon,
+                      ),
+                    ],
                   ),
                 ),
-                Offstage(
-                  offstage: widget.deleteText == null,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (widget.callback != null) {
-                        widget.callback!();
-                      }
-                    },
-                    child: Container(
-                      padding: EdgeInsets.only(top: 14, right: 20),
-                      child: Text(
-                        widget.deleteText ?? "",
-                        style: TextStyle(
-                          color: Color(0xFFFA3F3F),
-                          fontSize: WaveFonts.f16,
-                        ),
+              ),
+              Offstage(
+                offstage: widget.deleteText == null,
+                child: GestureDetector(
+                  onTap: () {
+                    if (widget.callback != null) {
+                      widget.callback!();
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 14, right: 20),
+                    child: Text(
+                      widget.deleteText ?? "",
+                      style: const TextStyle(
+                        color: Color(0xFFFA3F3F),
+                        fontSize: WaveFonts.f16,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
 
           // 副标题
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 20, top: 4, bottom: 14),
+            padding: const EdgeInsets.only(left: 20, top: 4, bottom: 14),
             child: Offstage(
               offstage: (widget.subtitle == null || widget.subtitle!.isEmpty),
               child: Text(
@@ -248,12 +245,10 @@ class _ExpansionElementState extends State<ExpansionElementWidget>
           ),
 
           /// 可展开收起项
-          Container(
-            child: ClipRect(
-              child: Align(
-                heightFactor: _heightFactor.value,
-                child: child,
-              ),
+          ClipRect(
+            child: Align(
+              heightFactor: _heightFactor.value,
+              child: child,
             ),
           ),
         ],
@@ -265,19 +260,19 @@ class _ExpansionElementState extends State<ExpansionElementWidget>
   void didChangeDependencies() {
     final ThemeData theme = Theme.of(context);
 
-    _borderColorTween..end = theme.dividerColor;
+    _borderColorTween.end = theme.dividerColor;
 
     /// title 文字颜色
     _headerColorTween
-      ..begin = theme.textTheme.subtitle1!.color
-      ..end = theme.textTheme.subtitle1!.color;
+      ..begin = theme.textTheme.titleMedium!.color
+      ..end = theme.textTheme.titleMedium!.color;
 
     /// 展开收起图标颜色
     _iconColorTween
       ..begin = theme.unselectedWidgetColor
       ..end = theme.unselectedWidgetColor;
 
-    _backgroundColorTween..end = widget.backgroundColor;
+    _backgroundColorTween.end = widget.backgroundColor;
     super.didChangeDependencies();
   }
 

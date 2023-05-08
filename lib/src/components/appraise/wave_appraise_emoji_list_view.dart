@@ -33,7 +33,7 @@ class WaveAppraiseEmojiListView extends StatefulWidget {
 
 class _WaveAppraiseEmojiListViewState extends State<WaveAppraiseEmojiListView> {
   /// 未选中表情，灰色
-  List _unselectedIcons = [
+  final List _unselectedIcons = [
     WaveAsset.iconAppraiseBadUnselected,
     WaveAsset.iconAppraiseNotGoodUnselected,
     WaveAsset.iconAppraiseOkUnselected,
@@ -42,7 +42,7 @@ class _WaveAppraiseEmojiListViewState extends State<WaveAppraiseEmojiListView> {
   ];
 
   /// 默认表情，黄色
-  List _defaultIcons = [
+  final List _defaultIcons = [
     WaveAsset.iconAppraiseBadDefault,
     WaveAsset.iconAppraiseNotGoodDefault,
     WaveAsset.iconAppraiseOkDefault,
@@ -51,7 +51,7 @@ class _WaveAppraiseEmojiListViewState extends State<WaveAppraiseEmojiListView> {
   ];
 
   /// 选中表情，gif
-  List _selectedIcons = [
+  final List _selectedIcons = [
     WaveAsset.iconAppraiseBadSelected,
     WaveAsset.iconAppraiseNotGoodSelected,
     WaveAsset.iconAppraiseOkSelected,

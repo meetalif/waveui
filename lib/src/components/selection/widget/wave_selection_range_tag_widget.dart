@@ -28,7 +28,7 @@ class WaveSelectionRangeTagWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  WaveSelectionRangeTagWidget(
+  const WaveSelectionRangeTagWidget(
       {Key? key,
       required this.tagFilterList,
       this.initSelectStatus,

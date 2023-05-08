@@ -59,7 +59,7 @@ class WaveExpandFormGroup extends StatefulWidget {
   /// The color to display behind the sublist when expanded.
   final Color? backgroundColor;
 
-  WaveExpandFormGroup({
+  const WaveExpandFormGroup({
     Key? key,
     this.label,
     this.title = "",
@@ -85,22 +85,20 @@ class WaveExpandFormGroup extends StatefulWidget {
 class WaveExpandFormGroupState extends State<WaveExpandFormGroup> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ExpansionElementWidget(
-        title: widget.title,
-        subtitle: widget.subTitle,
-        deleteText: widget.deleteLabel,
-        initiallyExpanded: widget.isExpand,
-        backgroundColor: widget.backgroundColor,
-        children: getSubItem(),
-        callback: () {
-          if (!WaveFormUtil.isEdit(widget.isEdit)) {
-            return;
-          }
+    return ExpansionElementWidget(
+      title: widget.title,
+      subtitle: widget.subTitle,
+      deleteText: widget.deleteLabel,
+      initiallyExpanded: widget.isExpand,
+      backgroundColor: widget.backgroundColor,
+      children: getSubItem(),
+      callback: () {
+        if (!WaveFormUtil.isEdit(widget.isEdit)) {
+          return;
+        }
 
-          WaveFormUtil.notifyRemoveTap(context, widget.onRemoveTap);
-        },
-      ),
+        WaveFormUtil.notifyRemoveTap(context, widget.onRemoveTap);
+      },
     );
   }
 
@@ -112,7 +110,7 @@ class WaveExpandFormGroupState extends State<WaveExpandFormGroup> {
     }
 
     for (Widget w in widget.children) {
-      result.add(WaveLine());
+      result.add(const WaveLine());
       result.add(w);
     }
 

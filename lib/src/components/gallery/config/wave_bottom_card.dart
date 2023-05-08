@@ -58,7 +58,7 @@ class _WavePhotoBottomCardState extends State<WavePhotoBottomCard>
     if (state == PhotoBottomCardState.fold) {
       return Container(
         height: 53,
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -74,7 +74,7 @@ class _WavePhotoBottomCardState extends State<WavePhotoBottomCard>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(right: 4),
+                    padding: const EdgeInsets.only(right: 4),
                     child: Text(WaveIntl.of(context).localizedResource.expand,
                         style:
                             widget.themeData!.actionStyle.generateTextStyle()),
@@ -92,10 +92,10 @@ class _WavePhotoBottomCardState extends State<WavePhotoBottomCard>
       );
     } else {
       return Padding(
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 53,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,7 +112,7 @@ class _WavePhotoBottomCardState extends State<WavePhotoBottomCard>
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(right: 4),
+                          padding: const EdgeInsets.only(right: 4),
                           child: Text(
                               WaveIntl.of(context).localizedResource.collapse,
                               style: widget.themeData!.actionStyle
@@ -142,26 +142,26 @@ class _WavePhotoBottomCardState extends State<WavePhotoBottomCard>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 53,
           child: Padding(
-            padding: EdgeInsets.only(top: 16, bottom: 12, left: 20, right: 20),
+            padding: const EdgeInsets.only(top: 16, bottom: 12, left: 20, right: 20),
             child: Text(
               widget.name ?? "",
               style: widget.themeData!.titleStyle.generateTextStyle(),
             ),
           ),
         ),
-        Container(
+        SizedBox(
             height: widget.contentHeight,
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text(
                     widget.des ?? "",
                     style: widget.themeData!.contentStyle.generateTextStyle(),
-                  ),
-                  padding: EdgeInsets.only(left: 20, right: 20)),
+                  )),
             ))
       ],
     );

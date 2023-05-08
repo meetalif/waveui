@@ -15,7 +15,7 @@ class WaveMultiRangeSelConverter {
   Map<String, List<WavePickerEntity>> getSelectionParams(
       List<WavePickerEntity>? selectedResults,
       {bool includeUnlimitSelection = false}) {
-    Map<String, List<WavePickerEntity>> params = Map();
+    Map<String, List<WavePickerEntity>> params = {};
     if (selectedResults == null) return params;
     for (WavePickerEntity menuItemEntity in selectedResults) {
       int levelCount =
@@ -26,25 +26,27 @@ class WaveMultiRangeSelConverter {
       } else if (levelCount == 2) {
         params.addAll(getCurrentSelectionEntityParams(menuItemEntity,
             includeUnlimitSelection: includeUnlimitSelection));
-        menuItemEntity.children.forEach((firstLevelItem) => mergeParams(
+        for (var firstLevelItem in menuItemEntity.children) {
+          mergeParams(
             params,
             getCurrentSelectionEntityParams(firstLevelItem,
-                includeUnlimitSelection: includeUnlimitSelection)));
+                includeUnlimitSelection: includeUnlimitSelection));
+        }
       } else if (levelCount == 3) {
         params.addAll(getCurrentSelectionEntityParams(menuItemEntity,
             includeUnlimitSelection: includeUnlimitSelection));
-        menuItemEntity.children.forEach((firstLevelItem) {
+        for (var firstLevelItem in menuItemEntity.children) {
           mergeParams(
               params,
               getCurrentSelectionEntityParams(firstLevelItem,
                   includeUnlimitSelection: includeUnlimitSelection));
-          firstLevelItem.children.forEach((secondLevelItem) {
+          for (var secondLevelItem in firstLevelItem.children) {
             mergeParams(
                 params,
                 getCurrentSelectionEntityParams(secondLevelItem,
                     includeUnlimitSelection: includeUnlimitSelection));
-          });
-        });
+          }
+        }
       }
     }
     return params;
@@ -66,7 +68,7 @@ class WaveMultiRangeSelConverter {
   Map<String, List<WavePickerEntity>> getCurrentSelectionEntityParams(
       WavePickerEntity selectionEntity,
       {bool includeUnlimitSelection = false}) {
-    Map<String, List<WavePickerEntity>> params = Map();
+    Map<String, List<WavePickerEntity>> params = {};
     String parentKey = selectionEntity.key ?? '';
     var selectedEntity = selectionEntity.children
         .where((WavePickerEntity f) => f.isSelected)

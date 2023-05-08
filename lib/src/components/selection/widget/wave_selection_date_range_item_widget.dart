@@ -45,13 +45,14 @@ class WaveSelectionDateRangeItemWidget extends StatefulWidget {
       required this.themeData})
       : super(key: key);
 
+  @override
   _WaveSelectionDateRangeItemWidgetState createState() =>
       _WaveSelectionDateRangeItemWidgetState();
 }
 
 class _WaveSelectionDateRangeItemWidgetState
     extends State<WaveSelectionDateRangeItemWidget> {
-  WaveSelectionDatePickerController _datePickerController =
+  final WaveSelectionDatePickerController _datePickerController =
       WaveSelectionDatePickerController();
 
   @override
@@ -81,12 +82,12 @@ class _WaveSelectionDateRangeItemWidgetState
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
         child: Column(
           children: <Widget>[
             widget.isNeedTitle
                 ? Container(
-                    margin: EdgeInsets.only(bottom: 5),
+                    margin: const EdgeInsets.only(bottom: 5),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.item.title.isEmpty
@@ -129,7 +130,7 @@ class _WaveSelectionDateRangeItemWidgetState
         },
         style: widget.themeData.inputTextStyle.generateTextStyle(),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        keyboardType: TextInputType.numberWithOptions(),
+        keyboardType: const TextInputType.numberWithOptions(),
         onChanged: (input) {
           widget.item.isSelected = true;
         },
@@ -153,7 +154,7 @@ class _WaveSelectionDateRangeItemWidgetState
             width: 1,
             color: widget.themeData.commonConfig.borderColorBase,
           )),
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: const EdgeInsets.all(0),
         ),
       ),
     );
@@ -176,23 +177,23 @@ class _WaveSelectionDateRangeItemWidgetState
         : DateTimeFormatter.convertIntValueToDateTime(
             widget.item.customMap!['max']);
 
-    DateTime? _minDateTime;
-    DateTime? _maxDateTime;
+    DateTime? minDateTime;
+    DateTime? maxDateTime;
     if (widget.item.customMap == null ||
         (widget.item.customMap!['min'] == null &&
             widget.item.customMap!['max'] == null)) {
       // 如果开始时间和结束时间均未选择
-      _minDateTime = minDate;
-      _maxDateTime = maxDate;
+      minDateTime = minDate;
+      maxDateTime = maxDate;
     } else {
-      _minDateTime = !isMax ? minDate : (minSelectedDateTime ?? minDate);
-      _maxDateTime = isMax ? maxDate : (maxSelectedDateTime ?? maxDate);
+      minDateTime = !isMax ? minDate : (minSelectedDateTime ?? minDate);
+      maxDateTime = isMax ? maxDate : (maxSelectedDateTime ?? maxDate);
     }
 
     Widget content = WaveDateWidget(
       canPop: false,
-      minDateTime: _minDateTime,
-      maxDateTime: _maxDateTime,
+      minDateTime: minDateTime,
+      maxDateTime: maxDateTime,
       initialDateTime: isMax ? maxSelectedDateTime : minSelectedDateTime,
       dateFormat: format,
       pickerTitleConfig: WavePickerTitleConfig(
@@ -213,9 +214,7 @@ class _WaveSelectionDateRangeItemWidgetState
         } else {
           widget.minTextEditingController.text = selectedDateStr;
         }
-        if (widget.item.customMap == null) {
-          widget.item.customMap = Map();
-        }
+        widget.item.customMap ??= {};
         widget.item.customMap![isMax ? 'max' : 'min'] =
             selectedDate.millisecondsSinceEpoch.toString();
         closeSelectionPopupWindow();
@@ -240,7 +239,7 @@ class _WaveSelectionDateRangeItemWidgetState
           closeSelectionPopupWindow();
         },
         child: Container(
-          color: Color(0xB3000000),
+          color: const Color(0xB3000000),
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.bottomCenter,
           child: WaveSelectionDatePickerAnimationWidget(

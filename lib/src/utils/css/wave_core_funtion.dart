@@ -16,7 +16,7 @@ class WaveConvert {
     TextStyle? defaultStyle,
   }) {
     _eventList = xml.parseEvents(cssContent);
-    _linkCallBack = linkCallBack ?? null;
+    _linkCallBack = linkCallBack;
     _defaultStyle = defaultStyle;
   }
 
@@ -50,13 +50,13 @@ class WaveConvert {
         );
 
     final List<TextSpan> spans = [];
-    _eventList.forEach((xmlEvent) {
+    for (var xmlEvent in _eventList) {
       if (xmlEvent is xml.XmlStartElementEvent) {
         if (!xmlEvent.isSelfClosing) {
           final _Tag tag = _Tag();
           TextStyle textStyle = style.copyWith();
           if (xmlEvent.name == 'font') {
-            xmlEvent.attributes.forEach((attr) {
+            for (var attr in xmlEvent.attributes) {
               switch (attr.name) {
                 case 'color':
                   textStyle = textStyle.apply(
@@ -77,7 +77,7 @@ class WaveConvert {
                   );
                   break;
               }
-            });
+            }
             tag.isLink = false;
           }
 
@@ -88,7 +88,7 @@ class WaveConvert {
 
           if (xmlEvent.name == 'a') {
             tag.isLink = true;
-            xmlEvent.attributes.forEach((attr) {
+            for (var attr in xmlEvent.attributes) {
               switch (attr.name) {
                 case 'href':
                   textStyle = textStyle.apply(
@@ -97,14 +97,14 @@ class WaveConvert {
                   tag.linkUrl = attr.value;
                   break;
               }
-            });
+            }
           }
           tag.name = xmlEvent.name;
           tag.style = textStyle;
           stack.add(tag);
         } else {
           if (xmlEvent.name == 'br') {
-            spans.add(TextSpan(text: '\n'));
+            spans.add(const TextSpan(text: '\n'));
           }
         }
       }
@@ -123,16 +123,16 @@ class WaveConvert {
         _Tag top = stack.removeLast();
         if (top.name != xmlEvent.name) {
           debugPrint('Error format HTML');
-          return;
+          continue;
         }
       }
-    });
+    }
 
     return spans;
   }
 
   TextSpan _createTextSpan(String text, _Tag tag) {
-    if (text.isEmpty) return TextSpan(text: '');
+    if (text.isEmpty) return const TextSpan(text: '');
     final TapGestureRecognizer recognizer = TapGestureRecognizer()
       ..onTap = () {
         _linkCallBack?.call(text, tag.linkUrl);

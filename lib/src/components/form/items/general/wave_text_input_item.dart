@@ -128,13 +128,12 @@ class WaveTextInputFormItem extends StatefulWidget {
     this.backgroundColor,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -162,7 +161,7 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -184,7 +183,7 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
                       Offstage(
                         offstage: (widget.prefixText == null),
                         child: Container(
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: Text(
                               widget.prefixText ?? "",
                               style: WaveFormUtil.getTitleTextStyle(
@@ -215,11 +214,11 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
                       hintText: widget.hint ??
                           WaveIntl.of(context).localizedResource.pleaseEnter,
                       counterText: "",
-                      contentPadding: EdgeInsets.all(0),
+                      contentPadding: const EdgeInsets.all(0),
                       isDense: true,
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.transparent)),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.transparent)),
                     ),
                     textAlign: TextAlign.end,
@@ -233,10 +232,10 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
                 Offstage(
                   offstage: (widget.unit == null),
                   child: Container(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Text(
                         widget.unit ?? "",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFF101010),
                           fontSize: WaveFonts.f16,
                         ),

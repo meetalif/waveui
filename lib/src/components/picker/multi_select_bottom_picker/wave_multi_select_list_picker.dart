@@ -56,7 +56,7 @@ class WaveMultiSelectListPicker<T extends WaveMultiSelectBottomPickerItem>
     );
   }
 
-  WaveMultiSelectListPicker({
+  const WaveMultiSelectListPicker({
     Key? key,
     this.title,
     required this.items,
@@ -148,7 +148,7 @@ class MultiSelectDialogWidgetState<T extends WaveMultiSelectBottomPickerItem>
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -175,7 +175,7 @@ class MultiSelectDialogWidgetState<T extends WaveMultiSelectBottomPickerItem>
               ),
             ),
             index != widget.items.length - 1
-                ? Padding(
+                ? const Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: WaveLine())
                 : const SizedBox.shrink()

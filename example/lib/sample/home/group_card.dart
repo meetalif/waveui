@@ -30,25 +30,4 @@ class GroupCard extends StatelessWidget {
       children: list,
     );
   }
-
-  Widget _getContentWidget() {
-    if (groupInfo == null || groupInfo!.children == null) {
-      return const SizedBox.shrink();
-    }
-    return ListView.builder(
-      physics: new NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: groupInfo?.children?.length,
-      itemBuilder: (BuildContext context, int index) {
-        return ListItem(
-          isShowLine: !(index == 0),
-          title: groupInfo?.children![index].groupName ?? '',
-          describe: groupInfo?.children![index].desc ?? '',
-          onPressed: () {
-            Get.to(groupInfo?.children![index].navigatorPage);
-          },
-        );
-      },
-    );
-  }
 }

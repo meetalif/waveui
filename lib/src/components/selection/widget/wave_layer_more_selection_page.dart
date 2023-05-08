@@ -19,7 +19,7 @@ class WaveLayerMoreSelectionPage extends StatefulWidget {
   final WaveSelectionEntity entityData;
   final WaveSelectionConfig themeData;
 
-  WaveLayerMoreSelectionPage({
+  const WaveLayerMoreSelectionPage({
     Key? key,
     required this.entityData,
     required this.themeData,
@@ -56,7 +56,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
       vsync: this,
     );
     _animation =
-        Tween(end: Offset.zero, begin: Offset(1.0, 0.0)).animate(_controller);
+        Tween(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(_controller);
     _controller.forward();
     _originalSelectedItemsList = widget.entityData.selectedList();
 
@@ -97,9 +97,9 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
       child: GestureDetector(
         onTap: () {
           WaveSelectionUtil.resetSelectionDatas(widget.entityData);
-          _originalSelectedItemsList.forEach((data) {
+          for (var data in _originalSelectedItemsList) {
             data.isSelected = true;
-          });
+          }
           Navigator.maybePop(context);
         },
         child: Container(
@@ -115,7 +115,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
       width: 300,
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(top: 0),
+        padding: const EdgeInsets.only(top: 0),
         child: SafeArea(
           top: false,
           child: Column(
@@ -137,9 +137,9 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
                   onPressed: () {
                     WaveSelectionUtil.resetSelectionDatas(widget.entityData);
                     //将选中的筛选项返回
-                    _originalSelectedItemsList.forEach((data) {
+                    for (var data in _originalSelectedItemsList) {
                       data.isSelected = true;
-                    });
+                    }
                     Navigator.pop(context, widget.entityData);
                   },
                 ),
@@ -158,9 +158,9 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              WaveLine(),
+              const WaveLine(),
               _buildSelectionListView(),
-              WaveLine(),
+              const WaveLine(),
               _buildBottomBtn(),
             ],
           ),
@@ -178,7 +178,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
           Expanded(
             flex: 2,
             child: Container(
-              color: Color(0xfff8F8F8),
+              color: const Color(0xfff8F8F8),
               child: _buildLeftListView(),
             ),
           ),
@@ -187,7 +187,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
             child: Container(
               color: Colors.white,
               child: ListView.builder(
-                padding: EdgeInsets.only(top: 0),
+                padding: const EdgeInsets.only(top: 0),
                 itemBuilder: (context, index) {
                   return _buildRightItem(index);
                 },
@@ -202,7 +202,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
 
   Widget _buildLeftListView() {
     return ListView.builder(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -236,7 +236,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
                 data.clearChildSelection();
               });
 
-              if (!this._firstList[index].isSelected) {
+              if (!_firstList[index].isSelected) {
                 if (!WaveSelectionUtil.checkMaxSelectionCount(
                     _firstList[index])) {
                   WaveToast.show(
@@ -271,7 +271,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
   Widget _buildBottomBtn() {
     return Align(
       alignment: Alignment.bottomLeft,
-      child: Container(
+      child: SizedBox(
         height: 80,
         child: MoreBottomSelectionWidget(
           //entity是商圈
@@ -285,14 +285,14 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
           },
           conformCallback: (data) {
             //带着商圈的数据返回
-            data.children.forEach((value) {
+            for (var value in data.children) {
               // 如果房山没有选中的子节点， 那么房山就是未选中
               if (value.selectedList().isEmpty) {
                 value.isSelected = false;
               } else {
                 value.isSelected = true;
               }
-            });
+            }
             //如果商圈没有选中的 那么商圈就是未选中
             if (data.selectedList().isNotEmpty) {
               data.isSelected = true;
@@ -344,7 +344,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
     return Container(
       alignment: Alignment.centerLeft,
       height: 48,
-      color: index == _currentIndex ? Colors.white : Color(0xff8F8F8),
+      color: index == _currentIndex ? Colors.white : const Color(0x0ff8f8f8),
       child: Padding(
         padding: const EdgeInsets.only(left: 20),
         child: Text(
@@ -379,7 +379,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
               });
               if (!_currentFirstEntity!.children[index].isSelected) {
                 if (!WaveSelectionUtil.checkMaxSelectionCount(
-                    this._currentFirstEntity!.children[index])) {
+                    _currentFirstEntity!.children[index])) {
                   WaveToast.show(
                       WaveIntl.of(context)
                           .localizedResource
@@ -388,8 +388,8 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
                   return;
                 }
               }
-              this._currentFirstEntity!.children[index].isSelected =
-                  !this._currentFirstEntity!.children[index].isSelected;
+              _currentFirstEntity!.children[index].isSelected =
+                  !_currentFirstEntity!.children[index].isSelected;
             }
 
             //如果二级没有任何选中的，那么一级为不选中
@@ -455,7 +455,7 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
                   : widget.themeData.flayerNormalTextStyle.generateTextStyle(),
             ),
           ),
-          Container(
+          SizedBox(
             height: 16,
             width: 16,
             child: entity.isSelected

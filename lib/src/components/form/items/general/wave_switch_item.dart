@@ -61,7 +61,7 @@ class WaveSwitchFormItem extends StatefulWidget {
   WaveFormItemConfig? themeData;
 
   WaveSwitchFormItem({
-    Key? key,
+    super.key,
     this.label,
     this.title = "",
     this.subTitle,
@@ -77,15 +77,14 @@ class WaveSwitchFormItem extends StatefulWidget {
     this.onChanged,
     this.backgroundColor,
     this.themeData,
-  }) : super() {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+  }) {
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -104,7 +103,7 @@ class WaveSwitchFormItemState extends State<WaveSwitchFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -119,7 +118,7 @@ class WaveSwitchFormItemState extends State<WaveSwitchFormItem> {
                         offstage: (widget.prefixIconType ==
                             WavePrefixIconType.normal),
                         child: Container(
-                          padding: EdgeInsets.only(right: 6),
+                          padding: const EdgeInsets.only(right: 6),
                           child: GestureDetector(
                             onTap: () {
                               if (!WaveFormUtil.isEdit(widget.isEdit)) {
@@ -141,12 +140,11 @@ class WaveSwitchFormItemState extends State<WaveSwitchFormItem> {
                         offstage: (!widget.isRequire),
                         child: WaveFormUtil.getRequireIcon(widget.isRequire),
                       ),
-                      Container(
-                          child: Text(
+                      Text(
                         widget.title,
                         style:
                             WaveFormUtil.getTitleTextStyle(widget.themeData!),
-                      )),
+                      ),
                       Offstage(
                         offstage: (widget.tipLabel == null),
                         child: GestureDetector(
@@ -159,14 +157,13 @@ class WaveSwitchFormItemState extends State<WaveSwitchFormItem> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                  padding: EdgeInsets.only(left: 6, right: 7),
+                                  padding:
+                                      const EdgeInsets.only(left: 6, right: 7),
                                   child: WaveFormUtil.getQuestionMarkIcon()),
-                              Container(
-                                child: Text(
-                                  widget.tipLabel ?? "",
-                                  style: WaveFormUtil.getTipsTextStyle(
-                                      widget.themeData!),
-                                ),
+                              Text(
+                                widget.tipLabel ?? "",
+                                style: WaveFormUtil.getTipsTextStyle(
+                                    widget.themeData!),
                               ),
                             ],
                           ),

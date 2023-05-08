@@ -24,7 +24,7 @@ class WaveSelectionRangeItemWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  WaveSelectionRangeItemWidget({
+  const WaveSelectionRangeItemWidget({
     Key? key,
     required this.item,
     required this.minTextEditingController,
@@ -35,14 +35,15 @@ class WaveSelectionRangeItemWidget extends StatefulWidget {
     required this.themeData,
   }) : super(key: key);
 
+  @override
   _WaveSelectionRangeItemWidgetState createState() =>
       _WaveSelectionRangeItemWidgetState();
 }
 
 class _WaveSelectionRangeItemWidgetState
     extends State<WaveSelectionRangeItemWidget> {
-  FocusNode _minFocusNode = FocusNode();
-  FocusNode _maxFocusNode = FocusNode();
+  final FocusNode _minFocusNode = FocusNode();
+  final FocusNode _maxFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -73,18 +74,14 @@ class _WaveSelectionRangeItemWidgetState
     widget.minTextEditingController.addListener(() {
       String minInput = widget.minTextEditingController.text;
 
-      if (widget.item.customMap == null) {
-        widget.item.customMap = {};
-      }
+      widget.item.customMap ??= {};
       widget.item.customMap!['min'] = minInput;
       widget.item.isSelected = true;
     });
 
     widget.maxTextEditingController.addListener(() {
       String maxInput = widget.maxTextEditingController.text;
-      if (widget.item.customMap == null) {
-        widget.item.customMap = {};
-      }
+      widget.item.customMap ??= {};
       widget.item.customMap!['max'] = maxInput;
       widget.item.isSelected = true;
     });
@@ -103,19 +100,16 @@ class _WaveSelectionRangeItemWidgetState
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(bottom: 5),
+              margin: const EdgeInsets.only(bottom: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                (widget.item.title.isNotEmpty
+                "${widget.item.title.isNotEmpty
                         ? widget.item.title
-                        : WaveIntl.of(context).localizedResource.customRange) +
-                    "(" +
-                    (widget.item.extMap['unit']?.toString() ?? '') +
-                    ")",
+                        : WaveIntl.of(context).localizedResource.customRange}(${widget.item.extMap['unit']?.toString() ?? ''})",
                 textAlign: TextAlign.left,
                 style: widget.themeData.rangeTitleTextStyle.generateTextStyle(),
               ),
@@ -143,7 +137,7 @@ class _WaveSelectionRangeItemWidgetState
       child: TextFormField(
         style: widget.themeData.inputTextStyle.generateTextStyle(),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        keyboardType: TextInputType.numberWithOptions(),
+        keyboardType: const TextInputType.numberWithOptions(),
         onChanged: (input) {
           widget.item.isSelected = true;
         },
@@ -168,7 +162,7 @@ class _WaveSelectionRangeItemWidgetState
             width: 1,
             color: widget.themeData.commonConfig.dividerColorBase,
           )),
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: const EdgeInsets.all(0),
         ),
       ),
     );

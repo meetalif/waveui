@@ -110,10 +110,10 @@ class _WaveRadioCoreState extends State<WaveRadioCore> {
 //    Image disUnselectedImage = WaveUITools.getAssetImage(WaveAsset.ICON_RADIO_DISABLE_UNSELECTED);
 
     Widget icon = Container(
-      padding: widget.iconPadding ?? EdgeInsets.all(5),
-      child: this._isSelected
-          ? (this._disable ? widget.disSelectedImage : widget.selectedImage)
-          : (this._disable
+      padding: widget.iconPadding ?? const EdgeInsets.all(5),
+      child: _isSelected
+          ? (_disable ? widget.disSelectedImage : widget.selectedImage)
+          : (_disable
               ? widget.disUnselectedImage
               : widget.unselectedImage),
     );
@@ -140,7 +140,6 @@ class _WaveRadioCoreState extends State<WaveRadioCore> {
     }
 
     return GestureDetector(
-      child: radioWidget,
       behavior: widget.behavior,
       onTap: () {
         if (widget.disable == true) return;
@@ -160,6 +159,7 @@ class _WaveRadioCoreState extends State<WaveRadioCore> {
 //          }
 //        }
       },
+      child: radioWidget,
     );
   }
 }

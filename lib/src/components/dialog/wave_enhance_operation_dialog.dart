@@ -63,7 +63,7 @@ class WaveEnhanceOperationDialog extends StatelessWidget {
   /// 主题配置
   WaveDialogConfig? themeData;
 
-  WaveEnhanceOperationDialog({
+  WaveEnhanceOperationDialog({super.key, 
     this.iconType = WaveDialogConstants.iconAlert,
     this.customIconWidget,
     required this.context,
@@ -75,11 +75,11 @@ class WaveEnhanceOperationDialog extends StatelessWidget {
     this.onSecondaryButtonClick,
     this.themeData,
   }) {
-    this.themeData ??= WaveDialogConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveDialogConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .dialogConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -151,7 +151,7 @@ class WaveEnhanceOperationDialog extends StatelessWidget {
   /// 构建主按钮widget
   Widget _configMainButton(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: WaveBigMainButton(
         title: mainButtonText ?? WaveIntl.of(context).localizedResource.confirm,
         onTap: () {

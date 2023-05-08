@@ -134,21 +134,21 @@ class WaveAllThemeConfig {
       _galleryDetailConfig ?? WaveDefaultConfigUtils.defaultGalleryDetailConfig;
 
   void initThemeConfig(String configId) {
-    this._commonConfig ??= WaveCommonConfig();
-    this._buttonConfig ??= WaveButtonConfig();
-    this._dialogConfig ??= WaveDialogConfig();
-    this._formItemConfig ??= WaveFormItemConfig();
-    this._cardTitleConfig ??= WaveCardTitleConfig();
-    this._abnormalStateConfig ??= WaveAbnormalStateConfig();
-    this._tagConfig ??= WaveTagConfig();
-    this._pairInfoTableConfig ??= WavePairInfoTableConfig();
-    this._pairRichInfoGridConfig ??= WavePairRichInfoGridConfig();
-    this._actionSheetConfig ??= WaveActionSheetConfig();
-    this._pickerConfig ??= WavePickerConfig();
-    this._enhanceNumberCardConfig ??= WaveEnhanceNumberCardConfig();
-    this._tabBarConfig ??= WaveTabBarConfig();
-    this._selectionConfig ??= WaveSelectionConfig();
-    this._galleryDetailConfig ??= WaveGalleryDetailConfig();
+    _commonConfig ??= WaveCommonConfig();
+    _buttonConfig ??= WaveButtonConfig();
+    _dialogConfig ??= WaveDialogConfig();
+    _formItemConfig ??= WaveFormItemConfig();
+    _cardTitleConfig ??= WaveCardTitleConfig();
+    _abnormalStateConfig ??= WaveAbnormalStateConfig();
+    _tagConfig ??= WaveTagConfig();
+    _pairInfoTableConfig ??= WavePairInfoTableConfig();
+    _pairRichInfoGridConfig ??= WavePairRichInfoGridConfig();
+    _actionSheetConfig ??= WaveActionSheetConfig();
+    _pickerConfig ??= WavePickerConfig();
+    _enhanceNumberCardConfig ??= WaveEnhanceNumberCardConfig();
+    _tabBarConfig ??= WaveTabBarConfig();
+    _selectionConfig ??= WaveSelectionConfig();
+    _galleryDetailConfig ??= WaveGalleryDetailConfig();
 
     commonConfig.initThemeConfig(configId);
 

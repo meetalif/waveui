@@ -3,6 +3,7 @@ import 'package:waveui/waveui.dart';
 
 class WavePhotoGroupConfig extends WaveBasicGroupConfig {
   final List<String>? urls;
+  @override
   final String? title;
   final WaveGalleryDetailConfig? themeData;
 
@@ -80,11 +81,11 @@ class WavePhotoItemConfig extends WaveBasicItemConfig {
     this.bottomContentHeight = 150,
     this.themeData,
   }) {
-    this.themeData ??= WaveGalleryDetailConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveGalleryDetailConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .galleryDetailConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -92,8 +93,8 @@ class WavePhotoItemConfig extends WaveBasicItemConfig {
       List<WaveBasicGroupConfig> allConfig, int groupId, int index) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(2.0)),
-          border: Border.all(color: Color(0xFFF0F0F0), width: 0.5)),
+          borderRadius: const BorderRadius.all(Radius.circular(2.0)),
+          border: Border.all(color: const Color(0xFFF0F0F0), width: 0.5)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(2),
         child: FadeInImage.assetNetwork(
@@ -134,8 +135,8 @@ class WavePhotoItemConfig extends WaveBasicItemConfig {
                       BoxDecoration(color: themeData!.pageBackgroundColor),
                   loadingBuilder: (context, event) {
                     return Container(
-                      child: WavePageLoading(),
                       color: themeData!.pageBackgroundColor,
+                      child: const WavePageLoading(),
                     );
                   },
                   imageProvider: NetworkImage(url),
@@ -159,7 +160,7 @@ class WavePhotoItemConfig extends WaveBasicItemConfig {
                     ),
                   ),
                 )
-              : Row()
+              : const Row()
         ],
       ),
     );

@@ -50,7 +50,7 @@ class WaveRadioButton extends StatelessWidget {
   final HitTestBehavior behavior;
 
   const WaveRadioButton(
-      {Key? key,
+      {super.key,
       required this.radioIndex,
       required this.onValueChangedAtIndex,
       this.disable = false,
@@ -81,11 +81,11 @@ class WaveRadioButton extends StatelessWidget {
           WaveUITools.getAssetImage(WaveAsset.iconRadioDisableMultiSelected),
       disUnselectedImage:
           WaveUITools.getAssetImage(WaveAsset.iconRadioDisableUnselected),
-      child: child,
       onRadioItemClick: () {
         onValueChangedAtIndex(radioIndex, true);
       },
       behavior: behavior,
+      child: child,
     );
   }
 }

@@ -30,11 +30,11 @@ class WaveTimeWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) < 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   final DateTime? minDateTime, maxDateTime, initDateTime;
@@ -47,12 +47,12 @@ class WaveTimeWidget extends StatefulWidget {
   WavePickerConfig? themeData;
 
   @override
-  State<StatefulWidget> createState() => _WaveTimeWidgetState(this.minDateTime,
-      this.maxDateTime, this.initDateTime, this.minuteDivider);
+  State<StatefulWidget> createState() => _WaveTimeWidgetState(minDateTime,
+      maxDateTime, initDateTime, minuteDivider);
 }
 
 class _WaveTimeWidgetState extends State<WaveTimeWidget> {
-  static int _defaultMinuteDivider = 1;
+  static const int _defaultMinuteDivider = 1;
 
   late DateTime _minTime, _maxTime;
   late int _currHour, _currMinute, _currSecond;
@@ -69,40 +69,33 @@ class _WaveTimeWidgetState extends State<WaveTimeWidget> {
 
   _WaveTimeWidgetState(DateTime? minTime, DateTime? maxTime, DateTime? initTime,
       int? minuteDivider) {
-    if (minTime == null) {
-      minTime = DateTime.parse(datePickerMinDatetime);
-    }
-    if (maxTime == null) {
-      maxTime = DateTime.parse(datePickerMaxDatetime);
-    }
-    if (initTime == null) {
-      // init time is now
-      initTime = DateTime.now();
-    }
-    this._minTime = minTime;
-    this._maxTime = maxTime;
-    this._currHour = initTime.hour;
-    this._currMinute = initTime.minute;
-    this._currSecond = initTime.second;
+    minTime ??= DateTime.parse(datePickerMinDatetime);
+    maxTime ??= DateTime.parse(datePickerMaxDatetime);
+    initTime ??= DateTime.now();
+    _minTime = minTime;
+    _maxTime = maxTime;
+    _currHour = initTime.hour;
+    _currMinute = initTime.minute;
+    _currSecond = initTime.second;
 
     if (minuteDivider == null || minuteDivider <= 0) {
-      this._minuteDivider = _defaultMinuteDivider;
+      _minuteDivider = _defaultMinuteDivider;
     } else {
-      this._minuteDivider = minuteDivider;
+      _minuteDivider = minuteDivider;
     }
 
     // limit the range of hour
-    this._hourRange = _calcHourRange();
-    this._currHour = min(max(_hourRange.first, _currHour), _hourRange.last);
+    _hourRange = _calcHourRange();
+    _currHour = min(max(_hourRange.first, _currHour), _hourRange.last);
 
     // limit the range of minute
-    this._minuteRange = _calcMinuteRange();
-    this._currMinute =
+    _minuteRange = _calcMinuteRange();
+    _currMinute =
         min(max(_minuteRange.first, _currMinute), _minuteRange.last);
     _currMinute -= _currMinute % _minuteDivider;
     // limit the range of second
-    this._secondRange = _calcSecondRange();
-    this._currSecond =
+    _secondRange = _calcSecondRange();
+    _currSecond =
         min(max(_secondRange.first, _currSecond), _secondRange.last);
 
     // create scroll controller
@@ -202,7 +195,7 @@ class _WaveTimeWidgetState extends State<WaveTimeWidget> {
     List<Widget> pickers = [];
     List<String> formatArr =
         DateTimeFormatter.splitDateFormat(widget.dateFormat);
-    formatArr.forEach((format) {
+    for (var format in formatArr) {
       List<int>? valueRange = _findPickerItemRange(format);
 
       Widget pickerColumn = _renderDatePickerColumnComponent(
@@ -220,7 +213,7 @@ class _WaveTimeWidgetState extends State<WaveTimeWidget> {
         },
       );
       pickers.add(pickerColumn);
-    });
+    }
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween, children: pickers);
   }
@@ -401,9 +394,7 @@ class _WaveTimeWidgetState extends State<WaveTimeWidget> {
     int minMinute = 0, maxMinute = 59;
     int minHour = _minTime.hour;
     int maxHour = _maxTime.hour;
-    if (currHour == null) {
-      currHour = _currHour;
-    }
+    currHour ??= _currHour;
 
     if (minHour == currHour) {
       // selected minimum hour, limit minute range
@@ -424,12 +415,8 @@ class _WaveTimeWidgetState extends State<WaveTimeWidget> {
     int minMinute = _minTime.minute;
     int maxMinute = _maxTime.minute;
 
-    if (currHour == null) {
-      currHour = _currHour;
-    }
-    if (currMinute == null) {
-      currMinute = _currMinute;
-    }
+    currHour ??= _currHour;
+    currMinute ??= _currMinute;
 
     if (minHour == currHour && minMinute == currMinute) {
       // selected minimum hour and minute, limit second range

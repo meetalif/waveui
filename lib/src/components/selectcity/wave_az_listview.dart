@@ -19,6 +19,7 @@ typedef IndexHintBuilder = Widget Function(BuildContext context, String hint);
 
 /// _Header.
 class _Header extends ISuspensionBean {
+  @override
   String tag = "";
 
   String getSuspensionTag() => tag;
@@ -29,7 +30,7 @@ class _Header extends ISuspensionBean {
 
 /// AzListView.
 class AzListView extends StatefulWidget {
-  AzListView(
+  const AzListView(
       {Key? key,
       this.data,
       this.topData,
@@ -96,10 +97,10 @@ class AzListView extends StatefulWidget {
 
 class _AzListViewState extends State<AzListView> {
   //右侧索引tag  与 距离offset的value，比如 a---0， b---item*个数，c---a+b
-  Map<String, int> _suspensionSectionMap = Map();
+  Map<String, int> _suspensionSectionMap = {};
 
-  List<ISuspensionBean> _cityList = [];
-  List<String> _indexTagList = [];
+  final List<ISuspensionBean> _cityList = [];
+  final List<String> _indexTagList = [];
   bool _isShowIndexBarHint = false;
   String _indexBarHint = "";
 
@@ -205,7 +206,7 @@ class _AzListViewState extends State<AzListView> {
     ));
     Widget indexHint;
     if (widget.indexHintBuilder != null) {
-      indexHint = widget.indexHintBuilder!(context, '$_indexBarHint');
+      indexHint = widget.indexHintBuilder!(context, _indexBarHint);
     } else {
       indexHint = Card(
         color: Colors.black54,
@@ -214,8 +215,8 @@ class _AzListViewState extends State<AzListView> {
           width: 80.0,
           height: 80.0,
           child: Text(
-            '$_indexBarHint',
-            style: TextStyle(
+            _indexBarHint,
+            style: const TextStyle(
               fontSize: 32.0,
               color: Colors.white,
             ),

@@ -183,12 +183,8 @@ class WaveSelectedListActionSheet<T> {
     );
     content._overlayState = Overlay.of(context);
     OverlayEntry overlayEntry = OverlayEntry(builder: (context) {
-      if (_maxWidth == null) {
-        _maxWidth = MediaQuery.of(context).size.width;
-      }
-      if (_leftOffset == null) {
-        _leftOffset = 0;
-      }
+      _maxWidth ??= MediaQuery.of(context).size.width;
+      _leftOffset ??= 0;
       return Positioned(
           top: MediaQuery.of(context).viewInsets.top,
           left: _leftOffset,
@@ -197,7 +193,7 @@ class WaveSelectedListActionSheet<T> {
               : (bottomOffset +
                   MediaQuery.of(context).padding.bottom +
                   MediaQuery.of(context).viewInsets.bottom),
-          child: Container(
+          child: SizedBox(
             width: _maxWidth,
             child: content,
           ));
@@ -397,7 +393,7 @@ class _WaveActionSheetSelectedItemListState<T>
             padding: const EdgeInsets.fromLTRB(0, 20, 20, 15),
             child: Text(WaveIntl.of(context).localizedResource.clear,
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 16,
                     color: Color(0xff999999),
                     fontWeight: FontWeight.w400,
@@ -435,7 +431,7 @@ class _WaveActionSheetSelectedItemListState<T>
               GestureDetector(
                 onTap: () {},
                 child: Container(
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -449,7 +445,7 @@ class _WaveActionSheetSelectedItemListState<T>
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: topWidgetList),
-                      Divider(
+                      const Divider(
                         height: 0.5,
                         indent: 0,
                         color: Color(0xFFF0F0F0),
@@ -515,7 +511,7 @@ class _WaveActionSheetSelectedItemListState<T>
                                     ],
                                   ),
                                 ),
-                                WaveLine(),
+                                const WaveLine(),
                               ],
                             );
                           },

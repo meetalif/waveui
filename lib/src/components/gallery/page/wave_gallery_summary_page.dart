@@ -28,8 +28,8 @@ class WaveGallerySummaryPage extends StatefulWidget {
   /// 控制图片查看刷新
   final WaveGalleryController? controller;
 
-  WaveGallerySummaryPage(
-      {required this.allConfig,
+  const WaveGallerySummaryPage(
+      {super.key, required this.allConfig,
       this.rowCount = 4,
       this.fromDetail = false,
       this.detailRightAction,
@@ -82,7 +82,7 @@ class _WaveGallerySummaryPageState extends State<WaveGallerySummaryPage> {
       return SingleChildScrollView(child: _buildItem(allConfig[0], 0));
     } else {
       return Padding(
-        padding: EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 20),
         child: WaveAnchorTab(
             widgetIndexedBuilder: (c, i) {
               return _buildItem(allConfig[i], i);
@@ -98,16 +98,16 @@ class _WaveGallerySummaryPageState extends State<WaveGallerySummaryPage> {
   }
 
   Widget _buildItem(WaveBasicGroupConfig? groupConfig, int groupId) {
-    if (groupConfig == null) return Row();
+    if (groupConfig == null) return const Row();
     List<Widget> columnViews = <Widget>[];
     if (groupConfig.title != null) {
-      columnViews.add(Container(
+      columnViews.add(SizedBox(
         height: 53,
         child: Padding(
-          padding: EdgeInsets.only(top: 16, bottom: 12, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 16, bottom: 12, left: 20, right: 20),
           child: Text(
             '${groupConfig.title}(${groupConfig.configList?.length ?? 0})',
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color(0xFF222222),
                 fontSize: 18,
                 fontWeight: FontWeight.w600),
@@ -141,14 +141,14 @@ class _WaveGallerySummaryPageState extends State<WaveGallerySummaryPage> {
         ));
       }
       columnViews.add(GridView.count(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         //水平子Widget之间间距
         crossAxisSpacing: 10.0,
         //垂直子Widget之间间距
         mainAxisSpacing: 10.0,
         //GridView内边距
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         //一行的Widget数量
         crossAxisCount: widget.rowCount,
         //子Widget宽高比例
@@ -158,9 +158,9 @@ class _WaveGallerySummaryPageState extends State<WaveGallerySummaryPage> {
     }
 
     return Column(
-      children: columnViews,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
+      children: columnViews,
     );
   }
 }

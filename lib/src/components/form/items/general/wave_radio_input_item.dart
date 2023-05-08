@@ -105,15 +105,14 @@ class WaveRadioInputFormItem extends StatefulWidget {
     this.backgroundColor,
     this.titleMaxLines,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
-    this._isAutoLayout = false;
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+    _isAutoLayout = false;
   }
 
   WaveRadioInputFormItem.autoLayout({
@@ -138,15 +137,14 @@ class WaveRadioInputFormItem extends StatefulWidget {
     this.backgroundColor,
     this.themeData,
   }) : super(key: key) {
-    this._isAutoLayout = true;
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    _isAutoLayout = true;
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -156,8 +154,8 @@ class WaveRadioInputFormItem extends StatefulWidget {
 }
 
 class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
-  double _kRadioTitleLeftPadding = 6;
-  double _kRadioIconWidth = 16;
+  final double _kRadioTitleLeftPadding = 6;
+  final double _kRadioIconWidth = 16;
 
   @override
   Widget build(BuildContext context) {
@@ -218,11 +216,9 @@ class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
           ),
 
           /// 选项选择区
-          Container(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: maxWidth),
-              child: _buildRightWidget(),
-            ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth),
+            child: _buildRightWidget(),
           ),
         ],
       );
@@ -242,7 +238,7 @@ class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-                padding: EdgeInsets.only(left: 6, right: 7),
+                padding: const EdgeInsets.only(left: 6, right: 7),
                 child: WaveFormUtil.getQuestionMarkIcon()),
             Container(
               constraints: BoxConstraints(
@@ -312,7 +308,7 @@ class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         ConstrainedBox(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxHeight: 25,
           ),
           child: Container(
@@ -366,12 +362,6 @@ class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
             children: <Widget>[
               WaveRadioButton(
                 iconPadding: const EdgeInsets.all(0),
-                child: Container(
-                    padding: EdgeInsets.only(left: _kRadioTitleLeftPadding),
-                    child: Text(
-                      option,
-                      style: getOptionTextStyle(option, index),
-                    )),
                 disable: getRadioEnableState(index),
                 radioIndex: index,
                 isSelected:
@@ -387,6 +377,12 @@ class WaveRadioInputFormItemState extends State<WaveRadioInputFormItem> {
                       widget.onChanged, context, oldValue, widget.value);
                   setState(() {});
                 },
+                child: Container(
+                    padding: EdgeInsets.only(left: _kRadioTitleLeftPadding),
+                    child: Text(
+                      option,
+                      style: getOptionTextStyle(option, index),
+                    )),
               ),
             ],
           ),

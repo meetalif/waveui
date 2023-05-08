@@ -16,7 +16,7 @@ class WaveFormUtil {
     return Offstage(
       offstage: prefixIconType == WavePrefixIconType.normal,
       child: Container(
-        padding: EdgeInsets.only(right: 6),
+        padding: const EdgeInsets.only(right: 6),
         child: GestureDetector(
           onTap: () {
             if (!WaveFormUtil.isEdit(isEdit)) {
@@ -80,13 +80,11 @@ class WaveFormUtil {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-                padding: EdgeInsets.only(left: 6, right: 7),
+                padding: const EdgeInsets.only(left: 6, right: 7),
                 child: WaveFormUtil.getQuestionMarkIcon()),
-            Container(
-              child: Text(
-                tipLabel ?? "",
-                style: WaveFormUtil.getTipsTextStyle(themeData),
-              ),
+            Text(
+              tipLabel ?? "",
+              style: WaveFormUtil.getTipsTextStyle(themeData),
             ),
           ],
         ),
@@ -96,11 +94,10 @@ class WaveFormUtil {
 
   /// 获取二级标题Widget
   static Widget buildTitleWidget(String title, WaveFormItemConfig themeData) {
-    return Container(
-        child: Text(
+    return Text(
       title,
       style: WaveFormUtil.getTitleTextStyle(themeData),
-    ));
+    );
   }
 
   /// 录入项是否可编辑
@@ -134,11 +131,12 @@ class WaveFormUtil {
 
   static Widget getRequireIcon(bool isRequire) {
     return Container(
-      padding:
-          isRequire ? EdgeInsets.only(right: 2) : EdgeInsets.only(right: 0),
+      padding: isRequire
+          ? const EdgeInsets.only(right: 2)
+          : const EdgeInsets.only(right: 0),
       child: isRequire
           ? WaveUITools.getAssetSizeImage(WaveAsset.iconRequireRed, 8, 8,
-              color: Color(0xFFFA3F3F))
+              color: const Color(0xFFFA3F3F))
           : null,
     );
   }
@@ -154,7 +152,7 @@ class WaveFormUtil {
   }
 
   static EdgeInsets computeErrorEdgeInsets(String type, bool isRequire) {
-    return EdgeInsets.only(
+    return const EdgeInsets.only(
       left: 20,
       top: 4,
     );
@@ -178,7 +176,7 @@ class WaveFormUtil {
         inputType = TextInputType.number;
         break;
       case WaveInputType.decimal:
-        inputType = TextInputType.numberWithOptions(decimal: true);
+        inputType = const TextInputType.numberWithOptions(decimal: true);
         break;
       case WaveInputType.phone:
         inputType = TextInputType.phone;

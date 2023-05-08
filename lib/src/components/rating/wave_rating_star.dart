@@ -103,7 +103,6 @@ class _WaveRatingStarState extends State<WaveRatingStar> {
 
       if (widget.onSelected != null) {
         list.add(GestureDetector(
-          child: rating,
           onTap: () {
             //unselect the first
             if (i == 0 && currSelected == 1 && widget.canRatingZero) {
@@ -115,6 +114,7 @@ class _WaveRatingStarState extends State<WaveRatingStar> {
             setState(() {});
           },
           behavior: HitTestBehavior.opaque,
+          child: rating,
         ));
       } else {
         list.add(rating);

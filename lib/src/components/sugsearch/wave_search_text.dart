@@ -184,8 +184,8 @@ class _SearchTextState extends State<WaveSearchText> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 widget.prefixIcon ??
-                    Padding(
-                      padding: const EdgeInsets.only(left: 14),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 14),
                       child: Center(
                         child: Icon(
                           FluentIcons.search_16_regular,
@@ -197,7 +197,7 @@ class _SearchTextState extends State<WaveSearchText> {
                   child: TextField(
                       maxLength: widget.maxLength,
                       autofocus: widget.autoFocus,
-                      textInputAction: this.widget.textInputAction,
+                      textInputAction: widget.textInputAction,
                       focusNode: focusNode,
                       controller: textEditingController,
                       keyboardType: widget.textInputType,
@@ -207,7 +207,7 @@ class _SearchTextState extends State<WaveSearchText> {
                         border: OutlineInputBorder(
                             borderRadius: widget.borderRadius,
                             borderSide: BorderSide.none),
-                        contentPadding: EdgeInsets.only(left: 8, right: 6),
+                        contentPadding: const EdgeInsets.only(left: 8, right: 6),
                         //Fill color property, fill the color of the decoration container.
                         //is the dense property, whether the input child is part of a dense form (i.e. uses less vertical space).
                         isDense: true,
@@ -238,17 +238,16 @@ class _SearchTextState extends State<WaveSearchText> {
                         if (isIntercept) return;
                       }
                       textEditingController!.clear();
-                      if (this.widget.onTextChange != null) {
-                        this
-                            .widget
+                      if (widget.onTextChange != null) {
+                        widget
                             .onTextChange!(textEditingController!.value.text);
                       }
                       setState(() {});
                     },
                     child: Visibility(
                       visible: textEditingController!.text.isNotEmpty,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.0),
                         child: Icon(
                           FluentIcons.dismiss_16_regular,
                           size: 16,
@@ -271,7 +270,7 @@ class _SearchTextState extends State<WaveSearchText> {
                   }
                 },
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                   child: Text(
                     "Cancel",
                     style: Get.textTheme.bodyMedium,

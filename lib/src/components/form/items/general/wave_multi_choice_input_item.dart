@@ -92,13 +92,12 @@ class WaveMultiChoiceInputFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -131,7 +130,7 @@ class WaveMultiChoiceInputFormItemState
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxHeight: 25,
                 ),
                 child: Container(
@@ -188,20 +187,13 @@ class WaveMultiChoiceInputFormItemState
             children: <Widget>[
               WaveCheckbox(
                 key: GlobalKey(),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Text(
-                    options[index],
-                    style: getOptionTextStyle(index),
-                  ),
-                ),
                 radioIndex: index,
                 disable: getRadioEnableState(index),
                 isSelected:
                     (pos < _selectStatus.length) ? _selectStatus[pos] : false,
                 onValueChangedAtIndex: (position, value) {
                   _selectStatus[position] = value;
-                  List<String> oldValue = <String>[]..addAll(widget.value);
+                  List<String> oldValue = <String>[...widget.value];
 
                   setState(() {
                     widget.value.clear();
@@ -216,6 +208,13 @@ class WaveMultiChoiceInputFormItemState
                         widget.onChanged, context, oldValue, widget.value);
                   });
                 },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    options[index],
+                    style: getOptionTextStyle(index),
+                  ),
+                ),
               ),
             ],
           ),

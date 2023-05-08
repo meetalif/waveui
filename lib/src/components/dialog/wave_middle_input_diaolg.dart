@@ -84,11 +84,11 @@ class WaveMiddleInputDialog {
       this.barrierDismissible = true,
       this.autoFocus = false,
       this.themeData}) {
-    this.themeData ??= WaveDialogConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveDialogConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .dialogConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   void show(BuildContext context) {
@@ -96,12 +96,12 @@ class WaveMiddleInputDialog {
   }
 
   void _doShow(BuildContext context) {
-    String _value = inputEditingController?.text ?? "";
+    String value = inputEditingController?.text ?? "";
     var dialogMessageWidgets = <Widget>[];
     if (message != null && message!.isNotEmpty) {
       dialogMessageWidgets.add(Flexible(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Align(
             alignment: _getMessageAlign(themeData!.contentTextAlign),
             child: Text(
@@ -120,14 +120,14 @@ class WaveMiddleInputDialog {
     if (inputFormatters == null) {
       tmpInputFormatters = [LengthLimitingTextInputFormatter(maxLength)];
     } else {
-      tmpInputFormatters = []
-        ..addAll(inputFormatters!)
-        ..add(LengthLimitingTextInputFormatter(maxLength));
+      tmpInputFormatters = [...inputFormatters!, LengthLimitingTextInputFormatter(maxLength)]
+        
+        ;
     }
 
     dialogMessageWidgets.add(TextField(
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
-      textInputAction: this.textInputAction,
+      textInputAction: textInputAction,
       focusNode: inputFocusNode,
       controller: inputEditingController,
       maxLines: maxLines ?? minLines,
@@ -137,7 +137,7 @@ class WaveMiddleInputDialog {
       cursorColor: Get.theme.colorScheme.primary,
       autofocus: autoFocus,
       //光标圆角弧度
-      cursorRadius: Radius.circular(2.0),
+      cursorRadius: const Radius.circular(2.0),
       style: TextStyle(
           fontSize: 14,
           color: WaveThemeConfigurator.instance
@@ -145,11 +145,11 @@ class WaveMiddleInputDialog {
               .commonConfig
               .colorTextBase),
       onChanged: (value) {
-        _value = value;
+        value = value;
       },
       inputFormatters: tmpInputFormatters,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(8.0),
+        contentPadding: const EdgeInsets.all(8.0),
         hintText: hintText,
         hintStyle: TextStyle(
             fontSize: 14,
@@ -190,7 +190,7 @@ class WaveMiddleInputDialog {
             children: dialogMessageWidgets,
           ),
         ), onConfirm: () {
-      if (onConfirm != null) onConfirm!(_value);
+      if (onConfirm != null) onConfirm!(value);
     }, onCancel: () {
       if (onCancel != null) onCancel!();
     });

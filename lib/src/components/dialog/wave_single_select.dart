@@ -59,7 +59,8 @@ class WaveSingleSelectDialog extends Dialog {
   final VoidCallback? onCloseClick;
 
   const WaveSingleSelectDialog(
-      {this.isClose = true,
+      {super.key,
+      this.isClose = true,
       this.title = "",
       this.messageText,
       this.messageWidget,
@@ -120,7 +121,8 @@ class WaveSingleSelectDialogWidget extends StatefulWidget {
   WaveDialogConfig? themeData;
 
   WaveSingleSelectDialogWidget(
-      {this.isClose = true,
+      {super.key,
+      this.isClose = true,
       this.title = "",
       this.messageText,
       this.messageWidget,
@@ -135,8 +137,8 @@ class WaveSingleSelectDialogWidget extends StatefulWidget {
       this.isCustomFollowScroll = true,
       this.canDismissOnConfirmClick = true,
       this.themeData}) {
-    this.themeData ??= WaveDialogConfig();
-    this.themeData = WaveThemeConfigurator.instance
+    themeData ??= WaveDialogConfig();
+    themeData = WaveThemeConfigurator.instance
         .getConfig(configId: themeData!.configId)
         .dialogConfig
         .merge(themeData);
@@ -153,11 +155,11 @@ class WaveSingleSelectDialogWidgetState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0x33999999),
+        backgroundColor: const Color(0x33999999),
         body: Container(
             alignment: Alignment.center,
             child: Container(
-              constraints: BoxConstraints(maxWidth: 300),
+              constraints: const BoxConstraints(maxWidth: 300),
               decoration: BoxDecoration(
                 //背景
                 color: widget.themeData?.backgroundColor,
@@ -172,7 +174,7 @@ class WaveSingleSelectDialogWidgetState
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(20, 28, 20, 12),
+                        padding: const EdgeInsets.fromLTRB(20, 28, 20, 12),
                         child: Text(
                           widget.title,
                           style: WaveDialogUtils.getDialogTitleStyle(
@@ -181,23 +183,24 @@ class WaveSingleSelectDialogWidgetState
                       ),
                       _generateContentWidget(),
                       Container(
-                        constraints: BoxConstraints(maxHeight: 300),
+                        constraints: const BoxConstraints(maxHeight: 300),
                         child: widget.isCustomFollowScroll
                             ? SingleChildScrollView(
                                 child: Column(
                                   children: <Widget>[
                                     ListView.builder(
                                         shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         itemBuilder: (context, index) =>
                                             _buildItem(context, index),
                                         itemCount:
                                             widget.conditions?.length ?? 0),
                                     widget.customWidget != null
                                         ? Container(
-                                            child: widget.customWidget,
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 left: 20, right: 20, top: 12),
+                                            child: widget.customWidget,
                                           )
                                         : const SizedBox.shrink(),
                                   ],
@@ -214,22 +217,22 @@ class WaveSingleSelectDialogWidgetState
                                   ),
                                   widget.customWidget != null
                                       ? Container(
-                                          child: widget.customWidget,
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               left: 20, right: 20, top: 12),
+                                          child: widget.customWidget,
                                         )
                                       : const SizedBox.shrink(),
                                 ],
                               ),
                       ),
                       Padding(
-                          padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
+                          padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
                           child: GestureDetector(
                             child: Container(
                                 decoration: BoxDecoration(
                                   //背景
                                   color: Get.theme.colorScheme.primary,
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                       Radius.circular(6.0)), //设置四周圆角 角度
                                 ),
                                 alignment: Alignment.center,
@@ -237,7 +240,7 @@ class WaveSingleSelectDialogWidgetState
                                 color: widget.submitBgColor,
                                 child: Text(widget.submitText,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                         fontSize: 18))),
@@ -264,7 +267,7 @@ class WaveSingleSelectDialogWidgetState
                                 }
                               },
                               child: Padding(
-                                padding: EdgeInsets.all(15),
+                                padding: const EdgeInsets.all(15),
                                 child: WaveUITools.getAssetImage(
                                     WaveAsset.iconPickerClose),
                               )))
@@ -280,14 +283,14 @@ class WaveSingleSelectDialogWidgetState
   Widget _generateContentWidget() {
     if (widget.messageWidget != null) {
       return Padding(
-        padding: EdgeInsets.only(bottom: 8, left: 20, right: 20),
+        padding: const EdgeInsets.only(bottom: 8, left: 20, right: 20),
         child: widget.messageWidget,
       );
     }
 
     if (!WaveUITools.isEmpty(widget.messageText)) {
       return Padding(
-        padding: EdgeInsets.only(bottom: 8, left: 20, right: 20),
+        padding: const EdgeInsets.only(bottom: 8, left: 20, right: 20),
         child: Text(
           widget.messageText!,
           style: cContentTextStyle,
@@ -301,11 +304,10 @@ class WaveSingleSelectDialogWidgetState
     if (widget.conditions == null) {
       return const SizedBox.shrink();
     } else {
-      return Container(
-          child: Column(
+      return Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -360,11 +362,11 @@ class WaveSingleSelectDialogWidgetState
             ),
           ),
           index != widget.conditions!.length - 1
-              ? Padding(
+              ? const Padding(
                   padding: EdgeInsets.fromLTRB(20, 0, 20, 0), child: WaveLine())
               : const SizedBox.shrink()
         ],
-      ));
+      );
     }
   }
 }

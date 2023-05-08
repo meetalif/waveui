@@ -62,6 +62,7 @@ class WaveShareDialog extends StatelessWidget {
   WaveDialogConfig? themeData;
 
   WaveShareDialog({
+    super.key,
     required this.context,
     required this.titleText,
     this.descText,
@@ -76,8 +77,8 @@ class WaveShareDialog extends StatelessWidget {
     this.separatorLineColor = const Color(0xfff0f0f0),
     this.themeData,
   }) {
-    this.themeData ??= WaveDialogConfig();
-    this.themeData = WaveThemeConfigurator.instance
+    themeData ??= WaveDialogConfig();
+    themeData = WaveThemeConfigurator.instance
         .getConfig(configId: themeData!.configId)
         .dialogConfig
         .merge(themeData);
@@ -90,7 +91,7 @@ class WaveShareDialog extends StatelessWidget {
       child: WaveDialog(
         titleWidget: _configDialogTitle(),
         messageText: descText,
-        divider: Divider(
+        divider: const Divider(
           color: Colors.transparent,
           height: 0,
           thickness: 0,
@@ -132,7 +133,7 @@ class WaveShareDialog extends StatelessWidget {
     List<Widget> widgets = [];
     widgets.add(_configDialogseparator());
     //分割
-    widgets.add(Padding(
+    widgets.add(const Padding(
       padding: EdgeInsets.only(top: 12),
     ));
     widgets.add(_configDialogShareItems());
@@ -141,40 +142,38 @@ class WaveShareDialog extends StatelessWidget {
 
   /// 构建头部部分
   Widget _configDialogTitle() {
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 28),
-            child: Text(
-              titleText,
-              style: WaveDialogUtils.getDialogTitleStyle(themeData!),
-            ),
+    return Stack(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(top: 28),
+          child: Text(
+            titleText,
+            style: WaveDialogUtils.getDialogTitleStyle(themeData!),
           ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: GestureDetector(
-              child: Container(
-                width: 30,
-                height: 30,
-                child: WaveUITools.getAssetImage(WaveAsset.iconPickerClose),
-              ),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
+        ),
+        Positioned(
+          top: 10,
+          right: 10,
+          child: GestureDetector(
+            child: SizedBox(
+              width: 30,
+              height: 30,
+              child: WaveUITools.getAssetImage(WaveAsset.iconPickerClose),
             ),
-          )
-        ],
-      ),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        )
+      ],
     );
   }
 
   /// 构建中间分割部分
   Widget _configDialogseparator() {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
@@ -183,8 +182,8 @@ class WaveShareDialog extends StatelessWidget {
             height: 1,
           ),
           Container(
-            color: Color(0xffffffff),
-            padding: EdgeInsets.only(left: 6, right: 6),
+            color: const Color(0xffffffff),
+            padding: const EdgeInsets.only(left: 6, right: 6),
             child: Text(
               separatorText ??
                   WaveIntl.of(context).localizedResource.shareWayTip,
@@ -225,22 +224,22 @@ class WaveShareDialog extends StatelessWidget {
         continue;
       }
       // “分享”按钮容器
-      shareItems.add(Container(
+      shareItems.add(SizedBox(
         width: 39,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             GestureDetector(
-              child: Container(
-                child: image,
+              child: SizedBox(
                 width: 39,
                 height: 39,
+                child: image,
               ),
               onTap: () {
                 Navigator.of(context).pop([shareChannels[index], index]);
               },
             ),
-            Divider(
+            const Divider(
               height: 5,
               color: Colors.transparent,
             ),
@@ -257,7 +256,7 @@ class WaveShareDialog extends StatelessWidget {
         ? 14
         : (300 - 39 * shareItems.length) / (shareItems.length + 1);
     return Container(
-      padding: EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.only(bottom: 28),
       alignment: Alignment.center,
       child: Wrap(
         spacing: space,

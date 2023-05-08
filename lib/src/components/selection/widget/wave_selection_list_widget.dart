@@ -222,7 +222,7 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
                         Colors.white.withOpacity(0),
                         Colors.white,
                       ],
-                      stops: [0, 1.0],
+                      stops: const [0, 1.0],
                     ),
                   ),
                 ),
@@ -241,15 +241,16 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
         ),
         Container(
           color: Colors.white,
-          padding: EdgeInsets.fromLTRB(8, 11, 20, 11),
+          padding: const EdgeInsets.fromLTRB(8, 11, 20, 11),
           child: Row(
             children: <Widget>[
               GestureDetector(
+                onTap: _clearAllSelectedItems,
                 child: Container(
-                  padding: EdgeInsets.only(left: 12, right: 20),
+                  padding: const EdgeInsets.only(left: 12, right: 20),
                   child: Column(
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         height: 24,
                         width: 24,
                         child: WaveUITools.getAssetImage(
@@ -263,7 +264,6 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
                     ],
                   ),
                 ),
-                onTap: _clearAllSelectedItems,
               ),
               Expanded(
                 child: WaveBigMainButton(
@@ -379,7 +379,7 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
   ///还原数据选中状态
   void _resetSelectionData(WaveSelectionEntity entity) {
     entity.isSelected = false;
-    entity.customMap = Map();
+    entity.customMap = <String, String>{};
     if (WaveSelectionFilterType.range == entity.filterType) {
       entity.title = '';
     }
@@ -552,7 +552,9 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
 
   _processSelectedStatus(WaveSelectionEntity entity) {
     if (entity.children.isNotEmpty) {
-      entity.children.forEach((f) => _processSelectedStatus(f));
+      for (var f in entity.children) {
+        _processSelectedStatus(f);
+      }
       if (entity.hasCheckBoxBrother()) {
         entity.isSelected =
             entity.children.where((_) => _.isSelected).isNotEmpty;

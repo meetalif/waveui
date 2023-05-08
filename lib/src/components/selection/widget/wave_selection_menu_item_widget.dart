@@ -24,20 +24,21 @@ class WaveSelectionMenuItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: 1,
       child: GestureDetector(
         onTap: () {
           _menuItemTapped();
         },
         child: Container(
           color: Colors.transparent,
-          constraints: BoxConstraints.expand(),
+          constraints: const BoxConstraints.expand(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
                   child: Flexible(
                 child: Text(
-                  this.title,
+                  title,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -48,7 +49,7 @@ class WaveSelectionMenuItemWidget extends StatelessWidget {
                 ),
               )),
               Padding(
-                  padding: EdgeInsets.only(left: 4),
+                  padding: const EdgeInsets.only(left: 4),
                   child: isHighLight
                       ? (active
                           ? WaveUITools.getAssetImageWithBandColor(
@@ -66,13 +67,12 @@ class WaveSelectionMenuItemWidget extends StatelessWidget {
           ),
         ),
       ),
-      flex: 1,
     );
   }
 
   void _menuItemTapped() {
-    if (this.itemClickFunction != null) {
-      this.itemClickFunction!();
+    if (itemClickFunction != null) {
+      itemClickFunction!();
     }
   }
 }

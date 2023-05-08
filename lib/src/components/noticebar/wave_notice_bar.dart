@@ -112,8 +112,8 @@ class WaveNoticeBar extends StatelessWidget {
           (noticeStyle != null
               ? noticeStyle!.backgroundColor
               : defaultStyle.backgroundColor),
-      padding: this.padding ?? EdgeInsets.symmetric(horizontal: 20),
-      constraints: BoxConstraints(minHeight: this.minHeight),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 20),
+      constraints: BoxConstraints(minHeight: minHeight),
       child: GestureDetector(
         onTap: () {
           if (onNoticeTap != null) {
@@ -125,7 +125,7 @@ class WaveNoticeBar extends StatelessWidget {
             Offstage(
               offstage: !showLeftIcon,
               child: Padding(
-                padding: EdgeInsets.only(right: 8),
+                padding: const EdgeInsets.only(right: 8),
                 child: leftWidget ??
                     (noticeStyle?.leftIcon ?? defaultStyle.leftIcon),
               ),
@@ -136,7 +136,7 @@ class WaveNoticeBar extends StatelessWidget {
             Offstage(
               offstage: !showRightIcon,
               child: Padding(
-                padding: EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.only(left: 8),
                 child: tempRightWidget,
               ),
             ),
@@ -152,71 +152,71 @@ class NoticeStyles {
   ///红色+失败+箭头
   static NoticeStyle failWithArrow = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeFail),
-      Color(0xFFFA3F3F),
-      Color(0xFFFEEDED),
+      const Color(0xFFFA3F3F),
+      const Color(0xFFFEEDED),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeArrowRed));
 
   ///红色+失败+关闭
   static NoticeStyle failWithClose = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeFail),
-      Color(0xFFFA3F3F),
-      Color(0xFFFEEDED),
+      const Color(0xFFFA3F3F),
+      const Color(0xFFFEEDED),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeCloseRed));
 
   ///蓝色+进行中+箭头
   static NoticeStyle runningWithArrow = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeRunning),
-      Color(0xFF0984F9),
-      Color(0xFFE0EDFF),
+      const Color(0xFF0984F9),
+      const Color(0xFFE0EDFF),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeArrowBlue));
 
   ///蓝色+进行中+关闭
   static NoticeStyle runningWithClose = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeRunning),
-      Color(0xFF0984F9),
-      Color(0xFFE0EDFF),
+      const Color(0xFF0984F9),
+      const Color(0xFFE0EDFF),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeCloseBlue));
 
   ///绿色+完成+箭头
   static NoticeStyle succeedWithArrow = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeSucceed),
-      Color(0xFF00AE66),
-      Color(0xFFEBFFF7),
+      const Color(0xFF00AE66),
+      const Color(0xFFEBFFF7),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeArrowGreen));
 
   ///绿色+完成+关闭
   static NoticeStyle succeedWithClose = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeSucceed),
-      Color(0xFF00AE66),
-      Color(0xFFEBFFF7),
+      const Color(0xFF00AE66),
+      const Color(0xFFEBFFF7),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeCloseGreen));
 
   ///橘色+警告+箭头
   static NoticeStyle warningWithArrow = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeWarning),
-      Color(0xFFFAAD14),
-      Color(0xFFFDFCEC),
+      const Color(0xFFFAAD14),
+      const Color(0xFFFDFCEC),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeArrowOrange));
 
   ///橘色+警告+关闭
   static NoticeStyle warningWithClose = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNoticeWarning),
-      Color(0xFFFAAD14),
-      Color(0xFFFDFCEC),
+      const Color(0xFFFAAD14),
+      const Color(0xFFFDFCEC),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeCloseOrange));
 
   ///橘色+通知+箭头
   static NoticeStyle normalNoticeWithArrow = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNotice),
-      Color(0xFFFAAD14),
-      Color(0xFFFDFCEC),
+      const Color(0xFFFAAD14),
+      const Color(0xFFFDFCEC),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeArrowOrange));
 
   ///橘色+通知+关闭
   static NoticeStyle normalNoticeWithClose = NoticeStyle(
       WaveUITools.getAssetImage(WaveAsset.iconNotice),
-      Color(0xFFFAAD14),
-      Color(0xFFFDFCEC),
+      const Color(0xFFFAAD14),
+      const Color(0xFFFDFCEC),
       WaveUITools.getAssetImage(WaveAsset.iconNoticeCloseOrange));
 }
 

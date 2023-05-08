@@ -13,7 +13,7 @@ abstract class WaveBaseConfig {
   }
 
   String get configId => _configId;
-  String _configId;
+  final String _configId;
   WaveCommonConfig? _currentLevelCommonConfig;
 
   /// 部分代码示意如下：

@@ -125,9 +125,9 @@ class WaveSelectionEntity {
       this.showType,
       this.isCustomTitleHighLight = false,
       this.maxSelectedCount = WaveSelectionConstant.maxSelectCount}) {
-    this.filterType = parserFilterTypeWithType(this.type);
-    this.filterShowType = parserShowType(this.showType);
-    this.originalCustomMap = Map();
+    filterType = parserFilterTypeWithType(type);
+    filterShowType = parserShowType(showType);
+    originalCustomMap = {};
   }
 
   /// 构造简单筛选数据
@@ -136,15 +136,15 @@ class WaveSelectionEntity {
     this.value,
     this.title = '',
     this.type,
-  })  : this.maxSelectedCount = WaveSelectionConstant.maxSelectCount,
-        this.isCustomTitleHighLight = false,
-        this.isSelected = false,
-        this.children = [],
-        this.extMap = {} {
-    this.filterType = parserFilterTypeWithType(this.type);
-    this.filterShowType = parserShowType(this.showType);
-    this.originalCustomMap = Map();
-    this.isSelected = false;
+  })  : maxSelectedCount = WaveSelectionConstant.maxSelectCount,
+        isCustomTitleHighLight = false,
+        isSelected = false,
+        children = [],
+        extMap = {} {
+    filterType = parserFilterTypeWithType(type);
+    filterShowType = parserShowType(showType);
+    originalCustomMap = {};
+    isSelected = false;
   }
 
   /// 建议使用 [WaveSelectionEntity.fromJson]
@@ -165,20 +165,19 @@ class WaveSelectionEntity {
     }
     entity.extMap = map['ext'] ?? {};
     if (map['children'] != null && map['children'] is List) {
-      entity.children = []..addAll(
-          (map['children'] as List).map((o) => WaveSelectionEntity.fromMap(o)));
+      entity.children = [...(map['children'] as List).map((o) => WaveSelectionEntity.fromMap(o))];
     }
     entity.filterType = entity.parserFilterTypeWithType(map['type'] ?? "");
     return entity;
   }
 
   WaveSelectionEntity.fromJson(Map<dynamic, dynamic>? map)
-      : this.title = '',
-        this.maxSelectedCount = WaveSelectionConstant.maxSelectCount,
-        this.isCustomTitleHighLight = false,
-        this.isSelected = false,
-        this.children = [],
-        this.extMap = {} {
+      : title = '',
+        maxSelectedCount = WaveSelectionConstant.maxSelectCount,
+        isCustomTitleHighLight = false,
+        isSelected = false,
+        children = [],
+        extMap = {} {
     if (map == null) return;
     title = map['title'] ?? '';
     subTitle = map['subTitle'] ?? '';
@@ -192,8 +191,7 @@ class WaveSelectionEntity {
           WaveSelectionConstant.maxSelectCount;
     }
     extMap = map['ext'] ?? {};
-    children = []..addAll(
-        (map['children'] ?? []).map((o) => WaveSelectionEntity.fromJson(o)));
+    children = [...(map['children'] ?? []).map((o) => WaveSelectionEntity.fromJson(o))];
     filterType = parserFilterTypeWithType(map['type'] ?? '');
     isSelected = false;
   }
@@ -225,7 +223,7 @@ class WaveSelectionEntity {
 
       /// 当 default 不在普通 Item 类型中时，尝试填充 同级别 Range Item.
       if (children.where((_) => _.isSelected).toList().isEmpty) {
-        List<WaveSelectionEntity> rangeItems = this.children.where((_) {
+        List<WaveSelectionEntity> rangeItems = children.where((_) {
           return (_.filterType == WaveSelectionFilterType.range ||
               _.filterType == WaveSelectionFilterType.dateRange ||
               _.filterType == WaveSelectionFilterType.dateRangeCalendar);
@@ -246,7 +244,7 @@ class WaveSelectionEntity {
         }
       }
 
-      for (WaveSelectionEntity entity in this.children) {
+      for (WaveSelectionEntity entity in children) {
         entity.configDefaultValue();
       }
       if (hasCheckBoxBrother()) {
@@ -304,7 +302,7 @@ class WaveSelectionEntity {
         if (entity.filterType == WaveSelectionFilterType.range ||
             entity.filterType == WaveSelectionFilterType.dateRange ||
             entity.filterType == WaveSelectionFilterType.dateRangeCalendar) {
-          entity.customMap = Map();
+          entity.customMap = <String, String>{};
         }
         entity.clearChildSelection();
       }
@@ -313,9 +311,9 @@ class WaveSelectionEntity {
 
   List<WaveSelectionEntity> selectedLastColumnList() {
     List<WaveSelectionEntity> list = [];
-    if (this.children.isNotEmpty) {
+    if (children.isNotEmpty) {
       List<WaveSelectionEntity> firstList = [];
-      for (WaveSelectionEntity firstEntity in this.children) {
+      for (WaveSelectionEntity firstEntity in children) {
         if (firstEntity.children.isNotEmpty) {
           List<WaveSelectionEntity> secondList = [];
           for (WaveSelectionEntity secondEntity in firstEntity.children) {
@@ -361,8 +359,8 @@ class WaveSelectionEntity {
   }
 
   List<WaveSelectionEntity> selectedList() {
-    if (WaveSelectionFilterType.more == this.filterType) {
-      return this.selectedLastColumnList();
+    if (WaveSelectionFilterType.more == filterType) {
+      return selectedLastColumnList();
     } else {
       List<WaveSelectionEntity> results = [];
       List<WaveSelectionEntity> firstColumn =
@@ -484,21 +482,21 @@ class WaveSelectionEntity {
     while (tmp.isNotEmpty) {
       node = tmp.removeLast();
       node.isSelected = false;
-      node.children.forEach((data) {
+      for (var data in node.children) {
         tmp.add(data);
-      });
+      }
     }
   }
 
   List<WaveSelectionEntity> currentTagListForEntity() {
     List<WaveSelectionEntity> list = [];
-    children.forEach((data) {
+    for (var data in children) {
       if (data.filterType != WaveSelectionFilterType.range &&
           data.filterType != WaveSelectionFilterType.dateRange &&
           data.filterType != WaveSelectionFilterType.dateRangeCalendar) {
         list.add(data);
       }
-    });
+    }
     return list;
   }
 
@@ -530,31 +528,31 @@ class WaveSelectionEntity {
 
   List<WaveSelectionEntity> currentRangeListForEntity() {
     List<WaveSelectionEntity> list = [];
-    children.forEach((data) {
+    for (var data in children) {
       if (data.filterType == WaveSelectionFilterType.range ||
           data.filterType == WaveSelectionFilterType.dateRange ||
           data.filterType == WaveSelectionFilterType.dateRangeCalendar) {
         list.add(data);
       }
-    });
+    }
     return list;
   }
 
   bool isValidRange() {
-    if (this.filterType == WaveSelectionFilterType.range ||
-        this.filterType == WaveSelectionFilterType.dateRange ||
-        this.filterType == WaveSelectionFilterType.dateRangeCalendar) {
+    if (filterType == WaveSelectionFilterType.range ||
+        filterType == WaveSelectionFilterType.dateRange ||
+        filterType == WaveSelectionFilterType.dateRangeCalendar) {
       DateTime minTime = DateTime.parse(datePickerMinDatetime);
       DateTime maxTime = DateTime.parse(datePickerMaxDatetime);
       int limitMin = int.tryParse(extMap['min']?.toString() ?? "") ??
-          (this.filterType == WaveSelectionFilterType.dateRange ||
-                  this.filterType == WaveSelectionFilterType.dateRangeCalendar
+          (filterType == WaveSelectionFilterType.dateRange ||
+                  filterType == WaveSelectionFilterType.dateRangeCalendar
               ? minTime.millisecondsSinceEpoch
               : 0);
       // 日期最大值没设置 默认是2121年01月01日 08:00:00
       int limitMax = int.tryParse(extMap['max']?.toString() ?? "") ??
-          (this.filterType == WaveSelectionFilterType.dateRange ||
-                  this.filterType == WaveSelectionFilterType.dateRangeCalendar
+          (filterType == WaveSelectionFilterType.dateRange ||
+                  filterType == WaveSelectionFilterType.dateRangeCalendar
               ? maxTime.millisecondsSinceEpoch
               : 9999);
 
@@ -584,7 +582,7 @@ class WaveSelectionEntity {
   }
 
   void reverseSelected() {
-    this.isSelected = !isSelected;
+    isSelected = !isSelected;
   }
 
   int getFirstSelectedChildIndex() {

@@ -17,7 +17,7 @@ class WaveMultiRangePickerCommonItem extends StatelessWidget {
 
   final ValueChanged<WavePickerEntity>? itemSelectFunction;
 
-  WaveMultiRangePickerCommonItem({
+  const WaveMultiRangePickerCommonItem({super.key, 
     required this.item,
     this.normalColor = const Color(0Xff4a4e59),
     this.selectColor = const Color(0xff41bc6a),
@@ -35,7 +35,7 @@ class WaveMultiRangePickerCommonItem extends StatelessWidget {
     if (!item.isUnLimit() && (item.children.isEmpty)) {
       if (item.isInLastLevel() && _hasCheckBoxBrother(item)) {
         checkbox = Container(
-          padding: EdgeInsets.only(left: 6),
+          padding: const EdgeInsets.only(left: 6),
           width: 21,
           child: (item.isSelected)
               ? WaveUITools.getAssetImageWithBandColor(
@@ -57,7 +57,7 @@ class WaveMultiRangePickerCommonItem extends StatelessWidget {
       },
       child: Container(
         height: 40,
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         color: _getItemBGColor(),
         child: Align(
           alignment: Alignment.centerLeft,
@@ -87,9 +87,9 @@ class WaveMultiRangePickerCommonItem extends StatelessWidget {
 
   Color? _getItemBGColor() {
     if (isCurrentFocused!) {
-      return this.selectedBackgroundColor;
+      return selectedBackgroundColor;
     } else {
-      return this.backgroundColor;
+      return backgroundColor;
     }
   }
 

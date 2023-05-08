@@ -21,9 +21,7 @@ class WaveIntl {
         'Try to initialize the WaveLocalizationDelegate before accessing WaveIntl. currentResource.');
 
     ///If the application is not localized, the zh-CN resource will be used by default
-    if (_current == null) {
-      _current = WaveIntl(WaveResourceEn.locale);
-    }
+    _current ??= WaveIntl(WaveResourceEn.locale);
     return _current!.localizedResource;
   }
 
@@ -79,8 +77,7 @@ class WaveLocalizationDelegate extends LocalizationsDelegate<WaveIntl> {
 
   @override
   Future<WaveIntl> load(Locale locale) {
-    debugPrint(runtimeType.toString() +
-        ' load: locale = $locale, ${locale.countryCode}, ${locale.languageCode}');
+    debugPrint('$runtimeType load: locale = $locale, ${locale.countryCode}, ${locale.languageCode}');
     return WaveIntl._load(locale);
   }
 

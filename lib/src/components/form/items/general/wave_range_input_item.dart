@@ -128,14 +128,13 @@ class WaveRangeInputFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+        .merge(themeData);
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -167,7 +166,7 @@ class WaveRangeInputFormItemState extends State<WaveRangeInputFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -195,105 +194,101 @@ class WaveRangeInputFormItemState extends State<WaveRangeInputFormItem> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Container(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: 50,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: 50,
+                      ),
+                      child: TextField(
+                        keyboardType:
+                            WaveFormUtil.getInputType(widget.inputType),
+                        enabled: widget.isEdit,
+                        maxLines: 1,
+                        maxLength: widget.leftMaxCount,
+                        style: WaveFormUtil.getIsEditTextStyle(
+                            widget.themeData!, widget.isEdit),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintStyle:
+                              WaveFormUtil.getHintTextStyle(widget.themeData!),
+                          hintText: widget.hintMin ??
+                              WaveIntl.of(context).localizedResource.min,
+                          counterText: "",
+                          contentPadding: const EdgeInsets.all(0),
+                          isDense: true,
+                          enabledBorder: const UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
+                          focusedBorder: const UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
                         ),
-                        child: TextField(
-                          keyboardType:
-                              WaveFormUtil.getInputType(widget.inputType),
-                          enabled: widget.isEdit,
-                          maxLines: 1,
-                          maxLength: widget.leftMaxCount,
-                          style: WaveFormUtil.getIsEditTextStyle(
-                              widget.themeData!, widget.isEdit),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintStyle: WaveFormUtil.getHintTextStyle(
-                                widget.themeData!),
-                            hintText: widget.hintMin ??
-                                WaveIntl.of(context).localizedResource.min,
-                            counterText: "",
-                            contentPadding: EdgeInsets.all(0),
-                            isDense: true,
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                          ),
-                          textAlign: TextAlign.end,
-                          controller: _minController,
-                          onChanged: (text) {
-                            WaveFormUtil.notifyInputChanged(
-                                widget.onMinChanged, text);
-                          },
-                        ),
+                        textAlign: TextAlign.end,
+                        controller: _minController,
+                        onChanged: (text) {
+                          WaveFormUtil.notifyInputChanged(
+                              widget.onMinChanged, text);
+                        },
                       ),
                     ),
                     Container(
-                        padding: EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.only(left: 5),
                         child: Text(
                           widget.minUnit ?? "",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xFF101010),
                             fontSize: WaveFonts.f16,
                           ),
                         )),
                     Container(
-                        padding: EdgeInsets.only(left: 20, right: 6),
-                        child: Text(
+                        padding: const EdgeInsets.only(left: 20, right: 6),
+                        child: const Text(
                           "—",
                           style: TextStyle(
                             color: Color(0xFF101010),
                             fontSize: WaveFonts.f16,
                           ),
                         )),
-                    Container(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: 50,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: 50,
+                      ),
+                      child: TextField(
+                        keyboardType:
+                            WaveFormUtil.getInputType(widget.inputType),
+                        enabled: widget.isEdit,
+                        maxLines: 1,
+                        maxLength: widget.rightMaxCount,
+                        style: WaveFormUtil.getIsEditTextStyle(
+                            widget.themeData!, widget.isEdit),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintStyle:
+                              WaveFormUtil.getHintTextStyle(widget.themeData!),
+                          hintText: widget.hintMax ??
+                              WaveIntl.of(context).localizedResource.max,
+                          counterText: "",
+                          contentPadding: const EdgeInsets.all(0),
+                          isDense: true,
+                          enabledBorder: const UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
+                          focusedBorder: const UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
                         ),
-                        child: TextField(
-                          keyboardType:
-                              WaveFormUtil.getInputType(widget.inputType),
-                          enabled: widget.isEdit,
-                          maxLines: 1,
-                          maxLength: widget.rightMaxCount,
-                          style: WaveFormUtil.getIsEditTextStyle(
-                              widget.themeData!, widget.isEdit),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintStyle: WaveFormUtil.getHintTextStyle(
-                                widget.themeData!),
-                            hintText: widget.hintMax ??
-                                WaveIntl.of(context).localizedResource.max,
-                            counterText: "",
-                            contentPadding: EdgeInsets.all(0),
-                            isDense: true,
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                          ),
-                          textAlign: TextAlign.end,
-                          controller: _maxController,
-                          onChanged: (text) {
-                            WaveFormUtil.notifyInputChanged(
-                                widget.onMaxChanged, text);
-                          },
-                        ),
+                        textAlign: TextAlign.end,
+                        controller: _maxController,
+                        onChanged: (text) {
+                          WaveFormUtil.notifyInputChanged(
+                              widget.onMaxChanged, text);
+                        },
                       ),
                     ),
                     Container(
-                        padding: EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.only(left: 5),
                         child: Text(
                           widget.maxUnit ?? "",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xFF101010),
                             fontSize: WaveFonts.f16,
                           ),

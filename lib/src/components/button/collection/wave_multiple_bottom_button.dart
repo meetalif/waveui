@@ -77,15 +77,15 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> rowChildren = <Widget>[]
-      ..add(_allSelectedWidget())
-      ..add(_selectedCountWidget())
-      ..add(_buttonArea());
+    List<Widget> rowChildren = <Widget>[_allSelectedWidget(), _selectedCountWidget(), _buttonArea()]
+      
+      
+      ;
 
     return Container(
       height: 82,
       color: Colors.white,
-      padding: EdgeInsets.only(top: 16, bottom: 16, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 16, bottom: 16, left: 20, right: 20),
       child: Row(
         children: rowChildren,
       ),
@@ -105,7 +105,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
             behavior: HitTestBehavior.opaque,
             child: Row(
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: 16,
                   height: 16,
                   child: ValueListenableBuilder<MultiSelectState>(
@@ -114,7 +114,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                       return WaveCheckbox(
                         isSelected: value.selectAllState,
                         radioIndex: 0,
-                        iconPadding: EdgeInsets.all(0),
+                        iconPadding: const EdgeInsets.all(0),
                         onValueChangedAtIndex: (index, value) {
                           //同步到外界的当前的全选状态
                           _controller.setState(selectAllState: value);
@@ -128,16 +128,16 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 4, right: 8),
+                  padding: const EdgeInsets.only(left: 4, right: 8),
                   child: Text(
                     WaveIntl.of(context).localizedResource.selectAll,
-                    style: TextStyle(color: Color(0XFF222222), fontSize: 16),
+                    style: const TextStyle(color: Color(0XFF222222), fontSize: 16),
                   ),
                 ),
               ],
             ),
           )
-        : Row();
+        : const Row();
   }
 
   Widget _selectedCountWidget() {
@@ -147,7 +147,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
         WaveUITools.getAssetImage(WaveAsset.iconUnSelectDownTriangle);
 
     Image cantFoldWidget = WaveUITools.getAssetImageWithColor(
-        WaveAsset.iconUnSelectDownTriangle, Color(0XCCCCCCCC));
+        WaveAsset.iconUnSelectDownTriangle, const Color(0XCCCCCCCC));
 
     return GestureDetector(
       onTap: () {
@@ -169,12 +169,12 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
         });
       },
       child: Container(
-        padding: EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(right: 16),
         child: Row(
           children: <Widget>[
             Text(
               WaveIntl.of(context).localizedResource.selected,
-              style: TextStyle(color: Color(0XFF222222), fontSize: 16),
+              style: const TextStyle(color: Color(0XFF222222), fontSize: 16),
             ),
             ValueListenableBuilder<MultiSelectState>(
               valueListenable: _controller.valueNotifier,
@@ -185,7 +185,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                   style: TextStyle(
                       color: value.selectedCount != 0
                           ? Get.theme.colorScheme.primary
-                          : Color(0x99999999),
+                          : const Color(0x99999999),
                       fontSize: 16),
                 ));
                 if (value.selectedCount == 0) _unfoldState = false;
@@ -214,14 +214,14 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                         WaveMultipleButtonArrowState.defaultStatus;
 
                     rowChildren.add(Container(
-                      margin: EdgeInsets.only(left: 2, top: 2),
+                      margin: const EdgeInsets.only(left: 2, top: 2),
                       width: 6,
-                      child: arrow ?? Row(),
+                      child: arrow ?? const Row(),
                     ));
                   } else {
                     if (_unfoldState == false) {
                       rowChildren.add(Container(
-                        margin: EdgeInsets.only(left: 2, top: 2),
+                        margin: const EdgeInsets.only(left: 2, top: 2),
                         width: 6,
                         child: value.selectedCount == 0
                             ? cantFoldWidget
@@ -229,7 +229,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                       ));
                     } else {
                       rowChildren.add(Container(
-                        margin: EdgeInsets.only(left: 2, top: 2),
+                        margin: const EdgeInsets.only(left: 2, top: 2),
                         width: 6,
                         child: unfoldWidget,
                       ));
@@ -267,13 +267,13 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                 valueListenable: _controller.valueNotifier,
                 builder: (context, value, _) {
                   return Container(
-                    margin: EdgeInsets.only(left: 8),
-                    padding: EdgeInsets.only(left: 10, right: 10),
+                    margin: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
                         color: value.mainButtonState
                             ? Get.theme.colorScheme.primary
-                            : Color(0xFFCCCCCC)),
+                            : const Color(0xFFCCCCCC)),
                     child: widget.mainButton is String
                         ? Center(
                             child: Text(
@@ -281,7 +281,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                             style: TextStyle(
                                 color: value.mainButtonState
                                     ? Colors.white
-                                    : Color(0xAAFFFFFF),
+                                    : const Color(0xAAFFFFFF),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600),
                             overflow: TextOverflow.ellipsis,
@@ -293,7 +293,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
               ),
             ),
           )
-        : Row();
+        : const Row();
   }
 
   Widget _subButton() {
@@ -307,16 +307,16 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                 valueListenable: _controller.valueNotifier,
                 builder: (context, value, _) {
                   return Container(
-                    margin: EdgeInsets.only(left: 8),
-                    padding: EdgeInsets.only(left: 10, right: 10),
+                    margin: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
                         color: value.subButtonState
                             ? WaveThemeConfigurator.instance
                                 .getConfig()
                                 .commonConfig
                                 .brandAuxiliary
-                            : Color(0xFFCCCCCC)),
+                            : const Color(0xFFCCCCCC)),
                     child: widget.subButton is String
                         ? Center(
                             child: Text(
@@ -324,7 +324,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
                             style: TextStyle(
                                 color: value.subButtonState
                                     ? Colors.white
-                                    : Color(0xAAFFFFFF),
+                                    : const Color(0xAAFFFFFF),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600),
                             overflow: TextOverflow.ellipsis,
@@ -336,7 +336,7 @@ class _WaveMultipleBottomButtonState extends State<WaveMultipleBottomButton> {
               ),
             ),
           )
-        : Row();
+        : const Row();
   }
 }
 

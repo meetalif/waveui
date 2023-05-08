@@ -42,15 +42,17 @@ class DefaultSelectionQuickFilterConverter
 /// 注意，此方法仅在初始化筛选项之前调用。如果再筛选之后使用会影响筛选View 的展示以及筛选结果。
 Map<String, String> getSelectionParamsWithConfigChild(
     List<WaveSelectionEntity>? selectedResults) {
-  Map<String, String> params = Map();
+  Map<String, String> params = {};
   if (selectedResults == null) return params;
-  selectedResults.forEach((f) => f.configRelationshipAndDefaultValue());
+  for (var f in selectedResults) {
+    f.configRelationshipAndDefaultValue();
+  }
   return getSelectionParams(selectedResults);
 }
 
 Map<String, String> getSelectionParams(
     List<WaveSelectionEntity>? selectedResults) {
-  Map<String, String> params = Map();
+  Map<String, String> params = {};
   if (selectedResults == null) return params;
   for (WaveSelectionEntity menuItemEntity in selectedResults) {
     if (menuItemEntity.filterType == WaveSelectionFilterType.more) {
@@ -63,9 +65,7 @@ Map<String, String> getSelectionParams(
           !WaveUITools.isEmpty(selectedCustomInputItem.customMap)) {
         String? key = selectedCustomInputItem.parent?.key;
         if (!WaveUITools.isEmpty(key)) {
-          params[key!] = (selectedCustomInputItem.customMap!["min"] ?? '') +
-              ':' +
-              (selectedCustomInputItem.customMap!["max"] ?? '');
+          params[key!] = '${selectedCustomInputItem.customMap!["min"] ?? ''}:${selectedCustomInputItem.customMap!["max"] ?? ''}';
         }
       }
 
@@ -75,16 +75,17 @@ Map<String, String> getSelectionParams(
         params.addAll(getCurrentSelectionEntityParams(menuItemEntity));
       } else if (levelCount == 2) {
         params.addAll(getCurrentSelectionEntityParams(menuItemEntity));
-        menuItemEntity.children.forEach((firstLevelItem) =>
-            params.addAll(getCurrentSelectionEntityParams(firstLevelItem)));
+        for (var firstLevelItem in menuItemEntity.children) {
+          params.addAll(getCurrentSelectionEntityParams(firstLevelItem));
+        }
       } else if (levelCount == 3) {
         params.addAll(getCurrentSelectionEntityParams(menuItemEntity));
-        menuItemEntity.children.forEach((firstLevelItem) {
+        for (var firstLevelItem in menuItemEntity.children) {
           params.addAll(getCurrentSelectionEntityParams(firstLevelItem));
-          firstLevelItem.children.forEach((secondLevelItem) {
+          for (var secondLevelItem in firstLevelItem.children) {
             params.addAll(getCurrentSelectionEntityParams(secondLevelItem));
-          });
-        });
+          }
+        }
       }
     }
   }
@@ -93,7 +94,7 @@ Map<String, String> getSelectionParams(
 
 Map<String, String> getCurrentSelectionEntityParams(
     WaveSelectionEntity selectionEntity) {
-  Map<String, String> params = Map();
+  Map<String, String> params = {};
   String? parentKey = selectionEntity.key;
   List<String?> selectedEntity = selectionEntity.children
       .where((WaveSelectionEntity f) => f.isSelected)

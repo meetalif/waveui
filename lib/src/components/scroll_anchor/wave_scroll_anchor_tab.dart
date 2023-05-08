@@ -22,8 +22,8 @@ class WaveAnchorTab extends StatefulWidget {
   //设置tab与widget的个数
   final int itemCount;
 
-  WaveAnchorTab(
-      {required this.widgetIndexedBuilder,
+  const WaveAnchorTab(
+      {super.key, required this.widgetIndexedBuilder,
       required this.tabIndexedBuilder,
       required this.itemCount,
       this.tabDivider,
@@ -129,7 +129,7 @@ class _WaveScrollAnchorTabWidgetState extends State<WaveAnchorTab>
             tab = true;
             _scrollController
                 .animateTo(_cardOffsetList[index],
-                    duration: Duration(milliseconds: 100), curve: Curves.linear)
+                    duration: const Duration(milliseconds: 100), curve: Curves.linear)
                 .whenComplete(() {
               tab = false;
             });
@@ -138,12 +138,12 @@ class _WaveScrollAnchorTabWidgetState extends State<WaveAnchorTab>
         widget.tabDivider ?? const SizedBox.shrink(),
         Expanded(
           child: SingleChildScrollView(
+            key: _key,
+            controller: _scrollController,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: _fillList(),
             ),
-            key: _key,
-            controller: _scrollController,
           ),
         )
       ],
@@ -218,7 +218,6 @@ class _WaveScrollAnchorTabWidgetState extends State<WaveAnchorTab>
   //根据偏移量 确定tab索引
   int createIndex(double offset) {
     int index = widget.itemCount - 1;
-    ;
     for (int i = 0; i < widget.itemCount - 1; i++) {
       if (offset >= _cardOffsetList[i] && (offset <= _cardOffsetList[i + 1])) {
         return i;

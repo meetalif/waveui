@@ -89,13 +89,12 @@ class WaveStarsFormItem extends StatefulWidget {
       this.backgroundColor,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -106,7 +105,7 @@ class WaveStarsFormItem extends StatefulWidget {
 }
 
 class WaveStarsFormItemState extends State<WaveStarsFormItem> {
-  List<Widget> _result = [];
+  final List<Widget> _result = [];
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +122,7 @@ class WaveStarsFormItemState extends State<WaveStarsFormItem> {
                   padding: WaveFormUtil.titleEdgeInsets(widget.prefixIconType,
                       widget.isRequire, widget.themeData!),
                   child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxHeight: 25,
                       ),
                       child: Row(
@@ -177,8 +176,8 @@ class WaveStarsFormItemState extends State<WaveStarsFormItem> {
         },
         child: Container(
           padding: (index == sum - 1)
-              ? EdgeInsets.only(left: 8, top: 5, bottom: 5)
-              : EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+              ? const EdgeInsets.only(left: 8, top: 5, bottom: 5)
+              : const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: getStar(index, widget.value, sum),
         ),
       ));

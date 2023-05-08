@@ -11,7 +11,7 @@ class IndexBarDetails {
 }
 
 ///Default Index data.
-const List<String> INDEX_DATA_DEF = const [
+const List<String> INDEX_DATA_DEF = [
   "A",
   "B",
   "C",
@@ -43,8 +43,8 @@ const List<String> INDEX_DATA_DEF = const [
 
 /// IndexBar.
 class IndexBar extends StatefulWidget {
-  IndexBar(
-      {Key? key,
+  const IndexBar(
+      {super.key,
       this.data = INDEX_DATA_DEF,
       required this.onTouch,
       this.width = 30,
@@ -131,7 +131,7 @@ class _IndexBar extends StatefulWidget {
   /// Item touch callback.
   final IndexBarTouchCallback onTouch;
 
-  _IndexBar(
+  const _IndexBar(
       {Key? key,
       this.data = INDEX_DATA_DEF,
       required this.onTouch,
@@ -146,11 +146,11 @@ class _IndexBar extends StatefulWidget {
 }
 
 class _IndexBarState extends State<_IndexBar> {
-  List<int> _indexSectionList = [];
+  final List<int> _indexSectionList = [];
   int _widgetTop = -1;
   int _lastIndex = 0;
   bool _widgetTopChange = false;
-  IndexBarDetails _indexModel = IndexBarDetails();
+  final IndexBarDetails _indexModel = IndexBarDetails();
 
   /// get index.
   int _getIndex(int offset) {
@@ -169,10 +169,10 @@ class _IndexBarState extends State<_IndexBar> {
     _indexSectionList.clear();
     _indexSectionList.add(0);
     int tempHeight = 0;
-    widget.data.forEach((value) {
+    for (String value in widget.data) {
       tempHeight = tempHeight + widget.itemHeight;
       _indexSectionList.add(tempHeight);
-    });
+    }
   }
 
   _triggerTouchEvent() {
@@ -181,20 +181,20 @@ class _IndexBarState extends State<_IndexBar> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? _style = widget.textStyle;
+    TextStyle? style = widget.textStyle;
     if (_indexModel.isTouchDown == true) {
-      _style = widget.touchDownTextStyle;
+      style = widget.touchDownTextStyle;
     }
     _init();
 
     List<Widget> children = [];
-    widget.data.forEach((v) {
+    for (var v in widget.data) {
       children.add(SizedBox(
         width: widget.width.toDouble(),
         height: widget.itemHeight.toDouble(),
-        child: Text(v, textAlign: TextAlign.center, style: _style),
+        child: Text(v, textAlign: TextAlign.center, style: style),
       ));
-    });
+    }
 
     return GestureDetector(
       onVerticalDragDown: (DragDownDetails details) {

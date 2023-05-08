@@ -72,9 +72,9 @@ class WaveDeleteTag extends StatefulWidget {
     themeData = WaveThemeConfigurator.instance
         .getConfig(configId: themeData!.configId)
         .tagConfig
-        .merge(this.themeData);
+        .merge(themeData);
     themeData = themeData!.merge(WaveTagConfig(
-        tagBackgroundColor: this.backgroundColor,
+        tagBackgroundColor: backgroundColor,
         tagTextStyle: WaveTextStyle.withStyle(tagTextStyle)));
   }
 
@@ -140,8 +140,8 @@ class _WaveDeleteTagState extends State<WaveDeleteTag> {
             ? 0
             : widget.horizontalSpacing ?? 12;
         var padding = Padding(
-          child: tag,
           padding: EdgeInsets.only(right: rightPadding),
+          child: tag,
         );
         tagIdx++;
         return padding;
@@ -185,8 +185,8 @@ class DeleteTagItemWidget extends StatelessWidget {
   final Color? deleteIconColor;
   final WaveTagConfig? themeData;
 
-  DeleteTagItemWidget(this.index, this.title, this.didDeleted,
-      {this.deleteIconSize,
+  const DeleteTagItemWidget(this.index, this.title, this.didDeleted,
+      {super.key, this.deleteIconSize,
       this.style,
       this.shape,
       this.backgroundColor,
@@ -196,10 +196,10 @@ class DeleteTagItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      padding: EdgeInsets.fromLTRB(10, 0, -3, 0),
-      labelPadding: EdgeInsets.fromLTRB(0, 0, -3, 0),
+      padding: const EdgeInsets.fromLTRB(10, 0, -3, 0),
+      labelPadding: const EdgeInsets.fromLTRB(0, 0, -3, 0),
       backgroundColor: themeData!.tagBackgroundColor,
-      label: Text(this.title,
+      label: Text(title,
           overflow: TextOverflow.ellipsis,
           style: themeData!.tagTextStyle.generateTextStyle()),
       shape: shape ??
@@ -236,7 +236,7 @@ class WaveDeleteTagController {
 
   /// 初始时设置全量的标签
   void setTags(List<String> tags) {
-    this._tags = tags;
+    _tags = tags;
     _asyncData();
   }
 
@@ -279,7 +279,9 @@ class WaveDeleteTagController {
   void _asyncData() {
     // notifier 中的 value 引用是 _tags 所以直接赋值 _tags 不会触发回调
     List<String> values = [];
-    _tags.forEach((e) => values.add(e));
+    for (var e in _tags) {
+      values.add(e);
+    }
     notifier.value = values;
   }
 }

@@ -82,10 +82,10 @@ class _WaveButtonPanelState extends State<WaveButtonPanel> {
     if (widget.secondaryButtonList?.isNotEmpty ?? false) {
       _secondaryButtonList = widget.secondaryButtonList!;
     } else if (widget.secondaryButtonNameList?.isNotEmpty ?? false) {
-      widget.secondaryButtonNameList!.forEach((name) {
+      for (var name in widget.secondaryButtonNameList!) {
         _secondaryButtonList
             .add(WaveButtonPanelConfig(name: name, isEnable: true));
-      });
+      }
     }
   }
 
@@ -99,7 +99,7 @@ class _WaveButtonPanelState extends State<WaveButtonPanel> {
         _moreButton(),
       );
       list.add(
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
       );
@@ -168,7 +168,7 @@ class _WaveButtonPanelState extends State<WaveButtonPanel> {
       },
     );
     return Padding(
-      padding: EdgeInsets.only(right: 8),
+      padding: const EdgeInsets.only(right: 8),
       child: button,
     );
   }
@@ -182,11 +182,6 @@ class _WaveButtonPanelState extends State<WaveButtonPanel> {
       }
 
       return GestureDetector(
-        child: Container(
-          color: Colors.transparent,
-          height: 32,
-          child: WaveUITools.getAssetImage(WaveAsset.iconMore),
-        ),
         key: _popWindowKey,
         onTap: () {
           WavePopupListWindow.showButtonPanelPopList(context, _popWindowKey,
@@ -221,6 +216,11 @@ class _WaveButtonPanelState extends State<WaveButtonPanel> {
                 return false;
               });
         },
+        child: Container(
+          color: Colors.transparent,
+          height: 32,
+          child: WaveUITools.getAssetImage(WaveAsset.iconMore),
+        ),
       );
     } else {
       return Container();

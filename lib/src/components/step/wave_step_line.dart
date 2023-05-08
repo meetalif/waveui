@@ -311,11 +311,11 @@ class _WaveStepLinePainter extends CustomPainter {
     double temp = 12 + 4 + iconTopPadding;
     for (int i = 0, n = lineColor.length; i < n; ++i) {
       _paint.color = lineColor[i];
-      Path _path = Path();
-      _path.moveTo(6, temp);
-      _path.lineTo(6, temp + selection);
+      Path path = Path();
+      path.moveTo(6, temp);
+      path.lineTo(6, temp + selection);
       temp += selection;
-      canvas.drawPath(_path, _paint);
+      canvas.drawPath(path, _paint);
     }
   }
 

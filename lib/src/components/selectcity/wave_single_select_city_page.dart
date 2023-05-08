@@ -42,7 +42,7 @@ class WaveSingleSelectCityPage extends StatefulWidget {
   /// 空页面中间展位图展示
   final Image? emptyImage;
 
-  WaveSingleSelectCityPage({
+  const WaveSingleSelectCityPage({super.key, 
     this.appBarTitle = '',
     this.hotCityTitle = '',
     required this.hotCityList,
@@ -63,10 +63,10 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
   List<WaveSelectCityModel> _cityList = [];
 
   ///搜索框的高度
-  int _suspensionHeight = 40;
+  final int _suspensionHeight = 40;
 
   /// 热门的按钮高度
-  int _itemHeight = 50;
+  final int _itemHeight = 50;
 
   ///当前展示的文案信息
   String _suspensionTag = "";
@@ -96,9 +96,9 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
           .then((value) {
         Map countyMap = json.decode(value);
         List list = countyMap['china'];
-        list.forEach((value) {
+        for (var value in list) {
           _cityList.add(WaveSelectCityModel(name: value['name']));
-        });
+        }
         _handleList(_cityList);
         setState(() {});
       });
@@ -140,18 +140,18 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(left: 20, right: 10, top: 20, bottom: 0),
+          padding: const EdgeInsets.only(left: 20, right: 10, top: 20, bottom: 0),
           child: Text(
             widget.hotCityTitle ??
                 WaveIntl.of(context).localizedResource.recommandCity,
             textAlign: TextAlign.left,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w500,
             ),
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 0),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 0),
           child: Wrap(
             alignment: WrapAlignment.start,
             runAlignment: WrapAlignment.start,
@@ -159,20 +159,20 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
             children: hotCityList.map((e) {
               return OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.all(0),
-                  side: BorderSide(color: Color(0xFFF8F8F8), width: .5),
-                  backgroundColor: Color(0xFFF8F8F8),
+                  padding: const EdgeInsets.all(0),
+                  side: const BorderSide(color: Color(0xFFF8F8F8), width: .5),
+                  backgroundColor: const Color(0xFFF8F8F8),
                 ),
                 child: Container(
                   alignment: Alignment.center,
                   height: 36.0,
                   width: width,
-                  padding: EdgeInsets.all(0),
-                  color: Color(0xFFF8F8F8),
+                  padding: const EdgeInsets.all(0),
+                  color: const Color(0xFFF8F8F8),
                   child: Text(
                     e.name,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFF222222),
                       fontSize: WaveFonts.f12,
                       fontWeight: FontWeight.w400,
@@ -198,12 +198,12 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
     return Container(
       height: _suspensionHeight.toDouble(),
       padding: const EdgeInsets.only(left: 15.0),
-      color: Color(0xfff3f4f5),
+      color: const Color(0xfff3f4f5),
       alignment: Alignment.centerLeft,
       child: Text(
         '$susTag',
         softWrap: false,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14.0,
           color: Color(0xff999999),
         ),
@@ -262,11 +262,11 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
   ///定位当前 城市
   Widget _buildLocationBar(String locationText) {
     return Container(
-        padding: EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 10),
+        padding: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Icon(
+            const Icon(
               Icons.place,
               size: 20.0,
             ),
@@ -283,7 +283,7 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
             title: widget.appBarTitle ??
                 WaveIntl.of(context).localizedResource.selectCity),
         body: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Column(
             children: <Widget>[
               widget.locationText.isEmpty
@@ -292,7 +292,7 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
               widget.showSearchBar
                   ? _buildSearchBar()
                   : const SizedBox.shrink(),
-              Divider(
+              const Divider(
                 height: .0,
               ),
               _showCityStack
@@ -340,10 +340,10 @@ class _WaveSingleSelectCityPageState extends State<WaveSingleSelectCityPage> {
               width: 40.0,
               height: 40.0,
               decoration: BoxDecoration(
-                  color: Color(0x22222222),
+                  color: const Color(0x22222222),
                   borderRadius: BorderRadius.circular(5.0)),
               child: Text(hint,
-                  style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                  style: const TextStyle(color: Colors.white, fontSize: 20.0)),
             );
           },
         ));

@@ -57,7 +57,7 @@ class WaveSelectTagsWithInputPicker extends Dialog {
   final SelectTagWithInputValueGetter<WaveTagInputItemBean> onTagValueGetter;
 
   const WaveSelectTagsWithInputPicker(
-      {this.maxLength = 200,
+      {super.key, this.maxLength = 200,
       this.hintText,
       this.title = "",
       this.confirm,
@@ -153,7 +153,7 @@ class _WaveSelectTagsWithInputPickerWidgetState
     super.build(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Color(0x33999999),
+      backgroundColor: const Color(0x33999999),
       body: Container(
         alignment: Alignment.bottomCenter,
         child: WavePickerClipRRect(
@@ -197,7 +197,7 @@ class _WaveSelectTagsWithInputPickerWidgetState
       Container(
         color: Colors.white,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 220),
+          constraints: const BoxConstraints(maxHeight: 220),
           child: ListView(
             shrinkWrap: true,
             controller: ScrollController(keepScrollOffset: false),
@@ -228,20 +228,20 @@ class _WaveSelectTagsWithInputPickerWidgetState
       }
     }
 
-    this._sourceTags = tagItems;
+    _sourceTags = tagItems;
     // 重新排序，name 越长，越靠后
-    this._sourceTags.sort((left, right) {
+    _sourceTags.sort((left, right) {
       return (left.name.length).compareTo(right.name.length);
     });
 
     // 默认选中tags
-    this._selectedTags = tagSelectedItems;
+    _selectedTags = tagSelectedItems;
   }
 
   Widget _headerArea(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20, bottom: 20),
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -264,7 +264,7 @@ class _WaveSelectTagsWithInputPickerWidgetState
                 Navigator.of(context).pop();
               },
               child: Padding(
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 child: WaveUITools.getAssetImage(WaveAsset.iconPickerClose),
               ))
         ],
@@ -303,17 +303,17 @@ class _WaveSelectTagsWithInputPickerWidgetState
             .commonConfig
             .colorTextImportant;
     Color tagBackgroundColor =
-        widget.tagPickerBean?.tagBackgroundColor ?? Color(0xffF8F8F8);
+        widget.tagPickerBean?.tagBackgroundColor ?? const Color(0xffF8F8F8);
     Color selectedTagBackgroundColor =
         widget.tagPickerBean?.selectedTagBackgroundColor ??
             Get.theme.colorScheme.primary;
 
     return Container(
         color: Colors.white,
-        padding: EdgeInsets.only(left: 20, right: 10, bottom: 12),
+        padding: const EdgeInsets.only(left: 20, right: 10, bottom: 12),
         child: Wrap(
           spacing: 12.0,
-          children: this._sourceTags.map((choice) {
+          children: _sourceTags.map((choice) {
             bool selected = choice.isSelect;
             Color titleColor = selected ? selectedTagTitleColor : tagTitleColor;
             String textToDisplay = widget.onTagValueGetter!(choice);
@@ -325,12 +325,12 @@ class _WaveSelectTagsWithInputPickerWidgetState
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4.0)),
               padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.only(left: 8, right: 8),
+              labelPadding: const EdgeInsets.only(left: 8, right: 8),
               labelStyle: TextStyle(
                   color: titleColor,
                   fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
                   fontSize: widget.tagPickerBean!.tagTitleFontSize),
-              label: Container(
+              label: SizedBox(
                 width: preferredWidthWithText(textToDisplay),
                 child: Text(
                   textToDisplay,
@@ -350,16 +350,16 @@ class _WaveSelectTagsWithInputPickerWidgetState
   void _clickTag(bool selected, WaveTagInputItemBean tagName) {
     if (selected) {
       if (!widget.multiSelect) {
-        this._selectedTags.forEach((tagItem) {
+        for (var tagItem in _selectedTags) {
           tagItem.isSelect = false;
-        });
-        this._selectedTags.clear();
+        }
+        _selectedTags.clear();
       }
       tagName.isSelect = true;
-      this._selectedTags.add(tagName);
+      _selectedTags.add(tagName);
     } else {
       tagName.isSelect = false;
-      this._selectedTags.remove(tagName);
+      _selectedTags.remove(tagName);
     }
   }
 
@@ -368,10 +368,10 @@ class _WaveSelectTagsWithInputPickerWidgetState
       height: 100,
       color: Colors.white,
       child: Container(
-        margin: EdgeInsets.only(left: 20, right: 20),
-        padding: EdgeInsets.only(left: 20, right: 20, bottom: 16),
+        margin: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 16),
         decoration: BoxDecoration(
-          color: Color(0xfff8f8f8),
+          color: const Color(0xfff8f8f8),
           borderRadius: BorderRadius.circular(4),
         ),
         child: TextField(
@@ -414,13 +414,13 @@ class _WaveSelectTagsWithInputPickerWidgetState
       height: 72,
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
         child: GestureDetector(
           onTap: () {
             if (!isCommitBtnEnable()) return;
             if (widget.confirm != null) {
               widget.confirm!(
-                  context, this._selectedTags, _textEditingController!.text);
+                  context, _selectedTags, _textEditingController!.text);
             }
           },
           child: Container(
@@ -428,12 +428,12 @@ class _WaveSelectTagsWithInputPickerWidgetState
             decoration: BoxDecoration(
                 color: isCommitBtnEnable()
                     ? Get.theme.colorScheme.primary
-                    : Color(0xffcccccc),
-                borderRadius: BorderRadius.all(Radius.circular(4))),
+                    : const Color(0xffcccccc),
+                borderRadius: const BorderRadius.all(Radius.circular(4))),
             child: Center(
               child: Text(
                 WaveIntl.of(context).localizedResource.submit,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 16,
                     color: Colors.white,
                     fontWeight: FontWeight.w600),
@@ -447,14 +447,14 @@ class _WaveSelectTagsWithInputPickerWidgetState
 
   bool isCommitBtnEnable() {
     bool needExpend = false;
-    for (int i = 0; i < this._selectedTags.length; i++) {
-      WaveTagInputItemBean waveTagInputItemBean = this._selectedTags[i];
+    for (int i = 0; i < _selectedTags.length; i++) {
+      WaveTagInputItemBean waveTagInputItemBean = _selectedTags[i];
       if (true == waveTagInputItemBean.needExpend) {
         needExpend = true;
         break;
       }
     }
-    return this._selectedTags.isNotEmpty &&
+    return _selectedTags.isNotEmpty &&
         (needExpend ? _textEditingController!.text.isNotEmpty : true);
   }
 
@@ -462,8 +462,8 @@ class _WaveSelectTagsWithInputPickerWidgetState
     if (widget.forceShowTextInput) {
       return true;
     }
-    for (int i = 0; i < this._selectedTags.length; i++) {
-      WaveTagInputItemBean waveTagInputItemBean = this._selectedTags[i];
+    for (int i = 0; i < _selectedTags.length; i++) {
+      WaveTagInputItemBean waveTagInputItemBean = _selectedTags[i];
       if (true == waveTagInputItemBean.needExpend) {
         return true;
       }
@@ -510,7 +510,7 @@ class WaveTagsInputPickerConfig {
       this.tagBackgroundColor,
       this.selectedTagBackgroundColor,
       this.tagItemSource = const []}) {
-    this.tagTitleColor =
+    tagTitleColor =
         WaveThemeConfigurator.instance.getConfig().commonConfig.colorTextBase;
   }
 

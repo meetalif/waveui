@@ -5,6 +5,8 @@ import 'package:waveui/waveui.dart';
 
 //带右侧定位器的list页面
 abstract class BaseAZListViewPage extends StatefulWidget {
+  const BaseAZListViewPage({super.key});
+
   @override
   _BaseAZListViewPageState createState() => _BaseAZListViewPageState();
 
@@ -63,7 +65,7 @@ class _BaseAZListViewPageState extends State<BaseAZListViewPage> {
           future: widget.createFuture(),
           builder: (context, snapShot) {
             if (snapShot.connectionState == ConnectionState.waiting) {
-              return WavePageLoading();
+              return const WavePageLoading();
             }
 
             if (snapShot.connectionState == ConnectionState.done) {
@@ -127,7 +129,7 @@ class _BaseAZListViewPageState extends State<BaseAZListViewPage> {
   }
 
   Widget _buildSusWidget(String? susTag) {
-    return Container(
+    return SizedBox(
       height: widget.getSuspensionHeight(),
       child: widget.buildSuspensionWidget(susTag),
     );
@@ -162,7 +164,7 @@ class _BaseAZListViewPageState extends State<BaseAZListViewPage> {
           child: _buildSusWidget(susTag),
         ),
 
-        Container(
+        SizedBox(
           height: widget.getItemHeight(),
           child: widget.buildItemWidget(model),
         ),

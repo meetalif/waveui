@@ -69,20 +69,20 @@ class WaveTimeRangeWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) < 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
   State<StatefulWidget> createState() => _TimePickerWidgetState(
-      this.minDateTime,
-      this.maxDateTime,
-      this.initialStartDateTime,
-      this.initialEndDateTime,
-      this.minuteDivider);
+      minDateTime,
+      maxDateTime,
+      initialStartDateTime,
+      initialEndDateTime,
+      minuteDivider);
 }
 
 class _TimePickerWidgetState extends State<WaveTimeRangeWidget> {
@@ -105,50 +105,40 @@ class _TimePickerWidgetState extends State<WaveTimeRangeWidget> {
 
   void _initData(DateTime? minTime, DateTime? maxTime, DateTime? initStartTime,
       DateTime? initEndTime, int? minuteDivider) {
-    if (minTime == null) {
-      minTime = DateTime.parse(datePickerMinDatetime);
-    }
-    if (maxTime == null) {
-      maxTime = DateTime.parse(datePickerMaxDatetime);
-    }
+    minTime ??= DateTime.parse(datePickerMinDatetime);
+    maxTime ??= DateTime.parse(datePickerMaxDatetime);
     DateTime now = DateTime.now();
-    this._minTime = DateTime(now.year, now.month, now.day, minTime.hour,
+    _minTime = DateTime(now.year, now.month, now.day, minTime.hour,
         minTime.minute, minTime.second);
-    this._maxTime = DateTime(now.year, now.month, now.day, maxTime.hour,
+    _maxTime = DateTime(now.year, now.month, now.day, maxTime.hour,
         maxTime.minute, maxTime.second);
 
-    if (initStartTime == null) {
-      // init time is now
-      initStartTime = DateTime.now();
-    }
+    initStartTime ??= DateTime.now();
 
-    if (initEndTime == null) {
-      // init time is now
-      initEndTime = DateTime.now();
-    }
+    initEndTime ??= DateTime.now();
 
     if (minuteDivider == null || minuteDivider <= 0) {
-      this._minuteDivider = _defaultMinuteDivider;
+      _minuteDivider = _defaultMinuteDivider;
     } else {
-      this._minuteDivider = minuteDivider;
+      _minuteDivider = minuteDivider;
     }
 
-    this._currStartHour = initStartTime.hour;
-    this._hourRange = _calcHourRange();
-    this._currStartHour =
+    _currStartHour = initStartTime.hour;
+    _hourRange = _calcHourRange();
+    _currStartHour =
         min(max(_hourRange.first, _currStartHour), _hourRange.last);
 
-    this._currStartMinute = initStartTime.minute;
-    this._minuteRange = _calcMinuteRange();
-    this._currStartMinute =
+    _currStartMinute = initStartTime.minute;
+    _minuteRange = _calcMinuteRange();
+    _currStartMinute =
         min(max(_minuteRange.first, _currStartMinute), _minuteRange.last);
     _currStartMinute -= _currStartMinute % _minuteDivider;
 
-    this._currEndHour = initEndTime.hour;
-    this._currEndHour = min(_currEndHour, _hourRange.last);
+    _currEndHour = initEndTime.hour;
+    _currEndHour = min(_currEndHour, _hourRange.last);
 
-    this._currEndMinute = initEndTime.minute;
-    this._currEndMinute = min(_currEndMinute, _minuteRange.last);
+    _currEndMinute = initEndTime.minute;
+    _currEndMinute = min(_currEndMinute, _minuteRange.last);
     _currEndMinute -= _currEndMinute % _minuteDivider;
 
     _startSelectedDateTime = DateTime(
@@ -306,9 +296,7 @@ class _TimePickerWidgetState extends State<WaveTimeRangeWidget> {
     int minMinute = 0, maxMinute = 59;
     int minHour = _minTime.hour;
     int maxHour = _maxTime.hour;
-    if (currHour == null) {
-      currHour = _currStartHour;
-    }
+    currHour ??= _currStartHour;
 
     if (minHour == currHour) {
       // selected minimum hour, limit minute range
@@ -327,7 +315,7 @@ class _TimePickerWidgetState extends State<WaveTimeRangeWidget> {
       child: Container(
         height: widget.themeData!.pickerHeight,
         decoration: BoxDecoration(
-            border: Border(left: BorderSide.none, right: BorderSide.none),
+            border: const Border(left: BorderSide.none, right: BorderSide.none),
             color: widget.themeData!.backgroundColor),
         child: WavePicker.builder(
           backgroundColor: widget.themeData!.backgroundColor,

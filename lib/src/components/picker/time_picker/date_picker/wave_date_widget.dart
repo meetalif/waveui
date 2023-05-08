@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 enum ColumnType { year, month, day }
 
 /// Solar months of 31 days.
-const List<int> _solarMonthsOf31Days = const <int>[1, 3, 5, 7, 8, 10, 12];
+const List<int> _solarMonthsOf31Days = <int>[1, 3, 5, 7, 8, 10, 12];
 
 /// DatePicker widget.
 
@@ -33,11 +33,11 @@ class WaveDateWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) < 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   final DateTime? minDateTime, maxDateTime, initialDateTime;
@@ -51,7 +51,7 @@ class WaveDateWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _WaveDateWidgetState(
-      this.minDateTime, this.maxDateTime, this.initialDateTime);
+      minDateTime, maxDateTime, initialDateTime);
 }
 
 class _WaveDateWidgetState extends State<WaveDateWidget> {
@@ -71,25 +71,25 @@ class _WaveDateWidgetState extends State<WaveDateWidget> {
       DateTime? minDateTime, DateTime? maxDateTime, DateTime? initialDateTime) {
     // handle current selected year、month、day
     DateTime initDateTime = initialDateTime ?? DateTime.now();
-    this._currYear = initDateTime.year;
-    this._currMonth = initDateTime.month;
-    this._currDay = initDateTime.day;
+    _currYear = initDateTime.year;
+    _currMonth = initDateTime.month;
+    _currDay = initDateTime.day;
 
     // handle DateTime range
-    this._minDateTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
-    this._maxDateTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
+    _minDateTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
+    _maxDateTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
 
     // limit the range of year
-    this._yearRange = _calcYearRange();
-    this._currYear = min(max(_minDateTime.year, _currYear), _maxDateTime.year);
+    _yearRange = _calcYearRange();
+    _currYear = min(max(_minDateTime.year, _currYear), _maxDateTime.year);
 
     // limit the range of month
-    this._monthRange = _calcMonthRange();
-    this._currMonth = min(max(_monthRange.first, _currMonth), _monthRange.last);
+    _monthRange = _calcMonthRange();
+    _currMonth = min(max(_monthRange.first, _currMonth), _monthRange.last);
 
     // limit the range of day
-    this._dayRange = _calcDayRange();
-    this._currDay = min(max(_dayRange.first, _currDay), _dayRange.last);
+    _dayRange = _calcDayRange();
+    _currDay = min(max(_dayRange.first, _currDay), _dayRange.last);
 
     // create scroll controller
     _yearScrollCtrl =
@@ -186,7 +186,7 @@ class _WaveDateWidgetState extends State<WaveDateWidget> {
     List<Widget> pickers = [];
     List<String> formatArr =
         DateTimeFormatter.splitDateFormat(widget.dateFormat);
-    formatArr.forEach((format) {
+    for (var format in formatArr) {
       List<int> valueRange = _findPickerItemRange(format)!;
 
       Widget pickerColumn = _renderDatePickerColumnComponent(
@@ -204,7 +204,7 @@ class _WaveDateWidgetState extends State<WaveDateWidget> {
         },
       );
       pickers.add(pickerColumn);
-    });
+    }
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween, children: pickers);
   }
@@ -389,9 +389,7 @@ class _WaveDateWidgetState extends State<WaveDateWidget> {
     int maxYear = _maxDateTime.year;
     int minMonth = _minDateTime.month;
     int maxMonth = _maxDateTime.month;
-    if (currMonth == null) {
-      currMonth = _currMonth;
-    }
+    currMonth ??= _currMonth;
     if (minYear == _currYear && minMonth == currMonth) {
       // selected minimum year and month, limit day range
       minDay = _minDateTime.day;

@@ -2,6 +2,7 @@ import 'package:waveui/src/components/selectcity/wave_az_common.dart';
 
 class WaveSelectCityModel extends ISuspensionBean {
   /// 城市名称
+  @override
   String name = "";
 
   /// 城市名称前这是的标记符号
@@ -10,6 +11,7 @@ class WaveSelectCityModel extends ISuspensionBean {
   /// 拼音
   String? namePinyin;
 
+  @override
   String tag = "";
 
   /// 城市编码
@@ -36,5 +38,5 @@ class WaveSelectCityModel extends ISuspensionBean {
   String getSuspensionTag() => tagIndex;
 
   @override
-  String toString() => "CityBean {" + " \"name\":\"" + name + "\"" + '}';
+  String toString() => "CityBean {" " \"name\":\"" + name + "\"" + '}';
 }

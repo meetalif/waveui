@@ -235,8 +235,8 @@ class DateTimeFormatter {
   static String _formatNumber(int value, String format, String unit) {
     if (format.contains('$unit$unit')) {
       return format.replaceAll('$unit$unit', value.toString().padLeft(2, '0'));
-    } else if (format.contains('$unit')) {
-      return format.replaceAll('$unit', value.toString());
+    } else if (format.contains(unit)) {
+      return format.replaceAll(unit, value.toString());
     }
     return value.toString();
   }

@@ -66,7 +66,7 @@ class WaveMultiSelectDialog extends Dialog {
   /// 是否展示底部操作区域 默认true展示
   final bool isShowOperateWidget;
 
-  WaveMultiSelectDialog({
+  const WaveMultiSelectDialog({super.key, 
     this.isClose = true,
     this.title = "",
     required this.conditions,
@@ -136,7 +136,7 @@ class MultiSelect extends StatefulWidget {
   /// 是否展示底部操作区域
   final bool isShowOperateWidget;
 
-  MultiSelect({
+  const MultiSelect({super.key, 
     this.isClose = true,
     this.title,
     this.messageText,
@@ -166,22 +166,22 @@ class MultiSelectPickerWidgetState extends State<MultiSelect> {
         children: <Widget>[
           _generateContentWidget(),
           Container(
-            constraints: BoxConstraints(maxHeight: 300),
+            constraints: const BoxConstraints(maxHeight: 300),
             child: widget.isCustomFollowScroll
                 ? SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
                         ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) =>
                                 _buildItem(context, index),
                             itemCount: widget.conditions.length),
                         widget.customWidget != null
                             ? Container(
-                                child: widget.customWidget,
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     left: 20, right: 20, top: 12),
+                                child: widget.customWidget,
                               )
                             : const SizedBox.shrink(),
                       ],
@@ -197,9 +197,9 @@ class MultiSelectPickerWidgetState extends State<MultiSelect> {
                       ),
                       widget.customWidget != null
                           ? Container(
-                              child: widget.customWidget,
                               padding:
-                                  EdgeInsets.only(left: 20, right: 20, top: 12),
+                                  const EdgeInsets.only(left: 20, right: 20, top: 12),
+                              child: widget.customWidget,
                             )
                           : const SizedBox.shrink(),
                     ],
@@ -232,14 +232,14 @@ class MultiSelectPickerWidgetState extends State<MultiSelect> {
   Widget _generateContentWidget() {
     if (widget.messageWidget != null) {
       return Padding(
-        padding: EdgeInsets.only(bottom: 8, left: 20, right: 20),
+        padding: const EdgeInsets.only(bottom: 8, left: 20, right: 20),
         child: widget.messageWidget,
       );
     }
 
     if (!WaveUITools.isEmpty(widget.messageText)) {
       return Padding(
-        padding: EdgeInsets.only(bottom: 8, left: 20, right: 20),
+        padding: const EdgeInsets.only(bottom: 8, left: 20, right: 20),
         child: Text(
           widget.messageText!,
           style: WaveThemeConfigurator.instance
@@ -268,7 +268,7 @@ class MultiSelectPickerWidgetState extends State<MultiSelect> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -295,7 +295,7 @@ class MultiSelectPickerWidgetState extends State<MultiSelect> {
               ),
             ),
             index != widget.conditions.length - 1
-                ? Padding(
+                ? const Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: WaveLine())
                 : const SizedBox.shrink()

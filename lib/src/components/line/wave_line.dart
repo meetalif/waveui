@@ -31,7 +31,7 @@ class WaveLine extends StatelessWidget {
   /// 右边缩进距离
   final double rightInset;
 
-  WaveLine({
+  const WaveLine({
     Key? key,
     this.color,
     this.height = 1,
@@ -42,11 +42,11 @@ class WaveLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: this.leftInset, right: this.rightInset),
+      padding: EdgeInsets.only(left: leftInset, right: rightInset),
       child: Divider(
-        thickness: this.height,
-        height: this.height,
-        color: this.color ?? Get.theme.dividerColor,
+        thickness: height,
+        height: height,
+        color: color ?? Get.theme.dividerColor,
       ),
     );
   }

@@ -58,8 +58,8 @@ class WaveDashedLine extends StatelessWidget {
   /// 分割线所在位置，默认值[_normalPosition]
   final WaveDashedLinePosition position;
 
-  WaveDashedLine({
-    Key? key,
+  const WaveDashedLine({
+    super.key,
     required this.contentWidget,
     this.axis = _normalAxis,
     this.dashedLength = _normalDashedLength,
@@ -74,14 +74,14 @@ class WaveDashedLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: WaveDashedPainter(
-          axis: this.axis,
-          dashedLength: this.dashedLength,
-          dashedThickness: this.dashedThickness,
-          dashedSpacing: this.dashedSpacing,
-          color: this.color,
-          dashedOffset: this.dashedOffset,
-          position: this.position),
-      child: this.contentWidget,
+          axis: axis,
+          dashedLength: dashedLength,
+          dashedThickness: dashedThickness,
+          dashedSpacing: dashedSpacing,
+          color: color,
+          dashedOffset: dashedOffset,
+          position: position),
+      child: contentWidget,
     );
   }
 }
@@ -121,9 +121,9 @@ class WaveDashedPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint() // 创建一个画笔并配置其属性
-      ..strokeWidth = this.dashedThickness // 画笔的宽度
+      ..strokeWidth = dashedThickness // 画笔的宽度
       ..isAntiAlias = true // 是否抗锯齿
-      ..color = this.color ??
+      ..color = color ??
           WaveThemeConfigurator.instance
               .getConfig()
               .commonConfig
@@ -131,47 +131,47 @@ class WaveDashedPainter extends CustomPainter {
 
     var maxWidth = size.width; // size获取到宽度
     var maxHeight = size.height; // size获取到宽度
-    if (this.axis == Axis.horizontal) {
+    if (axis == Axis.horizontal) {
       // 水平方向
       double startX = 0;
-      final space = (this.dashedSpacing + this.dashedLength);
+      final space = (dashedSpacing + dashedLength);
       double height = 0;
-      if (this.position == WaveDashedLinePosition.leading) {
+      if (position == WaveDashedLinePosition.leading) {
         // 头部
-        height = dashedOffset! + this.dashedThickness / 2;
+        height = dashedOffset! + dashedThickness / 2;
       } else {
         // 尾部
-        height = size.height - dashedOffset! - this.dashedThickness / 2;
+        height = size.height - dashedOffset! - dashedThickness / 2;
       }
       while (startX < maxWidth) {
-        if ((maxWidth - startX) < this.dashedLength) {
+        if ((maxWidth - startX) < dashedLength) {
           canvas.drawLine(Offset(startX, height),
               Offset(startX + (maxWidth - startX), height), paint);
         } else {
           canvas.drawLine(Offset(startX, height),
-              Offset(startX + this.dashedLength, height), paint);
+              Offset(startX + dashedLength, height), paint);
         }
         startX += space;
       }
     } else {
       // 垂直方向
       double startY = 0;
-      final space = (this.dashedSpacing + this.dashedLength);
+      final space = (dashedSpacing + dashedLength);
       double width = 0;
-      if (this.position == WaveDashedLinePosition.leading) {
+      if (position == WaveDashedLinePosition.leading) {
         // 头部
-        width = dashedOffset! + this.dashedThickness / 2;
+        width = dashedOffset! + dashedThickness / 2;
       } else {
         // 尾部
-        width = size.width - dashedOffset! - this.dashedThickness / 2;
+        width = size.width - dashedOffset! - dashedThickness / 2;
       }
       while (startY < maxHeight) {
-        if ((maxHeight - startY) < this.dashedLength) {
+        if ((maxHeight - startY) < dashedLength) {
           canvas.drawLine(Offset(width, startY),
               Offset(width, startY + (maxHeight - startY)), paint);
         } else {
           canvas.drawLine(Offset(width, startY),
-              Offset(width, startY + this.dashedLength), paint);
+              Offset(width, startY + dashedLength), paint);
         }
         startY += space;
       }

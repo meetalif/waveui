@@ -47,7 +47,7 @@ class WaveTipInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color borderColor =
-        mode == GuideMode.force ? Colors.transparent : Color(0xFFCCCCCC);
+        mode == GuideMode.force ? Colors.transparent : const Color(0xFFCCCCCC);
     if (direction == GuideDirection.bottomLeft ||
         direction == GuideDirection.bottomRight) {
       return Column(
@@ -62,7 +62,7 @@ class WaveTipInfoWidget extends StatelessWidget {
                 ? EdgeInsets.only(right: arrowPadding ?? 12)
                 : EdgeInsets.only(left: arrowPadding ?? 12),
             child: CustomPaint(
-              size: Size(14.0, 6.0),
+              size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
                 direction: Direction.top,
                 borderColor: borderColor,
@@ -85,7 +85,7 @@ class WaveTipInfoWidget extends StatelessWidget {
                 ? EdgeInsets.only(right: arrowPadding ?? 12)
                 : EdgeInsets.only(left: arrowPadding ?? 12),
             child: CustomPaint(
-              size: Size(14.0, 6.0),
+              size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
                   borderColor: borderColor, direction: Direction.bottom),
             ),
@@ -101,9 +101,9 @@ class WaveTipInfoWidget extends StatelessWidget {
           _buildContent(context),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.only(top: 12),
+            padding: const EdgeInsets.only(top: 12),
             child: CustomPaint(
-              size: Size(6.0, 14.0),
+              size: const Size(6.0, 14.0),
               painter: CustomTrianglePainter(
                   borderColor: borderColor, direction: Direction.right),
             ),
@@ -120,9 +120,9 @@ class WaveTipInfoWidget extends StatelessWidget {
           _buildContent(context),
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 12),
+            padding: const EdgeInsets.only(top: 12),
             child: CustomPaint(
-              size: Size(6, 14.0),
+              size: const Size(6, 14.0),
               painter: CustomTrianglePainter(
                 direction: Direction.left,
                 borderColor: borderColor,
@@ -132,13 +132,13 @@ class WaveTipInfoWidget extends StatelessWidget {
         ],
       );
     }
-    return Row();
+    return const Row();
   }
 
   Widget _buildContent(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               blurRadius: 5.0, //阴影模糊程度
               offset: Offset(0, 2),
@@ -148,10 +148,10 @@ class WaveTipInfoWidget extends StatelessWidget {
         color: Colors.white,
         border: mode == GuideMode.force
             ? null
-            : Border.all(color: Color(0xFFCCCCCC), width: 0.5),
+            : Border.all(color: const Color(0xFFCCCCCC), width: 0.5),
       ),
       width: width,
-      padding: EdgeInsets.only(left: 16, right: 16, bottom: 14),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 14),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -167,10 +167,10 @@ class WaveTipInfoWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    if (info.imgUrl.isEmpty) return Row();
+    if (info.imgUrl.isEmpty) return const Row();
     double imageSize = width - 16;
     return Padding(
-      padding: EdgeInsets.only(top: 14),
+      padding: const EdgeInsets.only(top: 14),
       child: Image.network(info.imgUrl,
           width: imageSize, height: imageSize, fit: BoxFit.cover),
     );
@@ -179,7 +179,7 @@ class WaveTipInfoWidget extends StatelessWidget {
   Widget buildTitle() {
     return Container(
       height: 18,
-      margin: EdgeInsets.only(top: 14),
+      margin: const EdgeInsets.only(top: 14),
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -187,8 +187,8 @@ class WaveTipInfoWidget extends StatelessWidget {
             left: 0,
             bottom: 0,
             child: Text(
-              "${info.title}",
-              style: TextStyle(
+              info.title,
+              style: const TextStyle(
                   fontSize: 14,
                   color: Color(0XFF222222),
                   fontWeight: FontWeight.w600),
@@ -199,7 +199,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: onClose == null
-                ? Row()
+                ? const Row()
                 : GestureDetector(
                     onTap: () {
                       onClose!();
@@ -214,20 +214,20 @@ class WaveTipInfoWidget extends StatelessWidget {
   }
 
   Widget buildMessage() {
-    if (info.message.isEmpty) return Row();
+    if (info.message.isEmpty) return const Row();
     return Padding(
-      padding: EdgeInsets.only(top: 6),
-      child: Text('${info.message}',
-          style: TextStyle(fontSize: 14, color: Color(0xFF999999), height: 1.3),
+      padding: const EdgeInsets.only(top: 6),
+      child: Text(info.message,
+          style: const TextStyle(fontSize: 14, color: Color(0xFF999999), height: 1.3),
           maxLines: 3),
     );
   }
 
   Widget _buildSoftBottom(BuildContext context) {
-    if (onNext == null && onSkip == null) return Row();
+    if (onNext == null && onSkip == null) return const Row();
     return Container(
       height: 32,
-      margin: EdgeInsets.only(top: 12),
+      margin: const EdgeInsets.only(top: 12),
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -246,11 +246,11 @@ class WaveTipInfoWidget extends StatelessWidget {
                         child: Text(
                           '${WaveIntl.of(context).localizedResource.skip} (${currentStepIndex + 1}/$stepCount)',
                           style:
-                              TextStyle(color: Color(0xFF999999), fontSize: 14),
+                              const TextStyle(color: Color(0xFF999999), fontSize: 14),
                         ),
                       ),
                     ))
-                : Row(),
+                : const Row(),
           ),
           Positioned(
             top: 0,
@@ -260,7 +260,7 @@ class WaveTipInfoWidget extends StatelessWidget {
                 ? GestureDetector(
                     onTap: () {},
                     child: Container(
-                      padding: EdgeInsets.only(left: 14, right: 14),
+                      padding: const EdgeInsets.only(left: 14, right: 14),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
                         color: Get.theme.colorScheme.primary,
@@ -277,12 +277,12 @@ class WaveTipInfoWidget extends StatelessWidget {
                                   : WaveIntl.of(context)
                                       .localizedResource
                                       .next),
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ),
                     ),
                   )
-                : Row(),
+                : const Row(),
           )
         ],
       ),
@@ -290,10 +290,10 @@ class WaveTipInfoWidget extends StatelessWidget {
   }
 
   Widget _buildForceBottom(BuildContext context) {
-    if (onNext == null && onSkip == null) return Row();
+    if (onNext == null && onSkip == null) return const Row();
     return Container(
       height: 20,
-      margin: EdgeInsets.only(top: 12),
+      margin: const EdgeInsets.only(top: 12),
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -312,11 +312,11 @@ class WaveTipInfoWidget extends StatelessWidget {
                         child: Text(
                           '${WaveIntl.of(context).localizedResource.skip} (${currentStepIndex + 1}/$stepCount)',
                           style:
-                              TextStyle(color: Color(0xFF999999), fontSize: 14),
+                              const TextStyle(color: Color(0xFF999999), fontSize: 14),
                         ),
                       ),
                     ))
-                : Row(),
+                : const Row(),
           ),
           Positioned(
             top: 0,
@@ -345,7 +345,7 @@ class WaveTipInfoWidget extends StatelessWidget {
                       ),
                     ),
                   )
-                : Row(),
+                : const Row(),
           )
         ],
       ),

@@ -50,12 +50,15 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
             themeData: themeData);
 
   /// 父类属性
+  @override
   final BuildContext context;
 
   /// 点击提交功能
+  @override
   final ValueChanged onConfirm;
 
   /// 点击取消按钮
+  @override
   final VoidCallback? onCancel;
 
   /// 当点击到最大数目时的点击事件
@@ -95,15 +98,15 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
 
   @override
   Object getConfirmData() {
-    return this._selectedTags;
+    return _selectedTags;
   }
 
   @override
   Widget createBuilder(BuildContext context, VoidCallback? onUpdate) {
-    if (this.tagPickerConfig.tagItemSource.isNotEmpty) {
+    if (tagPickerConfig.tagItemSource.isNotEmpty) {
       return _buildContent(context, onUpdate);
     } else {
-      return Container(
+      return SizedBox(
         height: 200,
         child: Center(
           child: Text(WaveIntl.of(context).localizedResource.noTagDataTip),
@@ -113,7 +116,7 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
   }
 
   Widget _buildContent(BuildContext context, VoidCallback? onUpdate) {
-    if (this.layoutStyle == WaveMultiSelectTagsLayoutStyle.average) {
+    if (layoutStyle == WaveMultiSelectTagsLayoutStyle.average) {
       return LayoutBuilder(
         builder: (_, constraints) {
           double maxWidth = constraints.maxWidth;
@@ -129,28 +132,28 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
   Widget _buildGridViewWidget(
       BuildContext context, VoidCallback? onUpdate, double maxWidth) {
     int waveCrossAxisCount =
-        (this.crossAxisCount == null || this.crossAxisCount == 0)
+        (crossAxisCount == null || crossAxisCount == 0)
             ? 4
-            : this.crossAxisCount!;
+            : crossAxisCount!;
     double width =
         (maxWidth - (waveCrossAxisCount - 1) * 12 - 40) / waveCrossAxisCount;
     //计算宽高比
-    double waveChildAspectRatio = width / this.itemHeight;
-    Color selectedTagTitleColor = this.tagPickerConfig.selectedTagTitleColor ??
+    double waveChildAspectRatio = width / itemHeight;
+    Color selectedTagTitleColor = tagPickerConfig.selectedTagTitleColor ??
         Get.theme.colorScheme.primary;
-    Color tagTitleColor = this.tagPickerConfig.tagTitleColor ??
+    Color tagTitleColor = tagPickerConfig.tagTitleColor ??
         WaveThemeConfigurator.instance
             .getConfig()
             .commonConfig
             .colorTextImportant;
     Color tagBackgroundColor =
-        this.tagPickerConfig.tagBackgroudColor ?? Color(0xffF8F8F8);
+        tagPickerConfig.tagBackgroudColor ?? const Color(0xffF8F8F8);
     Color selectedTagBackgroundColor =
-        this.tagPickerConfig.selectedTagBackgroudColor ??
+        tagPickerConfig.selectedTagBackgroudColor ??
             Get.theme.colorScheme.primary.withAlpha(0x14);
     return Container(
-      padding: EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0, bottom: 0.0),
-      constraints: BoxConstraints(maxHeight: 322, minHeight: 120),
+      padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0, bottom: 0.0),
+      constraints: const BoxConstraints(maxHeight: 322, minHeight: 120),
       child: GridView.count(
         shrinkWrap: true,
         crossAxisCount: waveCrossAxisCount,
@@ -162,13 +165,13 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
         childAspectRatio: waveChildAspectRatio,
         //GridView内边距
         padding:
-            EdgeInsets.only(top: 20.0, left: 0.0, right: 0.0, bottom: 20.0),
+            const EdgeInsets.only(top: 20.0, left: 0.0, right: 0.0, bottom: 20.0),
         primary: true,
-        children: this._sourceTags.map((choice) {
+        children: _sourceTags.map((choice) {
           bool selected = choice.isSelect;
           Color titleColor = selected ? selectedTagTitleColor : tagTitleColor;
-          EdgeInsets edgeInsets = this.tagPickerConfig.chipPadding ??
-              EdgeInsets.only(top: 9.0, left: 10.0, right: 10, bottom: 11.0);
+          EdgeInsets edgeInsets = tagPickerConfig.chipPadding ??
+              const EdgeInsets.only(top: 9.0, left: 10.0, right: 10, bottom: 11.0);
           return ChoiceChip(
             selected: selected,
             padding: edgeInsets,
@@ -177,27 +180,27 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
             selectedColor: selectedTagBackgroundColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0)),
-            label: Container(
+            label: SizedBox(
               width: width,
               child: Text(
                 onTagValueGetter(choice),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                strutStyle: StrutStyle(forceStrutHeight: true, height: 1),
+                strutStyle: const StrutStyle(forceStrutHeight: true, height: 1),
                 style: TextStyle(
                     height: 1,
                     color: titleColor,
                     fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-                    fontSize: this.tagPickerConfig.tagTitleFontSize),
+                    fontSize: tagPickerConfig.tagTitleFontSize),
               ),
             ),
             onSelected: (bool value) {
-              if (_selectedTags.length >= this.maxSelectItemCount &&
-                  this.maxSelectItemCount > 0 &&
+              if (_selectedTags.length >= maxSelectItemCount &&
+                  maxSelectItemCount > 0 &&
                   value == true) {
-                if (this.onMaxSelectClick != null) {
+                if (onMaxSelectClick != null) {
                   // ignore: unnecessary_statements
-                  this.onMaxSelectClick!();
+                  onMaxSelectClick!();
                 }
                 return;
               }
@@ -219,30 +222,30 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
     tagConfig = tagConfig.merge(WaveTagConfig(
         selectTagTextStyle: WaveTextStyle(
             height: 1,
-            color: this.tagPickerConfig.selectedTagTitleColor,
-            fontSize: this.tagPickerConfig.tagTitleFontSize,
+            color: tagPickerConfig.selectedTagTitleColor,
+            fontSize: tagPickerConfig.tagTitleFontSize,
             fontWeight: FontWeight.w600),
         tagTextStyle: WaveTextStyle(
             height: 1,
-            color: this.tagPickerConfig.tagTitleColor,
-            fontSize: this.tagPickerConfig.tagTitleFontSize,
+            color: tagPickerConfig.tagTitleColor,
+            fontSize: tagPickerConfig.tagTitleFontSize,
             fontWeight: FontWeight.w400),
-        tagBackgroundColor: this.tagPickerConfig.tagBackgroudColor,
+        tagBackgroundColor: tagPickerConfig.tagBackgroudColor,
         selectedTagBackgroundColor:
-            this.tagPickerConfig.selectedTagBackgroudColor));
+            tagPickerConfig.selectedTagBackgroudColor));
 
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Wrap(
           spacing: 15.0,
           runSpacing: 15.0,
-          children: this._sourceTags.map((choice) {
+          children: _sourceTags.map((choice) {
             bool selected = choice.isSelect;
             Color titleColor = selected
                 ? tagConfig.selectTagTextStyle.color!
                 : tagConfig.tagTextStyle.color!;
-            EdgeInsets edgeInsets = this.tagPickerConfig.chipPadding ??
-                EdgeInsets.only(top: 9.0, left: 10.0, right: 10, bottom: 11.0);
+            EdgeInsets edgeInsets = tagPickerConfig.chipPadding ??
+                const EdgeInsets.only(top: 9.0, left: 10.0, right: 10, bottom: 11.0);
             return ChoiceChip(
               selected: selected,
               padding: edgeInsets,
@@ -255,20 +258,20 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
                 onTagValueGetter(choice),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                strutStyle: StrutStyle(forceStrutHeight: true, height: 1),
+                strutStyle: const StrutStyle(forceStrutHeight: true, height: 1),
                 style: TextStyle(
                     height: 1,
                     color: titleColor,
                     fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-                    fontSize: this.tagPickerConfig.tagTitleFontSize),
+                    fontSize: tagPickerConfig.tagTitleFontSize),
               ),
               onSelected: (bool value) {
-                if (_selectedTags.length >= this.maxSelectItemCount &&
-                    this.maxSelectItemCount > 0 &&
+                if (_selectedTags.length >= maxSelectItemCount &&
+                    maxSelectItemCount > 0 &&
                     value == true) {
-                  if (this.onMaxSelectClick != null) {
+                  if (onMaxSelectClick != null) {
                     // ignore: unnecessary_statements
-                    this.onMaxSelectClick!();
+                    onMaxSelectClick!();
                   }
                   return;
                 }
@@ -283,32 +286,32 @@ class WaveMultiSelectTagsPicker extends CommonTagsPicker {
   void _dataSetup() {
     List<WaveTagItemBean> tagItems = [];
     List<WaveTagItemBean> tagSelectItems = [];
-    for (WaveTagItemBean item in this.tagPickerConfig.tagItemSource) {
+    for (WaveTagItemBean item in tagPickerConfig.tagItemSource) {
       tagItems.add(item);
       //选中的按钮
       if (item.isSelect == true) {
         tagSelectItems.add(item);
       }
     }
-    this._sourceTags = tagItems;
+    _sourceTags = tagItems;
 
     // 默认选中tags
-    this._selectedTags = tagSelectItems;
+    _selectedTags = tagSelectItems;
   }
 
   ///每一个item的点击事件
   void _clickTag(bool selected, WaveTagItemBean tagName) {
     if (selected) {
       tagName.isSelect = true;
-      this._selectedTags.add(tagName);
+      _selectedTags.add(tagName);
     } else {
       tagName.isSelect = false;
-      this._selectedTags.remove(tagName);
+      _selectedTags.remove(tagName);
     }
 
     ///点击tag
-    if (this.onItemClick != null) {
-      this.onItemClick!(tagName, selected);
+    if (onItemClick != null) {
+      onItemClick!(tagName, selected);
     }
   }
 }

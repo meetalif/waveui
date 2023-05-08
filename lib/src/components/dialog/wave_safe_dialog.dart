@@ -13,7 +13,7 @@ class WaveSafeDialog {
   static const String _safeDialogDefaultTag = '_safeDialogDefaultTag';
 
   ///According to the tag to distinguish the queue status of a certain type of Dialog
-  static Map<String, List<_SafeDialogRoute>> _dialogStates = {};
+  static final Map<String, List<_SafeDialogRoute>> _dialogStates = {};
 ///Used to close a Dialog, only remove the last Dialog in the corresponding tag list
   ///[tag]: Dialog used to remove the corresponding tag
   ///
@@ -28,10 +28,10 @@ class WaveSafeDialog {
     List<_SafeDialogRoute> typeStates = (_dialogStates[tag] ??= []);
     if (typeStates. isNotEmpty) {
       try {
-_SafeDialogRoute _safeDialogRoute = typeStates. removeLast();
-        Navigator. removeRoute(context, _safeDialogRoute);
-        if (!_safeDialogRoute.completer.isCompleted) {
-          _safeDialogRoute.completer.complete(result);
+_SafeDialogRoute safeDialogRoute = typeStates. removeLast();
+        Navigator. removeRoute(context, safeDialogRoute);
+        if (!safeDialogRoute.completer.isCompleted) {
+          safeDialogRoute.completer.complete(result);
         }
       } catch (e) {
         ///TODO may throw an exception, directly print to the log area

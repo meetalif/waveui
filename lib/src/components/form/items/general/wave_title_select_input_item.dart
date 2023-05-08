@@ -126,13 +126,12 @@ class WaveTitleSelectInputFormItem extends StatefulWidget {
       this.controller,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -164,7 +163,7 @@ class WaveTitleSelectInputFormItemState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -210,7 +209,7 @@ class WaveTitleSelectInputFormItemState
   Widget _buildMenuWidget() {
     return Container(
         key: _globalKey,
-        padding: EdgeInsets.only(right: 4),
+        padding: const EdgeInsets.only(right: 4),
         child: GestureDetector(
           onTap: () {
             if (!widget.isEdit) {
@@ -279,7 +278,7 @@ class WaveTitleSelectInputFormItemState
   }
 
   Widget _buildTriangle() {
-    return Container(
+    return SizedBox(
       height: 14,
       width: 14,
       child: StreamBuilder<bool>(
@@ -310,18 +309,18 @@ class WaveTitleSelectInputFormItemState
       keyboardType: WaveFormUtil.getInputType(widget.inputType),
       decoration: InputDecoration(
         border: InputBorder.none,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
             color: Color(0xFFCCCCCC),
             fontSize: WaveFonts.f16,
             textBaseline: TextBaseline.alphabetic),
         hintText:
             widget.hint ?? WaveIntl.of(context).localizedResource.pleaseEnter,
         counterText: "",
-        contentPadding: EdgeInsets.all(0),
+        contentPadding: const EdgeInsets.all(0),
         isDense: true,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent)),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent)),
       ),
     );
@@ -354,7 +353,7 @@ class TitleSelectPopWidget extends StatefulWidget {
   WaveFormItemConfig? themeData;
 
   TitleSelectPopWidget(
-      {required this.selectList,
+      {super.key, required this.selectList,
       this.selectedIndex,
       required this.selectCallback,
       this.themeData});
@@ -371,7 +370,7 @@ class _TitleSelectPopWidgetState extends State<TitleSelectPopWidget> {
       showList.add(selectItem(widget.selectList[i], i, i == n - 1));
     }
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -383,7 +382,7 @@ class _TitleSelectPopWidgetState extends State<TitleSelectPopWidget> {
         color: Colors.white,
         border: Border.all(
             color: widget.themeData!.commonConfig.dividerColorBase, width: 0.5),
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -409,9 +408,9 @@ class _TitleSelectPopWidgetState extends State<TitleSelectPopWidget> {
         Navigator.of(context).pop();
       },
       child: Padding(
-        padding: EdgeInsets.only(left: 0, right: 0, top: 8),
+        padding: const EdgeInsets.only(left: 0, right: 0, top: 8),
         child: Container(
-          padding: EdgeInsets.only(left: 0, right: 0, bottom: 8),
+          padding: const EdgeInsets.only(left: 0, right: 0, bottom: 8),
           decoration: BoxDecoration(
             border: Border(
                 bottom: BorderSide(

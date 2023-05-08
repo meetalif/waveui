@@ -82,7 +82,7 @@ class WaveCommonCardTitle extends StatelessWidget {
 
   final WaveCardTitleConfig? themeData;
 
-  WaveCommonCardTitle(
+  const WaveCommonCardTitle(
       {Key? key,
       required this.title,
       this.accessoryText,
@@ -130,14 +130,14 @@ class WaveCommonCardTitle extends StatelessWidget {
 
     Widget accessory = const SizedBox.shrink();
     // 左侧的文本的行高是25，那么右侧的widget最大为25
-    if (this.accessoryWidget != null) {
+    if (accessoryWidget != null) {
       accessory = Container(
         height: 25,
         alignment: Alignment.center,
-        padding: EdgeInsets.only(left: 4),
+        padding: const EdgeInsets.only(left: 4),
         child: accessoryWidget,
       );
-    } else if (this.accessoryText?.isNotEmpty ?? false) {
+    } else if (accessoryText?.isNotEmpty ?? false) {
       accessory = _accessoryTextWidget(defaultConfig);
     }
     children.add(accessory);
@@ -160,18 +160,18 @@ class WaveCommonCardTitle extends StatelessWidget {
     );
 
     return Container(
-      child: tx,
       height: 25,
-      padding: EdgeInsets.only(left: 4),
+      padding: const EdgeInsets.only(left: 4),
       alignment: Alignment.center,
+      child: tx,
     );
   }
 
   ///标题右侧的widget
   Widget _subTitleWidgetFromWidget() {
     return Padding(
+      padding: const EdgeInsets.only(left: 4),
       child: subTitleWidget,
-      padding: EdgeInsets.only(left: 4),
     );
   }
 
@@ -184,8 +184,8 @@ class WaveCommonCardTitle extends StatelessWidget {
     }
     var titleWidget = RichText(
       textScaleFactor: MediaQuery.of(context).textScaleFactor,
-      maxLines: this.titleMaxLines,
-      overflow: this.titleOverflow,
+      maxLines: titleMaxLines,
+      overflow: titleOverflow,
       text: TextSpan(
           text: title,
           style: defaultConfig.titleWithHeightTextStyle.generateTextStyle(),
@@ -219,8 +219,8 @@ class WaveCommonCardTitle extends StatelessWidget {
       style: defaultConfig.detailTextStyle.generateTextStyle(),
     );
     return Container(
+      padding: const EdgeInsets.only(top: 4),
       child: tx,
-      padding: EdgeInsets.only(top: 4),
     );
   }
 }

@@ -19,11 +19,11 @@ class WavePickerTitle extends StatelessWidget {
     this.pickerTitleConfig = WavePickerTitleConfig.Default,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -48,7 +48,7 @@ class WavePickerTitle extends StatelessWidget {
         children: <Widget>[
           Container(
             height: themeData!.titleHeight - 0.5,
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -60,7 +60,7 @@ class WavePickerTitle extends StatelessWidget {
                     child: _renderCancelWidget(context),
                   ),
                   onTap: () {
-                    this.onCancel();
+                    onCancel();
                   },
                 ),
                 Text(
@@ -76,7 +76,7 @@ class WavePickerTitle extends StatelessWidget {
                     child: _renderConfirmWidget(context),
                   ),
                   onTap: () {
-                    this.onConfirm();
+                    onConfirm();
                   },
                 ),
               ],

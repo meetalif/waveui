@@ -61,12 +61,12 @@ class _WaveSelectionSingleListWidgetState
       flex: widget.flex,
       child: Container(
         constraints: (widget.maxHeight == 0)
-            ? BoxConstraints.expand()
+            ? const BoxConstraints.expand()
             : BoxConstraints(maxHeight: widget.maxHeight),
         color: widget.backgroundColor,
         child: ListView.separated(
           shrinkWrap: true,
-          padding: EdgeInsets.only(top: 0),
+          padding: const EdgeInsets.only(top: 0),
           scrollDirection: Axis.vertical,
           itemCount: widget.items.length,
           separatorBuilder: (BuildContext context, int index) => Container(),

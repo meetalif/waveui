@@ -5,7 +5,7 @@ class ItemEntity {
 
   ItemEntity({this.key, this.name = '', this.value});
 
-  ItemEntity.fromJson(Map<String, dynamic> map) : this.name = '' {
+  ItemEntity.fromJson(Map<String, dynamic> map) : name = '' {
     key = map['key'] ?? '';
     name = map['title'] ?? '';
     value = map['value'] ?? '';

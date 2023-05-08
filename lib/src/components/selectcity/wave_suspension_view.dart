@@ -32,7 +32,7 @@ class SuspensionView extends StatefulWidget {
 
   final AzListViewHeader? header;
 
-  SuspensionView({
+  const SuspensionView({
     Key? key,
     required this.data,
     required this.contentWidget,
@@ -54,8 +54,8 @@ class _SuspensionWidgetState extends State<SuspensionView> {
   int _lastIndex = -1;
   late int _suSectionListLength;
 
-  List<int> _suspensionSectionList = [];
-  Map<String, int> _suspensionSectionMap = Map();
+  final List<int> _suspensionSectionList = [];
+  final Map<String, int> _suspensionSectionMap = {};
 
   @override
   void initState() {
@@ -74,11 +74,11 @@ class _SuspensionWidgetState extends State<SuspensionView> {
 
   void _handleScrollerListenerTick() {
     int offset = widget.controller.offset.toInt();
-    int _index = _getIndex(offset);
-    if (_index != -1 && _lastIndex != _index) {
-      _lastIndex = _index;
+    int index = _getIndex(offset);
+    if (index != -1 && _lastIndex != index) {
+      _lastIndex = index;
       if (widget.onSusTagChanged != null) {
-        widget.onSusTagChanged!(_suspensionSectionMap.keys.toList()[_index]);
+        widget.onSusTagChanged!(_suspensionSectionMap.keys.toList()[index]);
       }
     }
   }
@@ -124,15 +124,15 @@ class _SuspensionWidgetState extends State<SuspensionView> {
       _suspensionSectionMap[widget.header!.tag] = 0;
       offset = widget.header!.height;
     }
-    widget.data.forEach((v) {
+    for (var v in widget.data) {
       if (tag != v.tag) {
         tag = v.tag;
-        _suspensionSectionMap.putIfAbsent(tag!, () => offset);
+        _suspensionSectionMap.putIfAbsent(tag, () => offset);
         offset = offset + widget.suspensionHeight + widget.itemHeight;
       } else {
         offset = offset + widget.itemHeight;
       }
-    });
+    }
     _suspensionSectionList
       ..clear()
       ..addAll(_suspensionSectionMap.values);

@@ -117,9 +117,8 @@ class WaveTextQuickSelectFormItem extends StatefulWidget {
         .getConfig(configId: themeData!.configId)
         .formItemConfig
         .merge(themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -139,7 +138,7 @@ class WaveTextQuickSelectFormItemState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -203,7 +202,7 @@ class WaveTextQuickSelectFormItemState
           /// 快捷按钮区
           Container(
               height: 40,
-              padding: EdgeInsets.fromLTRB(20, 4, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
               child: QuickButtonsWidget(
                 btnsTxt: widget.btnsTxt,
                 selectBtnList: widget.selectBtnList,
@@ -251,7 +250,7 @@ class QuickButtonsWidget extends StatefulWidget {
   ValueChanged<int>? onBtnSelectChanged;
 
   QuickButtonsWidget({
-    Key? key,
+    super.key,
     this.btnsTxt,
     this.selectBtnList,
     this.enableBtnList,
@@ -295,18 +294,14 @@ class QuickButtonsState extends State<QuickButtonsWidget> {
       return;
     }
 
-    if (widget.btnsTxt == null) {
-      widget.btnsTxt = <String>[];
-    }
+    widget.btnsTxt ??= <String>[];
 
     if (widget.selectBtnList == null) {
       _useInnerStatus = true;
       widget.selectBtnList = List<bool>.filled(widget.btnsTxt!.length, false);
     }
 
-    if (widget.enableBtnList == null) {
-      widget.enableBtnList = List<bool>.filled(widget.btnsTxt!.length, true);
-    }
+    widget.enableBtnList ??= List<bool>.filled(widget.btnsTxt!.length, true);
   }
 
   Widget getQuickButtons() {
@@ -339,12 +334,12 @@ class QuickButtonsState extends State<QuickButtonsWidget> {
     for (int index = 0; index < widget.btnsTxt!.length; ++index) {
       String? str = widget.btnsTxt![index];
       result.add(Container(
-        padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+        padding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
         child: TextButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(getButtonColor(index)),
             overlayColor: MaterialStateProperty.all(Colors.transparent),
-            padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+            padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
           ),
           child: Text(
             str,
@@ -391,48 +386,48 @@ class QuickButtonsState extends State<QuickButtonsWidget> {
 
   Color getButtonColor(int index) {
     if (widget.btnsTxt != null && widget.btnsTxt!.isEmpty) {
-      return Color(0xFFF8F8F8);
+      return const Color(0xFFF8F8F8);
     }
 
     /// 这个按钮不可点击
     if (widget.enableBtnList != null &&
         index < widget.enableBtnList!.length &&
         !widget.enableBtnList![index]) {
-      return Color(0xFFF8F8F8);
+      return const Color(0xFFF8F8F8);
     }
 
     if (widget.selectBtnList != null &&
         index < widget.selectBtnList!.length &&
         widget.selectBtnList![index]) {
-      return Color(0x1F0984F9);
+      return const Color(0x1F0984F9);
     } else {
-      return Color(0xFFF8F8F8);
+      return const Color(0xFFF8F8F8);
     }
   }
 
   Color getBtnTextColor(int index) {
     if (widget.btnsTxt != null && widget.btnsTxt!.isEmpty) {
-      return Color(0xFF222222);
+      return const Color(0xFF222222);
     }
 
     /// 这个按钮不可点击
     if (widget.enableBtnList != null &&
         index < widget.enableBtnList!.length &&
         !widget.enableBtnList![index]) {
-      return Color(0xFF999999);
+      return const Color(0xFF999999);
     }
 
     if (widget.selectBtnList == null ||
         widget.selectBtnList!.length != widget.btnsTxt!.length) {
-      return Color(0xFF222222);
+      return const Color(0xFF222222);
     }
 
     if (widget.selectBtnList != null &&
         index < widget.selectBtnList!.length &&
         widget.selectBtnList![index]) {
-      return Color(0xFF0984F9);
+      return const Color(0xFF0984F9);
     } else {
-      return Color(0xFF222222);
+      return const Color(0xFF222222);
     }
   }
 }

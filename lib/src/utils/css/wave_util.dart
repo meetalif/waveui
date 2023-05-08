@@ -15,7 +15,7 @@ class WaveConvertUtil {
     hexColor = hexColor.toUpperCase().replaceAll('#', '');
     hexColor = hexColor.replaceAll('0X', '');
     if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
+      hexColor = 'FF$hexColor';
     }
 
     try {

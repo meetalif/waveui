@@ -45,7 +45,7 @@ class WaveTagCustom extends StatelessWidget {
   /// 标签边框
   final Border? border;
 
-  WaveTagCustom({
+  const WaveTagCustom({
     Key? key,
     required this.tagText,
     this.textColor,
@@ -72,12 +72,12 @@ class WaveTagCustom extends StatelessWidget {
     Color? textColor,
     Color? borderColor,
     double borderWidth = 1,
-  })  : this.maxWidth = double.infinity,
-        this.border = Border.all(
+  })  : maxWidth = double.infinity,
+        border = Border.all(
           color: borderColor ?? Get.theme.colorScheme.primary,
           width: borderWidth,
         ),
-        this.textColor = textColor ?? Get.theme.colorScheme.primary,
+        textColor = textColor ?? Get.theme.colorScheme.primary,
         super(key: key);
 
   @override

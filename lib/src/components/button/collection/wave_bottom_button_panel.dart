@@ -156,7 +156,7 @@ class WaveBottomButtonPanel extends StatelessWidget {
     rowChildren.add(btnListWidget);
 
     return Container(
-      padding: EdgeInsets.only(right: 20, left: 8, bottom: 18, top: 16),
+      padding: const EdgeInsets.only(right: 20, left: 8, bottom: 18, top: 16),
       color: Colors.white,
       child: Row(
         children: rowChildren,
@@ -182,7 +182,7 @@ class WaveBottomButtonPanel extends StatelessWidget {
 
   Widget _iconWidgetListWidget() {
     List<Widget> finalIconList = iconButtonList!.map((wdt) {
-      return Padding(padding: EdgeInsets.only(left: 0), child: wdt);
+      return Padding(padding: const EdgeInsets.only(left: 0), child: wdt);
     }).toList();
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -202,15 +202,15 @@ class WaveBottomButtonPanel extends StatelessWidget {
           },
           child: Container(
               height: 48,
-              padding: EdgeInsets.only(left: 8, right: 8, top: 6, bottom: 6),
+              padding: const EdgeInsets.only(left: 8, right: 8, top: 6, bottom: 6),
               decoration: BoxDecoration(
                 color: enableSecondaryButton
                     ? WaveThemeConfigurator.instance
                         .getConfig()
                         .commonConfig
                         .brandAuxiliary
-                    : Color(0xFFCCCCCC),
-                borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                    : const Color(0xFFCCCCCC),
+                borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               ),
               child: Center(
                 child: Text(
@@ -245,12 +245,12 @@ class WaveBottomButtonPanel extends StatelessWidget {
       },
       child: Container(
           height: 48,
-          padding: EdgeInsets.only(left: 8, right: 8, top: 6, bottom: 6),
+          padding: const EdgeInsets.only(left: 8, right: 8, top: 6, bottom: 6),
           decoration: BoxDecoration(
             color: enableMainButton
                 ? Get.theme.colorScheme.primary
-                : Color(0xFFCCCCCC),
-            borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                : const Color(0xFFCCCCCC),
+            borderRadius: const BorderRadius.all(Radius.circular(6.0)),
           ),
           child: Center(
             child: Text(

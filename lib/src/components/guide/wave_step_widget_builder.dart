@@ -18,7 +18,7 @@ class StepWidgetBuilder {
     double topArea = screenHeight - height - bottomArea;
     double rightArea = screenWidth - offset.dx - width;
     double leftArea = screenWidth - width - rightArea;
-    Map position = Map();
+    Map position = {};
     position['crossAxisAlignment'] = CrossAxisAlignment.start;
     bool alignTop = true;
     if (introMode == GuideMode.force) {
@@ -185,7 +185,11 @@ class StepWidgetBuilder {
       return Stack(
         children: [
           Positioned(
-            child: Container(
+            left: position['left'],
+            top: position['top'],
+            bottom: position['bottom'],
+            right: position['right'],
+            child: SizedBox(
                 width: position['direction'] == GuideDirection.left ||
                         position['direction'] == GuideDirection.right
                     ? position['width'] + 8
@@ -206,20 +210,16 @@ class StepWidgetBuilder {
                       ? buttonTextBuilder(currentStepIndex, stepCount)
                       : null,
                 )),
-            left: position['left'],
-            top: position['top'],
-            bottom: position['bottom'],
-            right: position['right'],
           ),
           Positioned(
             left: offset.dx + size.width / 2 - 10,
             top: offset.dy + size.height / 2 - 10,
             child: stepWidgetParams.introMode == GuideMode.soft
-                ? PulseWidget(
+                ? const PulseWidget(
                     width: 20,
                     height: 20,
                   )
-                : Row(),
+                : const Row(),
           ),
         ],
       );

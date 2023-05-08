@@ -33,8 +33,8 @@ class WaveShadowCard extends StatelessWidget {
   ///边框的宽度 默认0.5
   final double borderWidth;
 
-  WaveShadowCard(
-      {required this.child,
+  const WaveShadowCard(
+      {super.key, required this.child,
       this.color = const Color(0xffffffff),
       this.shadowColor,
       this.padding = const EdgeInsets.all(0),
@@ -47,14 +47,13 @@ class WaveShadowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double tempBorderWidth = 0;
-    if (this.borderWidth > 0) {
-      tempBorderWidth = this.borderWidth;
+    if (borderWidth > 0) {
+      tempBorderWidth = borderWidth;
     }
     return Container(
       padding: padding,
-      child: this.child,
       decoration: BoxDecoration(
-          color: this.color,
+          color: color,
           borderRadius: BorderRadius.all(Radius.circular(circular)),
           border: tempBorderWidth != 0
               ? Border.all(
@@ -67,12 +66,13 @@ class WaveShadowCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
                 color:
-                    this.shadowColor ?? Get.theme.dividerColor.withOpacity(0.3),
-                offset: this.offset, //阴影xy轴偏移量
-                blurRadius: this.blurRadius, //阴影模糊程度
-                spreadRadius: this.spreadRadius //阴影扩散程度
+                    shadowColor ?? Get.theme.dividerColor.withOpacity(0.3),
+                offset: offset, //阴影xy轴偏移量
+                blurRadius: blurRadius, //阴影模糊程度
+                spreadRadius: spreadRadius //阴影扩散程度
                 )
           ]),
+      child: child,
     );
   }
 }

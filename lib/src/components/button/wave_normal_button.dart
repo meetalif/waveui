@@ -117,7 +117,7 @@ class WaveNormalButton extends StatelessWidget {
 
   ///button rounded corner size
   final BorderRadiusGeometry borderRadius;
-  WaveNormalButton({
+  const WaveNormalButton({
     Key? key,
     required this.text,
     this.backgroundColor,
@@ -203,7 +203,7 @@ class WaveNormalButton extends StatelessWidget {
                     style: _getTextStyle(),
                   ),
                   icon == null
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Icon(
                           icon,
                           size: 18,
@@ -223,7 +223,7 @@ class WaveNormalButton extends StatelessWidget {
     if (isEnable) {
       textColor = this.textColor;
     } else {
-      textColor = this.disableTextColor ?? (this.textColor).withOpacity(0.7);
+      textColor = disableTextColor ?? (this.textColor).withOpacity(0.7);
     }
 
     return TextStyle(
@@ -260,13 +260,13 @@ class _OutlineBoxDecorationCreator {
     double radius = 6,
     double borderWith = 1.0,
   }) {
-    Color _lineColor =
+    Color lineColor0 =
         isEnable ? lineColor ?? Get.theme.dividerColor : disableLineColor!;
-    Color _bgColor = isEnable ? backgroundColor : disableBackgroundColor;
+    Color bgColor = isEnable ? backgroundColor : disableBackgroundColor;
 
     return BoxDecoration(
-        border: Border.all(color: _lineColor, width: borderWith),
+        border: Border.all(color: lineColor0, width: borderWith),
         borderRadius: BorderRadius.all(Radius.circular(radius)),
-        color: _bgColor);
+        color: bgColor);
   }
 }

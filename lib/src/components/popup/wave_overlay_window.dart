@@ -21,7 +21,7 @@ class WaveOverlayWindow extends StatefulWidget {
   /// 要展示的内容
   final Widget content;
 
-  const WaveOverlayWindow({
+  const WaveOverlayWindow({super.key, 
     required this.context,
     required this.targetKey,
     this.popDirection = WaveOverlayPopDirection.bottom,
@@ -97,13 +97,13 @@ class _WaveOverlayWindowState extends State<WaveOverlayWindow> {
 
   @override
   Widget build(BuildContext context) {
-    this._showRect = _getWidgetGlobalRect(widget.targetKey);
-    this._screenSize = window.physicalSize / window.devicePixelRatio;
-    if (this._showRect == null) {
+    _showRect = _getWidgetGlobalRect(widget.targetKey);
+    _screenSize = window.physicalSize / window.devicePixelRatio;
+    if (_showRect == null) {
       return const SizedBox.shrink();
     }
-    _calculateOffset(this._showRect!);
-    return _buildContent(this._showRect!);
+    _calculateOffset(_showRect!);
+    return _buildContent(_showRect!);
   }
 
   Widget _buildContent(Rect showRect) {
@@ -138,15 +138,15 @@ class _WaveOverlayWindowState extends State<WaveOverlayWindow> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Expanded(
+            flex: _left.toInt(),
             child: Container(
                 padding: EdgeInsets.only(top: marginTop),
                 alignment: Alignment.topRight,
                 child: contentPart),
-            flex: _left.toInt(),
           ),
           Expanded(
-            child: placeHolderPart,
             flex: (_screenSize.width - _left).toInt(),
+            child: placeHolderPart,
           )
         ],
       );
@@ -155,15 +155,15 @@ class _WaveOverlayWindowState extends State<WaveOverlayWindow> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Expanded(
-            child: placeHolderPart,
             flex: (_right).toInt(),
+            child: placeHolderPart,
           ),
           Expanded(
+            flex: (_screenSize.width - _right).toInt(),
             child: Container(
                 padding: EdgeInsets.only(top: marginTop),
                 alignment: Alignment.topLeft,
                 child: contentPart),
-            flex: (_screenSize.width - _right).toInt(),
           )
         ],
       );
@@ -172,15 +172,15 @@ class _WaveOverlayWindowState extends State<WaveOverlayWindow> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Expanded(
+            flex: _top.toInt(),
             child: Container(
                 padding: EdgeInsets.only(top: marginLeft),
                 alignment: Alignment.bottomLeft,
                 child: contentPart),
-            flex: _top.toInt(),
           ),
           Expanded(
-            child: placeHolderPart,
             flex: (_screenSize.height - _top).toInt(),
+            child: placeHolderPart,
           )
         ],
       );
@@ -189,12 +189,12 @@ class _WaveOverlayWindowState extends State<WaveOverlayWindow> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Expanded(
-            child: placeHolderPart,
             flex: _bottom.toInt(),
+            child: placeHolderPart,
           ),
           Expanded(
-            child: Container(alignment: Alignment.topLeft, child: contentPart),
             flex: (_screenSize.height - _bottom).toInt(),
+            child: Container(alignment: Alignment.topLeft, child: contentPart),
           )
         ],
       );

@@ -45,7 +45,7 @@ class WaveInsertInfo extends StatelessWidget {
       ),
     );
 
-    Color color = Color(0xFFF8F8F8);
+    Color color = const Color(0xFFF8F8F8);
     Image image = WaveUITools.getAssetImage('icons/icon_right_top_pointer.png');
 
     Widget bubbleText = Row(
@@ -56,12 +56,12 @@ class WaveInsertInfo extends StatelessWidget {
             decoration: BoxDecoration(
                 color: color,
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(4),
                     bottomLeft: Radius.circular(4),
                     bottomRight: Radius.circular(4))),
-            padding: EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
             child: tx,
           ),
         )

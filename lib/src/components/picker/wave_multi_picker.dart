@@ -98,39 +98,39 @@ class WaveMultiDataPicker extends StatefulWidget {
 
   WavePickerConfig? themeData;
 
-  WaveMultiDataPicker(
-      {Key? key,
-      required this.context,
-      required this.delegate,
-      this.title = "",
-      this.titleTextStyle,
-      this.confirmTextStyle,
-      this.cancelTextStyle,
-      this.pickerTitles,
-      this.pickerTitleFontSize,
-      this.pickerTitleColor,
-      this.textFontSize,
-      this.textColor,
-      this.textSelectedColor,
-      this.behavior,
-      this.confirmClick,
-      this.createItemWidget,
-      this.themeData,
-      this.sync = true}) {
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+  WaveMultiDataPicker({
+    super.key,
+    required this.context,
+    required this.delegate,
+    this.title = "",
+    this.titleTextStyle,
+    this.confirmTextStyle,
+    this.cancelTextStyle,
+    this.pickerTitles,
+    this.pickerTitleFontSize,
+    this.pickerTitleColor,
+    this.textFontSize,
+    this.textColor,
+    this.textSelectedColor,
+    this.behavior,
+    this.confirmClick,
+    this.createItemWidget,
+    this.themeData,
+    this.sync = true,
+  }) {
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
-    this.themeData = this.themeData!.merge(WavePickerConfig(
-          cancelTextStyle: WaveTextStyle.withStyle(cancelTextStyle),
-          confirmTextStyle: WaveTextStyle.withStyle(confirmTextStyle),
-          titleTextStyle: WaveTextStyle.withStyle(titleTextStyle),
-          itemTextStyle:
-              WaveTextStyle(color: textColor, fontSize: textFontSize),
-          itemTextSelectedStyle:
-              WaveTextStyle(color: textSelectedColor, fontSize: textFontSize),
-        ));
+        .merge(themeData);
+    themeData = themeData!.merge(WavePickerConfig(
+      cancelTextStyle: WaveTextStyle.withStyle(cancelTextStyle),
+      confirmTextStyle: WaveTextStyle.withStyle(confirmTextStyle),
+      titleTextStyle: WaveTextStyle.withStyle(titleTextStyle),
+      itemTextStyle: WaveTextStyle(color: textColor, fontSize: textFontSize),
+      itemTextSelectedStyle:
+          WaveTextStyle(color: textSelectedColor, fontSize: textFontSize),
+    ));
   }
 
   @override
@@ -151,7 +151,7 @@ class WaveMultiDataPicker extends StatefulWidget {
 }
 
 class _WaveMultiDataPickerState extends State<WaveMultiDataPicker> {
-  List _selectedIndexList = [];
+  final List _selectedIndexList = [];
 
   @override
   void initState() {
@@ -163,11 +163,11 @@ class _WaveMultiDataPickerState extends State<WaveMultiDataPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: widget.themeData!.pickerHeight + widget.themeData!.titleHeight,
       child: Material(
         type: MaterialType.transparency,
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             WavePickerClipRRect(
@@ -232,7 +232,7 @@ class _WaveMultiDataPickerState extends State<WaveMultiDataPicker> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 25),
+                  padding: const EdgeInsets.only(top: 25),
                   child: Text(
                     widget.pickerTitles == null ? '' : widget.pickerTitles![i],
                     style: TextStyle(
@@ -348,7 +348,7 @@ class MyPicker extends StatefulWidget {
   final Color backgroundColor;
   final Color? lineColor;
 
-  MyPicker({
+  const MyPicker({
     Key? key,
     this.createWidgetList,
     this.changed,
@@ -369,26 +369,24 @@ class _MyPickerState extends State<MyPicker> {
   @override
   Widget build(BuildContext context) {
     var children = widget.createWidgetList!();
-    return Container(
-      child: ScrollConfiguration(
-        behavior: widget.scrollBehavior ?? _DefaultScrollBehavior(),
-        child: WavePicker(
-          key: widget.key,
-          scrollController: widget.controller,
-          itemExtent: widget.itemExtent,
-          backgroundColor: widget.backgroundColor,
-          lineColor: widget.lineColor,
-          onSelectedItemChanged: (index) {
-            if (widget.changed != null) {
-              widget.changed!(index);
-            }
-          },
-          children: children.isNotEmpty
-              ? children
-              : [
-                  Center(child: Text('')),
-                ],
-        ),
+    return ScrollConfiguration(
+      behavior: widget.scrollBehavior ?? _DefaultScrollBehavior(),
+      child: WavePicker(
+        key: widget.key,
+        scrollController: widget.controller,
+        itemExtent: widget.itemExtent,
+        backgroundColor: widget.backgroundColor,
+        lineColor: widget.lineColor,
+        onSelectedItemChanged: (index) {
+          if (widget.changed != null) {
+            widget.changed!(index);
+          }
+        },
+        children: children.isNotEmpty
+            ? children
+            : [
+                const Center(child: Text('')),
+              ],
       ),
     );
   }

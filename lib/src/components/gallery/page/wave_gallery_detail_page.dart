@@ -50,11 +50,11 @@ class WaveGalleryDetailPage extends StatefulWidget {
       this.controller,
       this.themeData})
       : super(key: key) {
-    this.themeData ??= WaveGalleryDetailConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveGalleryDetailConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .galleryDetailConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
@@ -66,18 +66,18 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
   ///The notification associated with the title, because the title is associated with the location of the image
   ValueNotifier<String>? _titleNotifier;
   TabController? _tabController;
-  List<WaveBasicGroupConfig> _allConfig = <WaveBasicGroupConfig>[];
+  final List<WaveBasicGroupConfig> _allConfig = <WaveBasicGroupConfig>[];
   int? _curTab;
   int? _curIndex;
   bool _assorted = false;
-  List<Widget> _columnViews = <Widget>[];
-  List<BadgeTab> _tabs = <BadgeTab>[];
+  final List<Widget> _columnViews = <Widget>[];
+  final List<BadgeTab> _tabs = <BadgeTab>[];
   String _groupTitle = "";
   String _indexTitle = "";
   PageController? _pageController;
-  List<Widget> _pageViews = <Widget>[];
-  Map _groupStartPosition = Map();
-  Map _groupCount = Map();
+  final List<Widget> _pageViews = <Widget>[];
+  final Map _groupStartPosition = {};
+  final Map _groupCount = {};
   int _allCount = 0;
 
   late WaveTabBarConfig _tabBarConfig;
@@ -143,11 +143,11 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
     _columnViews.clear();
     _allConfig.clear();
     // 过滤 config 中内容为空的选项
-    widget.allConfig.forEach((e) {
+    for (var e in widget.allConfig) {
       if (e.configList != null && e.configList!.isNotEmpty) {
         _allConfig.add(e);
       }
-    });
+    }
 
     _allCount = 0;
     _groupCount.clear();
@@ -177,8 +177,10 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
         PageController(initialPage: _getPagePosition(_curTab, _curIndex)!);
     _assorted = _allConfig.length > 1;
 
-    _allConfig.forEach((item) => _tabs.add(
-        BadgeTab(text: '${item.title ?? ""}(${item.configList!.length})')));
+    for (var item in _allConfig) {
+      _tabs.add(
+        BadgeTab(text: '${item.title ?? ""}(${item.configList!.length})'));
+    }
     if (_allConfig.length > 1) {
       _columnViews.add(WaveTabBar(
         backgroundcolor: _tabBarConfig.backgroundColor,
@@ -192,7 +194,7 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
         controller: _tabController,
         onTap: (state, index) {
           _pageController!.animateToPage(_getPagePosition(index, 0)!,
-              duration: Duration(microseconds: 100), curve: Curves.linear);
+              duration: const Duration(microseconds: 100), curve: Curves.linear);
         },
       ));
     }
@@ -208,7 +210,7 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
     _indexTitle =
         "${_curIndex! + 1}/${_allConfig[_curTab!].configList!.length}";
     _titleNotifier?.value =
-        _assorted ? "$_groupTitle($_indexTitle)" : "$_indexTitle";
+        _assorted ? "$_groupTitle($_indexTitle)" : _indexTitle;
 
     _columnViews.add(Expanded(
       child: PageView(
@@ -234,7 +236,7 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
       _tabController!.animateTo(pos[0]);
     }
     _titleNotifier?.value =
-        _assorted ? "$_groupTitle($_indexTitle)" : "$_indexTitle";
+        _assorted ? "$_groupTitle($_indexTitle)" : _indexTitle;
     return null;
   }
 
@@ -290,7 +292,7 @@ class _WaveGalleryDetailPageState extends State<WaveGalleryDetailPage>
   }
 
   Widget _body() {
-    if (_allConfig.isEmpty) return Row();
+    if (_allConfig.isEmpty) return const Row();
     return NotificationListener(
       child: Container(
         color: widget.themeData!.pageBackgroundColor,

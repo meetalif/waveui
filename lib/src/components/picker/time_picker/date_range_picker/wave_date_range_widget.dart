@@ -10,7 +10,7 @@ import 'package:waveui/src/theme/wave_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Solar months of 31 days.
-const List<int> _solarMonthsOf31Days = const <int>[1, 3, 5, 7, 8, 10, 12];
+const List<int> _solarMonthsOf31Days = <int>[1, 3, 5, 7, 8, 10, 12];
 
 /// DatePicker widget.
 // ignore: must_be_immutable
@@ -61,19 +61,19 @@ class WaveDateRangeWidget extends StatefulWidget {
     DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
     DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
     assert(minTime.compareTo(maxTime) < 0);
-    this.themeData ??= WavePickerConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WavePickerConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .pickerConfig
-        .merge(this.themeData);
+        .merge(themeData);
   }
 
   @override
   State<StatefulWidget> createState() => _DatePickerWidgetState(
-      this.minDateTime,
-      this.maxDateTime,
-      this.initialStartDateTime,
-      this.initialEndDateTime);
+      minDateTime,
+      maxDateTime,
+      initialStartDateTime,
+      initialEndDateTime);
 }
 
 class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
@@ -102,35 +102,35 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
     DateTime initStartDateTime = initialStartDateTime ?? DateTime.now();
     DateTime initEndDateTime = initialEndDateTime ?? DateTime.now();
 
-    this._currStartYear = initStartDateTime.year;
-    this._currStartMonth = initStartDateTime.month;
-    this._currStartDay = initStartDateTime.day;
+    _currStartYear = initStartDateTime.year;
+    _currStartMonth = initStartDateTime.month;
+    _currStartDay = initStartDateTime.day;
 
-    this._currEndYear = initEndDateTime.year;
-    this._currEndMonth = initEndDateTime.month;
-    this._currEndDay = initEndDateTime.day;
+    _currEndYear = initEndDateTime.year;
+    _currEndMonth = initEndDateTime.month;
+    _currEndDay = initEndDateTime.day;
 
     // handle DateTime range
-    this._minDateTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
-    this._maxDateTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
+    _minDateTime = minDateTime ?? DateTime.parse(datePickerMinDatetime);
+    _maxDateTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
 
     // limit the range of year
-    this._currStartYear =
+    _currStartYear =
         min(max(_minDateTime.year, _currStartYear), _maxDateTime.year);
-    this._currEndYear = min(_maxDateTime.year, _currEndYear);
+    _currEndYear = min(_maxDateTime.year, _currEndYear);
 
     // limit the range of month
-    this._monthRange = _calcMonthRange();
-    this._currStartMonth =
+    _monthRange = _calcMonthRange();
+    _currStartMonth =
         min(max(_monthRange.first, _currStartMonth), _monthRange.last);
-    this._currEndMonth = min(_monthRange.last, _currEndMonth);
+    _currEndMonth = min(_monthRange.last, _currEndMonth);
 
     // limit the range of day
-    this._startDayRange = _calcDayRange(currMonth: _currStartMonth);
-    this._currStartDay =
+    _startDayRange = _calcDayRange(currMonth: _currStartMonth);
+    _currStartDay =
         min(max(_startDayRange.first, _currStartDay), _startDayRange.last);
-    this._endDayRange = _calcDayRange(currMonth: _currEndMonth);
-    this._currEndDay = min(_endDayRange.last, _currEndDay);
+    _endDayRange = _calcDayRange(currMonth: _currEndMonth);
+    _currEndDay = min(_endDayRange.last, _currEndDay);
 
     _startSelectedDateTime =
         DateTime(_currStartYear, _currStartMonth, _currStartDay);
@@ -261,7 +261,7 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
       child: Container(
         height: widget.themeData!.pickerHeight,
         decoration: BoxDecoration(
-            border: Border(left: BorderSide.none, right: BorderSide.none),
+            border: const Border(left: BorderSide.none, right: BorderSide.none),
             color: widget.themeData!.backgroundColor),
         child: WavePicker.builder(
           backgroundColor: widget.themeData!.backgroundColor,
@@ -337,9 +337,7 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
     int maxYear = _maxDateTime.year;
     int minMonth = _minDateTime.month;
     int maxMonth = _maxDateTime.month;
-    if (currMonth == null) {
-      currMonth = _currStartMonth;
-    }
+    currMonth ??= _currStartMonth;
     if (minYear == _currStartYear && minMonth == currMonth) {
       // selected minimum year and month, limit day range
       minDay = _minDateTime.day;

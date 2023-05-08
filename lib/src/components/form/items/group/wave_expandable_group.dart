@@ -39,12 +39,12 @@ class WaveExpandableGroup extends StatefulWidget {
     this.initiallyExpanded = false,
     this.themeData,
   }) : super(key: key) {
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData =
+        .merge(themeData);
+    themeData =
         themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -111,7 +111,7 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
         PageStorage.of(context).readState(context) ?? widget.initiallyExpanded;
 
     _controller = AnimationController(
-        duration: Duration(milliseconds: 200) /*_kExpand*/, vsync: this);
+        duration: const Duration(milliseconds: 200) /*_kExpand*/, vsync: this);
     _heightFactor = _controller.drive(_easeInTween);
     if (_isExpanded) {
       _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
@@ -166,8 +166,8 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
               _handleTap();
             },
             child: Container(
-              padding:
-                  EdgeInsets.only(left: 20, top: 14, bottom: 14, right: 20),
+              padding: const EdgeInsets.only(
+                  left: 20, top: 14, bottom: 14, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -176,7 +176,7 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          padding: EdgeInsets.only(right: 6),
+                          padding: const EdgeInsets.only(right: 6),
                           child: Text(
                             widget.title,
                             style: WaveFormUtil.getHeadTitleTextStyle(
@@ -186,7 +186,7 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
                       // 副标题
                       Container(
                         alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.only(top: 4),
+                        padding: const EdgeInsets.only(top: 4),
                         child: Offstage(
                           // ignore: deprecated_member_use_from_same_package
                           offstage: (widget.subtitle == null ||
@@ -211,12 +211,10 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
           ),
 
           /// 可展开收起项
-          Container(
-            child: ClipRect(
-              child: Align(
-                heightFactor: _heightFactor.value,
-                child: child,
-              ),
+          ClipRect(
+            child: Align(
+              heightFactor: _heightFactor.value,
+              child: child,
             ),
           ),
         ],
@@ -228,19 +226,19 @@ class _WaveExpansionElementState extends State<WaveExpandableGroup>
   void didChangeDependencies() {
     final ThemeData theme = Theme.of(context);
 
-    _borderColorTween..end = theme.dividerColor;
+    _borderColorTween.end = theme.dividerColor;
 
     /// title 文字颜色
     _headerColorTween
-      ..begin = theme.textTheme.subtitle1!.color
-      ..end = theme.textTheme.subtitle1!.color;
+      ..begin = theme.textTheme.titleMedium!.color
+      ..end = theme.textTheme.titleMedium!.color;
 
     /// 展开收起图标颜色
     _iconColorTween
       ..begin = theme.unselectedWidgetColor
       ..end = theme.unselectedWidgetColor;
 
-    _backgroundColorTween..end = widget.backgroundColor;
+    _backgroundColorTween.end = widget.backgroundColor;
     super.didChangeDependencies();
   }
 

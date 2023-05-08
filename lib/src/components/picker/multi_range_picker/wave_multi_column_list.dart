@@ -28,7 +28,7 @@ class WaveMultiColumnListWidget extends StatefulWidget {
   double maxHeight;
   WaveOnSelectEntityInterceptor? onSelectEntityInterceptor;
 
-  WaveMultiColumnListWidget({
+  WaveMultiColumnListWidget({super.key, 
     required this.items,
     this.normalColor = const Color(0Xff4a4e59),
     this.selectedColor = const Color(0xff41bc6a),
@@ -40,20 +40,16 @@ class WaveMultiColumnListWidget extends StatefulWidget {
     this.singleListItemPick,
     this.onSelectEntityInterceptor,
   }) {
-    if (items == null) {
-      items = [];
-    }
-    items!.forEach((element) {
+    items ??= [];
+    for (var element in items!) {
       element.configRelationship();
-    });
+    }
 
     currentListIndex = WaveMultiColumnPickerUtil.getCurrentColumnIndex(
         items!.isNotEmpty ? items![0] : null);
 
     _selectedItems = items?.where((f) => f.isSelected).toList();
-    if (_selectedItems == null) {
-      _selectedItems = [];
-    }
+    _selectedItems ??= [];
   }
 
   @override
@@ -72,12 +68,12 @@ class _WaveMultiColumnListWidgetState extends State<WaveMultiColumnListWidget> {
       flex: widget.flex,
       child: Container(
         constraints: (widget.maxHeight == 0)
-            ? BoxConstraints.expand()
+            ? const BoxConstraints.expand()
             : BoxConstraints(maxHeight: widget.maxHeight),
         color: widget.backgroundColor,
         child: ListView.separated(
           shrinkWrap: true,
-          padding: EdgeInsets.only(top: 0),
+          padding: const EdgeInsets.only(top: 0),
           scrollDirection: Axis.vertical,
           itemCount: widget.items!.length,
           separatorBuilder: (BuildContext context, int index) => Container(),

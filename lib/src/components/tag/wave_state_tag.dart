@@ -32,7 +32,7 @@ class WaveStateTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return WaveTagCustom(
       tagText: tagText,
-      textPadding: EdgeInsets.only(bottom: 0, left: 4, right: 4, top: 0),
+      textPadding: const EdgeInsets.only(bottom: 0, left: 4, right: 4, top: 0),
       textColor: textColor ?? getTagColor(tagState),
       backgroundColor:
           backgroundColor ?? getTagColor(tagState).withOpacity(0.1),
@@ -42,17 +42,17 @@ class WaveStateTag extends StatelessWidget {
   Color getTagColor(TagState state) {
     switch (state) {
       case TagState.invalidate:
-        return Color(0xFF999999);
+        return const Color(0xFF999999);
       case TagState.running:
-        return Color(0xFF0984F9);
+        return const Color(0xFF0984F9);
       case TagState.failed:
-        return Color(0xFFFA3F3F);
+        return const Color(0xFFFA3F3F);
       case TagState.succeed:
-        return Color(0xFF00AE66);
+        return const Color(0xFF00AE66);
       case TagState.waiting:
-        return Color(0xFFFAAD14);
+        return const Color(0xFFFAAD14);
       default:
-        return Color(0xFFFAAD14);
+        return const Color(0xFFFAAD14);
     }
   }
 }

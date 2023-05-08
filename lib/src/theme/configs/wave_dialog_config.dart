@@ -145,7 +145,7 @@ class WaveDialogConfig extends WaveBaseConfig {
   ///   left: [WaveCommonConfig.hSpacingXl],
   ///   right: [WaveCommonConfig.hSpacingXl],
   /// )
-  EdgeInsets? _contentPaddingLg;
+  final EdgeInsets? _contentPaddingLg;
 
   EdgeInsets get contentPaddingLg =>
       _contentPaddingLg ??

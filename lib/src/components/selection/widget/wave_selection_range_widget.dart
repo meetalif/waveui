@@ -36,7 +36,7 @@ class WaveRangeSelectionGroupWidget extends StatefulWidget {
 
   final WaveSelectionConfig themeData;
 
-  WaveRangeSelectionGroupWidget(
+  const WaveRangeSelectionGroupWidget(
       {Key? key,
       required this.entity,
       this.maxContentHeight = DESIGN_SELECTION_HEIGHT,
@@ -65,8 +65,8 @@ class _WaveRangeSelectionGroupWidgetState
 
   late TabController _tabController;
 
-  TextEditingController _minTextEditingController = TextEditingController();
-  TextEditingController _maxTextEditingController = TextEditingController();
+  final TextEditingController _minTextEditingController = TextEditingController();
+  final TextEditingController _maxTextEditingController = TextEditingController();
 
   bool _isConfirmClick = false;
 
@@ -166,7 +166,7 @@ class _WaveRangeSelectionGroupWidgetState
                   children: _getOneTabContent(widget.entity)),
             ),
           ),
-          WaveLine(
+          const WaveLine(
             height: 0.5,
           ),
           _bottomWidget()
@@ -191,7 +191,7 @@ class _WaveRangeSelectionGroupWidgetState
           Flexible(
             child: tabContent,
           ),
-          WaveLine(
+          const WaveLine(
             height: 0.5,
           ),
           _bottomWidget()
@@ -255,7 +255,7 @@ class _WaveRangeSelectionGroupWidgetState
     var tagContainer = tagFilterList.isNotEmpty
         ? Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: WaveSelectionRangeTagWidget(
                 tagWidth: tagWidth,
                 tagFilterList: tagFilterList,
@@ -358,15 +358,16 @@ class _WaveRangeSelectionGroupWidgetState
   Widget _bottomWidget() {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.fromLTRB(8, 11, 20, 11),
+      padding: const EdgeInsets.fromLTRB(8, 11, 20, 11),
       child: Row(
         children: <Widget>[
           GestureDetector(
+            onTap: _clearAllSelectedItems,
             child: Container(
-              padding: EdgeInsets.only(left: 12, right: 20),
+              padding: const EdgeInsets.only(left: 12, right: 20),
               child: Column(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 24,
                     width: 24,
                     child:
@@ -379,7 +380,6 @@ class _WaveRangeSelectionGroupWidgetState
                 ],
               ),
             ),
-            onTap: _clearAllSelectedItems,
           ),
           Expanded(
             child: WaveBigMainButton(
@@ -550,7 +550,7 @@ class _WaveRangeSelectionGroupWidgetState
   //设置数据为未选中状态
   void _resetSelectionDatas(WaveSelectionEntity entity) {
     entity.isSelected = false;
-    entity.customMap = Map();
+    entity.customMap = <String, String>{};
     for (WaveSelectionEntity subEntity in entity.children) {
       _resetSelectionDatas(subEntity);
     }
@@ -565,7 +565,7 @@ class _WaveRangeSelectionGroupWidgetState
             f.filterType == WaveSelectionFilterType.dateRangeCalendar)
         .forEach((f) {
       f.isSelected = false;
-      f.customMap = Map();
+      f.customMap = <String, String>{};
       f.value = null;
     });
   }
@@ -584,7 +584,7 @@ class _WaveRangeSelectionGroupWidgetState
         .where((f) => f.filterType != WaveSelectionFilterType.dateRangeCalendar)
         .forEach((f) {
       f.isSelected = false;
-      f.customMap = Map();
+      f.customMap = <String, String>{};
     });
   }
 

@@ -221,7 +221,7 @@ class WaveDefaultConfigUtils {
       right: defaultCommonConfig.hSpacingLg,
       bottom: defaultCommonConfig.vSpacingLg,
     ),
-    titlePaddingSm: EdgeInsets.only(left: 10),
+    titlePaddingSm: const EdgeInsets.only(left: 10),
     titlePaddingLg: EdgeInsets.only(left: defaultCommonConfig.hSpacingLg),
     subTitlePadding: EdgeInsets.only(
       left: defaultCommonConfig.hSpacingLg,
@@ -294,7 +294,7 @@ class WaveDefaultConfigUtils {
       color: defaultCommonConfig.brandError,
       decoration: TextDecoration.none,
     ),
-    dividerPadding: EdgeInsets.only(top: 28.0),
+    dividerPadding: const EdgeInsets.only(top: 28.0),
     mainActionTextStyle: WaveTextStyle(
       color: Get.theme.colorScheme.primary,
       fontWeight: FontWeight.w600,
@@ -488,8 +488,8 @@ class WaveDefaultConfigUtils {
       fontSize: defaultCommonConfig.fontSizeSubHead,
       fontWeight: FontWeight.w600,
     ),
-    titlePadding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
-    contentPadding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 12.0),
+    titlePadding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 12.0),
   );
 
   static WavePickerConfig defaultPickerConfig = WavePickerConfig(
@@ -622,9 +622,9 @@ class WaveDefaultConfigUtils {
     lightSelectBgColor: Colors.white,
     lightNormalBgColor: Colors.white,
     middleSelectBgColor: Colors.white,
-    middleNormalBgColor: Color(0xFFF8F8F8),
-    deepSelectBgColor: Color(0xFFF8F8F8),
-    deepNormalBgColor: Color(0xFFF0F0F0),
+    middleNormalBgColor: const Color(0xFFF8F8F8),
+    deepSelectBgColor: const Color(0xFFF8F8F8),
+    deepNormalBgColor: const Color(0xFFF0F0F0),
     resetTextStyle: WaveTextStyle(
       color: defaultCommonConfig.colorTextImportant,
       fontSize: defaultCommonConfig.fontSizeCaption,
@@ -670,7 +670,7 @@ class WaveDefaultConfigUtils {
     appbarBrightness: Brightness.dark,
     tabBarUnSelectedLabelStyle: WaveTextStyle(
       fontSize: 16.0,
-      color: Color(0XFFCCCCCC),
+      color: const Color(0XFFCCCCCC),
     ),
     tabBarLabelStyle: WaveTextStyle(
       fontSize: defaultCommonConfig.fontSizeSubHead,
@@ -679,14 +679,14 @@ class WaveDefaultConfigUtils {
     ),
     tabBarBackgroundColor: Colors.black,
     pageBackgroundColor: Colors.black,
-    bottomBackgroundColor: Color(0X88000000),
+    bottomBackgroundColor: const Color(0X88000000),
     titleStyle: WaveTextStyle(
       color: defaultCommonConfig.colorTextBaseInverse,
       fontSize: defaultCommonConfig.fontSizeHead,
       fontWeight: FontWeight.w600,
     ),
     contentStyle: WaveTextStyle(
-      color: Color(0xFFCCCCCC),
+      color: const Color(0xFFCCCCCC),
       fontSize: defaultCommonConfig.fontSizeBase,
     ),
     actionStyle: WaveTextStyle(

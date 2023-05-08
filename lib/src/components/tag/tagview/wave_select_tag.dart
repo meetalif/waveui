@@ -81,18 +81,18 @@ class WaveSelectTag extends StatefulWidget {
     if (isSingleSelect == true) {
       assert(initTagState == null || (initTagState!.length <= 1));
     }
-    this.themeData ??= WaveTagConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveTagConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .tagConfig
-        .merge(this.themeData);
-    this.themeData = this.themeData!.merge(WaveTagConfig(
-        tagBackgroundColor: this.tagBackgroundColor,
-        tagTextStyle: WaveTextStyle.withStyle(this.tagTextStyle),
-        selectTagTextStyle: WaveTextStyle.withStyle(this.selectedTagTextStyle),
-        tagWidth: this.tagWidth,
-        tagHeight: this.tagHeight,
-        selectedTagBackgroundColor: this.selectedTagBackgroundColor));
+        .merge(themeData);
+    themeData = themeData!.merge(WaveTagConfig(
+        tagBackgroundColor: tagBackgroundColor,
+        tagTextStyle: WaveTextStyle.withStyle(tagTextStyle),
+        selectTagTextStyle: WaveTextStyle.withStyle(selectedTagTextStyle),
+        tagWidth: tagWidth,
+        tagHeight: tagHeight,
+        selectedTagBackgroundColor: selectedTagBackgroundColor));
   }
 
   @override
@@ -129,8 +129,8 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
     }
 
     return Align(
-      child: content,
       alignment: widget.alignment,
+      child: content,
     );
   }
 
@@ -140,8 +140,8 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
     var finalTagList = tagList.map((tag) {
       double rightPadding = (tagIdx == tagList.length - 1) ? 0 : widget.spacing;
       var padding = Padding(
-        child: tag,
         padding: EdgeInsets.only(right: rightPadding),
+        child: tag,
       );
       tagIdx++;
       return padding;
@@ -177,11 +177,11 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
             }
 
             if (null != widget.onSelect) {
-              List<int> _selectedIndexes = [];
+              List<int> selectedIndexes = [];
               for (int index = 0; index < _tagState.length; index++) {
-                if (_tagState[index]) _selectedIndexes.add(index);
+                if (_tagState[index]) selectedIndexes.add(index);
               }
-              widget.onSelect!(_selectedIndexes);
+              widget.onSelect!(selectedIndexes);
             }
           });
       list.add(gdt);
@@ -205,7 +205,7 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
           borderRadius: BorderRadius.circular(widget.themeData!.tagRadius)),
       width: widget.fixWidthMode ? widget.themeData!.tagWidth : null,
       height: widget.themeData!.tagHeight,
-      padding: EdgeInsets.only(left: 8, right: 8),
+      padding: const EdgeInsets.only(left: 8, right: 8),
       child: Center(widthFactor: 1, child: tx),
     );
     return container;

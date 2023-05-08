@@ -106,8 +106,8 @@ class WavePairInfoTable extends StatefulWidget {
   /// Table 展开收起状态变化的回调
   final ValueChanged<bool>? onFolded;
 
-  WavePairInfoTable(
-      {Key? key,
+  const WavePairInfoTable(
+      {super.key, Key? key,
       required this.children,
       this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
       this.isValueAlign = true,
@@ -230,12 +230,10 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
     } else {
       valueWidget = data.valuePart;
 
-      if (valueWidget == null) {
-        valueWidget = Text(
+      valueWidget ??= Text(
           '--',
           style: themeData.valueTextStyle.generateTextStyle(),
         );
-      }
     }
     if (data.isArrow) {
       valueWidget = Row(
@@ -285,7 +283,7 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
     Row row = Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(right: 4),
+          padding: const EdgeInsets.only(right: 4),
           child: Text(
             WaveIntl.currentResource.expand,
             style: TextStyle(
@@ -307,15 +305,15 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
         });
 
     Container layerCtn = Container(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       alignment: Alignment.center,
-      child: gdt,
       decoration: BoxDecoration(
           gradient: LinearGradient(
         colors: [Colors.white.withAlpha(100), Colors.white, Colors.white],
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
       )),
+      child: gdt,
     );
 
     /// 展开蒙层
@@ -344,7 +342,7 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
     Row row = Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(right: 4),
+          padding: const EdgeInsets.only(right: 4),
           child: Text(
             WaveIntl.currentResource.collapse,
             style: TextStyle(
@@ -367,15 +365,15 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
         });
 
     Container layerCtn = Container(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       alignment: Alignment.topRight,
-      child: gdt,
       decoration: BoxDecoration(
           gradient: LinearGradient(
         colors: [Colors.white.withAlpha(100), Colors.white, Colors.white],
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
       )),
+      child: gdt,
     );
 
     ///收起的widget
@@ -471,12 +469,10 @@ mixin PairInfoPart {
     } else {
       valueWidget = data.valuePart;
 
-      if (valueWidget == null) {
-        valueWidget = Text(
+      valueWidget ??= Text(
           '--',
           style: themeData.valueTextStyle.generateTextStyle(),
         );
-      }
     }
     if (data.isArrow) {
       valueWidget = Row(
@@ -541,7 +537,7 @@ class WaveFollowPairInfo extends StatelessWidget with PairInfoPart {
 
   final WavePairInfoTableConfig? themeData;
 
-  WaveFollowPairInfo({
+  WaveFollowPairInfo({super.key, 
     Key? key,
     required this.children,
     this.rowDistance,
@@ -634,7 +630,7 @@ class WaveAlignPairInfo extends StatelessWidget with PairInfoPart {
   final WavePairInfoTableConfig? themeData;
 
   WaveAlignPairInfo(
-      {this.children,
+      {super.key, this.children,
       this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
       this.rowDistance,
       this.backgroundColor,
@@ -661,11 +657,11 @@ class WaveAlignPairInfo extends StatelessWidget with PairInfoPart {
       WavePairInfoTableConfig defaultThemeConfig, double maxWith) {
     int index = -1;
     Widget table = Table(
-      defaultVerticalAlignment: this.defaultVerticalAlignment,
+      defaultVerticalAlignment: defaultVerticalAlignment,
       textBaseline: TextBaseline.ideographic,
       columnWidths: <int, TableColumnWidth>{
         0: customKeyWidth ?? _MaxWrapTableWidth(maxWith),
-        1: FlexColumnWidth()
+        1: const FlexColumnWidth()
       },
       border: TableBorder.all(color: Colors.transparent),
       children: children!.map((data) {
@@ -862,7 +858,7 @@ class WaveInfoModal {
     dynamic keyWidget;
 
     if (isArrow) {
-      MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+      MediaQueryData mediaQuery = MediaQueryData.fromView(ui.window);
       double screen = mediaQuery.size.width;
 
       if (keyShow) {
@@ -1009,7 +1005,7 @@ class WaveInfoModal {
           ),
           alignment: PlaceholderAlignment.top);
       keyGen.addIcon(
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           alignment: PlaceholderAlignment.middle);
@@ -1080,12 +1076,12 @@ class _MaxWrapTableWidth extends TableColumnWidth {
   @override
   double maxIntrinsicWidth(Iterable<RenderBox> cells, double containerWidth) {
     double max = 0;
-    cells.forEach((data) {
+    for (var data in cells) {
       double width = data.getMaxIntrinsicWidth(double.infinity);
       if (width > max) {
         max = width;
       }
-    });
+    }
 
     double screen = maxWidth;
     double width =
@@ -1098,5 +1094,5 @@ class _MaxWrapTableWidth extends TableColumnWidth {
     return 0;
   }
 
-  _MaxWrapTableWidth(this.maxWidth);
+  const _MaxWrapTableWidth(this.maxWidth);
 }

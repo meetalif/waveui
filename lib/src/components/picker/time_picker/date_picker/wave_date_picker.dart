@@ -80,17 +80,11 @@ class WaveDatePicker {
     WavePickerConfig? themeData,
   }) {
     // handle the range of datetime
-    if (minDateTime == null) {
-      minDateTime = DateTime.parse(datePickerMinDatetime);
-    }
-    if (maxDateTime == null) {
-      maxDateTime = DateTime.parse(datePickerMaxDatetime);
-    }
+    minDateTime ??= DateTime.parse(datePickerMinDatetime);
+    maxDateTime ??= DateTime.parse(datePickerMaxDatetime);
 
     // handle initial DateTime
-    if (initialDateTime == null) {
-      initialDateTime = DateTime.now();
-    }
+    initialDateTime ??= DateTime.now();
 
     // Set value of date format
     dateFormat = DateTimeFormatter.generateDateFormat(dateFormat, pickerMode);
@@ -204,8 +198,8 @@ class _DatePickerComponent extends StatelessWidget {
   final _DatePickerRoute route;
   final double _pickerHeight;
 
-  _DatePickerComponent({required this.route, required pickerHeight})
-      : this._pickerHeight = pickerHeight;
+  const _DatePickerComponent({required this.route, required pickerHeight})
+      : _pickerHeight = pickerHeight;
 
   @override
   Widget build(BuildContext context) {

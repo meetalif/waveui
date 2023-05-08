@@ -35,6 +35,7 @@ class _WaveSelectionDatePickerAnimationWidgetState
         vsync: this);
   }
 
+  @override
   dispose() {
     widget.controller.removeListener(_onController);
     _controller.dispose();
@@ -74,7 +75,7 @@ class _WaveSelectionDatePickerAnimationWidgetState
       onTap: () {},
       child: Material(
         color: Colors.transparent,
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: widget.view,
         ),

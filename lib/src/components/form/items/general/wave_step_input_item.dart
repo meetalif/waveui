@@ -111,13 +111,12 @@ class WaveStepInputFormItem extends StatefulWidget {
               (defaultValue >= minLimit && defaultValue <= maxLimit),
           'The text or value in the controller is not in the limits.');
     }
-    this.themeData ??= WaveFormItemConfig();
-    this.themeData = WaveThemeConfigurator.instance
-        .getConfig(configId: this.themeData!.configId)
+    themeData ??= WaveFormItemConfig();
+    themeData = WaveThemeConfigurator.instance
+        .getConfig(configId: themeData!.configId)
         .formItemConfig
-        .merge(this.themeData);
-    this.themeData = this
-        .themeData!
+        .merge(themeData);
+    themeData = themeData!
         .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
@@ -167,7 +166,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 25,
             ),
             child: Row(
@@ -287,11 +286,11 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
             RangeLimitedTextInputFormatter(
                 minValue: widget.minLimit, maxValue: widget.maxLimit)
           ],
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF222222),
             fontSize: WaveFonts.f16,
           ),
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: '0',
             hintStyle: TextStyle(
               color: Color(0xFFCCCCCC),
@@ -309,7 +308,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
         width: 50,
         child: Text(
           "$_value",
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF222222),
             fontSize: WaveFonts.f16,
           ),

@@ -33,9 +33,7 @@ class EventBus {
   static EventBus? _instance;
 
   factory EventBus._() {
-    if (_instance == null) {
-      _instance = EventBus();
-    }
+    _instance ??= EventBus();
     return _instance!;
   }
 

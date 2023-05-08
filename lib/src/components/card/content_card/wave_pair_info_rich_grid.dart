@@ -56,7 +56,7 @@ class WaveRichInfoGrid extends StatelessWidget {
 
   final WavePairRichInfoGridConfig? themeData;
 
-  WaveRichInfoGrid({
+  const WaveRichInfoGrid({
     Key? key,
     this.pairInfoList,
     this.padding,
@@ -100,10 +100,10 @@ class WaveRichInfoGrid extends StatelessWidget {
         var gridView = GridView.builder(
           shrinkWrap: true,
           padding: padding,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: defaultConfig.rowSpacing,
-            crossAxisCount: this.crossAxisCount,
+            crossAxisCount: crossAxisCount,
             crossAxisSpacing: defaultConfig.itemSpacing,
             childAspectRatio: itemWidth / itemHeight,
           ),
@@ -124,7 +124,7 @@ class WaveRichInfoGrid extends StatelessWidget {
             );
           },
           itemCount:
-              (null != this.pairInfoList) ? this.pairInfoList!.length : 0,
+              (null != pairInfoList) ? pairInfoList!.length : 0,
         );
         return gridView;
       },
@@ -232,9 +232,9 @@ class WaveRichGridInfo {
           }
         },
         child: Padding(
-          padding: EdgeInsets.only(left: 4),
+          padding: const EdgeInsets.only(left: 4),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 56),
+            constraints: const BoxConstraints(maxWidth: 56),
             child: Text(clickTitle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -249,7 +249,7 @@ class WaveRichGridInfo {
     bool isShowValueQuestion = valueQuestionCallback != null;
     bool isShowValueClick = clickTitle.isNotEmpty;
 
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+    MediaQueryData mediaQuery = MediaQueryData.fromView(ui.window);
     double screen = mediaQuery.size.width;
 
     Widget key = Container(

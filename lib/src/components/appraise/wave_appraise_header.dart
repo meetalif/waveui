@@ -22,7 +22,7 @@ class WaveAppraiseHeader extends StatelessWidget {
   /// 点击关闭的回掉
   final WaveAppraiseCloseClickCallBack? cancelCallBack;
 
-  WaveAppraiseHeader(
+  const WaveAppraiseHeader(
       {Key? key,
       this.showHeader = true,
       this.title = '',
@@ -60,14 +60,14 @@ class WaveAppraiseHeader extends StatelessWidget {
       height: 38 + maxLines * 22.0,
       child: Padding(
         padding: headPadding ??
-            EdgeInsets.only(left: 20, top: 16, right: 16, bottom: 20),
+            const EdgeInsets.only(left: 20, top: 16, right: 16, bottom: 20),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(top: 4, right: 12),
+                padding: const EdgeInsets.only(top: 4, right: 12),
                 child: Text(
                   title,
                   maxLines: maxLines,

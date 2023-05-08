@@ -18,7 +18,7 @@ class WavePickerTitleConfig {
     this.titleContent,
   });
 
-  static const WavePickerTitleConfig Default = const WavePickerTitleConfig();
+  static const WavePickerTitleConfig Default = WavePickerTitleConfig();
 
   /// Custom cancel [Widget].
   final Widget? cancel;

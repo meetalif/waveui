@@ -12,11 +12,9 @@ class _Throttling {
   }
 
   void throttle(Function func) {
-    if (_timer == null) {
-      _timer = Timer(_duration, () {
+    _timer ??= Timer(_duration, () {
         Function.apply(func, []);
         _timer = null;
       });
-    }
   }
 }

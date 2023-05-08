@@ -48,7 +48,7 @@ class WaveBottomWritePicker extends StatefulWidget {
   final TextEditingController? textEditingController;
 
   const WaveBottomWritePicker(
-      {this.maxLength = 200,
+      {super.key, this.maxLength = 200,
       this.hintText,
       this.leftTag,
       this.title = "",
@@ -126,7 +126,7 @@ class _BottomWritePickerState extends State<WaveBottomWritePicker> {
   Widget build(BuildContext context) {
     return WaveBottomPickerWidget(
       contentWidget: Container(
-        padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
         color: Colors.white,
         child: TextField(
             style: TextStyle(

@@ -92,34 +92,32 @@ class WaveSmallMainButton extends StatelessWidget {
         textPainter.layout(maxWidth: con.maxWidth);
         double textWidth = textPainter.width;
         //按钮本身大小
-        double _maxWidth = textWidth + WaveButtonConstant.horizontalPadding * 2;
-        double _minWidth = min(_BMinWidth, con.maxWidth);
+        double maxWidth = textWidth + WaveButtonConstant.horizontalPadding * 2;
+        double minWidth = min(_BMinWidth, con.maxWidth);
 //Guaranteed minimum width is the minimum value of (84, available space)
-        if (_maxWidth <= _minWidth) {
-          _maxWidth = _minWidth;
+        if (maxWidth <= minWidth) {
+          maxWidth = minWidth;
         } else {
           //外部要求最大宽度
-          if (maxWidth != null) {
-            if (_maxWidth > maxWidth!) {
-              _maxWidth = maxWidth!;
-            }
+          if (maxWidth > maxWidth) {
+            maxWidth = maxWidth;
           }
         }
 
-        if (_maxWidth > con.maxWidth) {
-          _maxWidth = con.maxWidth;
+        if (maxWidth > con.maxWidth) {
+          maxWidth = con.maxWidth;
         }
 
         return WaveNormalButton(
           isEnable: isEnable,
           constraints: BoxConstraints(
-            minWidth: this.width ?? _minWidth,
-            maxWidth: this.width ?? _maxWidth,
+            minWidth: width ?? minWidth,
+            maxWidth: width ?? maxWidth,
           ),
           alignment: Alignment.center,
           text: title ?? WaveIntl.of(context).localizedResource.confirm,
           backgroundColor: bgColor ?? Get.theme.colorScheme.primary,
-          disableBackgroundColor: Color(0xFFCCCCCC),
+          disableBackgroundColor: const Color(0xFFCCCCCC),
           borderRadius: BorderRadius.all(
               Radius.circular(defaultThemeConfig.smallButtonRadius)),
           onTap: onTap,

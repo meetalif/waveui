@@ -29,7 +29,7 @@ class WaveDrawerItem extends StatelessWidget {
           title: title == null ? null : Text('$title'),
           leading: Icon(isSelected ? active : inActive),
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }
