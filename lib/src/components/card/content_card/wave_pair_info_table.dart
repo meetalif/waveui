@@ -106,18 +106,19 @@ class WavePairInfoTable extends StatefulWidget {
   /// Table 展开收起状态变化的回调
   final ValueChanged<bool>? onFolded;
 
-  const WavePairInfoTable(
-      {super.key, Key? key,
-      required this.children,
-      this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
-      this.isValueAlign = true,
-      this.expandAtIndex = -1,
-      this.rowDistance,
-      this.itemSpacing,
-      this.isFolded = true,
-      this.onFolded,
-      this.customKeyWidth,
-      this.themeData});
+  const WavePairInfoTable({
+    super.key,
+    required this.children,
+    this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
+    this.isValueAlign = true,
+    this.expandAtIndex = -1,
+    this.rowDistance,
+    this.itemSpacing,
+    this.isFolded = true,
+    this.onFolded,
+    this.customKeyWidth,
+    this.themeData,
+  });
 
   @override
   _WavePairInfoTableState createState() => _WavePairInfoTableState();
@@ -231,9 +232,9 @@ class _WavePairInfoTableState extends State<WavePairInfoTable> {
       valueWidget = data.valuePart;
 
       valueWidget ??= Text(
-          '--',
-          style: themeData.valueTextStyle.generateTextStyle(),
-        );
+        '--',
+        style: themeData.valueTextStyle.generateTextStyle(),
+      );
     }
     if (data.isArrow) {
       valueWidget = Row(
@@ -470,9 +471,9 @@ mixin PairInfoPart {
       valueWidget = data.valuePart;
 
       valueWidget ??= Text(
-          '--',
-          style: themeData.valueTextStyle.generateTextStyle(),
-        );
+        '--',
+        style: themeData.valueTextStyle.generateTextStyle(),
+      );
     }
     if (data.isArrow) {
       valueWidget = Row(
@@ -537,8 +538,8 @@ class WaveFollowPairInfo extends StatelessWidget with PairInfoPart {
 
   final WavePairInfoTableConfig? themeData;
 
-  WaveFollowPairInfo({super.key, 
-    Key? key,
+  WaveFollowPairInfo({
+    super.key,
     required this.children,
     this.rowDistance,
     this.itemSpacing,
@@ -630,7 +631,8 @@ class WaveAlignPairInfo extends StatelessWidget with PairInfoPart {
   final WavePairInfoTableConfig? themeData;
 
   WaveAlignPairInfo(
-      {super.key, this.children,
+      {super.key,
+      this.children,
       this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
       this.rowDistance,
       this.backgroundColor,

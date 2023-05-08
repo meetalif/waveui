@@ -81,7 +81,7 @@ class WaveIconButton extends StatefulWidget {
 class _WaveIconButtonState extends State<WaveIconButton> {
   @override
   Widget build(BuildContext context) {
-    Container ctn;
+    Widget ctn;
     // 图文的方向 bottom、文字在下 icon在上 top、文字在上 icon在下
     // Left、文字在左 icon在右 right、文字在右 icon在左
     if (widget.direction == Direction.bottom) {
