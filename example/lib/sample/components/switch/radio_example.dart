@@ -1,0 +1,147 @@
+import 'package:waveui/waveui.dart';
+
+class RadioExample extends StatefulWidget {
+  @override
+  _RadioExampleState createState() => _RadioExampleState();
+}
+
+class _RadioExampleState extends State<RadioExample> {
+  /// The selected index of the radio
+  int _singleSelectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: WaveAppBar(
+        title: 'Single choice example',
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'rule',
+                style: TextStyle(
+                    color: Color(0xFF222222),
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold),
+              ),
+              WaveBubbleText(
+                  maxLines: 2,
+                  text:
+                      'Have selected, unselected, and disabled states, support setting left and right widgets'),
+              Text(
+                'Normal case: single selection, the control is on the right side of the selection button',
+                style: TextStyle(
+                  color: Color(0xFF222222),
+                  fontSize: 28,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text("Options:"),
+                  WaveRadioButton(
+                    radioIndex: 0,
+                    isSelected: _singleSelectedIndex == 0,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Text(
+                        "Option A",
+                      ),
+                    ),
+                    onValueChangedAtIndex: (index, value) {
+                      setState(() {
+                        _singleSelectedIndex = index;
+                        WaveToast.show(
+                            "Single selection, select $index", context);
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  WaveRadioButton(
+                    radioIndex: 1,
+                    isSelected: _singleSelectedIndex == 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Text(
+                        "选项B",
+                      ),
+                    ),
+                    onValueChangedAtIndex: (index, value) {
+                      setState(() {
+                        _singleSelectedIndex = index;
+                        WaveToast.show(
+                            "Single selection, select $index", context);
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  WaveRadioButton(
+                    radioIndex: 1,
+                    disable: true,
+                    isSelected: _singleSelectedIndex == 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Text(
+                        "Option C",
+                      ),
+                    ),
+                    onValueChangedAtIndex: (index, value) {
+                      setState(() {
+                        _singleSelectedIndex = index;
+                        WaveToast.show(
+                            "Single selection, select $index", context);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Single selection, unselected, disabled',
+                style: TextStyle(
+                  color: Color(0xFF222222),
+                  fontSize: 28,
+                ),
+              ),
+              WaveRadioButton(
+                disable: true,
+                radioIndex: 0,
+                onValueChangedAtIndex: (index, value) {},
+              ),
+              Text(
+                'Single selection, selected, disabled',
+                style: TextStyle(
+                  color: Color(0xFF222222),
+                  fontSize: 28,
+                ),
+              ),
+              WaveRadioButton(
+                disable: true,
+                radioIndex: 0,
+                isSelected: true,
+                onValueChangedAtIndex: (index, value) {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

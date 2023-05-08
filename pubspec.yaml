@@ -1,0 +1,41 @@
+name: waveui
+description: An enterprise-class package of Flutter components for mobile applications.
+version: 0.0.6
+homepage: https://github.com/meetalif0/waveui
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.7.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  xml: ^6.1.0
+  lpinyin: ^2.0.3
+  intl:
+  photo_view: ^0.14.0
+  bindings_compatible: ^1.0.1
+  fluentui_system_icons: ^1.1.197
+  get: ^4.6.5
+  loading_animation_widget:
+  tapped:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints:
+
+flutter:
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/icons/radio/
+    - assets/images/no_data.png
+    - assets/images/two_line_bubble.png
+    - assets/json/
+    - assets/json/china.json
+
+  fonts:
+    - family: Bebas
+      fonts:
+        - asset: assets/fonts/Bebas-Regular.ttf
