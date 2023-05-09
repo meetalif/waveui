@@ -1,15 +1,17 @@
 import 'package:waveui/waveui.dart';
 
 class WavePageLoading extends StatelessWidget {
-  const WavePageLoading({super.key});
+  final Color? backgroundColor;
+  const WavePageLoading({super.key, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
-    return const WaveContainer.expand(
-      child: Center(
+    return WaveContainer.expand(
+      color: backgroundColor,
+      child: const Center(
         child: SizedBox(
-          height: 50,
-          width: 50,
+          height: 40,
+          width: 40,
           child: CircularProgressIndicator(),
         ),
       ),

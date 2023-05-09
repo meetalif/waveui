@@ -11,7 +11,6 @@ export 'src/components/core/wave_container.dart';
 
 // Helpers
 export 'src/theme/wave_theme.dart';
-export 'src/theme/wave_app_config.dart';
 export 'helpers/wave_colors.dart';
 export 'helpers/wave_constants.dart';
 export 'helpers/wave_themes.dart';

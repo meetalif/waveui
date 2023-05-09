@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 
 class WaveSwitch extends StatelessWidget {
   final bool value;
-  final Function(bool) onChanged;
+  final Function(bool)? onChanged;
 
   const WaveSwitch({
     super.key,
-    required this.value,
+    this.value = false,
     required this.onChanged,
   });
 

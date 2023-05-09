@@ -12,6 +12,7 @@ class WaveSnackbar {
       borderColor: Get.theme.dividerColor,
       borderRadius: 8,
       borderWidth: 0.5,
+      duration: 20.seconds,
       animationDuration: const Duration(milliseconds: 400),
       boxShadows: [
         BoxShadow(

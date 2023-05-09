@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:waveui/src/theme/wave_app_config.dart';
+import 'package:get/get.dart';
 
 class WaveGradientIcon extends StatelessWidget {
-  const WaveGradientIcon({super.key, 
+  const WaveGradientIcon({
+    super.key,
     required this.icon,
     this.size = 28,
     this.gradient,
@@ -23,7 +24,10 @@ class WaveGradientIcon extends StatelessWidget {
       shaderCallback: (Rect bounds) {
         final Rect rect = Rect.fromLTRB(0, 0, size, size);
         return gradient == null
-            ? WaveAppConfig.DEFAULT_GRADIENT.createShader(rect)
+            ? LinearGradient(colors: [
+                Get.theme.primaryColor,
+                Get.theme.primaryColorDark
+              ]).createShader(rect)
             : gradient!.createShader(rect);
       },
     );
