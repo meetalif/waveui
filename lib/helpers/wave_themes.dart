@@ -208,6 +208,7 @@ BottomNavigationBarThemeData _bottomNavigationBarTheme() {
   return const BottomNavigationBarThemeData(
     showSelectedLabels: false,
     showUnselectedLabels: false,
+    type: BottomNavigationBarType.fixed,
     selectedIconTheme: IconThemeData(size: 28),
     unselectedIconTheme: IconThemeData(size: 28),
     elevation: 0,
