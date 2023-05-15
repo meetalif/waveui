@@ -33,7 +33,7 @@ class _WaveIconBtnExampleState extends State<WaveIconBtnExample>
                   fontSize: 18,
                   color: Color(0xFF999999),
                 ),
-                direction: Direction.bottom,
+                direction: IconDirection.bottom,
                 padding: 4,
                 iconHeight: 30,
                 iconWidth: 30,
@@ -48,7 +48,7 @@ class _WaveIconBtnExampleState extends State<WaveIconBtnExample>
           child: Center(
             child: WaveIconButton(
                 name: '文字在上',
-                direction: Direction.top,
+                direction: IconDirection.top,
                 padding: 4,
                 iconWidget: Icon(Icons.assignment),
                 onTap: () {
@@ -61,7 +61,7 @@ class _WaveIconBtnExampleState extends State<WaveIconBtnExample>
           child: Center(
             child: WaveIconButton(
                 name: '文字在右',
-                direction: Direction.right,
+                direction: IconDirection.right,
                 padding: 4,
                 iconWidget: Icon(Icons.autorenew),
                 onTap: () {
@@ -74,7 +74,7 @@ class _WaveIconBtnExampleState extends State<WaveIconBtnExample>
           child: Center(
             child: WaveIconButton(
                 name: '文字在左',
-                direction: Direction.left,
+                direction: IconDirection.left,
                 padding: 4,
                 iconWidget: Icon(Icons.backspace),
                 onTap: () {

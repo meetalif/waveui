@@ -204,10 +204,12 @@ class _SearchTextState extends State<WaveSearchText> {
                       inputFormatters: widget.inputFormatters,
                       style: widget.textStyle ?? Get.textTheme.bodyMedium,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: widget.borderRadius,
-                            borderSide: BorderSide.none),
-                        contentPadding: const EdgeInsets.only(left: 8, right: 6),
+                        fillColor: Colors.transparent,
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.only(
+                            left: 8, right: 6, top: 8, bottom: 8),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
                         //Fill color property, fill the color of the decoration container.
                         //is the dense property, whether the input child is part of a dense form (i.e. uses less vertical space).
                         isDense: true,
@@ -239,8 +241,7 @@ class _SearchTextState extends State<WaveSearchText> {
                       }
                       textEditingController!.clear();
                       if (widget.onTextChange != null) {
-                        widget
-                            .onTextChange!(textEditingController!.value.text);
+                        widget.onTextChange!(textEditingController!.value.text);
                       }
                       setState(() {});
                     },

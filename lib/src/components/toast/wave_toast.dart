@@ -198,15 +198,13 @@ class ToastChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
       child: Container(
         padding: padding,
         alignment: alignment,
-        width: MediaQuery.of(context).size.width,
         child: Container(
           decoration: BoxDecoration(
             color: background ?? const Color(0xFF222222),
-            borderRadius: BorderRadius.circular(radius ?? 8),
+            borderRadius: BorderRadius.circular(radius ?? WaveConstants.radius),
           ),
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.fromLTRB(18, 10, 18, 10),

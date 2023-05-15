@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// 图文的方向 bottom、文字在下 icon在上 top、文字在上 icon在下
 /// Left、文字在左 icon在右 right、文字在右 icon在左
 
-enum Direction {
+enum IconDirection {
   /// 文字在左边
   left,
 
@@ -31,7 +31,7 @@ class WaveIconButton extends StatefulWidget {
   final VoidCallback? onTap;
 
   /// 文字相对于图片的位置
-  final Direction direction;
+  final IconDirection direction;
 
   /// 图片宽度，默认 24
   final double iconWidth;
@@ -68,7 +68,7 @@ class WaveIconButton extends StatefulWidget {
     @Deprecated('该字段废弃，请使用 style ,未来版本会删除该字段') this.fontSize = 11,
     this.widgetWidth = 80,
     this.widgetHeight = 80,
-    this.direction = Direction.top,
+    this.direction = IconDirection.top,
     this.padding = 4,
     this.style,
     this.mainAxisAlignment = MainAxisAlignment.center,
@@ -84,7 +84,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
     Widget ctn;
     // 图文的方向 bottom、文字在下 icon在上 top、文字在上 icon在下
     // Left、文字在左 icon在右 right、文字在右 icon在左
-    if (widget.direction == Direction.bottom) {
+    if (widget.direction == IconDirection.bottom) {
       ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
@@ -114,7 +114,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
               )
             ],
           ));
-    } else if (widget.direction == Direction.left) {
+    } else if (widget.direction == IconDirection.left) {
       ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,
@@ -144,7 +144,7 @@ class _WaveIconButtonState extends State<WaveIconButton> {
               )
             ],
           ));
-    } else if (widget.direction == Direction.right) {
+    } else if (widget.direction == IconDirection.right) {
       ctn = SizedBox(
           height: widget.widgetHeight,
           width: widget.widgetWidth,

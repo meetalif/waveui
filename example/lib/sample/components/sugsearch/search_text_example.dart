@@ -39,69 +39,74 @@ class _SearchTextExampleState extends State<SearchTextExample> {
         title: 'Example search input box',
       ),
       body: Container(
+          padding: EdgeInsets.all(16),
           child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 40,
-          ),
-          WaveSearchText(
-            focusNode: focusNode,
-            controller: textController,
-            searchController: scontroller..isActionShow = true,
-            onTextClear: () {
-              debugPrint('sss');
-              return false;
-            },
-            autoFocus: true,
-            onActionTap: () {
-              scontroller.isClearShow = false;
-              scontroller.isActionShow = false;
-              focusNode.unfocus();
-              WaveToast.show('Cancel', context);
-            },
-            onTextCommit: (text) {
-              WaveToast.show('submit content: $text', context);
-            },
-            onTextChange: (text) {
-              WaveToast.show('Input content: $text', context);
-            },
-          ),
-          Container(
-            height: 20,
-          ),
-          Container(
-            width: 200,
-            child: WaveSearchText(
-              innerPadding:
-                  EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-              maxHeight: 60,
-              innerColor: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              normalBorder: Border.all(
-                  color: Color(0xFFF0F0F0), width: 1, style: BorderStyle.solid),
-              activeBorder: Border.all(
-                  color: Color(0xFF0984F9), width: 1, style: BorderStyle.solid),
-              onTextClear: () {
-                debugPrint('sss');
-                focusNode.unfocus();
-                return false;
-              },
-              autoFocus: true,
-              action: Container(),
-              onActionTap: () {
-                WaveToast.show('Cancel', context);
-              },
-              onTextCommit: (text) {
-                WaveToast.show('submit content: $text', context);
-              },
-              onTextChange: (text) {
-                WaveToast.show('Input content: $text', context);
-              },
-            ),
-          )
-        ],
-      )),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                height: 40,
+              ),
+              WaveSearchText(
+                focusNode: focusNode,
+                controller: textController,
+                searchController: scontroller..isActionShow = true,
+                onTextClear: () {
+                  debugPrint('sss');
+                  return false;
+                },
+                autoFocus: true,
+                onActionTap: () {
+                  scontroller.isClearShow = false;
+                  scontroller.isActionShow = false;
+                  focusNode.unfocus();
+                  WaveToast.show('Cancel', context);
+                },
+                onTextCommit: (text) {
+                  WaveToast.show('submit content: $text', context);
+                },
+                onTextChange: (text) {
+                  WaveToast.show('Input content: $text', context);
+                },
+              ),
+              Container(
+                height: 20,
+              ),
+              Container(
+                width: 200,
+                child: WaveSearchText(
+                  innerPadding:
+                      EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                  maxHeight: 60,
+                  innerColor: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  normalBorder: Border.all(
+                      color: Color(0xFFF0F0F0),
+                      width: 1,
+                      style: BorderStyle.solid),
+                  activeBorder: Border.all(
+                      color: Color(0xFF0984F9),
+                      width: 1,
+                      style: BorderStyle.solid),
+                  onTextClear: () {
+                    debugPrint('sss');
+                    focusNode.unfocus();
+                    return false;
+                  },
+                  autoFocus: true,
+                  action: Container(),
+                  onActionTap: () {
+                    WaveToast.show('Cancel', context);
+                  },
+                  onTextCommit: (text) {
+                    WaveToast.show('submit content: $text', context);
+                  },
+                  onTextChange: (text) {
+                    WaveToast.show('Input content: $text', context);
+                  },
+                ),
+              )
+            ],
+          )),
     );
   }
 }

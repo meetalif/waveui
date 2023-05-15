@@ -64,7 +64,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
-                direction: Direction.top,
+                direction: IconDirection.top,
                 borderColor: borderColor,
               ),
             ),
@@ -87,7 +87,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
-                  borderColor: borderColor, direction: Direction.bottom),
+                  borderColor: borderColor, direction: IconDirection.bottom),
             ),
           ),
         ],
@@ -105,7 +105,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(6.0, 14.0),
               painter: CustomTrianglePainter(
-                  borderColor: borderColor, direction: Direction.right),
+                  borderColor: borderColor, direction: IconDirection.right),
             ),
           ),
         ],
@@ -124,7 +124,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(6, 14.0),
               painter: CustomTrianglePainter(
-                direction: Direction.left,
+                direction: IconDirection.left,
                 borderColor: borderColor,
               ),
             ),
@@ -218,7 +218,8 @@ class WaveTipInfoWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 6),
       child: Text(info.message,
-          style: const TextStyle(fontSize: 14, color: Color(0xFF999999), height: 1.3),
+          style: const TextStyle(
+              fontSize: 14, color: Color(0xFF999999), height: 1.3),
           maxLines: 3),
     );
   }
@@ -245,8 +246,8 @@ class WaveTipInfoWidget extends StatelessWidget {
                         },
                         child: Text(
                           '${WaveIntl.of(context).localizedResource.skip} (${currentStepIndex + 1}/$stepCount)',
-                          style:
-                              const TextStyle(color: Color(0xFF999999), fontSize: 14),
+                          style: const TextStyle(
+                              color: Color(0xFF999999), fontSize: 14),
                         ),
                       ),
                     ))
@@ -277,7 +278,8 @@ class WaveTipInfoWidget extends StatelessWidget {
                                   : WaveIntl.of(context)
                                       .localizedResource
                                       .next),
-                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 14),
                         ),
                       ),
                     ),
@@ -311,8 +313,8 @@ class WaveTipInfoWidget extends StatelessWidget {
                         },
                         child: Text(
                           '${WaveIntl.of(context).localizedResource.skip} (${currentStepIndex + 1}/$stepCount)',
-                          style:
-                              const TextStyle(color: Color(0xFF999999), fontSize: 14),
+                          style: const TextStyle(
+                              color: Color(0xFF999999), fontSize: 14),
                         ),
                       ),
                     ))
@@ -359,7 +361,7 @@ class WaveTipInfoWidget extends StatelessWidget {
 class CustomTrianglePainter extends CustomPainter {
   Color color;
   Color borderColor;
-  Direction direction;
+  IconDirection direction;
 
   CustomTrianglePainter(
       {this.color = Colors.white,
@@ -380,7 +382,7 @@ class CustomTrianglePainter extends CustomPainter {
     paintBorder.style = PaintingStyle.stroke;
 
     switch (direction) {
-      case Direction.left:
+      case IconDirection.left:
         path.moveTo(size.width + 1, -1.3);
         path.lineTo(0, size.height / 2);
         path.lineTo(size.width + 1, size.height + 0.5);
@@ -388,7 +390,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(0, size.height / 2 - 0.5);
         pathBorder.lineTo(size.width, size.height);
         break;
-      case Direction.right:
+      case IconDirection.right:
         path.moveTo(-1, -1.3);
         path.lineTo(size.width, size.height / 2);
         path.lineTo(-1, size.height + 0.5);
@@ -396,7 +398,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(size.width, size.height / 2);
         pathBorder.lineTo(-0, size.height);
         break;
-      case Direction.top:
+      case IconDirection.top:
         path.moveTo(0.0, size.height + 1.5);
         path.lineTo(size.width / 2.0, 0.0);
         path.lineTo(size.width, size.height + 1.5);
@@ -404,7 +406,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(size.width / 2.0, 0);
         pathBorder.lineTo(size.width - 0.5, size.height + 0.5);
         break;
-      case Direction.bottom:
+      case IconDirection.bottom:
         path.moveTo(0.0, -1.5);
         path.lineTo(size.width / 2.0, size.height);
         path.lineTo(size.width, -1.5);

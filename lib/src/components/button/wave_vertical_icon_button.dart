@@ -47,7 +47,7 @@ class WaveVerticalIconButton extends StatelessWidget {
     return WaveIconButton(
       widgetWidth: 48,
       widgetHeight: 48,
-      direction: Direction.bottom,
+      direction: IconDirection.bottom,
       iconHeight: 24,
       iconWidth: 24,
       name: name,

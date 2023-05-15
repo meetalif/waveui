@@ -14,7 +14,8 @@ class WaveSafeDialog {
 
   ///According to the tag to distinguish the queue status of a certain type of Dialog
   static final Map<String, List<_SafeDialogRoute>> _dialogStates = {};
-///Used to close a Dialog, only remove the last Dialog in the corresponding tag list
+
+  ///Used to close a Dialog, only remove the last Dialog in the corresponding tag list
   ///[tag]: Dialog used to remove the corresponding tag
   ///
   ///Notice,
@@ -26,10 +27,10 @@ class WaveSafeDialog {
     T? result,
   }) {
     List<_SafeDialogRoute> typeStates = (_dialogStates[tag] ??= []);
-    if (typeStates. isNotEmpty) {
+    if (typeStates.isNotEmpty) {
       try {
-_SafeDialogRoute safeDialogRoute = typeStates. removeLast();
-        Navigator. removeRoute(context, safeDialogRoute);
+        _SafeDialogRoute safeDialogRoute = typeStates.removeLast();
+        Navigator.removeRoute(context, safeDialogRoute);
         if (!safeDialogRoute.completer.isCompleted) {
           safeDialogRoute.completer.complete(result);
         }
@@ -45,7 +46,7 @@ _SafeDialogRoute safeDialogRoute = typeStates. removeLast();
   static Future<T?> show<T>({
     required BuildContext context,
     required WidgetBuilder builder,
-String tag = _safeDialogDefaultTag,
+    String tag = _safeDialogDefaultTag,
     bool barrierDismissible = true,
     Color? barrierColor = Colors.black54,
     String? barrierLabel,
@@ -61,7 +62,7 @@ String tag = _safeDialogDefaultTag,
         rootNavigator: useRootNavigator,
       ).context,
     );
-_SafeDialogRoute<T> safeDialogRoute = _SafeDialogRoute<T>(
+    _SafeDialogRoute<T> safeDialogRoute = _SafeDialogRoute<T>(
       context: context,
       builder: builder,
       barrierColor: barrierColor,
@@ -77,9 +78,9 @@ _SafeDialogRoute<T> safeDialogRoute = _SafeDialogRoute<T>(
     //forward the result through Completer
     _dialogStates[tag] ??= [];
     _dialogStates[tag]?.add(safeDialogRoute);
-Future<T?> future = Navigator.of(context, rootNavigator: useRootNavigator)
+    Future<T?> future = Navigator.of(context, rootNavigator: useRootNavigator)
         .push<T>(safeDialogRoute);
-    future. then((result) {
+    future.then((result) {
       _dialogStates[tag]?.remove(safeDialogRoute);
       if (!safeDialogRoute.completer.isCompleted) {
         safeDialogRoute.completer.complete(result);
@@ -92,7 +93,7 @@ Future<T?> future = Navigator.of(context, rootNavigator: useRootNavigator)
 ///Simple encapsulation of Completer based on DialogRoute for forwarding of Route results
 class _SafeDialogRoute<T> extends DialogRoute<T> {
   ///Forward Route result
-final Completer<T?> completer = Completer<T?>();
+  final Completer<T?> completer = Completer<T?>();
 
   _SafeDialogRoute({
     required BuildContext context,
@@ -108,7 +109,7 @@ final Completer<T?> completer = Completer<T?>();
           builder: builder,
           themes: themes,
           barrierColor: barrierColor,
-barrierDismissible: barrierDismissible,
+          barrierDismissible: barrierDismissible,
           barrierLabel: barrierLabel,
           useSafeArea: useSafeArea,
           settings: settings,

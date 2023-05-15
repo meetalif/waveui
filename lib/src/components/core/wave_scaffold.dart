@@ -13,7 +13,7 @@ class WaveScaffold extends StatelessWidget {
     this.resizeToAvoidBottomInset = true,
   });
 
-  final WaveAppBar? appBar;
+  final PreferredSizeWidget? appBar;
 
   /// Must have to use `WaveAppbar` and set the value `isBlurred` to `true`
   final bool isBlurred;

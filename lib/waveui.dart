@@ -4,6 +4,7 @@ library waveui;
 export 'package:flutter/material.dart';
 export 'package:get/get.dart';
 export 'package:fluentui_system_icons/fluentui_system_icons.dart';
+export 'package:flutter_animate/flutter_animate.dart';
 
 // Core
 export 'src/components/core/wave_scaffold.dart';

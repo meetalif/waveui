@@ -7,11 +7,13 @@ class WaveBottomNavigationBar extends StatelessWidget {
     this.showDivider = true,
     this.backgroundColor,
     this.currentIndex = 0,
+    this.showUnselectedLabels = false,
+    this.showSelectedLabels = false,
     this.onTap,
   });
 
   final List<BottomNavigationBarItem> items;
-  final bool showDivider;
+  final bool showDivider, showUnselectedLabels, showSelectedLabels;
   final Color? backgroundColor;
   final int currentIndex;
   final Function(int)? onTap;
@@ -23,6 +25,8 @@ class WaveBottomNavigationBar extends StatelessWidget {
       children: [
         if (showDivider) const Divider(),
         BottomNavigationBar(
+          showSelectedLabels: showSelectedLabels,
+          showUnselectedLabels: showUnselectedLabels,
           currentIndex: currentIndex,
           onTap: onTap,
           items: items,

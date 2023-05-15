@@ -22,6 +22,7 @@ ThemeData WaveTheme({
     elevatedButtonTheme: _elevatedButtonTheme(),
     timePickerTheme: _timePickerTheme(),
     datePickerTheme: _datePickerTheme(),
+    floatingActionButtonTheme: _floatingActionButtonThemeData(),
     drawerTheme: _drawerTheme(),
     progressIndicatorTheme: _progressIndicatorTheme(),
     chipTheme: _chipTheme(),
@@ -367,6 +368,19 @@ ListTileThemeData _listTileThemeData() {
     subtitleTextStyle: Get.textTheme.bodySmall,
     leadingAndTrailingTextStyle: Get.textTheme.labelLarge,
     tileColor: Get.theme.cardColor,
+  );
+}
+
+FloatingActionButtonThemeData _floatingActionButtonThemeData() {
+  return FloatingActionButtonThemeData(
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: Get.theme.dividerColor,
+        width: WaveConstants.contentBorder,
+      ),
+      borderRadius: BorderRadius.circular(WaveConstants.radius),
+    ),
   );
 }
 

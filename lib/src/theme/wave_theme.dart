@@ -1,6 +1,6 @@
 /// theme export
 
-library bruno_theme;
+library wave_theme;
 
 export 'base/wave_base_config.dart';
 export 'base/wave_default_config_utils.dart';

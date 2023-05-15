@@ -1,6 +1,6 @@
 name: waveui
 description: An enterprise-class package of Flutter components for mobile applications.
-version: 0.0.9
+version: 0.0.10
 homepage: https://github.com/meetalif0/waveui
 
 environment:
@@ -17,6 +17,7 @@ dependencies:
   fluentui_system_icons: ^1.1.197
   get: ^4.6.5
   tapped: ^2.0.0
+  flutter_animate: ^4.1.1+1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
