@@ -11,6 +11,7 @@ class BubbleEntryPage extends StatelessWidget {
         title: "气泡示例",
       ),
       body: ListView(
+        padding: const EdgeInsets.all(16),
         children: [
           ListItem(
             title: "普通气泡",

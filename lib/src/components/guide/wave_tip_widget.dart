@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:waveui/src/components/button/wave_icon_button.dart';
 import 'package:waveui/src/components/guide/wave_flutter_guide.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
@@ -64,7 +63,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
-                direction: IconDirection.top,
+                direction: TooltipAlign.Top,
                 borderColor: borderColor,
               ),
             ),
@@ -87,7 +86,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(14.0, 6.0),
               painter: CustomTrianglePainter(
-                  borderColor: borderColor, direction: IconDirection.bottom),
+                  borderColor: borderColor, direction: TooltipAlign.Bottom),
             ),
           ),
         ],
@@ -105,7 +104,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(6.0, 14.0),
               painter: CustomTrianglePainter(
-                  borderColor: borderColor, direction: IconDirection.right),
+                  borderColor: borderColor, direction: TooltipAlign.Right),
             ),
           ),
         ],
@@ -124,7 +123,7 @@ class WaveTipInfoWidget extends StatelessWidget {
             child: CustomPaint(
               size: const Size(6, 14.0),
               painter: CustomTrianglePainter(
-                direction: IconDirection.left,
+                direction: TooltipAlign.Left,
                 borderColor: borderColor,
               ),
             ),
@@ -355,13 +354,16 @@ class WaveTipInfoWidget extends StatelessWidget {
   }
 }
 
+enum TooltipAlign { Left, Right, Top, Bottom }
+
 ///
 /// 绘制箭头
+///
 ///
 class CustomTrianglePainter extends CustomPainter {
   Color color;
   Color borderColor;
-  IconDirection direction;
+  TooltipAlign direction;
 
   CustomTrianglePainter(
       {this.color = Colors.white,
@@ -382,7 +384,7 @@ class CustomTrianglePainter extends CustomPainter {
     paintBorder.style = PaintingStyle.stroke;
 
     switch (direction) {
-      case IconDirection.left:
+      case TooltipAlign.Left:
         path.moveTo(size.width + 1, -1.3);
         path.lineTo(0, size.height / 2);
         path.lineTo(size.width + 1, size.height + 0.5);
@@ -390,7 +392,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(0, size.height / 2 - 0.5);
         pathBorder.lineTo(size.width, size.height);
         break;
-      case IconDirection.right:
+      case TooltipAlign.Right:
         path.moveTo(-1, -1.3);
         path.lineTo(size.width, size.height / 2);
         path.lineTo(-1, size.height + 0.5);
@@ -398,7 +400,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(size.width, size.height / 2);
         pathBorder.lineTo(-0, size.height);
         break;
-      case IconDirection.top:
+      case TooltipAlign.Top:
         path.moveTo(0.0, size.height + 1.5);
         path.lineTo(size.width / 2.0, 0.0);
         path.lineTo(size.width, size.height + 1.5);
@@ -406,7 +408,7 @@ class CustomTrianglePainter extends CustomPainter {
         pathBorder.lineTo(size.width / 2.0, 0);
         pathBorder.lineTo(size.width - 0.5, size.height + 0.5);
         break;
-      case IconDirection.bottom:
+      case TooltipAlign.Bottom:
         path.moveTo(0.0, -1.5);
         path.lineTo(size.width / 2.0, size.height);
         path.lineTo(size.width, -1.5);

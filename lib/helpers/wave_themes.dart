@@ -10,7 +10,6 @@ ThemeData WaveTheme({
     colorScheme: _colorScheme(darkMode: darkMode, themeColor: themeColor),
     dividerColor: Colors.grey.withOpacity(0.3),
     cardColor: WaveColors.contentBg(darkMode: darkMode),
-    splashFactory: NoSplash.splashFactory,
     scaffoldBackgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     appBarTheme: _appBarTheme(darkMode: darkMode),
     bottomNavigationBarTheme: _bottomNavigationBarTheme(),
@@ -237,11 +236,11 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
       ),
       filled: true,
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: themeColor),
+        borderSide: BorderSide(color: themeColor, width: 2),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Get.theme.colorScheme.error),
+        borderSide: BorderSide(color: Get.theme.colorScheme.error, width: 2),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       errorBorder: OutlineInputBorder(
@@ -252,12 +251,12 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
         borderSide: BorderSide(color: Get.theme.dividerColor),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
+      hintStyle: Get.textTheme.bodyMedium,
     );
-
 PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
       surfaceTintColor: Colors.transparent,
       color: Get.theme.cardColor,
-      elevation: 0,
+      elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(WaveConstants.radius),
         side: BorderSide(

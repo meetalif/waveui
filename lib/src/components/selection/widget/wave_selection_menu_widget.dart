@@ -14,6 +14,7 @@ import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_event_bus.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 typedef WaveOnMenuItemClick = bool Function(int index);
 
@@ -172,7 +173,7 @@ class _WaveSelectionMenuWidgetState extends State<WaveSelectionMenuWidget> {
             flex: 10,
             child: Container(
               height: 0.5,
-              color: widget.themeData.commonConfig.dividerColorBase,
+              color: Get.theme.dividerColor,
             ),
           )
         ],

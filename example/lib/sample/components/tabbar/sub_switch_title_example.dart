@@ -130,9 +130,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: WaveSmallOutlineButton(
-                  title: '点击选中第三个',
-                  onTap: () {
+                child: OutlinedButton(
+                  child: Text('点击选中第三个'),
+                  onPressed: () {
                     _controller.index = 2;
                   },
                 ),

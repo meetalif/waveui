@@ -201,18 +201,19 @@ class _WaveAppraiseState extends State<WaveAppraise> {
     if (widget.config.showConfirmButton) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: WaveBigMainButton(
-          title: widget.config.confirmButtonText ??
-              WaveIntl.of(context).localizedResource.submit,
-          isEnable: _enable ?? _appraiseIndex != -1,
-          onTap: () {
-            if (_enable ?? _appraiseIndex != -1) {
-              if (widget.onConfirm != null) {
-                widget.onConfirm!(
-                    _appraiseIndex, _selectedTag, _inputText ?? '');
-              }
-            }
-          },
+        child: FilledButton(
+          onPressed: _enable ?? _appraiseIndex != -1
+              ? () {
+                  if (_enable ?? _appraiseIndex != -1) {
+                    if (widget.onConfirm != null) {
+                      widget.onConfirm!(
+                          _appraiseIndex, _selectedTag, _inputText ?? '');
+                    }
+                  }
+                }
+              : null,
+          child: Text(widget.config.confirmButtonText ??
+              WaveIntl.of(context).localizedResource.submit),
         ),
       );
     }

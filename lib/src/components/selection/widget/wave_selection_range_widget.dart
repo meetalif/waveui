@@ -1,24 +1,14 @@
 import 'dart:ui';
 
-import 'package:waveui/src/components/button/wave_big_main_button.dart';
-import 'package:waveui/src/components/calendar/wave_calendar_view.dart';
-import 'package:waveui/src/components/line/wave_line.dart';
-import 'package:waveui/src/components/picker/time_picker/wave_date_time_formatter.dart';
-import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_date_range_item_widget.dart';
-import 'package:waveui/src/components/selection/widget/wave_selection_menu_widget.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_range_input_item_widget.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_range_tag_widget.dart';
-import 'package:waveui/src/components/tabbar/normal/wave_tab_bar.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
-import 'package:waveui/src/constants/wave_asset_constants.dart';
-import 'package:waveui/src/l10n/wave_intl.dart';
-import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_event_bus.dart';
 import 'package:waveui/src/utils/wave_text_util.dart';
-import 'package:waveui/src/utils/wave_tools.dart';
-import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
+
+import 'wave_selection_menu_widget.dart';
 
 class WaveRangeSelectionGroupWidget extends StatefulWidget {
   static final double screenWidth =
@@ -65,8 +55,10 @@ class _WaveRangeSelectionGroupWidgetState
 
   late TabController _tabController;
 
-  final TextEditingController _minTextEditingController = TextEditingController();
-  final TextEditingController _maxTextEditingController = TextEditingController();
+  final TextEditingController _minTextEditingController =
+      TextEditingController();
+  final TextEditingController _maxTextEditingController =
+      TextEditingController();
 
   bool _isConfirmClick = false;
 
@@ -255,7 +247,8 @@ class _WaveRangeSelectionGroupWidgetState
     var tagContainer = tagFilterList.isNotEmpty
         ? Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: WaveSelectionRangeTagWidget(
                 tagWidth: tagWidth,
                 tagFilterList: tagFilterList,
@@ -382,9 +375,9 @@ class _WaveRangeSelectionGroupWidgetState
             ),
           ),
           Expanded(
-            child: WaveBigMainButton(
-              title: WaveIntl.of(context).localizedResource.ok,
-              onTap: () {
+            child: FilledButton(
+              child: Text(WaveIntl.of(context).localizedResource.ok),
+              onPressed: () {
                 _confirmButtonClickEvent();
               },
             ),

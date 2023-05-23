@@ -85,7 +85,8 @@ class WaveBubbleText extends StatelessWidget {
                     topRight: Radius.circular(radius),
                     bottomLeft: Radius.circular(radius),
                     bottomRight: Radius.circular(radius))),
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
             child: WaveExpandableText(
               text: text,
               maxLines: maxLines,

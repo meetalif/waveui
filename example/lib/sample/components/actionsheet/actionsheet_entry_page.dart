@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:waveui/waveui.dart';
-import 'package:example/sample/components/actionsheet/actionsheet_selected_list_custom_example.dart';
-import 'package:example/sample/components/actionsheet/actionsheet_selected_list_example.dart';
 import 'package:example/sample/home/list_item.dart';
 
 class ActionSheetEntryPage extends StatefulWidget {
@@ -98,20 +96,6 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
               describe: 'Share style ActionSheet',
               onPressed: () {
                 _showShareTwoStyle(context);
-              },
-            ),
-            ListItem(
-              title: "Selected menu list",
-              describe: 'Selected menu list',
-              onPressed: () {
-                _showSelectedListActionSheet(context);
-              },
-            ),
-            ListItem(
-              title: "Selected menu list custom view",
-              describe: 'Selected menu list custom view',
-              onPressed: () {
-                _showCustomSelectedListActionSheet(context);
               },
             ),
           ],
@@ -536,21 +520,5 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       },
     );
     actionSheet.show(context);
-  }
-
-  void _showSelectedListActionSheet(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) {
-        return SelectedListActionSheetExamplePage();
-      },
-    ));
-  }
-
-  void _showCustomSelectedListActionSheet(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) {
-        return SelectedListActionSheetCustomExamplePage();
-      },
-    ));
   }
 }

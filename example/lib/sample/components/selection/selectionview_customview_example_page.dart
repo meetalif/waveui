@@ -196,8 +196,8 @@ class _SelectionViewExamplePageState
             },
           ),
           Expanded(
-            child: WaveBigMainButton(
-              onTap: () {
+            child: FilledButton(
+              onPressed: () {
                 /// 真正点击【确定】时，选中的参数才有意义
                 if (_customHandleCallBack != null)
                   _customHandleCallBack(_currentCalendarSelectedDate.value ==
@@ -210,7 +210,7 @@ class _SelectionViewExamplePageState
                     _currentCalendarSelectedDate.value?.toString();
                 closeCustomFilterView();
               },
-              title: '确定',
+              child: Text('确定'),
             ),
           )
         ],

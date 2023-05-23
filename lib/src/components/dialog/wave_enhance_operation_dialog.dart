@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:waveui/src/components/button/wave_big_main_button.dart';
 import 'package:waveui/src/components/dialog/wave_dialog.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
@@ -63,7 +62,8 @@ class WaveEnhanceOperationDialog extends StatelessWidget {
   /// 主题配置
   WaveDialogConfig? themeData;
 
-  WaveEnhanceOperationDialog({super.key, 
+  WaveEnhanceOperationDialog({
+    super.key,
     this.iconType = WaveDialogConstants.iconAlert,
     this.customIconWidget,
     required this.context,
@@ -152,9 +152,10 @@ class WaveEnhanceOperationDialog extends StatelessWidget {
   Widget _configMainButton(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20),
-      child: WaveBigMainButton(
-        title: mainButtonText ?? WaveIntl.of(context).localizedResource.confirm,
-        onTap: () {
+      child: FilledButton(
+        child: Text(
+            mainButtonText ?? WaveIntl.of(context).localizedResource.confirm),
+        onPressed: () {
           Navigator.of(context).pop(
               mainButtonText ?? WaveIntl.of(context).localizedResource.confirm);
         },

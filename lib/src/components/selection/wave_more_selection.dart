@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:waveui/src/components/button/wave_big_main_button.dart';
 import 'package:waveui/src/components/line/wave_line.dart';
 import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
@@ -49,7 +48,8 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
   final List<WaveSelectionEntity> _originalSelectedItemsList = [];
   late AnimationController _controller;
   late Animation<Offset> _animation;
-  final StreamController<ClearEvent> _clearController = StreamController.broadcast();
+  final StreamController<ClearEvent> _clearController =
+      StreamController.broadcast();
   bool isValid = true;
 
   @override
@@ -59,8 +59,8 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _animation =
-        Tween(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(_controller);
+    _animation = Tween(end: Offset.zero, begin: const Offset(1.0, 0.0))
+        .animate(_controller);
     _controller.forward();
 
     _originalSelectedItemsList.addAll(widget.entityData.allSelectedList());
@@ -324,9 +324,9 @@ class MoreBottomSelectionWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-            child: WaveBigMainButton(
-          title: WaveIntl.of(context).localizedResource.ok,
-          onTap: () {
+            child: FilledButton(
+          child: Text(WaveIntl.of(context).localizedResource.ok),
+          onPressed: () {
             if (conformCallback != null) {
               conformCallback!(entity);
             }

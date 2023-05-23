@@ -89,9 +89,9 @@ class _AppraiseExampleState extends State<AppraiseExample> {
           SizedBox(
             height: 10,
           ),
-          WaveSmallMainButton(
-            title: 'Click to display the default style popup',
-            onTap: () {
+          FilledButton(
+            child: Text('Click to display the default style popup'),
+            onPressed: () {
               showDialog(
                   context: context,
                   builder: (context) {
@@ -138,9 +138,9 @@ class _AppraiseExampleState extends State<AppraiseExample> {
           SizedBox(
             height: 10,
           ),
-          WaveSmallMainButton(
-            title: 'Click to display the evaluation pop-up window',
-            onTap: () {
+          FilledButton(
+            child: Text('Click to display the evaluation pop-up window'),
+            onPressed: () {
               showDialog(
                   context: context,
                   builder: (context) {
@@ -175,9 +175,9 @@ class _AppraiseExampleState extends State<AppraiseExample> {
           SizedBox(
             height: 10,
           ),
-          WaveSmallMainButton(
-            title: 'Click to display the evaluation pop-up window',
-            onTap: () {
+          FilledButton(
+            child: Text('Click to display the evaluation pop-up window'),
+            onPressed: () {
               showDialog(
                   context: context,
                   builder: (context) {

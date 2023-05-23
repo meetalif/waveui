@@ -93,9 +93,9 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: WaveSmallOutlineButton(
-                  title: '点击选中第二个',
-                  onTap: () {
+                child: OutlinedButton(
+                  child: Text('点击选中第二个'),
+                  onPressed: () {
                     _controller.index = 1;
                   },
                 ),

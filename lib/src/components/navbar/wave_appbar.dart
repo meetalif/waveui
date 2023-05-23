@@ -10,6 +10,7 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final bool isBlurred;
   final bool isCenteredTitle;
+  final Function()? onBackPressed;
 
   const WaveAppBar({
     super.key,
@@ -20,6 +21,7 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.automaticallyImplyLeading = true,
     this.showDivider = true,
     this.isCenteredTitle = true,
+    this.onBackPressed,
   });
   @override
   Size get preferredSize => const Size.fromHeight(61);
@@ -50,16 +52,20 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
             : null,
         leading: leading ??
-            (automaticallyImplyLeading ? _backButton(context) : null),
+            (automaticallyImplyLeading
+                ? _backButton(context, onBackPressed: onBackPressed)
+                : null),
       );
     });
   }
 
-  IconButton _backButton(BuildContext context) {
+  IconButton _backButton(BuildContext context, {Function()? onBackPressed}) {
     return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
+      onPressed: onBackPressed != null
+          ? onBackPressed
+          : () {
+              Navigator.pop(context);
+            },
       icon: const Icon(FluentIcons.chevron_left_28_regular),
     );
   }

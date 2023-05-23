@@ -25,9 +25,9 @@ class _PageLoadingWidgetState extends State<PageLoadingWidget> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            WaveNormalButton(
-              text: "Load",
-              onTap: () {
+            FilledButton(
+              child: Text("Load"),
+              onPressed: () {
                 setState(() {
                   isLoading = true;
                 });

@@ -121,10 +121,12 @@ class _SelectionViewExamplePageState
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  WaveBigOutlineButton(
-                      width: 104,
-                      title: "取消",
-                      onTap: () {
+                  FilledButton(
+                      child: SizedBox(
+                        width: 104,
+                        child: Text("取消"),
+                      ),
+                      onPressed: () {
                         if (controller != null) {
                           controller!.cancelSelectedOptions();
                           setState(() {
@@ -135,10 +137,12 @@ class _SelectionViewExamplePageState
                   Container(
                     width: 20,
                   ),
-                  WaveBigMainButton(
-                      width: 104,
-                      title: "确定",
-                      onTap: () {
+                  FilledButton(
+                      child: SizedBox(
+                        width: 104,
+                        child: Text("确定"),
+                      ),
+                      onPressed: () {
                         if (controller != null) {
                           controller!.confirmSelectedOptions();
                           setState(() {

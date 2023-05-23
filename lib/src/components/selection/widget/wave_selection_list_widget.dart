@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:waveui/src/components/button/wave_big_main_button.dart';
 import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_menu_widget.dart';
@@ -235,10 +234,7 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
   Widget _bottomWidget() {
     return Column(
       children: <Widget>[
-        Divider(
-          height: 0.3,
-          color: widget.themeData.commonConfig.dividerColorBase,
-        ),
+        Divider(height: 0.3),
         Container(
           color: Colors.white,
           padding: const EdgeInsets.fromLTRB(8, 11, 20, 11),
@@ -266,9 +262,9 @@ class _WaveSelectionGroupViewState extends State<WaveListSelectionGroupWidget> {
                 ),
               ),
               Expanded(
-                child: WaveBigMainButton(
-                  title: WaveIntl.of(context).localizedResource.ok,
-                  onTap: () {
+                child: FilledButton(
+                  child: Text(WaveIntl.of(context).localizedResource.ok),
+                  onPressed: () {
                     _confirmButtonClickEvent();
                   },
                 ),

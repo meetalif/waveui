@@ -167,27 +167,10 @@ export 'src/components/gallery/config/wave_controller.dart';
 
 export 'src/components/input/wave_input_text.dart';
 export 'src/components/calendar/wave_calendar_view.dart';
-export 'src/components/button/wave_icon_button.dart';
 
 //新手引导
 export 'src/components/guide/wave_flutter_guide.dart';
 export 'src/components/guide/wave_tip_widget.dart';
-
-//button
-export 'src/components/button/wave_big_main_button.dart';
-export 'src/components/button/wave_big_outline_button.dart';
-export 'src/components/button/wave_big_ghost_button.dart';
-export 'src/components/button/wave_small_main_button.dart';
-export 'src/components/button/wave_small_outline_button.dart';
-export 'src/components/button/wave_vertical_icon_button.dart';
-export 'src/components/button/wave_normal_button.dart';
-export 'src/components/button/wave_button.dart';
-
-//按钮集合
-export 'src/components/button/collection/wave_bottom_button_panel.dart';
-export 'src/components/button/collection/wave_button_panel.dart';
-export 'src/components/button/collection/wave_text_button_panel.dart';
-export 'src/components/button/collection/wave_multiple_bottom_button.dart';
 
 //卡片标题
 export 'src/components/card_title/wave_action_card_title.dart';

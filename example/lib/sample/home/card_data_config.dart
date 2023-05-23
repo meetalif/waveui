@@ -6,10 +6,6 @@ import 'package:waveui/waveui.dart';
 import 'package:example/sample/components/actionsheet/actionsheet_entry_page.dart';
 import 'package:example/sample/components/appraise/appraise_example.dart';
 import 'package:example/sample/components/bottom_tabbar/bottom_tabbar_example.dart';
-import 'package:example/sample/components/button/bottom_button_entry_page.dart';
-import 'package:example/sample/components/button/button_entry_page.dart';
-import 'package:example/sample/components/button/button_panel_entry_page.dart';
-import 'package:example/sample/components/button/icon_button_example.dart';
 import 'package:example/sample/components/calendar/calendarview_example.dart';
 import 'package:example/sample/components/card/wave_shadow_example.dart';
 import 'package:example/sample/components/card/bubble/bubble_entry_page.dart';
@@ -178,22 +174,6 @@ class CardDataConfig {
   ///button
   static GroupInfo _getButtonGroup() {
     List<GroupInfo> children = [];
-    children.add(GroupInfo(
-        groupName: "NormalButton",
-        desc: "Primary button, secondary button, button set",
-        navigatorPage: ButtonEntryPage()));
-    children.add(GroupInfo(
-        groupName: "BottomButtonPanel",
-        desc: "Suction button collection",
-        navigatorPage: BottomButtonEntryWidget()));
-    children.add(GroupInfo(
-        groupName: "ButtonPanel button collection",
-        desc: "Button Collection",
-        navigatorPage: ButtonPanelEntryPage()));
-    children.add(GroupInfo(
-        groupName: "IconButton graphic button",
-        desc: "Arbitrarily combined button and picture",
-        navigatorPage: WaveIconBtnExample()));
     children.add(GroupInfo(
         groupName: "Radio",
         desc: "single button",
