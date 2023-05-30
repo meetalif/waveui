@@ -232,3 +232,6 @@ export 'src/components/switch/wave_switch_button.dart';
 
 // Drawer
 export 'src/components/drawer/wave_drawer_item.dart';
+
+// Error
+export 'src/components/error/error.dart';

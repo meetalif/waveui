@@ -2,6 +2,7 @@ import 'package:waveui/src/components/text/wave_expandable_text.dart';
 import 'package:waveui/src/theme/wave_theme_configurator.dart';
 import 'package:flutter/material.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
+import 'package:waveui/waveui.dart';
 
 ///Bubble background text panel with the function of expanding and collapsing
 ///Bubble: Gray Container with background color of Color(0xFFF8F8F8)
@@ -40,8 +41,7 @@ class WaveBubbleText extends StatelessWidget {
   ///The rounded corner of the bubble is 4 by default
   final double radius;
 
-  ///Bubble background color Default is Color(0xFFF8F8F8)
-  final Color bgColor;
+  final Color? bgColor;
 
   ///content text style
   final TextStyle? textStyle;
@@ -52,7 +52,7 @@ class WaveBubbleText extends StatelessWidget {
       this.maxLines,
       this.onExpanded,
       this.radius = 6,
-      this.bgColor = const Color(0xFFF8F8F8),
+      this.bgColor,
       this.textStyle})
       : super(key: key);
 
@@ -78,7 +78,7 @@ class WaveBubbleText extends StatelessWidget {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-                color: bgColor,
+                color: bgColor ?? Get.theme.cardColor,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.only(
                     topLeft: const Radius.circular(0),
@@ -90,7 +90,7 @@ class WaveBubbleText extends StatelessWidget {
             child: WaveExpandableText(
               text: text,
               maxLines: maxLines,
-              color: bgColor,
+              color: bgColor ?? Get.theme.cardColor,
               onExpanded: onExpanded,
               textStyle: textStyle ??
                   TextStyle(

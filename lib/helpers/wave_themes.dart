@@ -366,7 +366,7 @@ ListTileThemeData _listTileThemeData() {
     titleTextStyle: Get.textTheme.bodyMedium,
     subtitleTextStyle: Get.textTheme.bodySmall,
     leadingAndTrailingTextStyle: Get.textTheme.labelLarge,
-    tileColor: Get.theme.cardColor,
+    // tileColor: Get.theme.cardColor,
   );
 }
 
