@@ -11,7 +11,7 @@ class WaveApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wave UI',
-      theme: WaveTheme(themeColor: Colors.deepPurple),
+      theme: WaveTheme(context, themeColor: Colors.deepPurple),
       home: RootPage(),
     );
   }

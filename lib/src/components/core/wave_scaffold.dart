@@ -10,7 +10,7 @@ class WaveScaffold extends StatelessWidget {
     this.drawer,
     this.backgroundColor,
     this.isLoading = false,
-    this.resizeToAvoidBottomInset = true,
+    this.resizeToAvoidBottomInset = false,
   });
 
   final PreferredSizeWidget? appBar;

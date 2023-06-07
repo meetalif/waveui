@@ -1,7 +1,8 @@
 import 'package:waveui/waveui.dart';
 
 // ignore: non_constant_identifier_names
-ThemeData WaveTheme({
+ThemeData WaveTheme(
+  BuildContext context, {
   Color themeColor = Colors.deepPurple,
   bool darkMode = false,
 }) {
@@ -16,7 +17,7 @@ ThemeData WaveTheme({
     dividerTheme: _dividerTheme(),
     buttonTheme: _buttonTheme(),
     filledButtonTheme: _filledButtonTheme(),
-    outlinedButtonTheme: _outlinedButtonTheme(),
+    outlinedButtonTheme: _outlinedButtonTheme(context),
     textButtonTheme: _textButtonTheme(),
     elevatedButtonTheme: _elevatedButtonTheme(),
     timePickerTheme: _timePickerTheme(),
@@ -30,7 +31,7 @@ ThemeData WaveTheme({
     popupMenuTheme: _popupMenuThemeData(),
     inputDecorationTheme: _inputDecorationTheme(themeColor),
     textTheme: _textTheme(darkMode: darkMode),
-    listTileTheme: _listTileThemeData(),
+    listTileTheme: _listTileThemeData(darkMode: darkMode),
   );
 }
 
@@ -91,11 +92,14 @@ FilledButtonThemeData _filledButtonTheme() {
   );
 }
 
-OutlinedButtonThemeData _outlinedButtonTheme() {
+OutlinedButtonThemeData _outlinedButtonTheme(BuildContext context) {
   return OutlinedButtonThemeData(
     style: ButtonStyle(
       side: MaterialStatePropertyAll(
-        BorderSide(color: Get.theme.colorScheme.primary),
+        BorderSide(
+          color: Theme.of(context).colorScheme.primary,
+          width: 1.8,
+        ),
       ),
       shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(
@@ -251,7 +255,11 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
         borderSide: BorderSide(color: Get.theme.dividerColor),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
-      hintStyle: Get.textTheme.bodyMedium,
+      hintStyle: TextStyle(
+        color: Get.textTheme.displayMedium!.color,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
     );
 PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
       surfaceTintColor: Colors.transparent,
@@ -361,9 +369,14 @@ TextTheme _textTheme({bool darkMode = false}) {
   );
 }
 
-ListTileThemeData _listTileThemeData() {
+ListTileThemeData _listTileThemeData({bool darkMode = false}) {
   return ListTileThemeData(
-    titleTextStyle: Get.textTheme.bodyMedium,
+    titleTextStyle: Get.textTheme.bodyMedium!.copyWith(
+      fontSize: 16,
+      height: 1.25,
+      fontWeight: FontWeight.w400,
+      color: WaveColors.textColor(darkMode: darkMode),
+    ),
     subtitleTextStyle: Get.textTheme.bodySmall,
     leadingAndTrailingTextStyle: Get.textTheme.labelLarge,
     // tileColor: Get.theme.cardColor,

@@ -18,7 +18,7 @@ class RootPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.changeTheme(WaveTheme(darkMode: true));
+              Get.changeTheme(WaveTheme(context, darkMode: true));
             },
             icon: Icon(FluentIcons.dark_theme_24_regular),
           ),

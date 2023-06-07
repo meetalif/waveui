@@ -61,11 +61,10 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   IconButton _backButton(BuildContext context, {Function()? onBackPressed}) {
     return IconButton(
-      onPressed: onBackPressed != null
-          ? onBackPressed
-          : () {
-              Navigator.pop(context);
-            },
+      onPressed: onBackPressed ??
+          () {
+            Navigator.pop(context);
+          },
       icon: const Icon(FluentIcons.chevron_left_28_regular),
     );
   }

@@ -235,3 +235,5 @@ export 'src/components/drawer/wave_drawer_item.dart';
 
 // Error
 export 'src/components/error/error.dart';
+
+export 'helpers/enums.dart';

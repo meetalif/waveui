@@ -57,7 +57,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///D:/SDK/flutter/packages/flutter",
+      "rootUri": "file:///C:/SDK/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -75,13 +75,13 @@
     },
     {
       "name": "flutter_localizations",
-      "rootUri": "file:///D:/SDK/flutter/packages/flutter_localizations",
+      "rootUri": "file:///C:/SDK/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///D:/SDK/flutter/packages/flutter_test",
+      "rootUri": "file:///C:/SDK/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -102,6 +102,12 @@
       "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "loading_animation_widget",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/loading_animation_widget-1.2.0+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "lpinyin",
@@ -147,7 +153,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///D:/SDK/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///C:/SDK/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -218,7 +224,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-05-30T12:50:22.140995Z",
+  "generated": "2023-06-07T16:48:45.732196Z",
   "generator": "pub",
-  "generatorVersion": "3.1.0-129.0.dev"
+  "generatorVersion": "3.1.0-155.0.dev"
 }
