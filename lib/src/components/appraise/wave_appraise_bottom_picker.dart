@@ -57,7 +57,7 @@ class _WaveAppraiseBottomPickerState extends State<WaveAppraiseBottomPicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: const Color(0x99000000),
+      backgroundColor: Colors.transparent,
       body: Container(
         alignment: Alignment.bottomCenter,
         child: WaveAppraise(

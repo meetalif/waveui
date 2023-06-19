@@ -1,6 +1,5 @@
 import 'package:waveui/src/components/appraise/wave_appraise_emoji_item.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
-import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:flutter/material.dart';
 import 'package:waveui/src/components/appraise/wave_appraise_interface.dart';
 
@@ -22,7 +21,7 @@ class WaveAppraiseEmojiListView extends StatefulWidget {
       {Key? key, this.indexes = const [0, 1, 2, 3, 4], this.titles, this.onTap})
       : assert(indexes.isNotEmpty),
         super(key: key) {
-    titles ??= WaveIntl.currentResource.appriseLevel;
+    titles ??= ["Worst", "Bad", "Nevermind", "Good", "Best"];
     assert(titles != null && titles!.length == 5);
   }
 

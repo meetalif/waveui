@@ -1,8 +1,7 @@
 import 'package:waveui/waveui.dart';
 
 // ignore: non_constant_identifier_names
-ThemeData WaveTheme(
-  BuildContext context, {
+ThemeData WaveTheme({
   Color themeColor = Colors.deepPurple,
   bool darkMode = false,
 }) {
@@ -17,7 +16,7 @@ ThemeData WaveTheme(
     dividerTheme: _dividerTheme(),
     buttonTheme: _buttonTheme(),
     filledButtonTheme: _filledButtonTheme(),
-    outlinedButtonTheme: _outlinedButtonTheme(context),
+    outlinedButtonTheme: _outlinedButtonTheme(themeColor),
     textButtonTheme: _textButtonTheme(),
     elevatedButtonTheme: _elevatedButtonTheme(),
     timePickerTheme: _timePickerTheme(),
@@ -92,12 +91,12 @@ FilledButtonThemeData _filledButtonTheme() {
   );
 }
 
-OutlinedButtonThemeData _outlinedButtonTheme(BuildContext context) {
+OutlinedButtonThemeData _outlinedButtonTheme(Color accentColor) {
   return OutlinedButtonThemeData(
     style: ButtonStyle(
       side: MaterialStatePropertyAll(
         BorderSide(
-          color: Theme.of(context).colorScheme.primary,
+          color: accentColor,
           width: 1.8,
         ),
       ),
@@ -262,15 +261,8 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
       ),
     );
 PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
-      surfaceTintColor: Colors.transparent,
-      color: Get.theme.cardColor,
-      elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(WaveConstants.radius),
-        side: BorderSide(
-          width: WaveConstants.contentBorder,
-          color: Get.theme.dividerColor,
-        ),
       ),
     );
 
