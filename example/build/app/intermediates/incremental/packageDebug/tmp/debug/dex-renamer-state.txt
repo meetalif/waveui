@@ -1,4 +1,0 @@
-#Tue May 30 18:53:25 BDT 2023
-base.0=D\:\\Projects\\waveui\\example\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
