@@ -26,7 +26,8 @@ class GifImage extends StatefulWidget {
   final bool excludeFromSemantics;
   final Widget? defaultImage;
 
-  const GifImage({super.key, 
+  const GifImage({
+    super.key,
     required this.image,
     required this.controller,
     this.semanticLabel,
@@ -50,7 +51,8 @@ class GifImage extends StatefulWidget {
 }
 
 class GifImageState extends State<GifImage> {
-  final ValueNotifier<List<ImageInfo>> _images = ValueNotifier<List<ImageInfo>>([]);
+  final ValueNotifier<List<ImageInfo>> _images =
+      ValueNotifier<List<ImageInfo>>([]);
   double _curValue = 0.0;
 
   @override
@@ -126,10 +128,11 @@ class GifImageState extends State<GifImage> {
     List<ImageInfo> infos = [];
     if (provider is AssetImage) {
       dynamic data;
-      AssetBundleImageKey key = await provider.obtainKey(const ImageConfiguration());
+      AssetBundleImageKey key =
+          await provider.obtainKey(const ImageConfiguration());
       data = await key.bundle.load(key.name);
       ui.Codec codec = await usePaintingBinding()
-          .instantiateImageCodec(data.buffer.asUint8List());
+          .instantiateImageCodecWithSize(data.buffer.asUint8List());
       for (int i = 0; i < codec.frameCount; i++) {
         FrameInfo frameInfo = await codec.getNextFrame();
         infos.add(ImageInfo(image: frameInfo.image));
