@@ -34,10 +34,6 @@ fluentui_system_icons
 2.12
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/fluentui_system_icons-1.1.222/
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/fluentui_system_icons-1.1.222/lib/
-flutter_animate
-2.17
-file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_animate-4.3.0/
-file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_animate-4.3.0/lib/
 flutter_easyrefresh
 2.12
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_easyrefresh-2.2.2/
@@ -103,7 +99,7 @@ xml
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.4.2/
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.4.2/lib/
 waveui
-2.17
+3.2
 file:///C:/waveui/
 file:///C:/waveui/lib/
 example

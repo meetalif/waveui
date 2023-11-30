@@ -38,12 +38,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_animate",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_animate-4.3.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3",
       "packageUri": "lib/",
@@ -143,10 +137,10 @@
       "name": "waveui",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.2"
     }
   ],
-  "generated": "2023-11-26T11:58:09.849948Z",
+  "generated": "2023-11-30T18:16:05.334339Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

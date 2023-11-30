@@ -44,12 +44,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_animate",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_animate-4.3.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "flutter_easyrefresh",
       "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_easyrefresh-2.2.2",
       "packageUri": "lib/",
@@ -149,7 +143,7 @@
       "name": "waveui",
       "rootUri": "../../",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.2"
     },
     {
       "name": "web",
@@ -170,7 +164,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2023-11-27T21:16:31.815353Z",
+  "generated": "2023-11-30T17:24:24.804205Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

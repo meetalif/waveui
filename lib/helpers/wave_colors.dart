@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class WaveColors {
   static Color backgroundColor({darkMode = false}) {
-    return darkMode ? Colors.grey.shade900 : const Color(0xFFF0F0F0);
+    return darkMode ? Colors.grey.shade900 : Colors.grey.shade100;
   }
 
   static Color contentBg({darkMode = false}) {
@@ -20,4 +20,6 @@ class WaveColors {
   static Color subtitleColor({darkMode = false}) {
     return darkMode ? Colors.grey.shade300 : Colors.black54;
   }
+
+  static Color dividerColor = Colors.grey.withOpacity(0.3);
 }

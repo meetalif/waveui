@@ -7,7 +7,7 @@ ThemeData WaveTheme({
 }) {
   return _getDefaultThemeData(darkMode: darkMode).copyWith(
     colorScheme: _colorScheme(darkMode: darkMode, themeColor: themeColor),
-    dividerColor: Colors.grey.withOpacity(0.3),
+    dividerColor: WaveColors.dividerColor,
     cardColor: WaveColors.contentBg(darkMode: darkMode),
     scaffoldBackgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     appBarTheme: _appBarTheme(darkMode: darkMode),
@@ -18,17 +18,17 @@ ThemeData WaveTheme({
     outlinedButtonTheme: _outlinedButtonTheme(themeColor),
     textButtonTheme: _textButtonTheme(),
     elevatedButtonTheme: _elevatedButtonTheme(),
-    timePickerTheme: _timePickerTheme(),
-    datePickerTheme: _datePickerTheme(),
+    timePickerTheme: _timePickerTheme(darkMode),
+    datePickerTheme: _datePickerTheme(darkMode),
     floatingActionButtonTheme: _floatingActionButtonThemeData(),
-    drawerTheme: _drawerTheme(),
-    progressIndicatorTheme: _progressIndicatorTheme(),
+    drawerTheme: _drawerTheme(darkMode),
+    progressIndicatorTheme: _progressIndicatorTheme(themeColor),
     chipTheme: _chipTheme(),
-    cardTheme: _cardTheme(),
-    dialogTheme: _dialogTheme(),
+    cardTheme: _cardTheme(darkMode),
+    dialogTheme: _dialogTheme(darkMode),
     popupMenuTheme: _popupMenuThemeData(),
-    inputDecorationTheme: _inputDecorationTheme(themeColor),
-    textTheme: _textTheme(darkMode: darkMode),
+    inputDecorationTheme: _inputDecorationTheme(themeColor, darkMode),
+    textTheme: WaveTextTheme(isDarkMode: darkMode),
     listTileTheme: _listTileThemeData(darkMode: darkMode),
   );
 }
@@ -66,7 +66,7 @@ DividerThemeData _dividerTheme() {
   return DividerThemeData(
     thickness: WaveConstants.contentBorder,
     space: 0,
-    color: Get.theme.dividerColor,
+    color: WaveColors.dividerColor,
   );
 }
 
@@ -133,60 +133,60 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
   );
 }
 
-TimePickerThemeData _timePickerTheme() {
+TimePickerThemeData _timePickerTheme(bool darkMode) {
   return TimePickerThemeData(
     elevation: 0,
-    backgroundColor: Get.theme.colorScheme.background,
+    backgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(WaveConstants.radius),
       side: BorderSide(
-        color: Get.theme.dividerColor,
+        color: WaveColors.dividerColor,
         width: WaveConstants.contentBorder,
       ),
     ),
     dayPeriodBorderSide: BorderSide(
-      color: Get.theme.dividerColor,
+      color: WaveColors.dividerColor,
     ),
     hourMinuteTextStyle: const TextStyle(fontSize: 60),
-    dialBackgroundColor: Get.theme.cardColor,
+    dialBackgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
   );
 }
 
-DatePickerThemeData _datePickerTheme() {
+DatePickerThemeData _datePickerTheme(bool darkMode) {
   return DatePickerThemeData(
     elevation: 0,
-    backgroundColor: Get.theme.colorScheme.background,
+    backgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(WaveConstants.radius),
       side: BorderSide(
-        color: Get.theme.dividerColor,
+        color: WaveColors.dividerColor,
         width: WaveConstants.contentBorder,
       ),
     ),
   );
 }
 
-DrawerThemeData _drawerTheme() {
+DrawerThemeData _drawerTheme(bool darkMode) {
   return DrawerThemeData(
     surfaceTintColor: Colors.transparent,
-    backgroundColor: Get.theme.colorScheme.background,
+    backgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.zero,
     ),
   );
 }
 
-ProgressIndicatorThemeData _progressIndicatorTheme() {
+ProgressIndicatorThemeData _progressIndicatorTheme(Color themeColor) {
   return ProgressIndicatorThemeData(
-    refreshBackgroundColor: Get.theme.colorScheme.primary.withOpacity(0.1),
-    linearTrackColor: Get.theme.colorScheme.primary.withOpacity(0.1),
-    circularTrackColor: Get.theme.colorScheme.primary.withOpacity(0.1),
+    refreshBackgroundColor: themeColor.withOpacity(0.1),
+    linearTrackColor: themeColor.withOpacity(0.1),
+    circularTrackColor: themeColor.withOpacity(0.1),
   );
 }
 
 ChipThemeData _chipTheme() {
   return ChipThemeData(
-    side: BorderSide(color: Get.theme.dividerColor),
+    side: BorderSide(color: WaveColors.dividerColor),
     elevation: 0,
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
@@ -195,14 +195,14 @@ ChipThemeData _chipTheme() {
   );
 }
 
-CardTheme _cardTheme() {
+CardTheme _cardTheme(bool darkMode) {
   return CardTheme(
     elevation: WaveConstants.elevation,
     surfaceTintColor: Colors.transparent,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(WaveConstants.radius),
     ),
-    color: Get.theme.cardColor,
+    color: WaveColors.contentBg(darkMode: darkMode),
   );
 }
 
@@ -217,23 +217,23 @@ BottomNavigationBarThemeData _bottomNavigationBarTheme() {
   );
 }
 
-DialogTheme _dialogTheme() {
+DialogTheme _dialogTheme(bool darkMode) {
   return DialogTheme(
     surfaceTintColor: Colors.transparent,
-    titleTextStyle: Get.textTheme.titleLarge,
-    contentTextStyle: Get.textTheme.bodyMedium,
+    titleTextStyle: WaveTextTheme(isDarkMode: darkMode).titleLarge,
+    contentTextStyle: WaveTextTheme(isDarkMode: darkMode).bodyMedium,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(WaveConstants.radius),
     ),
   );
 }
 
-InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
+InputDecorationTheme _inputDecorationTheme(Color themeColor, bool darkMode) =>
     InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      labelStyle: Get.textTheme.bodyMedium,
+      labelStyle: WaveTextTheme(isDarkMode: darkMode).bodyMedium,
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Get.theme.dividerColor),
+        borderSide: BorderSide(color: WaveColors.dividerColor),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       filled: true,
@@ -242,19 +242,19 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor) =>
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Get.theme.colorScheme.error, width: 2),
+        borderSide: const BorderSide(color: Colors.red, width: 2),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Get.theme.colorScheme.error),
+        borderSide: const BorderSide(color: Colors.red),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       disabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Get.theme.dividerColor),
+        borderSide: BorderSide(color: WaveColors.dividerColor),
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
       hintStyle: TextStyle(
-        color: Get.textTheme.displayMedium!.color,
+        color: WaveTextTheme(isDarkMode: darkMode).displayMedium!.color,
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
@@ -265,112 +265,16 @@ PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
       ),
     );
 
-TextTheme _textTheme({bool darkMode = false}) {
-  return Get.textTheme.copyWith(
-    bodyLarge: Get.textTheme.bodyLarge!.copyWith(
-      fontSize: 18,
-      height: 1.25,
-      fontWeight: FontWeight.w400,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    bodyMedium: Get.textTheme.bodyMedium!.copyWith(
-      fontSize: 16,
-      height: 1.25,
-      fontWeight: FontWeight.w400,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    bodySmall: Get.textTheme.bodySmall!.copyWith(
-      fontSize: 14,
-      height: 1.25,
-      fontWeight: FontWeight.w400,
-      color: WaveColors.subtitleColor(darkMode: darkMode),
-    ),
-    titleLarge: Get.textTheme.titleLarge!.copyWith(
-      fontSize: 20,
-      height: 1.25,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    titleMedium: Get.textTheme.titleMedium!.copyWith(
-      fontSize: 18,
-      height: 1.25,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    titleSmall: Get.textTheme.titleSmall!.copyWith(
-      fontSize: 16,
-      height: 1.25,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    labelLarge: Get.textTheme.labelLarge!.copyWith(
-      fontSize: 15,
-      height: 1,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    labelMedium: Get.textTheme.labelMedium!.copyWith(
-      fontSize: 13,
-      height: 1,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    labelSmall: Get.textTheme.labelSmall!.copyWith(
-      fontSize: 11,
-      height: 1,
-      fontWeight: FontWeight.w500,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    headlineLarge: Get.textTheme.headlineLarge!.copyWith(
-      fontSize: 32,
-      height: 1.25,
-      fontWeight: FontWeight.w700,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    headlineMedium: Get.textTheme.headlineMedium!.copyWith(
-      fontSize: 28,
-      height: 1.25,
-      fontWeight: FontWeight.w700,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    headlineSmall: Get.textTheme.headlineSmall!.copyWith(
-      fontSize: 24,
-      height: 1.25,
-      fontWeight: FontWeight.w700,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    displayLarge: Get.textTheme.displayLarge!.copyWith(
-      fontSize: 78,
-      height: 1.25,
-      fontWeight: FontWeight.w300,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    displayMedium: Get.textTheme.displayMedium!.copyWith(
-      fontSize: 64,
-      height: 1.25,
-      fontWeight: FontWeight.w300,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-    displaySmall: Get.textTheme.displaySmall!.copyWith(
-      fontSize: 48,
-      height: 1.25,
-      fontWeight: FontWeight.w300,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
-  );
-}
-
 ListTileThemeData _listTileThemeData({bool darkMode = false}) {
   return ListTileThemeData(
-    titleTextStyle: Get.textTheme.bodyMedium!.copyWith(
+    titleTextStyle: TextStyle(
       fontSize: 16,
       height: 1.25,
       fontWeight: FontWeight.w400,
       color: WaveColors.textColor(darkMode: darkMode),
     ),
-    subtitleTextStyle: Get.textTheme.bodySmall,
-    leadingAndTrailingTextStyle: Get.textTheme.labelLarge,
-    // tileColor: Get.theme.cardColor,
+    subtitleTextStyle: WaveTextTheme(isDarkMode: darkMode).bodySmall,
+    leadingAndTrailingTextStyle: WaveTextTheme(isDarkMode: darkMode).labelLarge,
   );
 }
 
@@ -379,7 +283,7 @@ FloatingActionButtonThemeData _floatingActionButtonThemeData() {
     elevation: 0,
     shape: RoundedRectangleBorder(
       side: BorderSide(
-        color: Get.theme.dividerColor,
+        color: WaveColors.dividerColor,
         width: WaveConstants.contentBorder,
       ),
       borderRadius: BorderRadius.circular(WaveConstants.radius),
