@@ -2,16 +2,18 @@ import 'package:waveui/waveui.dart';
 import 'package:example/sample/home/root_page.dart';
 
 void main() {
-  runApp(WaveApp());
+  runApp(const WaveApp());
 }
 
 class WaveApp extends StatelessWidget {
+  const WaveApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wave UI',
-      theme: WaveTheme(themeColor: Colors.deepPurple),
+      theme: WaveTheme(themeColor: Colors.red),
       home: RootPage(),
     );
   }

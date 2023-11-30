@@ -8,19 +8,20 @@ class RootPage extends StatelessWidget {
 
     return WaveScaffold(
       isBlurred: true,
+      backgroundColor: Get.theme.cardColor,
       appBar: WaveAppBar(
         isBlurred: true,
         title: 'WaveUI',
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(FluentIcons.navigation_24_regular),
+          icon: const Icon(FluentIcons.navigation_24_regular),
         ),
         actions: [
           IconButton(
             onPressed: () {
               Get.changeTheme(WaveTheme(darkMode: true));
             },
-            icon: Icon(FluentIcons.dark_theme_24_regular),
+            icon: const Icon(FluentIcons.dark_theme_24_regular),
           ),
         ],
       ),
@@ -28,24 +29,26 @@ class RootPage extends StatelessWidget {
         child: ListView.builder(
           itemCount: list.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             var group = list[index];
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                Container(
+                  width: double.infinity,
+                  color: Get.theme.colorScheme.background,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    "${group.groupName}",
+                    group.groupName,
                     style: Get.textTheme.titleMedium,
                   ),
                 ),
                 ListView.builder(
                   itemCount: group.children?.length ?? 0,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     var widget = group.children![index];
                     return Column(
@@ -54,10 +57,10 @@ class RootPage extends StatelessWidget {
                           onTap: () {
                             Get.to(widget.navigatorPage);
                           },
-                          title: Text("${widget.groupName}"),
-                          subtitle: Text("${widget.desc}"),
+                          title: Text(widget.groupName),
+                          subtitle: Text(widget.desc),
                         ),
-                        Divider(),
+                        const Divider(),
                       ],
                     );
                   },

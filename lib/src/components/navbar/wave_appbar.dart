@@ -28,35 +28,32 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return AppBar(
-        title: title is String || title is int ? Text('$title') : title,
-        actions: actions,
-        automaticallyImplyLeading: false,
-        centerTitle: isCenteredTitle,
-        bottom: showDivider ? _bottom() : null,
-        scrolledUnderElevation: 0,
-        backgroundColor:
-            Get.theme.appBarTheme.backgroundColor!.withOpacity(0.8),
-        flexibleSpace: isBlurred
-            ? ClipRect(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: WaveConstants.blur,
-                    sigmaY: WaveConstants.blur,
-                  ),
-                  child: Container(
-                    color: Colors.transparent,
-                  ),
+    return AppBar(
+      title: title is String || title is int ? Text('$title') : title,
+      actions: actions,
+      automaticallyImplyLeading: false,
+      centerTitle: isCenteredTitle,
+      bottom: showDivider ? _bottom() : null,
+      scrolledUnderElevation: 0,
+      backgroundColor: Get.theme.appBarTheme.backgroundColor!.withOpacity(0.8),
+      flexibleSpace: isBlurred
+          ? ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: WaveConstants.blur,
+                  sigmaY: WaveConstants.blur,
                 ),
-              )
-            : null,
-        leading: leading ??
-            (automaticallyImplyLeading
-                ? _backButton(context, onBackPressed: onBackPressed)
-                : null),
-      );
-    });
+                child: Container(
+                  color: Colors.transparent,
+                ),
+              ),
+            )
+          : null,
+      leading: leading ??
+          (automaticallyImplyLeading
+              ? _backButton(context, onBackPressed: onBackPressed)
+              : null),
+    );
   }
 
   IconButton _backButton(BuildContext context, {Function()? onBackPressed}) {

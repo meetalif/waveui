@@ -2,11 +2,10 @@ import 'package:waveui/waveui.dart';
 
 // ignore: non_constant_identifier_names
 ThemeData WaveTheme({
-  Color themeColor = Colors.deepPurple,
+  Color themeColor = Colors.indigo,
   bool darkMode = false,
 }) {
   return _getDefaultThemeData(darkMode: darkMode).copyWith(
-    useMaterial3: true,
     colorScheme: _colorScheme(darkMode: darkMode, themeColor: themeColor),
     dividerColor: Colors.grey.withOpacity(0.3),
     cardColor: WaveColors.contentBg(darkMode: darkMode),
