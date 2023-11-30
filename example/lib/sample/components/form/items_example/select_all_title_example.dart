@@ -30,11 +30,11 @@ class SelectAllTitleExamplePage extends StatelessWidget {
               selectState: false,
               onSelectAll: (int index, bool isSelect) {
                 Fluttertoast.showToast(
-                    msg: "all selection callback_onSelectAll", context);
+                    msg: "all selection callback_onSelectAll");
               },
               onTip: () {
                 Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                    msg: "Click trigger callback_onTip");
               },
             ),
             Container(
@@ -62,11 +62,11 @@ class SelectAllTitleExamplePage extends StatelessWidget {
               ),
               onSelectAll: (int index, bool isSelect) {
                 Fluttertoast.showToast(
-                    msg: "all selection callback_onSelectAll", context);
+                    msg: "all selection callback_onSelectAll");
               },
               onTip: () {
                 Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                    msg: "Click trigger callback_onTip");
               },
             ),
           ],

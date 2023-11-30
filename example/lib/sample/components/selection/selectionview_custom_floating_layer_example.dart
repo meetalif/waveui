@@ -84,9 +84,9 @@ class _SelectionViewExamplePageState
                 Map<String, String> customParams,
                 WaveSetCustomSelectionMenuTitle setCustomTitleFunction) {
               Fluttertoast.showToast(
-                  msg: 'filterParams : $filterParams' +
-                      ',\n customParams : $customParams',
-                  context);
+                msg: 'filterParams : $filterParams' +
+                    ',\n customParams : $customParams',
+              );
             },
           ),
           Container(

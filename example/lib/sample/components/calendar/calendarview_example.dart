@@ -19,35 +19,36 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
         ),
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: ListView(
             children: <Widget>[
-              Text('Single selection-no control-week view'),
+              const Text('Single selection-no control-week view'),
               _calendarViewWeekNocontrol(context),
-              WaveLine(
+              const WaveLine(
                 height: 40.0,
               ),
-              Text('Single selection-no control-week view-custom WeekName'),
+              const Text(
+                  'Single selection-no control-week view-custom WeekName'),
               _calendarViewWeekNocontrollCustomWeekName(context),
-              WaveLine(
+              const WaveLine(
                 height: 40.0,
               ),
-              Text('Single selection-week view'),
+              const Text('Single selection-week view'),
               _calendarViewWeek(context),
-              WaveLine(
+              const WaveLine(
                 height: 40.0,
               ),
-              Text('Range selection-week view'),
+              const Text('Range selection-week view'),
               _calendarViewWeekRange(context),
-              WaveLine(
+              const WaveLine(
                 height: 40.0,
               ),
-              Text('single-selection-month view'),
+              const Text('single-selection-month view'),
               _calendarViewMonth(context),
-              WaveLine(
+              const WaveLine(
                 height: 40.0,
               ),
-              Text('Range Selection-Month View'),
+              const Text('Range Selection-Month View'),
               _calendarViewMonthRange(context),
             ],
           ),
@@ -59,7 +60,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       displayMode: DisplayMode.week,
       showControllerBar: false,
       dateChange: (date) {
-        Fluttertoast.showToast(msg: 'Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date');
       },
     );
   }
@@ -78,7 +79,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
         'Saturday'
       ],
       dateChange: (date) {
-        Fluttertoast.showToast(msg: 'Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date');
       },
     );
   }
@@ -90,7 +91,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       minDate: DateTime(2020),
       maxDate: DateTime(2021),
       dateChange: (date) {
-        Fluttertoast.showToast(msg: '选中的时间： $date', context);
+        Fluttertoast.showToast(msg: '选中的时间： $date');
       },
     );
   }
@@ -100,8 +101,8 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       displayMode: DisplayMode.week,
       rangeDateChange: (rangeDate) {
         Fluttertoast.showToast(
-            msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
-            context);
+          msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
+        );
       },
     );
   }
@@ -112,7 +113,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       minDate: DateTime(2020),
       maxDate: DateTime(2021),
       dateChange: (date) {
-        Fluttertoast.showToast(msg: 'Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date');
       },
     );
   }
@@ -123,8 +124,8 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       maxDate: DateTime(2023),
       rangeDateChange: (rangeDate) {
         Fluttertoast.showToast(
-            msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
-            context);
+          msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
+        );
       },
     );
   }

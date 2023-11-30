@@ -48,9 +48,9 @@ class CustomPickerExamplePage extends StatelessWidget {
               describe: '支持底部弹窗确定取消事件并不关闭弹窗',
               onPressed: () {
                 WaveBottomPicker.show(context, onConfirm: () {
-                  Fluttertoast.showToast(msg: '不关闭', context);
+                  Fluttertoast.showToast(msg: '不关闭');
                 }, onCancel: () {
-                  Fluttertoast.showToast(msg: '不关闭', context);
+                  Fluttertoast.showToast(msg: '不关闭');
                 },
                     contentWidget: Column(
                       mainAxisSize: MainAxisSize.min,

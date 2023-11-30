@@ -14,8 +14,8 @@ class RatioInputExamplePage extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: const Text(
                 "Basic style:",
                 style: TextStyle(
                   color: Color(0xFF222222),
@@ -27,26 +27,25 @@ class RatioInputExamplePage extends StatelessWidget {
               controller: TextEditingController()..text = "1.6",
               title: "Parking Space Ratio",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+              child: const Text(
                 "Full Feature Style:",
                 style: TextStyle(
                   color: Color(0xFF222222),
@@ -64,26 +63,25 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+              child: const Text(
                 "no error：",
                 style: TextStyle(
                   color: Color(0xFF222222),
@@ -100,26 +98,25 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+              child: const Text(
                 "Can add and delete in disabled state:",
                 style: TextStyle(
                   color: Color(0xFF222222),
@@ -137,21 +134,20 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
           ],

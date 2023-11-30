@@ -118,7 +118,7 @@ enum _ButtonType {
 ///WaveDialogManager.showSingleButtonDialog(context,
 ///label: "Got it", message: "Auxiliary content information, auxiliary content information, auxiliary content information, auxiliary content information", onTap: () {
 ///Fluttertoast.showToast(
-                 msg:'Got it', context);
+//  msg:'Got it', context);
 ///});
 ///}
 ///

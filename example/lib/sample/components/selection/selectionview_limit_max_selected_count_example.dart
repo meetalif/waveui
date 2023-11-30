@@ -56,11 +56,11 @@ class _SelectionViewExamplePageState
               Fluttertoast.showToast(
                   msg: 'filterParams : $filterParams' +
                       ',\n customParams : $customParams',
-                  context);
+                  );
             },
             onMenuClickInterceptor: (index) {
               if (index == 4) {
-                Fluttertoast.showToast(msg: '第$index个被拦截了', context);
+                Fluttertoast.showToast(msg: '第$index个被拦截了');
                 return true;
               } else {
                 return false;

@@ -28,7 +28,8 @@ class BaseTitleExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               onTip: () {
                 Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                  msg: "Click trigger callback_onTip",
+                );
               },
             ),
             Container(
@@ -55,7 +56,8 @@ class BaseTitleExamplePage extends StatelessWidget {
               ),
               onTip: () {
                 Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                  msg: "Click trigger callback_onTip",
+                );
               },
             ),
           ],

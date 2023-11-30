@@ -313,7 +313,7 @@ class DialogEntryPage extends StatelessWidget {
                       state(() {});
                     },
                     onSubmitClick: (data) {
-                      Fluttertoast.showToast(msg: data!, context);
+                      Fluttertoast.showToast(msg: data!);
                     });
               },
             ));
@@ -345,7 +345,9 @@ class DialogEntryPage extends StatelessWidget {
               data.forEach((item) {
                 str = str + item.content + " ";
               });
-              Fluttertoast.showToast(msg: str, context);
+              Fluttertoast.showToast(
+                msg: str,
+              );
               return true;
             }));
   }
@@ -419,7 +421,9 @@ class DialogEntryPage extends StatelessWidget {
                     data.forEach((item) {
                       str = str + item.content + "  ";
                     });
-                    Fluttertoast.showToast(msg: str, context);
+                    Fluttertoast.showToast(
+                      msg: str,
+                    );
                     return true;
                   });
             }));
@@ -453,7 +457,9 @@ class DialogEntryPage extends StatelessWidget {
               data.forEach((item) {
                 str = str + item.content + " ";
               });
-              Fluttertoast.showToast(msg: str, context);
+              Fluttertoast.showToast(
+                msg: str,
+              );
               return true;
             }));
   }
@@ -473,11 +479,14 @@ class DialogEntryPage extends StatelessWidget {
               "This is the text behind the color label",
               linksCallback: (String? text, String? linkUrl) {
             Fluttertoast.showToast(
-                msg: '$text clicked! Url is $linkUrl', context);
+              msg: '$text clicked! Url is $linkUrl',
+            );
           }),
         ),
         showIcon: true, onConfirm: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
     }, onCancel: () {
       Navigator.pop(context);
     });
@@ -501,10 +510,12 @@ class DialogEntryPage extends StatelessWidget {
         dismissOnActionsTap: false,
         barrierDismissible: true,
         onConfirm: (value) {
-          Fluttertoast.showToast(msg: value, context);
+          Fluttertoast.showToast(msg: value);
         },
         onCancel: () {
-          Fluttertoast.showToast(msg: "Cancel", context);
+          Fluttertoast.showToast(
+            msg: "Cancel",
+          );
           Navigator.pop(context);
         }).show(context);
   }
@@ -522,10 +533,12 @@ class DialogEntryPage extends StatelessWidget {
         inputEditingController: TextEditingController()..text = 'bbb',
         textInputAction: TextInputAction.done,
         onConfirm: (value) {
-          Fluttertoast.showToast(msg: value, context);
+          Fluttertoast.showToast(msg: value);
         },
         onCancel: () {
-          Fluttertoast.showToast(msg: "取消", context);
+          Fluttertoast.showToast(
+            msg: "取消",
+          );
           Navigator.pop(context);
         }).show(context);
   }
@@ -541,10 +554,12 @@ class DialogEntryPage extends StatelessWidget {
         barrierDismissible: false,
         textInputAction: TextInputAction.done,
         onConfirm: (value) {
-          Fluttertoast.showToast(msg: value, context);
+          Fluttertoast.showToast(msg: value);
         },
         onCancel: () {
-          Fluttertoast.showToast(msg: "Cancel", context);
+          Fluttertoast.showToast(
+            msg: "Cancel",
+          );
           Navigator.pop(context);
         }).show(context);
   }
@@ -553,7 +568,7 @@ class DialogEntryPage extends StatelessWidget {
   void _showStyle1Dialog0(BuildContext context) {
     WaveDialogManager.showSingleButtonDialog(context,
         label: "Got it", message: "Auxiliary content information", onTap: () {
-      Fluttertoast.showToast(msg: 'Got it', context);
+      Fluttertoast.showToast(msg: 'Got it');
       Navigator.pop(context);
     });
   }
@@ -580,7 +595,7 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Supplementary content information supplementary content information supplementary content information supplementary content information supplementary content information",
         onTap: () {
-      Fluttertoast.showToast(msg: 'Got it', context);
+      Fluttertoast.showToast(msg: 'Got it');
       Navigator.pop(context);
     });
   }
@@ -593,7 +608,7 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information",
         onTap: () {
-      Fluttertoast.showToast(msg: 'Got it', context);
+      Fluttertoast.showToast(msg: 'Got it');
       Navigator.pop(context);
     });
   }
@@ -617,7 +632,7 @@ class DialogEntryPage extends StatelessWidget {
                 ),
               ),
             )), onTap: () {
-      Fluttertoast.showToast(msg: 'Got it', context);
+      Fluttertoast.showToast(msg: 'Got it');
       Navigator.pop(context);
     });
   }
@@ -631,9 +646,13 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information auxiliary content information auxiliary content information auxiliary content information auxiliary content information",
         onConfirm: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
     }, onCancel: () {
-      Fluttertoast.showToast(msg: "Cancel", context);
+      Fluttertoast.showToast(
+        msg: "Cancel",
+      );
       Navigator.pop(context);
     });
   }
@@ -649,7 +668,9 @@ class DialogEntryPage extends StatelessWidget {
         title:
             "title title title title title title title title title title title title title title title title title title title title title",
         indexedActionClickCallback: (index) {
-      Fluttertoast.showToast(msg: "$index", context);
+      Fluttertoast.showToast(
+        msg: "$index",
+      );
     });
   }
 
@@ -664,7 +685,9 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information",
         indexedActionClickCallback: (index) {
-      Fluttertoast.showToast(msg: "$index", context);
+      Fluttertoast.showToast(
+        msg: "$index",
+      );
     });
   }
 
@@ -680,7 +703,9 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information",
         indexedActionClickCallback: (index) {
-      Fluttertoast.showToast(msg: "$index", context);
+      Fluttertoast.showToast(
+        msg: "$index",
+      );
     });
   }
 
@@ -695,9 +720,13 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information auxiliary content information auxiliary content information auxiliary content information auxiliary content information",
         onConfirm: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
     }, onCancel: () {
-      Fluttertoast.showToast(msg: "Cancel", context);
+      Fluttertoast.showToast(
+        msg: "Cancel",
+      );
       Navigator.pop(context);
     });
   }
@@ -708,7 +737,9 @@ class DialogEntryPage extends StatelessWidget {
         showIcon: true,
         title: "Congratulations, you have completed the filling",
         label: "OK", onTap: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
       Navigator.pop(context);
     });
   }
@@ -720,9 +751,13 @@ class DialogEntryPage extends StatelessWidget {
             "title content, title content, title content title content, title content title content, title content",
         cancel: 'Cancel',
         confirm: 'OK', onConfirm: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
     }, onCancel: () {
-      Fluttertoast.showToast(msg: "Cancel", context);
+      Fluttertoast.showToast(
+        msg: "Cancel",
+      );
       Navigator.pop(context);
     });
   }
@@ -737,9 +772,13 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information auxiliary content information auxiliary content information auxiliary content information auxiliary content information",
         onConfirm: () {
-      Fluttertoast.showToast(msg: "OK", context);
+      Fluttertoast.showToast(
+        msg: "OK",
+      );
     }, onCancel: () {
-      Fluttertoast.showToast(msg: "Cancel", context);
+      Fluttertoast.showToast(
+        msg: "Cancel",
+      );
       Navigator.pop(context);
     });
   }
@@ -768,10 +807,14 @@ class DialogEntryPage extends StatelessWidget {
         message:
             "Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information Auxiliary content information",
         onConfirm: () {
-          Fluttertoast.showToast(msg: "OK", context);
+          Fluttertoast.showToast(
+            msg: "OK",
+          );
         },
         onCancel: () {
-          Fluttertoast.showToast(msg: "Cancel", context);
+          Fluttertoast.showToast(
+            msg: "Cancel",
+          );
           Navigator.pop(context);
         });
   }
@@ -791,7 +834,7 @@ class DialogEntryPage extends StatelessWidget {
         builder: (context) {
           return WavePageLoading();
         }).then((result) {
-      Fluttertoast.showToast(msg: 'result: $result ', context);
+      Fluttertoast.showToast(msg: 'result: $result ');
     });
 
     WaveSafeDialog.show(
@@ -799,7 +842,7 @@ class DialogEntryPage extends StatelessWidget {
         builder: (context) {
           return WavePageLoading();
         }).then((result) {
-      Fluttertoast.showToast(msg: 'result: $result ', context);
+      Fluttertoast.showToast(msg: 'result: $result ');
     });
 
     Future.delayed(Duration(seconds: 5)).then((_) {
@@ -826,7 +869,8 @@ class DialogEntryPage extends StatelessWidget {
           "Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information",
       clickCallBack: (int channel, int index) {
         Fluttertoast.showToast(
-            msg: "channel: $channel, index: $index", context);
+          msg: "channel: $channel, index: $index",
+        );
       },
       getCustomChannelWidget: (int index) {
         if (index == 2)
@@ -860,7 +904,8 @@ class DialogEntryPage extends StatelessWidget {
           "Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information Test Auxiliary Information",
       clickCallBack: (int channel, int index) {
         Fluttertoast.showToast(
-            msg: "channel: $channel, index: $index", context);
+          msg: "channel: $channel, index: $index",
+        );
       },
       getCustomChannelWidget: (int index) {
         if (index == 1)
@@ -940,11 +985,12 @@ class DialogEntryPage extends StatelessWidget {
                 "This table is pure text? table pure text? table pure text? table pure text? table pure text? table pure text? table pure text? table pure text? table pure text? table",
             submitText: "Submit",
             linksCallback: (String? text, String? url) {
-              Fluttertoast.showToast(msg: text!, context);
+              Fluttertoast.showToast(msg: text!);
             },
             onSubmitClick: () {
               Fluttertoast.showToast(
-                  msg: "Clicked the plain text box", context);
+                msg: "Clicked the plain text box",
+              );
             }));
   }
 
@@ -966,7 +1012,8 @@ class DialogEntryPage extends StatelessWidget {
             submitText: "Submit",
             onSubmitClick: () {
               Fluttertoast.showToast(
-                  msg: "Clicked the plain text box", context);
+                msg: "Clicked the plain text box",
+              );
             }));
   }
 
@@ -988,7 +1035,8 @@ class DialogEntryPage extends StatelessWidget {
             submitText: "Submit",
             onSubmitClick: () {
               Fluttertoast.showToast(
-                  msg: "Clicked the plain text box", context);
+                msg: "Clicked the plain text box",
+              );
               Navigator.of(context).pop();
             }));
   }

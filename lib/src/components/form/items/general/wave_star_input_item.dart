@@ -94,8 +94,8 @@ class WaveStarsFormItem extends StatefulWidget {
         .getConfig(configId: themeData!.configId)
         .formItemConfig
         .merge(themeData);
-    themeData = themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -119,27 +119,29 @@ class WaveStarsFormItemState extends State<WaveStarsFormItem> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                  padding: WaveFormUtil.titleEdgeInsets(widget.prefixIconType,
-                      widget.isRequire, widget.themeData!),
-                  child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 25,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          WaveFormUtil.buildPrefixIcon(
-                              widget.prefixIconType,
-                              widget.isEdit,
-                              context,
-                              widget.onAddTap,
-                              widget.onRemoveTap),
-                          WaveFormUtil.buildRequireWidget(widget.isRequire),
-                          WaveFormUtil.buildTitleWidget(
-                              widget.title, widget.themeData!),
-                          WaveFormUtil.buildTipLabelWidget(
-                              widget.tipLabel, widget.onTip, widget.themeData!),
-                        ],
-                      ))),
+                padding: WaveFormUtil.titleEdgeInsets(
+                    widget.prefixIconType, widget.isRequire, widget.themeData!),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 25,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      WaveFormUtil.buildPrefixIcon(
+                          widget.prefixIconType,
+                          widget.isEdit,
+                          context,
+                          widget.onAddTap,
+                          widget.onRemoveTap),
+                      WaveFormUtil.buildRequireWidget(widget.isRequire),
+                      WaveFormUtil.buildTitleWidget(
+                          widget.title, widget.themeData!),
+                      WaveFormUtil.buildTipLabelWidget(
+                          widget.tipLabel, widget.onTip, widget.themeData!),
+                    ],
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: getStarWidgets(),

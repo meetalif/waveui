@@ -38,7 +38,7 @@ class _TextContentExampleState extends State<TextContentExample> {
       WaveInfoModal.valueLastClickInfo(
           "Name:", 'Content content', 'Clickable content',
           clickCallback: (text) {
-        Fluttertoast.showToast(msg: text!, context);
+        Fluttertoast.showToast(msg: text!);
       })
     ];
   }
@@ -76,7 +76,7 @@ class _TextContentExampleState extends State<TextContentExample> {
             ),
             GestureDetector(
               onTap: () {
-                Fluttertoast.showToast(msg: 'click', context);
+                Fluttertoast.showToast(msg: 'click');
               },
               child: WavePairInfoTable(
                 children: <WaveInfoModal>[
@@ -249,7 +249,7 @@ class _TextContentExampleState extends State<TextContentExample> {
             ),
             GestureDetector(
               onTap: () {
-                Fluttertoast.showToast(msg: 'clicked the card', context);
+                Fluttertoast.showToast(msg: 'clicked the card');
               },
               child: WaveAlignPairInfo(
                 children: <WaveInfoModal>[
@@ -269,7 +269,7 @@ class _TextContentExampleState extends State<TextContentExample> {
                   WaveInfoModal.valueLastClickInfo(
                       "name name:", '11111111', '22222222',
                       clickCallback: (text) {
-                    Fluttertoast.showToast(msg: text!, context);
+                    Fluttertoast.showToast(msg: text!);
                   }),
                 ],
               ),
@@ -310,7 +310,7 @@ class _TextContentExampleState extends State<TextContentExample> {
                 WaveInfoModal.valueLastClickInfo(
                     "Name:", 'Content content', 'Clickable content',
                     clickCallback: (text) {
-                  Fluttertoast.showToast(msg: text!, context);
+                  Fluttertoast.showToast(msg: text!);
                 }),
               ],
             ),
@@ -455,7 +455,7 @@ class _TextContentExampleState extends State<TextContentExample> {
                     "The name is very long, the name is very long, the name is very long:",
                     'Content Content Content Content Content',
                     'Clickable Content', clickCallback: (text) {
-                  Fluttertoast.showToast(msg: text!, context);
+                  Fluttertoast.showToast(msg: text!);
                 }),
               ],
             ),
@@ -487,7 +487,7 @@ class _TextContentExampleState extends State<TextContentExample> {
                     'Content Content Content Content Content',
                     'Clickable contentClickable contentClickable contentClickable contentClickable contentClickable content',
                     clickCallback: (text) {
-                  Fluttertoast.showToast(msg: text!, context);
+                  Fluttertoast.showToast(msg: text!);
                 }),
               ],
             ),

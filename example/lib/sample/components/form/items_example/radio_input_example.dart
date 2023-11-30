@@ -31,22 +31,21 @@ class RadioInputExamplePage extends StatelessWidget {
               ],
               value: "Permanent",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -72,20 +71,19 @@ class RadioInputExamplePage extends StatelessWidget {
               value: "Permanent",
               enableList: [true, false],
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg: "点击触发回调${oldValue}_${newValue}_onChanged", context);
+                    msg: "点击触发回调${oldValue}_${newValue}_onChanged");
               },
             ),
             Container(
@@ -110,22 +108,21 @@ class RadioInputExamplePage extends StatelessWidget {
               value: "Permanent",
               enableList: [true, true],
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(

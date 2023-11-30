@@ -29,7 +29,7 @@ class AbnomalStateExample extends StatelessWidget {
           operateAreaType: OperateAreaType.textButton,
           action: (index) {
             Fluttertoast.showToast(
-                msg: "Failed to get data, please try again", context);
+                msg: "Failed to get data, please try again", );
           },
         );
         break;
@@ -73,7 +73,9 @@ class AbnomalStateExample extends StatelessWidget {
           operateAreaType: OperateAreaType.singleButton,
           operateTexts: ["Switch account"],
           action: (_) {
-            Fluttertoast.showToast(msg: "The $_ button was clicked", context);
+            Fluttertoast.showToast(
+              msg: "The $_ button was clicked",
+            );
           },
         );
         break;
@@ -88,7 +90,9 @@ class AbnomalStateExample extends StatelessWidget {
           operateAreaType: OperateAreaType.doubleButton,
           operateTexts: ['to add', 'to modify'],
           action: (_) {
-            Fluttertoast.showToast(msg: "The $_ button was clicked", context);
+            Fluttertoast.showToast(
+              msg: "The $_ button was clicked",
+            );
           },
         );
         break;

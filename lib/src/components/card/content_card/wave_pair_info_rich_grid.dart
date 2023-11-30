@@ -25,7 +25,7 @@ import 'package:flutter/material.dart';
 ///       WaveRichGridInfo.valueLastClickInfo('名称名称名称名称名称名称名称', '内容内容',
 ///           keyQuestionCallback: (value) {
 ///         Fluttertoast.showToast(
-                 msg:value, context);
+//  msg:value, context);
 ///       }),
 ///       WaveRichGridInfo("名称：", '内容内容内容'),
 ///       WaveRichGridInfo("名称：", '内容内容'),
@@ -124,8 +124,7 @@ class WaveRichInfoGrid extends StatelessWidget {
               ],
             );
           },
-          itemCount:
-              (null != pairInfoList) ? pairInfoList!.length : 0,
+          itemCount: (null != pairInfoList) ? pairInfoList!.length : 0,
         );
         return gridView;
       },

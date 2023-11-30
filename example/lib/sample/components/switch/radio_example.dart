@@ -63,7 +63,8 @@ class _RadioExampleState extends State<RadioExample> {
                       setState(() {
                         _singleSelectedIndex = index;
                         Fluttertoast.showToast(
-                            msg: "Single selection, select $index", context);
+                          msg: "Single selection, select $index",
+                        );
                       });
                     },
                   ),
@@ -83,7 +84,8 @@ class _RadioExampleState extends State<RadioExample> {
                       setState(() {
                         _singleSelectedIndex = index;
                         Fluttertoast.showToast(
-                            msg: "Single selection, select $index", context);
+                          msg: "Single selection, select $index",
+                        );
                       });
                     },
                   ),
@@ -104,7 +106,8 @@ class _RadioExampleState extends State<RadioExample> {
                       setState(() {
                         _singleSelectedIndex = index;
                         Fluttertoast.showToast(
-                            msg: "Single selection, select $index", context);
+                          msg: "Single selection, select $index",
+                        );
                       });
                     },
                   ),

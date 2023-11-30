@@ -35,26 +35,25 @@ class RangeInputExamplePage extends StatelessWidget {
               rightMaxCount: 3,
               inputType: WaveInputType.number,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onMinChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onMaxChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -85,26 +84,25 @@ class RangeInputExamplePage extends StatelessWidget {
               rightMaxCount: 3,
               inputType: WaveInputType.number,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onMinChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onMaxChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -134,26 +132,25 @@ class RangeInputExamplePage extends StatelessWidget {
               rightMaxCount: 3,
               inputType: WaveInputType.number,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onMinChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onMaxChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -184,26 +181,25 @@ class RangeInputExamplePage extends StatelessWidget {
               rightMaxCount: 3,
               inputType: WaveInputType.number,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onMinChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onMaxChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
           ],

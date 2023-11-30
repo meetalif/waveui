@@ -33,8 +33,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   hint: "Please enter",
                   onChanged: (newValue) {
                     Fluttertoast.showToast(
-                        msg: "Click to trigger callback_${newValue}_onChanged",
-                        context);
+                      msg: "Click to trigger callback_${newValue}_onChanged",
+                    );
                   },
                 ),
                 WaveTextInputFormItem(
@@ -42,8 +42,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   hint: "Please enter",
                   onChanged: (newValue) {
                     Fluttertoast.showToast(
-                        msg: "Click to trigger callback_${newValue}_onChanged",
-                        context);
+                      msg: "Click to trigger callback_${newValue}_onChanged",
+                    );
                   },
                 ),
                 WaveTextInputFormItem(
@@ -51,8 +51,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   hint: "Please enter",
                   onChanged: (newValue) {
                     Fluttertoast.showToast(
-                        msg: "Click to trigger callback_${newValue}_onChanged",
-                        context);
+                      msg: "Click to trigger callback_${newValue}_onChanged",
+                    );
                   },
                 ),
               ],

@@ -50,27 +50,26 @@ class TitleSelectInputState extends State<TitleSelectInputExamplePage> {
               selectedIndex: -1,
               selectList: _list,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onTitleSelected: (String title, int index) {
                 if ('landline' == title && controller.text.length > 5) {
                   Fluttertoast.showToast(
-                      msg: 'The input length does not meet the requirements',
-                      context);
+                    msg: 'The input length does not meet the requirements',
+                  );
                   controller.text = '111***1111';
                 }
               },
@@ -98,27 +97,25 @@ class TitleSelectInputState extends State<TitleSelectInputExamplePage> {
               selectedIndex: -1,
               selectList: _list,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onTitleSelected: (String title, int index) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger callback_${title}_${index}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${title}_${index}_onChanged",
+                );
               },
             ),
             Container(
@@ -143,27 +140,25 @@ class TitleSelectInputState extends State<TitleSelectInputExamplePage> {
               selectedIndex: -1,
               selectList: _list,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onTitleSelected: (String title, int index) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger callback_${title}_${index}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${title}_${index}_onChanged",
+                );
               },
             ),
             Container(
@@ -191,27 +186,25 @@ class TitleSelectInputState extends State<TitleSelectInputExamplePage> {
               selectedIndex: -1,
               selectList: _list,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onTitleSelected: (String title, int index) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger callback_${title}_${index}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${title}_${index}_onChanged",
+                );
               },
             ),
             Container(
@@ -239,27 +232,25 @@ class TitleSelectInputState extends State<TitleSelectInputExamplePage> {
               selectedIndex: -1,
               selectList: _list,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
               onTitleSelected: (String title, int index) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger callback_${title}_${index}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${title}_${index}_onChanged",
+                );
               },
             ),
           ],

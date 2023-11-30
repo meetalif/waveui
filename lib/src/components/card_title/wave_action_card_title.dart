@@ -26,7 +26,7 @@ import 'package:flutter/material.dart';
 ///    title: '箭头标题',
 ///    onTap: () {
 ///        Fluttertoast.showToast(
-                 msg:'WaveActionCardTitle is clicked', context);
+                //  msg:'WaveActionCardTitle is clicked', context);
 ///    },
 /// )
 ///

@@ -37,22 +37,21 @@ class _StepInputExamplePageState extends State<StepInputExamplePage> {
               maxLimit: 5,
               minLimit: 1,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -76,22 +75,21 @@ class _StepInputExamplePageState extends State<StepInputExamplePage> {
               maxLimit: 5,
               minLimit: 1,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -114,22 +112,21 @@ class _StepInputExamplePageState extends State<StepInputExamplePage> {
               maxLimit: 5,
               minLimit: 1,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             WaveStepInputFormItem(
@@ -144,22 +141,21 @@ class _StepInputExamplePageState extends State<StepInputExamplePage> {
               maxLimit: 99,
               minLimit: 0,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback_${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback_${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
           ],

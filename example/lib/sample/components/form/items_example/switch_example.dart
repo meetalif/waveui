@@ -38,25 +38,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               title: "Natural visit protection period",
               value: _isFirstSwitchOn,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isFirstSwitchOn = newValue;
                 });
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -79,25 +78,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               tipLabel: "Label",
               value: _isSecondSwitchOn,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isSecondSwitchOn = newValue;
                 });
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -119,25 +117,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               tipLabel: "Label",
               value: _isThirdSwitchOn,
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isThirdSwitchOn = newValue;
                 });
                 Fluttertoast.showToast(
-                    msg:
-                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
-                    context);
+                  msg:
+                      "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                );
               },
             ),
           ],

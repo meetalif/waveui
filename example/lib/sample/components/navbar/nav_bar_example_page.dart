@@ -206,7 +206,8 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
           ),
           onPressed: () {
             Fluttertoast.showToast(
-                msg: 'Clicked the + sign in the upper right corner', context);
+              msg: 'Clicked the + sign in the upper right corner',
+            );
           },
         ),
       ],
@@ -387,15 +388,15 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
       leadClickCallback: (controller, update) {
         //controller is a text controller, you can get the input content and change the input content through the controller
         //update is the method command of the setState method, update() can refresh the input box
-        Fluttertoast.showToast(msg: controller.text, context);
+        Fluttertoast.showToast(msg: controller.text);
       },
       //Input box text content change monitoring
       searchBarInputChangeCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Input box keyboard to determine the monitoring
       searchBarInputSubmitCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Add a text controller for the input box, if not passed, use the default
       controller: textEditingController,
@@ -452,17 +453,17 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
             return true;
           },
           onDismiss: () {
-            Fluttertoast.showToast(msg: 'onDismiss', context);
+            Fluttertoast.showToast(msg: 'onDismiss');
           },
         );
       },
       //Input box text content change monitoring
       searchBarInputChangeCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Input box keyboard to determine the monitoring
       searchBarInputSubmitCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Add a text controller for the input box, if not passed, use the default
       controller: textEditingController,
@@ -510,11 +511,11 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
       },
       //Input box text content change monitoring
       searchBarInputChangeCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Input box keyboard to determine the monitoring
       searchBarInputSubmitCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Add a text controller for the input box, if not passed, use the default
       controller: textEditingController,
@@ -623,11 +624,11 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
       showDivider: false,
       //Input box text content change monitoring
       searchBarInputChangeCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Input box keyboard to determine the monitoring
       searchBarInputSubmitCallback: (input) {
-        Fluttertoast.showToast(msg: input, context);
+        Fluttertoast.showToast(msg: input);
       },
       //Add a text controller for the input box, if not passed, use the default
       controller: textEditingController,

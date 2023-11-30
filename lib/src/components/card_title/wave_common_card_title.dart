@@ -30,7 +30,7 @@ import 'package:flutter/material.dart';
 ///    subTitleWidget: WaveStartRatingIndicator(rating: 4),
 ///    onTap: () {
 ///        Fluttertoast.showToast(
-                 msg:'WaveCommonCardTitle is clicked', context);
+//  msg:'WaveCommonCardTitle is clicked', context);
 ///    },
 /// )
 ///
@@ -41,7 +41,7 @@ import 'package:flutter/material.dart';
 ///    subTitleWidget: WaveStartRatingIndicator(rating: 4),
 ///    onTap: () {
 ///        Fluttertoast.showToast(
-                 msg:'WaveCommonCardTitle is clicked', context);
+//  msg:'WaveCommonCardTitle is clicked', context);
 ///    },
 /// )
 /// 相关按钮如下:

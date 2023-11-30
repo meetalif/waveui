@@ -48,7 +48,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               content: 'This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                Fluttertoast.showToast(msg: 'Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button');
               },
             ),
             Text(
@@ -65,7 +65,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               rightButtonText: 'Go to finish',
               marquee: true,
               onRightButtonTap: () {
-                Fluttertoast.showToast(msg: 'Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button');
               },
             ),
             Text(
@@ -79,7 +79,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               content: 'This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                Fluttertoast.showToast(msg: 'Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button');
               },
             ),
             Text(
@@ -106,7 +106,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
                   'This is the notification content This is the notification content This is the notification content This is the notification content This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                Fluttertoast.showToast(msg: 'Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button');
               },
             ),
             Text(
@@ -128,7 +128,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               rightButtonBorderColor: Color(0xFF0984F9),
               rightButtonTextColor: Color(0xFF0984F9),
               onRightButtonTap: () {
-                Fluttertoast.showToast(msg: 'Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button');
               },
             ),
             SizedBox(

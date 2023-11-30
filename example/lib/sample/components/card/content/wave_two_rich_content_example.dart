@@ -45,23 +45,23 @@ class _WaveTwoRichContentExampleState extends State<WaveTwoRichContentExample> {
                 WaveRichGridInfo("名称：", '内容内容'),
                 WaveRichGridInfo.valueLastClickInfo('名称', '内容内容',
                     keyQuestionCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
                 WaveRichGridInfo.valueLastClickInfo('名称', '内容内容',
                     valueQuestionCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
                 WaveRichGridInfo.valueLastClickInfo('名称', '内容内容',
                     valueQuestionCallback: (value) {
-                      Fluttertoast.showToast(msg: value, context);
+                      Fluttertoast.showToast(msg: value);
                     },
                     clickTitle: "可点击内容",
                     clickCallback: (value) {
-                      Fluttertoast.showToast(msg: value, context);
+                      Fluttertoast.showToast(msg: value);
                     }),
                 WaveRichGridInfo.valueLastClickInfo('名称', '内容内容',
                     clickTitle: "可点击内容", clickCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
               ],
             ),
@@ -76,7 +76,7 @@ class _WaveTwoRichContentExampleState extends State<WaveTwoRichContentExample> {
               pairInfoList: <WaveRichGridInfo>[
                 WaveRichGridInfo.valueLastClickInfo('名称名称名称名称名称名称名称', '内容内容',
                     keyQuestionCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
                 WaveRichGridInfo("名称：", '内容内容内容'),
                 WaveRichGridInfo("名称：", '内容内容'),
@@ -95,7 +95,7 @@ class _WaveTwoRichContentExampleState extends State<WaveTwoRichContentExample> {
                 WaveRichGridInfo.valueLastClickInfo(
                     '名称名称', '内容内容内容内容内容内容内容内容内容内容内容',
                     keyQuestionCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
                 WaveRichGridInfo("名称：", '内容内容内容内容内容内容内容内容内容内容内容'),
                 WaveRichGridInfo("名称：", '内容内容'),
@@ -131,7 +131,7 @@ class _WaveTwoRichContentExampleState extends State<WaveTwoRichContentExample> {
                 WaveRichGridInfo.valueLastClickInfo("名称名称名", '内容内容内容',
                     clickTitle: '可点击内容可点击内容可点击内容',
                     valueQuestionCallback: (value) {
-                  Fluttertoast.showToast(msg: value, context);
+                  Fluttertoast.showToast(msg: value);
                 }),
                 WaveRichGridInfo("名称：", '内容内容'),
                 WaveRichGridInfo("名称：", '内容'),

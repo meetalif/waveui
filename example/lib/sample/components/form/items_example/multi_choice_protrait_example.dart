@@ -35,22 +35,21 @@ class MultiChoicePortraitInputExamplePage extends StatelessWidget {
                 "permanent",
               ],
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (List<String> oldValue, List<String> newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
-                    context);
+                  msg:
+                      "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
+                );
               },
             ),
             Container(
@@ -81,22 +80,21 @@ class MultiChoicePortraitInputExamplePage extends StatelessWidget {
               ],
               enableList: [true, true, false],
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (List<String> oldValue, List<String> newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
-                    context);
+                  msg:
+                      "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
+                );
               },
             ),
             Container(
@@ -126,22 +124,21 @@ class MultiChoicePortraitInputExamplePage extends StatelessWidget {
               ],
               enableList: [true, true, false],
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (List<String> oldValue, List<String> newValue) {
                 Fluttertoast.showToast(
-                    msg:
-                        "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
-                    context);
+                  msg:
+                      "Click to trigger onChanged callback ${oldValue.length}_${newValue.length}_onChanged",
+                );
               },
             ),
           ],

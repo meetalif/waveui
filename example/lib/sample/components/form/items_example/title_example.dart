@@ -27,12 +27,10 @@ class TitleExamplePage extends StatelessWidget {
               title: "Natural visit protection period",
               operationLabel: "Click operation",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                Fluttertoast.showToast(msg: "Click trigger callback_onTip");
               },
               onTap: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger callback_onTap", context);
+                Fluttertoast.showToast(msg: "Click to trigger callback_onTap");
               },
             ),
             Container(
@@ -52,12 +50,10 @@ class TitleExamplePage extends StatelessWidget {
               tipLabel: "Tip",
               operationLabel: "Click operation",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                Fluttertoast.showToast(msg: "Click trigger callback_onTip");
               },
               onTap: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger callback_onTap", context);
+                Fluttertoast.showToast(msg: "Click to trigger callback_onTap");
               },
             ),
             Container(
@@ -76,12 +72,10 @@ class TitleExamplePage extends StatelessWidget {
               tipLabel: "Tip",
               operationLabel: "Click operation",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click trigger callback_onTip", context);
+                Fluttertoast.showToast(msg: "Click trigger callback_onTip");
               },
               onTap: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger callback_onTap", context);
+                Fluttertoast.showToast(msg: "Click to trigger callback_onTap");
               },
             ),
           ],

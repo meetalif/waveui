@@ -82,7 +82,7 @@ class _NumberItemRowExampleState extends State<NumberItemRowExample> {
                       lastDesc: '后',
                       numberInfoIcon: WaveNumberInfoIcon.arrow,
                       iconTapCallBack: (data) {
-                        Fluttertoast.showToast(msg: data.title!, context);
+                        Fluttertoast.showToast(msg: data.title!);
                       }),
                   WaveNumberInfoItemModel(
                     title: '数字信息数字信息数字信息数字信息数字信息数字信息',

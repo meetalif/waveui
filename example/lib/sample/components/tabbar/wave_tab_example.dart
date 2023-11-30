@@ -133,7 +133,9 @@ class _WaveTabExampleState extends State<WaveTabExample>
       labelPadding: EdgeInsets.only(left: 20, right: 12),
       indicatorPadding: EdgeInsets.only(left: 10),
       onTap: (state, index) {
-        Fluttertoast.showToast(msg: "点击了", context);
+        Fluttertoast.showToast(
+          msg: "点击了",
+        );
       },
     );
   }

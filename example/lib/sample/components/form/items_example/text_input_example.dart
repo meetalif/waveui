@@ -29,21 +29,20 @@ class TextInputExamplePage extends StatelessWidget {
               unit: "ten thousand",
               hint: "Please enter",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -68,21 +67,20 @@ class TextInputExamplePage extends StatelessWidget {
               unit: "ten thousand",
               hint: "Please enter",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -106,21 +104,20 @@ class TextInputExamplePage extends StatelessWidget {
               unit: "ten thousand",
               hint: "Please enter",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
             Container(
@@ -145,21 +142,20 @@ class TextInputExamplePage extends StatelessWidget {
               unit: "ten thousand",
               hint: "Please enter",
               onTip: () {
-                Fluttertoast.showToast(
-                    msg: "Click to trigger onTip callback", context);
+                Fluttertoast.showToast(msg: "Click to trigger onTip callback");
               },
               onAddTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onAddTap callback", context);
+                    msg: "Click to trigger onAddTap callback");
               },
               onRemoveTap: () {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger onRemoveTap callback", context);
+                    msg: "Click to trigger onRemoveTap callback");
               },
               onChanged: (newValue) {
                 Fluttertoast.showToast(
-                    msg: "Click to trigger callback_${newValue}_onChanged",
-                    context);
+                  msg: "Click to trigger callback_${newValue}_onChanged",
+                );
               },
             ),
           ],

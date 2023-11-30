@@ -21,32 +21,32 @@ class _AppraiseExampleState extends State<AppraiseExample> {
   @override
   Widget build(BuildContext context) {
     return WaveScaffold(
-      appBar: WaveAppBar(
+      appBar: const WaveAppBar(
         title: 'Evaluation component',
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
           Text('Rule', style: Get.textTheme.headlineMedium),
-          SizedBox(height: 8),
-          WaveCard(
+          const SizedBox(height: 8),
+          const WaveCard(
             backgroundColor: Color(0x260984F9),
             padding: EdgeInsets.all(12),
             child: Text(
               'Support the use of pages and pop-up windows, use WaveAppraise in the page, use WaveAppraiseBottomPicker in the pop-up window, the picker encapsulates the widget, and the parameters of the two are exactly the same',
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             'Displayed inside the page',
             style: Get.textTheme.titleLarge,
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Description: When displayed on the page, the submit button needs to be hidden. If it is called back, call the inputChangeCallback, iconClickCallback and tagSelectCallback in the config',
             style: Get.textTheme.bodySmall,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           WaveAppraise(
             title: "Here is the title text",
             headerType: WaveAppraiseHeaderType.center,
@@ -60,39 +60,42 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                 inputDefaultText: 'This is a default text',
                 inputTextChangeCallback: (input) {
                   Fluttertoast.showToast(
-                      msg: 'The input content is' + input, context);
+                    msg: 'The input content is$input',
+                  );
                 },
                 iconClickCallback: (index) {
                   Fluttertoast.showToast(
-                      msg: 'The selected evaluation is $index', context);
+                    msg: 'The selected evaluation is $index',
+                  );
                 },
                 tagSelectCallback: (list) {
                   Fluttertoast.showToast(
-                      msg: 'The selected label is:' + list.toString(), context);
+                    msg: 'The selected label is:$list',
+                  );
                 }),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Text(
+          const Text(
             'Show pop-up window',
             style: TextStyle(
               color: Color(0xFF222222),
               fontSize: 28,
             ),
           ),
-          Text(
+          const Text(
             '--Description: default style',
             style: TextStyle(
               color: Color(0xFF999999),
               fontSize: 14,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FilledButton(
-            child: Text('Click to display the default style popup'),
+            child: const Text('Click to display the default style popup'),
             onPressed: () {
               showDialog(
                   context: context,
@@ -112,37 +115,38 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                               'The copywriting when the star is not selected',
                           inputTextChangeCallback: (input) {
                             Fluttertoast.showToast(
-                                msg: 'The input content is' + input, context);
+                              msg: 'The input content is$input',
+                            );
                           },
                           iconClickCallback: (index) {
                             Fluttertoast.showToast(
-                                msg: 'The selected evaluation is $index',
-                                context);
+                              msg: 'The selected evaluation is $index',
+                            );
                           },
                           tagSelectCallback: (list) {
                             Fluttertoast.showToast(
-                                msg: 'The selected label is:' + list.toString(),
-                                context);
+                              msg: 'The selected label is:$list',
+                            );
                           }),
                     );
                   });
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             '--Description: Display 3 emoticon pop-up windows, tags pass empty to hide tags',
             style: TextStyle(
               color: Color(0xFF999999),
               fontSize: 14,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FilledButton(
-            child: Text('Click to display the evaluation pop-up window'),
+            child: const Text('Click to display the evaluation pop-up window'),
             onPressed: () {
               showDialog(
                   context: context,
@@ -159,27 +163,27 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                       ///Must pass in 5 strings, if there is no position pass ''
                       type: WaveAppraiseType.emoji,
                       iconDescriptions: ['poor', '', 'ok', '', 'very good'],
-                      config: WaveAppraiseConfig(
+                      config: const WaveAppraiseConfig(
                           indexes: [0, 2, 4], titleMaxLines: 3),
                     );
                   });
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             '--Description: Display 4 stars, hide the input box',
             style: TextStyle(
               color: Color(0xFF999999),
               fontSize: 14,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           FilledButton(
-            child: Text('Click to display the evaluation pop-up window'),
+            child: const Text('Click to display the evaluation pop-up window'),
             onPressed: () {
               showDialog(
                   context: context,
@@ -193,7 +197,7 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                       },
                       type: WaveAppraiseType.star,
                       iconDescriptions: ['poor', 'no', 'ok', 'good'],
-                      config: WaveAppraiseConfig(
+                      config: const WaveAppraiseConfig(
                           showTextInput: false,
                           count: 4,
                           starAppraiseHint: 'Please rate'),
@@ -201,7 +205,7 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                   });
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
         ],
@@ -213,11 +217,13 @@ class _AppraiseExampleState extends State<AppraiseExample> {
       BuildContext context) {
     String str = 'The selected evaluation is $index';
     if (selectedTags.isNotEmpty) {
-      str = str + ', the selected tag is:' + selectedTags.toString();
+      str = '$str, the selected tag is:$selectedTags';
     }
     if (input.isNotEmpty) {
-      str = str + ', the input content is:' + input;
+      str = '$str, the input content is:$input';
     }
-    Fluttertoast.showToast(msg: str, context);
+    Fluttertoast.showToast(
+      msg: str,
+    );
   }
 }
