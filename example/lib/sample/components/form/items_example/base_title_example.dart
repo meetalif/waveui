@@ -27,7 +27,8 @@ class BaseTitleExamplePage extends StatelessWidget {
               title: "Basic Style",
               subTitle: "Here is the subtitle",
               onTip: () {
-                WaveToast.show("Click trigger callback_onTip", context);
+                Fluttertoast.showToast(
+                    msg: "Click trigger callback_onTip", context);
               },
             ),
             Container(
@@ -53,7 +54,8 @@ class BaseTitleExamplePage extends StatelessWidget {
                         style: TextStyle(color: Colors.white))),
               ),
               onTip: () {
-                WaveToast.show("Click trigger callback_onTip", context);
+                Fluttertoast.showToast(
+                    msg: "Click trigger callback_onTip", context);
               },
             ),
           ],

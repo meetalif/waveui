@@ -12,13 +12,13 @@ import 'package:waveui/src/components/selection/wave_selection_util.dart';
 import 'package:waveui/src/components/selection/wave_selection_view.dart';
 import 'package:waveui/src/components/selection/widget/wave_layer_more_selection_page.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_date_range_item_widget.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:waveui/waveui.dart';
 
 ///更多的筛选项里面的single 项
 ///主要是分为两种：标签（楼层）和跳到其他页面的layer（商圈）
@@ -228,11 +228,11 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
               } else if (data.filterType == WaveSelectionFilterType.checkbox) {
                 if (!data.isSelected) {
                   if (!WaveSelectionUtil.checkMaxSelectionCount(data)) {
-                    WaveToast.show(
-                        WaveIntl.of(context)
-                            .localizedResource
-                            .filterConditionCountLimited,
-                        context);
+                    Fluttertoast.showToast(
+                      msg: WaveIntl.of(context)
+                          .localizedResource
+                          .filterConditionCountLimited,
+                    );
                     return;
                   }
                 }

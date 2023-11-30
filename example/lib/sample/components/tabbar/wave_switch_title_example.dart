@@ -55,7 +55,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
               WaveSwitchTitle(
                 nameList: ['标题内容'],
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Text(
@@ -73,7 +73,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 selectedTextStyle: TextStyle(fontSize: 24),
                 unselectedTextStyle: TextStyle(fontSize: 12),
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Text(
@@ -88,7 +88,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 defaultSelectIndex: 0,
                 controller: _controller,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Padding(
@@ -118,7 +118,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Text(
@@ -136,7 +136,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Text(
@@ -154,7 +154,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               Text(
@@ -172,7 +172,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
               WaveSwitchTitle(
@@ -183,7 +183,7 @@ class _WaveSwitchTitleExampleState extends State<WaveSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(msg: value.toString(), context);
                 },
               ),
             ],

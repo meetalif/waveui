@@ -29,7 +29,8 @@ import 'package:flutter/material.dart';
 ///    accessoryWidget: WaveStateTag(tagText: '状态标签'),
 ///    subTitleWidget: WaveStartRatingIndicator(rating: 4),
 ///    onTap: () {
-///        WaveToast.show('WaveCommonCardTitle is clicked', context);
+///        Fluttertoast.showToast(
+                 msg:'WaveCommonCardTitle is clicked', context);
 ///    },
 /// )
 ///
@@ -39,7 +40,8 @@ import 'package:flutter/material.dart';
 ///    detailTextString: '房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字',
 ///    subTitleWidget: WaveStartRatingIndicator(rating: 4),
 ///    onTap: () {
-///        WaveToast.show('WaveCommonCardTitle is clicked', context);
+///        Fluttertoast.showToast(
+                 msg:'WaveCommonCardTitle is clicked', context);
 ///    },
 /// )
 /// 相关按钮如下:

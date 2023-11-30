@@ -41,7 +41,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
             WaveActionCardTitle(
               title: '表头',
               onTap: () {
-                WaveToast.show('WaveActionCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WaveActionCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -70,7 +71,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               ),
               //整个widget的点击
               onTap: () {
-                WaveToast.show('WavePlainCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WavePlainCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -91,7 +93,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               //整个widget的点击
               accessoryText: "点击标题",
               onTap: () {
-                WaveToast.show('WavePlainCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WavePlainCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -112,7 +115,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               //整个widget的点击
               accessoryText: "点击标题",
               onTap: () {
-                WaveToast.show('WavePlainCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WavePlainCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -133,7 +137,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               //整个widget的点击
               accessoryText: "点击标题",
               onTap: () {
-                WaveToast.show('WaveActionCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WaveActionCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -154,7 +159,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               //整个widget的点击
               accessoryText: "点击标题",
               onTap: () {
-                WaveToast.show('WaveActionCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WaveActionCardTitle is clicked', context);
               },
             ),
             WaveLine(
@@ -175,7 +181,8 @@ class _WaveActionTitleExampleState extends State<WaveActionTitleExample> {
               //整个widget的点击
               accessoryText: "点击标题特别长特别长特别长特别长特别长特别长",
               onTap: () {
-                WaveToast.show('WaveActionCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WaveActionCardTitle is clicked', context);
               },
             ),
           ],

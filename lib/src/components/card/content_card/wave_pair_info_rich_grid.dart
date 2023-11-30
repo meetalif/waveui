@@ -24,7 +24,8 @@ import 'package:flutter/material.dart';
 ///     pairInfoList: <WaveRichGridInfo>[
 ///       WaveRichGridInfo.valueLastClickInfo('名称名称名称名称名称名称名称', '内容内容',
 ///           keyQuestionCallback: (value) {
-///         WaveToast.show(value, context);
+///         Fluttertoast.showToast(
+                 msg:value, context);
 ///       }),
 ///       WaveRichGridInfo("名称：", '内容内容内容'),
 ///       WaveRichGridInfo("名称：", '内容内容'),

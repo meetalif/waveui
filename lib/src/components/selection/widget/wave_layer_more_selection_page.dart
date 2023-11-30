@@ -3,7 +3,6 @@ import 'package:waveui/src/components/line/wave_line.dart';
 import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_more_selection.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:waveui/src/theme/wave_theme_configurator.dart';
@@ -11,6 +10,7 @@ import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:waveui/waveui.dart';
 
 /// 用于展示浮层的筛选项 如商圈
 /// 左侧是：二级筛选项 右侧是三级筛选项
@@ -55,8 +55,8 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _animation =
-        Tween(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(_controller);
+    _animation = Tween(end: Offset.zero, begin: const Offset(1.0, 0.0))
+        .animate(_controller);
     _controller.forward();
     _originalSelectedItemsList = widget.entityData.selectedList();
 
@@ -239,11 +239,10 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
               if (!_firstList[index].isSelected) {
                 if (!WaveSelectionUtil.checkMaxSelectionCount(
                     _firstList[index])) {
-                  WaveToast.show(
-                      WaveIntl.of(context)
+                  Fluttertoast.showToast(
+                      msg: WaveIntl.of(context)
                           .localizedResource
-                          .filterConditionCountLimited,
-                      context);
+                          .filterConditionCountLimited);
                   setState(() {});
                   return;
                 } else {
@@ -380,11 +379,10 @@ class _WaveLayerMoreSelectionPageState extends State<WaveLayerMoreSelectionPage>
               if (!_currentFirstEntity!.children[index].isSelected) {
                 if (!WaveSelectionUtil.checkMaxSelectionCount(
                     _currentFirstEntity!.children[index])) {
-                  WaveToast.show(
-                      WaveIntl.of(context)
+                  Fluttertoast.showToast(
+                      msg: WaveIntl.of(context)
                           .localizedResource
-                          .filterConditionCountLimited,
-                      context);
+                          .filterConditionCountLimited);
                   return;
                 }
               }

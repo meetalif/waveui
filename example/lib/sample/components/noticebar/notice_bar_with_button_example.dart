@@ -48,7 +48,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               content: 'This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
             Text(
@@ -65,7 +65,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               rightButtonText: 'Go to finish',
               marquee: true,
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
             Text(
@@ -79,7 +79,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               content: 'This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
             Text(
@@ -106,7 +106,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
                   'This is the notification content This is the notification content This is the notification content This is the notification content This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
             Text(
@@ -128,7 +128,7 @@ class WaveNoticeBarWithButtonExample extends StatelessWidget {
               rightButtonBorderColor: Color(0xFF0984F9),
               rightButtonTextColor: Color(0xFF0984F9),
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
             SizedBox(

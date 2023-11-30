@@ -37,7 +37,7 @@ class _RatingExampleState extends State<RatingExample> {
               child: Text(
                   "Support click to select, the first one supports inverse selection"),
               onTap: () {
-                WaveToast.show("haha", context);
+                Fluttertoast.showToast(msg: "haha", context);
                 setState(() {
                   num = 4;
                 });
@@ -48,7 +48,7 @@ class _RatingExampleState extends State<RatingExample> {
               space: 5,
               canRatingZero: true,
               onSelected: (count) {
-                WaveToast.show("Selected $count", context);
+                Fluttertoast.showToast(msg: "Selected $count", context);
               },
             ),
             SizedBox(height: 20),
@@ -58,7 +58,7 @@ class _RatingExampleState extends State<RatingExample> {
               space: 1,
               canRatingZero: true,
               onSelected: (count) {
-                WaveToast.show("Selected $count", context);
+                Fluttertoast.showToast(msg: "Selected $count", context);
               },
               starBuilder: _buildRating,
             )

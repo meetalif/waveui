@@ -84,7 +84,7 @@ class MultiPickerExamplePage extends StatelessWidget {
                   title: '来源',
                   delegate: Wave1RowDelegate(firstSelectedIndex: 1),
                   confirmClick: (list) {
-                    WaveToast.show(list.toString(), context);
+                    Fluttertoast.showToast(msg: list.toString(), context);
                   },
                 ).show();
               },
@@ -99,7 +99,7 @@ class MultiPickerExamplePage extends StatelessWidget {
                   delegate: Wave2RowDelegate(
                       firstSelectedIndex: 1, secondSelectedIndex: 0),
                   confirmClick: (list) {
-                    WaveToast.show(list.toString(), context);
+                    Fluttertoast.showToast(msg: list.toString(), context);
                   },
                 ).show();
               },
@@ -115,7 +115,7 @@ class MultiPickerExamplePage extends StatelessWidget {
                   delegate: Wave2RowCustomDelegate(
                       firstSelectedIndex: 1, secondSelectedIndex: 0),
                   confirmClick: (list) {
-                    WaveToast.show(list.toString(), context);
+                    Fluttertoast.showToast(msg: list.toString(), context);
                   },
                 ).show();
               },
@@ -132,7 +132,7 @@ class MultiPickerExamplePage extends StatelessWidget {
                       secondSelectedIndex: 0,
                       thirdSelectedIndex: 0),
                   confirmClick: (list) {
-                    WaveToast.show(list.toString(), context);
+                    Fluttertoast.showToast(msg: list.toString(), context);
                   },
                 ).show();
               },
@@ -150,7 +150,7 @@ class MultiPickerExamplePage extends StatelessWidget {
                       thirdSelectedIndex: 1,
                       data: _getDefaultDelegateData()),
                   confirmClick: (list) {
-                    WaveToast.show(list.toString(), context);
+                    Fluttertoast.showToast(msg: list.toString(), context);
                   },
                 ).show();
               },

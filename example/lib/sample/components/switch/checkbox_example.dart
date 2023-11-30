@@ -52,9 +52,11 @@ class _CheckboxExampleState extends State<CheckboxExample> {
                     ),
                     onValueChangedAtIndex: (index, value) {
                       if (value) {
-                        WaveToast.show("$index item is selected", context);
+                        Fluttertoast.showToast(
+                            msg: "$index item is selected", context);
                       } else {
-                        WaveToast.show("The $index item is unchecked", context);
+                        Fluttertoast.showToast(
+                            msg: "The $index item is unchecked", context);
                       }
                     },
                   );
@@ -82,9 +84,11 @@ class _CheckboxExampleState extends State<CheckboxExample> {
                           style: TextStyle(color: Colors.white)))),
               onValueChangedAtIndex: (index, value) {
                 if (value) {
-                  WaveToast.show("$index item is selected", context);
+                  Fluttertoast.showToast(
+                      msg: "$index item is selected", context);
                 } else {
-                  WaveToast.show("The $index item is unchecked", context);
+                  Fluttertoast.showToast(
+                      msg: "The $index item is unchecked", context);
                 }
               },
             ),

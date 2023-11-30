@@ -59,7 +59,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       displayMode: DisplayMode.week,
       showControllerBar: false,
       dateChange: (date) {
-        WaveToast.show('Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date', context);
       },
     );
   }
@@ -78,7 +78,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
         'Saturday'
       ],
       dateChange: (date) {
-        WaveToast.show('Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date', context);
       },
     );
   }
@@ -90,7 +90,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       minDate: DateTime(2020),
       maxDate: DateTime(2021),
       dateChange: (date) {
-        WaveToast.show('选中的时间： $date', context);
+        Fluttertoast.showToast(msg: '选中的时间： $date', context);
       },
     );
   }
@@ -99,8 +99,8 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
     return WaveCalendarView.range(
       displayMode: DisplayMode.week,
       rangeDateChange: (rangeDate) {
-        WaveToast.show(
-            'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
+        Fluttertoast.showToast(
+            msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
             context);
       },
     );
@@ -112,7 +112,7 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       minDate: DateTime(2020),
       maxDate: DateTime(2021),
       dateChange: (date) {
-        WaveToast.show('Selected time: $date', context);
+        Fluttertoast.showToast(msg: 'Selected time: $date', context);
       },
     );
   }
@@ -122,8 +122,8 @@ class TagViewExamplePageState extends State<CalendarViewExample> {
       minDate: DateTime(2020),
       maxDate: DateTime(2023),
       rangeDateChange: (rangeDate) {
-        WaveToast.show(
-            'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
+        Fluttertoast.showToast(
+            msg: 'Start time: ${rangeDate.start} , end time: ${rangeDate.end}',
             context);
       },
     );

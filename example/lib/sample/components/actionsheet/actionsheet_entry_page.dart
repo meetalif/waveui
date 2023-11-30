@@ -132,7 +132,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
             cancelTitle: "Custom Cancel Title",
             clickCallBack: (int index, WaveCommonActionSheetItem actionEle) {
               String? title = actionEle.title;
-              WaveToast.show("title: $title, index: $index", context);
+              Fluttertoast.showToast(
+                msg: "title: , index: ",
+              );
             },
           );
         });
@@ -167,7 +169,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
             actions: actions,
             clickCallBack: (int index, WaveCommonActionSheetItem actionEle) {
               String? title = actionEle.title;
-              WaveToast.show("title: $title, index: $index", context);
+              Fluttertoast.showToast(
+                msg: "title: $title, index: $index",
+              );
             },
           );
         });
@@ -200,7 +204,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
               WaveCommonActionSheetItem actionEle,
             ) {
               String? title = actionEle.title;
-              WaveToast.show("title: $title, index: $index", context);
+              Fluttertoast.showToast(
+                msg: "title: $title, index: $index",
+              );
             },
           );
         });
@@ -232,7 +238,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
               WaveCommonActionSheetItem actionEle,
             ) {
               String? title = actionEle.title;
-              WaveToast.show("title: $title, index: $index", context);
+              Fluttertoast.showToast(
+                msg: "title: $title, index: $index",
+              );
             },
           );
         });
@@ -289,7 +297,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
               WaveCommonActionSheetItem actionEle,
             ) {
               String? title = actionEle.title;
-              WaveToast.show("title: $title, index: $index", context);
+              Fluttertoast.showToast(
+                msg: "title: $title, index: $index",
+              );
             },
             onItemClickInterceptor: (
               int index,
@@ -297,7 +307,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
             ) {
               //Option 3 The click event is intercepted and not processed
               if (index == 2) {
-                WaveToast.show("Intercepted", context);
+                Fluttertoast.showToast(
+                  msg: "Intercepted",
+                );
                 return true;
               }
               //Other options are normal
@@ -362,7 +374,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
                 //stop timing immediately after click
                 periodTimer.cancel();
                 var title = actionEle.title;
-                WaveToast.show("title: $title, index: $index", context);
+                Fluttertoast.showToast(
+                  msg: "title: $title, index: $index",
+                );
               },
             );
           });
@@ -408,8 +422,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       firstShareChannels: firstRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
         int channel = shareItem.shareType;
-        WaveToast.show(
-            "channel: $channel, section: $section, index: $index", context);
+        Fluttertoast.showToast(
+          msg: "channel: $channel, section: $section, index: $index",
+        );
       },
       cancelTitle:
           "CustomCancel Name", //The title of the cancel button can be customized
@@ -457,14 +472,17 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       secondShareChannels: secondRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
         int channel = shareItem.shareType;
-        WaveToast.show(
-            "channel: $channel, section: $section, index: $index", context);
+        Fluttertoast.showToast(
+          msg: "channel: $channel, section: $section, index: $index",
+        );
       },
       clickInterceptor: (int section, int index, WaveShareItem shareItem) {
         if (shareItem.canClick) {
           return false;
         } else {
-          WaveToast.show("Not clickable, blocked", context);
+          Fluttertoast.showToast(
+            msg: "Not clickable, blocked",
+          );
           return true;
         }
       },
@@ -494,8 +512,9 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       secondShareChannels: secondRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
         int channel = shareItem.shareType;
-        WaveToast.show(
-            "channel: $channel, section: $section, index: $index", context);
+        Fluttertoast.showToast(
+          msg: "channel: $channel, section: $section, index: $index",
+        );
       },
     );
     actionSheet.show(context);
@@ -511,12 +530,13 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       WaveShareItemConstants.shareFriend,
       canClick: true,
     ));
-    WaveShareActionSheet actionSheet = new WaveShareActionSheet(
+    WaveShareActionSheet actionSheet = WaveShareActionSheet(
       firstShareChannels: firstRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
         int channel = shareItem.shareType;
-        WaveToast.show(
-            "channel: $channel, section: $section, index: $index", context);
+        Fluttertoast.showToast(
+          msg: "channel: $channel, section: $section, index: $index",
+        );
       },
     );
     actionSheet.show(context);

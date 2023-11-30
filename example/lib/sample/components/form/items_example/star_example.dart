@@ -28,18 +28,21 @@ class StarInputExamplePage extends StatelessWidget {
               sumStar: 5,
               value: 2,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),
@@ -64,18 +67,21 @@ class StarInputExamplePage extends StatelessWidget {
               sumStar: 4,
               value: 2,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),
@@ -99,18 +105,21 @@ class StarInputExamplePage extends StatelessWidget {
               sumStar: 4,
               value: 2,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),

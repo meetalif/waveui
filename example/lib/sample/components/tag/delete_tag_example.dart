@@ -52,9 +52,10 @@ class TagViewExamplePageState extends State<DeleteTagExamplePage> {
           WaveDeleteTag(
             controller: controller,
             onTagDelete: (tags, tag, index) {
-              WaveToast.show(
-                  'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
-                  context);
+              Fluttertoast.showToast(
+                msg:
+                    'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
+              );
             },
           ),
           WaveDeleteTag(
@@ -62,9 +63,10 @@ class TagViewExamplePageState extends State<DeleteTagExamplePage> {
             tagTextStyle: TextStyle(color: Colors.blue, fontSize: 20),
             deleteIconSize: Size(16, 16),
             onTagDelete: (tags, tag, index) {
-              WaveToast.show(
-                  'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
-                  context);
+              Fluttertoast.showToast(
+                msg:
+                    'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
+              );
             },
           ),
           WaveDeleteTag(
@@ -74,9 +76,10 @@ class TagViewExamplePageState extends State<DeleteTagExamplePage> {
             deleteIconColor: Colors.red,
             softWrap: false,
             onTagDelete: (tags, tag, index) {
-              WaveToast.show(
-                  'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
-                  context);
+              Fluttertoast.showToast(
+                msg:
+                    'The remaining tags are: ${tags.toString()}, the deleted tag is: $tag, the deleted tag index is $index',
+              );
             },
           ),
           Row(

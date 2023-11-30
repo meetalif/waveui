@@ -170,7 +170,7 @@ class GalleryDetailExamplePageState extends State<GalleryDetailExamplePage> {
       detailRightAction: (i, j) => TextButton(
         child: Text('编辑'),
         onPressed: () {
-          WaveToast.show("点击了$i $j", context);
+          Fluttertoast.showToast(msg: "点击了$i $j", context);
           // 移除第二组的最后一个配置，跳转到 第二组的第一张图
           if (allConfig.length > 1) {
             if (allConfig[1].configList!.length > 0) {

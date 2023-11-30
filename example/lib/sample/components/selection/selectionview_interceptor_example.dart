@@ -60,8 +60,8 @@ class _SelectionViewExamplePageState
                 Map<String, String> filterParams,
                 Map<String, String> customParams,
                 WaveSetCustomSelectionMenuTitle setCustomTitleFunction) {
-              WaveToast.show(
-                  '选中 ${filterParams.toString()}，但筛选条件被清除了', context);
+              Fluttertoast.showToast(
+                  msg: '选中 ${filterParams.toString()}，但筛选条件被清除了', context);
               if (menuIndex == 1 && filterParams['two_list_key'] != null) {
                 widget._filterData![1].clearChildSelection();
                 widget._filterData![1].configRelationshipAndDefaultValue();
@@ -70,7 +70,7 @@ class _SelectionViewExamplePageState
             },
             onMenuClickInterceptor: (index) {
               if (index == 0) {
-                WaveToast.show('第$index个被拦截了', context);
+                Fluttertoast.showToast(msg: '第$index个被拦截了', context);
                 return true;
               } else {
                 return false;

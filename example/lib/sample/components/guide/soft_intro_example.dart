@@ -84,7 +84,8 @@ class _SoftGuideExampleState extends State<SoftGuideExample> {
                     tagWidth: (MediaQuery.of(context).size.width - 40 - 24) / 3,
                     fixWidthMode: false,
                     onSelect: (index) {
-                      WaveToast.show("$index is selected", context);
+                      Fluttertoast.showToast(
+                          msg: "$index is selected", context);
                     }),
                 SizedBox(
                   height: 16,

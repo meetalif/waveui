@@ -32,7 +32,7 @@ class _SelectionViewExamplePageState
                   Map<String, String> filterParams,
                   Map<String, String> customParams,
                   WaveSetCustomSelectionMenuTitle setCustomTitleFunction) {
-                WaveToast.show(filterParams.toString(), context);
+                Fluttertoast.showToast(msg: filterParams.toString(), context);
               },
               onSelectionPreShow: (int index, WaveSelectionEntity entity) {
                 if (entity.key == "one_range_key" ||

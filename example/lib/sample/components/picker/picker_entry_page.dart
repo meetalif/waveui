@@ -153,7 +153,7 @@ class PickerEntryPage extends StatelessWidget {
         data.forEach((item) {
           str = str + item.content + "  ";
         });
-        WaveToast.show(str, context);
+        Fluttertoast.showToast(msg: str, context);
         Navigator.of(context).pop();
       },
     );
@@ -182,7 +182,7 @@ class PickerEntryPage extends StatelessWidget {
           String attribute = item.attribute1 ?? "";
           str = str + attribute;
         });
-        WaveToast.show(str, context);
+        Fluttertoast.showToast(msg: str, context);
         Navigator.of(context).pop();
       },
     );
@@ -209,7 +209,7 @@ class PickerEntryPage extends StatelessWidget {
             items: items,
             onItemClick: (_, index) {
               if (items.where((element) => element.isChecked).length > 3) {
-                WaveToast.show("选择数目超过了 3 个", context);
+                Fluttertoast.showToast(msg: "选择数目超过了 3 个", context);
                 items[index].isChecked = false;
                 setState(() {});
               }
@@ -219,11 +219,11 @@ class PickerEntryPage extends StatelessWidget {
               data.forEach((item) {
                 str = str + item.content + "  ";
               });
-              WaveToast.show(str, context);
+              Fluttertoast.showToast(msg: str, context);
               Navigator.of(context).pop();
             },
             onCancel: () {
-              WaveToast.show('自定义 cancel 回调', context);
+              Fluttertoast.showToast(msg: '自定义 cancel 回调', context);
             },
           );
         });
@@ -240,7 +240,7 @@ class PickerEntryPage extends StatelessWidget {
       cancelDismiss: true,
       confirmDismiss: false,
       onConfirm: (context, string) {
-        WaveToast.show(string ?? '', context);
+        Fluttertoast.showToast(msg: string ?? '', context);
         return;
       },
       onCancel: (_) {
@@ -267,10 +267,11 @@ class PickerEntryPage extends StatelessWidget {
           });
           pickResult.add(tmp.toString());
         });
-        WaveToast.show(pickResult.toString(), context);
+        Fluttertoast.showToast(msg: pickResult.toString(), context);
       },
       onEntityTap: (int columnIndex, int rowIndex, WavePickerEntity entity) {
-        WaveToast.show('$columnIndex + $rowIndex + ${entity.name}', context);
+        Fluttertoast.showToast(
+            msg: '$columnIndex + $rowIndex + ${entity.name}', context);
       },
     );
     showModalBottomSheet(
@@ -304,14 +305,14 @@ class PickerEntryPage extends StatelessWidget {
               });
               pickResult.add(tmp.toString());
             });
-            WaveToast.show(pickResult.toString(), context);
+            Fluttertoast.showToast(msg: pickResult.toString(), context);
           },
           onEntityTap:
               (int columnIndex, int rowIndex, WavePickerEntity entity) {
             titleName = entity.name;
             setState(() {});
-            WaveToast.show(
-                '$columnIndex + $rowIndex + ${entity.name}', context);
+            Fluttertoast.showToast(
+                msg: '$columnIndex + $rowIndex + ${entity.name}', context);
           },
         );
       }),
@@ -350,10 +351,10 @@ class PickerEntryPage extends StatelessWidget {
       //最大选中数目 - 不设置 或者设置为0 则可以全选
       maxSelectItemCount: 5,
       onItemClick: (WaveTagItemBean onTapTag, bool isSelect) {
-        WaveToast.show(onTapTag.toString(), context);
+        Fluttertoast.showToast(msg: onTapTag.toString(), context);
       },
       onMaxSelectClick: () {
-        WaveToast.show('最大数值不能超过5个', context);
+        Fluttertoast.showToast(msg: '最大数值不能超过5个', context);
       },
       pickerTitleConfig: WavePickerTitleConfig(
         titleContent: '多选标题',
@@ -368,10 +369,10 @@ class PickerEntryPage extends StatelessWidget {
         selectedTagTitleColor: Color(0xFF0984F9),
       ),
       onConfirm: (value) {
-        WaveToast.show(value.toString(), context);
+        Fluttertoast.showToast(msg: value.toString(), context);
       },
       onCancel: () {
-        WaveToast.show('点击了取消按钮', context);
+        Fluttertoast.showToast(msg: '点击了取消按钮', context);
       },
       onTagValueGetter: (choice) {
         return choice.name;

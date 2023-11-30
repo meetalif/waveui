@@ -29,10 +29,12 @@ class SelectAllTitleExamplePage extends StatelessWidget {
               selectText: 'Select all titles',
               selectState: false,
               onSelectAll: (int index, bool isSelect) {
-                WaveToast.show("all selection callback_onSelectAll", context);
+                Fluttertoast.showToast(
+                    msg: "all selection callback_onSelectAll", context);
               },
               onTip: () {
-                WaveToast.show("Click trigger callback_onTip", context);
+                Fluttertoast.showToast(
+                    msg: "Click trigger callback_onTip", context);
               },
             ),
             Container(
@@ -59,10 +61,12 @@ class SelectAllTitleExamplePage extends StatelessWidget {
                         style: TextStyle(color: Colors.white))),
               ),
               onSelectAll: (int index, bool isSelect) {
-                WaveToast.show("all selection callback_onSelectAll", context);
+                Fluttertoast.showToast(
+                    msg: "all selection callback_onSelectAll", context);
               },
               onTip: () {
-                WaveToast.show("Click trigger callback_onTip", context);
+                Fluttertoast.showToast(
+                    msg: "Click trigger callback_onTip", context);
               },
             ),
           ],

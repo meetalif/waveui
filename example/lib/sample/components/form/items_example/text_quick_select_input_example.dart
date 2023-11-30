@@ -62,23 +62,27 @@ class _TextQuickSelectInputExamplePageState
                   selectedStr =
                       selectedStr.replaceFirst('${options[index]} ', '');
                 }
-                WaveToast.show(
-                    "Click to trigger onBtnSelectChanged callback.\n index:$index",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click to trigger onBtnSelectChanged callback.\n index:$index",
                     context);
                 setState(() {});
               },
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onTap: () {
-                WaveToast.show("Click to trigger callback_onTap", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_onTap", context);
               },
             ),
             Container(
@@ -112,23 +116,27 @@ class _TextQuickSelectInputExamplePageState
                   selectedStrAllFunctionExample = selectedStrAllFunctionExample
                       .replaceFirst('${options[index]} ', '');
                 }
-                WaveToast.show(
-                    "Click to trigger onBtnSelectChanged callback.\n index:$index",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click to trigger onBtnSelectChanged callback.\n index:$index",
                     context);
                 setState(() {});
               },
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onTap: () {
-                WaveToast.show("Click to trigger callback_onTap", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_onTap", context);
               },
             ),
           ],

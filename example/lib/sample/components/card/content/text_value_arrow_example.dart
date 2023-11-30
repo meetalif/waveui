@@ -46,35 +46,35 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo("名称名称名称", "内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.valueLastClickInfo("名称名称名称", "内容内容内容内容内容", "超链接",
                     clickCallback: (value) {
-                      WaveToast.show(value!, context);
+                      Fluttertoast.showToast(msg: value!, context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
               ],
             ),
@@ -93,35 +93,35 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo("名称名称名称", "内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.valueLastClickInfo("名称名称名称", "内容内容内容内容内容", "超链接",
                     clickCallback: (value) {
-                      WaveToast.show(value!, context);
+                      Fluttertoast.showToast(msg: value!, context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     })
               ],
             ),
@@ -140,28 +140,28 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo(
                     "名称名称名称名称名称名名称名称名称名称", "内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
               ],
             ),
@@ -180,28 +180,28 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo(
                     "名称名称名称名称名称名名称名称名称名称", "内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
               ],
             ),
@@ -220,28 +220,28 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo(
                     "名称名称名", "内容内容内容内容内容内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
               ],
             ),
@@ -260,28 +260,28 @@ class _TextValueArrowContentExampleState
                     valuePart: "内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal(
                     keyPart: "名称名：",
                     valuePart: "内容内容内容内容内容",
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
                 WaveInfoModal.keyOrValueLastQuestionInfo(
                     "名称名称名", "内容内容内容内容内容内容内容内容内容内容",
                     keyShow: true,
                     valueShow: true,
                     keyCallback: () {
-                      WaveToast.show('key question', context);
+                      Fluttertoast.showToast(msg: 'key question', context);
                     },
                     valueCallback: () {
-                      WaveToast.show('value question', context);
+                      Fluttertoast.showToast(msg: 'value question', context);
                     },
                     isArrow: true,
                     valueClickCallback: () {
-                      WaveToast.show('内容内容内容内容', context);
+                      Fluttertoast.showToast(msg: '内容内容内容内容', context);
                     }),
               ],
             ),

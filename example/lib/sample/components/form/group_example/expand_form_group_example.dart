@@ -32,8 +32,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   title: "Example Subitem 1",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -41,8 +41,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   title: "Example Subitem 2",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -50,8 +50,8 @@ class ExpendFormGroupExample extends StatelessWidget {
                   title: "Example Subitem 3",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),

@@ -32,7 +32,6 @@ import 'package:example/sample/components/switch/checkbox_example.dart';
 import 'package:example/sample/components/switch/radio_example.dart';
 import 'package:example/sample/components/tabbar/wave_tab_example.dart';
 import 'package:example/sample/components/tag/tag_example.dart';
-import 'package:example/sample/components/toast/toast_example.dart';
 
 ///Card information
 class GroupInfo {
@@ -114,8 +113,6 @@ class CardDataConfig {
         groupName: "Tips",
         desc: "A prompt pops up at the specified position",
         navigatorPage: PopWindowExamplePage("Tips example")));
-    children.add(GroupInfo(
-        groupName: "Toast", desc: "Page Toast", navigatorPage: ToastExample()));
     children.add(GroupInfo(
         groupName: "Snackbar",
         desc: "Styled snackbar",

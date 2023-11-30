@@ -137,7 +137,7 @@ class DatePickerExamplePage extends StatelessWidget {
         minuteDivider: 30,
         pickerTitleConfig: WavePickerTitleConfig.Default,
         dateFormat: format, onConfirm: (dateTime, list) {
-      WaveToast.show("onConfirm:  $dateTime   $list", context);
+      Fluttertoast.showToast(msg: "onConfirm:  $dateTime   $list", context);
     }, onClose: () {
       print("onClose");
     }, onCancel: () {
@@ -168,16 +168,18 @@ class DatePickerExamplePage extends StatelessWidget {
         initialStartDateTime: DateTime(2020, 06, 21, 08, 00, 00),
         initialEndDateTime: DateTime(2020, 06, 23, 10, 00, 00),
         onConfirm: (startDateTime, endDateTime, startlist, endlist) {
-      WaveToast.show(
-          "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
+      Fluttertoast.showToast(
+          msg:
+              "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
           context);
     }, onClose: () {
       print("onClose");
     }, onCancel: () {
       print("onCancel");
     }, onChange: (startDateTime, endDateTime, startlist, endlist) {
-      WaveToast.show(
-          "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
+      Fluttertoast.showToast(
+          msg:
+              "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
           context);
     });
   }
@@ -201,16 +203,18 @@ class DatePickerExamplePage extends StatelessWidget {
             initialStartDateTime: DateTime(2021, 06, 21, 11, 00, 00),
             initialEndDateTime: DateTime(2021, 06, 23, 10, 00, 00),
             onConfirm: (startDateTime, endDateTime, startlist, endlist) {
-          WaveToast.show(
-              "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
+          Fluttertoast.showToast(
+              msg:
+                  "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
               context);
         }, onClose: () {
           print("onClose");
         }, onCancel: () {
           print("onCancel");
         }, onChange: (startDateTime, endDateTime, startlist, endlist) {
-          WaveToast.show(
-              "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
+          Fluttertoast.showToast(
+              msg:
+                  "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
               context);
         });
         break;
@@ -229,16 +233,18 @@ class DatePickerExamplePage extends StatelessWidget {
             initialStartDateTime: DateTime(2020, 06, 21, 08, 00, 00),
             initialEndDateTime: DateTime(2020, 06, 23, 10, 00, 00),
             onConfirm: (startDateTime, endDateTime, startlist, endlist) {
-          WaveToast.show(
-              "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
+          Fluttertoast.showToast(
+              msg:
+                  "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
               context);
         }, onClose: () {
           print("onClose");
         }, onCancel: () {
           print("onCancel");
         }, onChange: (startDateTime, endDateTime, startlist, endlist) {
-          WaveToast.show(
-              "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
+          Fluttertoast.showToast(
+              msg:
+                  "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
               context);
         });
         break;
@@ -262,16 +268,18 @@ class DatePickerExamplePage extends StatelessWidget {
         initialStartDateTime: DateTime(2020, 06, 21, 11, 00, 00),
         initialEndDateTime: DateTime(2020, 06, 23, 10, 00, 00),
         onConfirm: (startDateTime, endDateTime, startlist, endlist) {
-      WaveToast.show(
-          "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
+      Fluttertoast.showToast(
+          msg:
+              "onConfirm:  $startDateTime   $endDateTime     $startlist     $endlist",
           context);
     }, onClose: () {
       print("onClose");
     }, onCancel: () {
       print("onCancel");
     }, onChange: (startDateTime, endDateTime, startlist, endlist) {
-      WaveToast.show(
-          "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
+      Fluttertoast.showToast(
+          msg:
+              "onChange:  $startDateTime   $endDateTime     $startlist     $endlist",
           context);
     });
   }

@@ -2,9 +2,9 @@ import 'package:waveui/src/components/picker/multi_range_picker/bean/wave_multi_
 import 'package:waveui/src/components/picker/multi_range_picker/wave_multi_column_picker.dart';
 import 'package:waveui/src/components/picker/multi_range_picker/wave_multi_column_picker_util.dart';
 import 'package:waveui/src/components/picker/multi_range_picker/btn_multi_column_picker_item.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 /// 单个 item 点击的回调
 /// [listIndex] 点击位置处于第几列
@@ -28,7 +28,8 @@ class WaveMultiColumnListWidget extends StatefulWidget {
   double maxHeight;
   WaveOnSelectEntityInterceptor? onSelectEntityInterceptor;
 
-  WaveMultiColumnListWidget({super.key, 
+  WaveMultiColumnListWidget({
+    super.key,
     required this.items,
     this.normalColor = const Color(0Xff4a4e59),
     this.selectedColor = const Color(0xff41bc6a),
@@ -129,9 +130,9 @@ class _WaveMultiColumnListWidgetState extends State<WaveMultiColumnListWidget> {
     if (selectedEntity.filterType == PickerFilterType.checkbox &&
         !selectedEntity.isSelected) {
       if (!WaveMultiColumnPickerUtil.isSelectedCountExceed(selectedEntity)) {
-        WaveToast.show(
-            WaveIntl.of(context).localizedResource.selectCountLimitTip,
-            context);
+        Fluttertoast.showToast(
+          msg: WaveIntl.of(context).localizedResource.selectCountLimitTip,
+        );
         return;
       }
     }

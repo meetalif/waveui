@@ -56,7 +56,7 @@ class _KeyTextCloseContentExampleState
             ),
             GestureDetector(
               onTap: () {
-                WaveToast.show("点击了卡片", context);
+                Fluttertoast.showToast(msg: "点击了卡片", context);
               },
               child: WavePairInfoTable(
                 isValueAlign: false,
@@ -66,7 +66,7 @@ class _KeyTextCloseContentExampleState
                   WaveInfoModal(keyPart: "名称名称名：", valuePart: "内容内容内容内容内容"),
                   WaveInfoModal.valueLastClickInfo(
                       "名称名：", '内容内容内容内容内容', '可点击内容', clickCallback: (text) {
-                    WaveToast.show(text!, context);
+                    Fluttertoast.showToast(msg: text!, context);
                   }),
                 ],
               ),
@@ -149,13 +149,13 @@ class _KeyTextCloseContentExampleState
                 WaveInfoModal.valueLastClickInfo(
                     "名称十分的长名：", '内容内容内容内容内容', '可点击内容可点击内容可点击内容可点击内容',
                     clickCallback: (text) {
-                  WaveToast.show(text!, context);
+                  Fluttertoast.showToast(msg: text!, context);
                 }),
                 WaveInfoModal.valueLastClickInfo(
                     "名称十分的长名：",
                     '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
                     '可点击内容可点击内容可点击内容可点击内容', clickCallback: (text) {
-                  WaveToast.show(text!, context);
+                  Fluttertoast.showToast(msg: text!, context);
                 }),
               ],
             ),

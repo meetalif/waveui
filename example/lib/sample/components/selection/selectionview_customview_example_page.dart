@@ -78,8 +78,8 @@ class _SelectionViewExamplePageState
                   Map<String, String> filterParams,
                   Map<String, String> customParams,
                   WaveSetCustomSelectionMenuTitle setCustomTitleFunction) {
-                WaveToast.show(
-                    'filterParams : $filterParams' +
+                Fluttertoast.showToast(
+                    msg: 'filterParams : $filterParams' +
                         ',\n customParams : $customParams',
                     context);
                 _filterSelectedDate = customParams['date'];

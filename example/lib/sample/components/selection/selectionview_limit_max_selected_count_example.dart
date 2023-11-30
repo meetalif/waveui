@@ -53,14 +53,14 @@ class _SelectionViewExamplePageState
                 Map<String, String> filterParams,
                 Map<String, String> customParams,
                 WaveSetCustomSelectionMenuTitle setCustomTitleFunction) {
-              WaveToast.show(
-                  'filterParams : $filterParams' +
+              Fluttertoast.showToast(
+                  msg: 'filterParams : $filterParams' +
                       ',\n customParams : $customParams',
                   context);
             },
             onMenuClickInterceptor: (index) {
               if (index == 4) {
-                WaveToast.show('第$index个被拦截了', context);
+                Fluttertoast.showToast(msg: '第$index个被拦截了', context);
                 return true;
               } else {
                 return false;

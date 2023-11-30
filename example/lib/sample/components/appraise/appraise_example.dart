@@ -59,14 +59,16 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                     'The copywriting when the star is not selected',
                 inputDefaultText: 'This is a default text',
                 inputTextChangeCallback: (input) {
-                  WaveToast.show('The input content is' + input, context);
+                  Fluttertoast.showToast(
+                      msg: 'The input content is' + input, context);
                 },
                 iconClickCallback: (index) {
-                  WaveToast.show('The selected evaluation is $index', context);
+                  Fluttertoast.showToast(
+                      msg: 'The selected evaluation is $index', context);
                 },
                 tagSelectCallback: (list) {
-                  WaveToast.show(
-                      'The selected label is:' + list.toString(), context);
+                  Fluttertoast.showToast(
+                      msg: 'The selected label is:' + list.toString(), context);
                 }),
           ),
           SizedBox(
@@ -109,16 +111,17 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                           starAppraiseHint:
                               'The copywriting when the star is not selected',
                           inputTextChangeCallback: (input) {
-                            WaveToast.show(
-                                'The input content is' + input, context);
+                            Fluttertoast.showToast(
+                                msg: 'The input content is' + input, context);
                           },
                           iconClickCallback: (index) {
-                            WaveToast.show(
-                                'The selected evaluation is $index', context);
+                            Fluttertoast.showToast(
+                                msg: 'The selected evaluation is $index',
+                                context);
                           },
                           tagSelectCallback: (list) {
-                            WaveToast.show(
-                                'The selected label is:' + list.toString(),
+                            Fluttertoast.showToast(
+                                msg: 'The selected label is:' + list.toString(),
                                 context);
                           }),
                     );
@@ -215,6 +218,6 @@ class _AppraiseExampleState extends State<AppraiseExample> {
     if (input.isNotEmpty) {
       str = str + ', the input content is:' + input;
     }
-    WaveToast.show(str, context);
+    Fluttertoast.showToast(msg: str, context);
   }
 }

@@ -1,11 +1,11 @@
 import 'package:waveui/src/components/picker/time_picker/wave_date_time_formatter.dart';
 import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 /// /// /// /// /// /// /// /// /// /
 /// 描述: 多选 tag 组件
@@ -70,11 +70,11 @@ class _WaveSelectionRangeTagWidgetState
             if (WaveSelectionFilterType.checkbox == selectedEntity.filterType &&
                 !selectedEntity.isSelected) {
               if (!WaveSelectionUtil.checkMaxSelectionCount(selectedEntity)) {
-                WaveToast.show(
-                    WaveIntl.of(context)
-                        .localizedResource
-                        .filterConditionCountLimited,
-                    context);
+                Fluttertoast.showToast(
+                  msg: WaveIntl.of(context)
+                      .localizedResource
+                      .filterConditionCountLimited,
+                );
                 return;
               }
             }

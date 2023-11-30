@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:waveui/src/components/popup/wave_measure_size.dart';
 import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
@@ -7,7 +8,6 @@ import 'package:waveui/src/components/selection/wave_selection_view.dart';
 import 'package:waveui/src/components/selection/controller/wave_flat_selection_controller.dart';
 import 'package:waveui/src/components/selection/converter/wave_selection_converter.dart';
 import 'package:waveui/src/components/selection/widget/wave_flat_selection_item.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:waveui/src/theme/wave_theme_configurator.dart';
 import 'package:waveui/src/theme/configs/wave_selection_config.dart';
@@ -248,8 +248,9 @@ class _WaveFlatSelectionState extends State<WaveFlatSelection>
       node = tmp.removeLast();
       if (!node.isValidRange()) {
         isValid = false;
-        WaveToast.show(
-            WaveIntl.of(context).localizedResource.enterRangeError, context);
+        Fluttertoast.showToast(
+          msg: WaveIntl.of(context).localizedResource.enterRangeError,
+        );
         return;
       }
       for (var data in node.children) {

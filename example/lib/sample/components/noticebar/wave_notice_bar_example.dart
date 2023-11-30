@@ -158,10 +158,11 @@ class WaveNoticeBarExample extends StatelessWidget {
               content: 'This is the notification content',
               noticeStyle: NoticeStyles.runningWithArrow,
               onNoticeTap: () {
-                WaveToast.show('click notification', context);
+                Fluttertoast.showToast(msg: 'click notification', context);
               },
               onRightIconTap: () {
-                WaveToast.show('Click the icon on the right', context);
+                Fluttertoast.showToast(
+                    msg: 'Click the icon on the right', context);
               },
             ),
             ListItem(
@@ -181,7 +182,7 @@ class WaveNoticeBarExample extends StatelessWidget {
               content: 'This is the notification content',
               rightButtonText: 'Go to finish',
               onRightButtonTap: () {
-                WaveToast.show('Click the right button', context);
+                Fluttertoast.showToast(msg: 'Click the right button', context);
               },
             ),
           ],

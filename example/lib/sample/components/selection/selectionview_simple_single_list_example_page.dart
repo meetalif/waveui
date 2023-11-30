@@ -33,8 +33,8 @@ class _SelectionViewExamplePageState
               items: widget._filterData.children,
               defaultValue: widget._filterData.defaultValue,
               onSimpleSelectionChanged: (List<ItemEntity> filterParams) {
-                WaveToast.show(
-                    filterParams.map((e) => e.value).toList().join(','),
+                Fluttertoast.showToast(
+                    msg: filterParams.map((e) => e.value).toList().join(','),
                     context);
               },
             ),

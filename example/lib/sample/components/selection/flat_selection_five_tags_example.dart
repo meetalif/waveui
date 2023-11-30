@@ -68,7 +68,7 @@ class _SelectionViewExamplePageState
                               var str = "";
                               data.forEach(
                                   (k, v) => str = str + " " + '$k: $v');
-                              WaveToast.show(str, context);
+                              Fluttertoast.showToast(msg: str, context);
                             },
                             controller: controller)),
                     _bottomWidget(),

@@ -4,6 +4,7 @@ library waveui;
 export 'package:flutter/material.dart';
 export 'package:get/get.dart';
 export 'package:fluentui_system_icons/fluentui_system_icons.dart';
+export 'package:fluttertoast/fluttertoast.dart';
 
 // Core
 export 'src/components/core/wave_scaffold.dart';
@@ -23,7 +24,6 @@ export 'src/l10n/wave_intl.dart';
 export 'src/l10n/wave_resources.dart';
 
 // Tools and resources
-export 'src/components/toast/wave_toast.dart';
 export 'src/utils/wave_tools.dart';
 export 'src/constants/wave_constants.dart';
 export 'src/constants/wave_asset_constants.dart';

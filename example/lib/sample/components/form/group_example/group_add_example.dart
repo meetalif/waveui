@@ -26,7 +26,8 @@ class GroupAddExamplePage extends StatelessWidget {
             WaveAddLabel(
               title: "Add Group",
               onTap: () {
-                WaveToast.show("Click to trigger onTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTap callback", context);
               },
             ),
             Container(
@@ -43,7 +44,8 @@ class GroupAddExamplePage extends StatelessWidget {
               isEdit: false,
               title: "Add Group",
               onTap: () {
-                WaveToast.show("Click to trigger onTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTap callback", context);
               },
             ),
           ],

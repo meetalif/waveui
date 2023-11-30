@@ -57,7 +57,9 @@ class SelectTagExamplePageState extends State<SelectTagExamplePage> {
               tagWidth: _getTagWidth(context),
               initTagState: [true],
               onSelect: (selectedIndexes) {
-                WaveToast.show(selectedIndexes.toString(), context);
+                Fluttertoast.showToast(
+                  msg: selectedIndexes.toString(),
+                );
               }),
           Text(
             'Multiple selection function',
@@ -73,7 +75,9 @@ class SelectTagExamplePageState extends State<SelectTagExamplePage> {
               tagWidth: _getTagWidth(context),
               initTagState: [true, false, true],
               onSelect: (selectedIndexes) {
-                WaveToast.show(selectedIndexes.toString(), context);
+                Fluttertoast.showToast(
+                  msg: selectedIndexes.toString(),
+                );
               }),
           SizedBox(
             height: 10,
@@ -101,7 +105,9 @@ class SelectTagExamplePageState extends State<SelectTagExamplePage> {
               fixWidthMode: false,
               spacing: 12,
               onSelect: (selectedIndexes) {
-                WaveToast.show(selectedIndexes.toString(), context);
+                Fluttertoast.showToast(
+                  msg: selectedIndexes.toString(),
+                );
               }),
           SizedBox(
             height: 10,
@@ -118,7 +124,9 @@ class SelectTagExamplePageState extends State<SelectTagExamplePage> {
               tagWidth: _getTagWidth(context),
               softWrap: false,
               onSelect: (index) {
-                WaveToast.show("$index is selected", context);
+                Fluttertoast.showToast(
+                  msg: "$index is selected",
+                );
               }),
           SizedBox(
             height: 10,
@@ -136,7 +144,9 @@ class SelectTagExamplePageState extends State<SelectTagExamplePage> {
               softWrap: false,
               fixWidthMode: false,
               onSelect: (index) {
-                WaveToast.show("$index is selected", context);
+                Fluttertoast.showToast(
+                  msg: "$index is selected",
+                );
               }),
           SizedBox(
             height: 10,

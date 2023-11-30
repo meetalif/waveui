@@ -47,7 +47,8 @@ class _WaveCommonTitleExampleState extends State<WaveCommonTitleExample> {
               title: '标题',
               accessoryText: '辅助文本',
               onTap: () {
-                WaveToast.show('WavePlainCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WavePlainCardTitle is clicked', context);
               },
             ),
             SizedBox(
@@ -69,7 +70,8 @@ class _WaveCommonTitleExampleState extends State<WaveCommonTitleExample> {
               accessoryWidget: WaveStateTag(tagText: '状态标签'),
               detailTextString: '副标题副标题副标题',
               onTap: () {
-                WaveToast.show('WavePlainCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WavePlainCardTitle is clicked', context);
               },
             ),
             SizedBox(
@@ -99,7 +101,8 @@ class _WaveCommonTitleExampleState extends State<WaveCommonTitleExample> {
               detailTextString: '字房产证地址与楼盘字房产证地址与楼盘字',
               //整个widget的点击
               onTap: () {
-                WaveToast.show('WaveCommonCardTitle is clicked', context);
+                Fluttertoast.showToast(
+                    msg: 'WaveCommonCardTitle is clicked', context);
               },
             ),
           ],

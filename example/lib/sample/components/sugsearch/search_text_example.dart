@@ -59,13 +59,13 @@ class _SearchTextExampleState extends State<SearchTextExample> {
                   scontroller.isClearShow = false;
                   scontroller.isActionShow = false;
                   focusNode.unfocus();
-                  WaveToast.show('Cancel', context);
+                  Fluttertoast.showToast(msg: 'Cancel', context);
                 },
                 onTextCommit: (text) {
-                  WaveToast.show('submit content: $text', context);
+                  Fluttertoast.showToast(msg: 'submit content: $text', context);
                 },
                 onTextChange: (text) {
-                  WaveToast.show('Input content: $text', context);
+                  Fluttertoast.showToast(msg: 'Input content: $text', context);
                 },
               ),
               Container(
@@ -95,13 +95,15 @@ class _SearchTextExampleState extends State<SearchTextExample> {
                   autoFocus: true,
                   action: Container(),
                   onActionTap: () {
-                    WaveToast.show('Cancel', context);
+                    Fluttertoast.showToast(msg: 'Cancel', context);
                   },
                   onTextCommit: (text) {
-                    WaveToast.show('submit content: $text', context);
+                    Fluttertoast.showToast(
+                        msg: 'submit content: $text', context);
                   },
                   onTextChange: (text) {
-                    WaveToast.show('Input content: $text', context);
+                    Fluttertoast.showToast(
+                        msg: 'Input content: $text', context);
                   },
                 ),
               )

@@ -6,6 +6,10 @@ flutter
 3.2
 file:///C:/SDK/Flutter/packages/flutter/
 file:///C:/SDK/Flutter/packages/flutter/lib/
+flutter_web_plugins
+3.2
+file:///C:/SDK/Flutter/packages/flutter_web_plugins/
+file:///C:/SDK/Flutter/packages/flutter_web_plugins/lib/
 bindings_compatible
 2.12
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/bindings_compatible-1.0.1/
@@ -30,6 +34,10 @@ flutter_lints
 2.19
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3/
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3/lib/
+fluttertoast
+2.12
+file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.4/
+file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.4/lib/
 get
 2.15
 file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/get-4.6.6/

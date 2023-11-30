@@ -55,7 +55,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
               WaveSubSwitchTitle(
                 nameList: ['二级标题'],
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -68,7 +70,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
               WaveSubSwitchTitle(
                 nameList: ['二级标题1', '二级标题2'],
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -82,7 +86,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 nameList: ['二级标题1', '二级标题2', '二级标题3'],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -103,7 +109,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -125,7 +133,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 defaultSelectIndex: 0,
                 controller: _controller,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Padding(
@@ -152,7 +162,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -170,7 +182,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               Text(
@@ -188,7 +202,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
               WaveSubSwitchTitle(
@@ -199,7 +215,9 @@ class _SubSwitchTitleExampleState extends State<SubSwitchTitleExample>
                 ],
                 defaultSelectIndex: 0,
                 onSelect: (value) {
-                  WaveToast.show(value.toString(), context);
+                  Fluttertoast.showToast(
+                    msg: value.toString(),
+                  );
                 },
               ),
             ],

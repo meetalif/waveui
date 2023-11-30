@@ -27,18 +27,21 @@ class RatioInputExamplePage extends StatelessWidget {
               controller: TextEditingController()..text = "1.6",
               title: "Parking Space Ratio",
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (newValue) {
-                WaveToast.show(
-                    "Click to trigger callback_${newValue}_onChanged", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_${newValue}_onChanged",
+                    context);
               },
             ),
             Container(
@@ -61,18 +64,21 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (newValue) {
-                WaveToast.show(
-                    "Click to trigger callback_${newValue}_onChanged", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_${newValue}_onChanged",
+                    context);
               },
             ),
             Container(
@@ -94,18 +100,21 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (newValue) {
-                WaveToast.show(
-                    "Click to trigger callback_${newValue}_onChanged", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_${newValue}_onChanged",
+                    context);
               },
             ),
             Container(
@@ -128,18 +137,21 @@ class RatioInputExamplePage extends StatelessWidget {
               subTitle: "Here is the subtitle",
               tipLabel: "Label",
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (newValue) {
-                WaveToast.show(
-                    "Click to trigger callback_${newValue}_onChanged", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger callback_${newValue}_onChanged",
+                    context);
               },
             ),
           ],

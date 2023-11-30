@@ -1,11 +1,7 @@
-import 'package:waveui/src/components/selection/bean/wave_selection_common_entity.dart';
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_common_item_widget.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_list_widget.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
-import 'package:waveui/src/l10n/wave_intl.dart';
-import 'package:waveui/src/theme/configs/wave_selection_config.dart';
-import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 // ignore: must_be_immutable
 class WaveSelectionSingleListWidget extends StatefulWidget {
@@ -104,20 +100,20 @@ class _WaveSelectionSingleListWidgetState
                       /// 同级别中，存在不限类型已经选中情况，选择非不限类型 item，不检查数量限制
                     } else if (entity.isInLastLevel() &&
                         !WaveSelectionUtil.checkMaxSelectionCount(entity)) {
-                      WaveToast.show(
-                          WaveIntl.of(context)
-                              .localizedResource
-                              .filterConditionCountLimited,
-                          context);
+                      Fluttertoast.showToast(
+                        msg: WaveIntl.of(context)
+                            .localizedResource
+                            .filterConditionCountLimited,
+                      );
                       return;
                     }
                   } else {
                     if (!WaveSelectionUtil.checkMaxSelectionCount(entity)) {
-                      WaveToast.show(
-                          WaveIntl.of(context)
-                              .localizedResource
-                              .filterConditionCountLimited,
-                          context);
+                      Fluttertoast.showToast(
+                        msg: WaveIntl.of(context)
+                            .localizedResource
+                            .filterConditionCountLimited,
+                      );
                       return;
                     }
                   }

@@ -38,21 +38,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               title: "Natural visit protection period",
               value: _isFirstSwitchOn,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isFirstSwitchOn = newValue;
                 });
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),
@@ -76,21 +79,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               tipLabel: "Label",
               value: _isSecondSwitchOn,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isSecondSwitchOn = newValue;
                 });
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),
@@ -113,21 +119,24 @@ class SwitchInputExampleState extends State<SwitchInputExamplePage> {
               tipLabel: "Label",
               value: _isThirdSwitchOn,
               onTip: () {
-                WaveToast.show("Click to trigger onTip callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onTip callback", context);
               },
               onAddTap: () {
-                WaveToast.show("Click to trigger onAddTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onAddTap callback", context);
               },
               onRemoveTap: () {
-                WaveToast.show(
-                    "Click to trigger onRemoveTap callback", context);
+                Fluttertoast.showToast(
+                    msg: "Click to trigger onRemoveTap callback", context);
               },
               onChanged: (oldValue, newValue) {
                 setState(() {
                   _isThirdSwitchOn = newValue;
                 });
-                WaveToast.show(
-                    "Click trigger callback ${oldValue}_${newValue}_onChanged",
+                Fluttertoast.showToast(
+                    msg:
+                        "Click trigger callback ${oldValue}_${newValue}_onChanged",
                     context);
               },
             ),

@@ -39,7 +39,7 @@ class WaveBubbleExample2 extends StatelessWidget {
                 text: '推荐理由：“满五唯一”“临近地铁”“首付低”，多出折行显示，文字展开的样式文式文文字展开的样式文式文。问我',
                 onExpanded: (isExpanded) {
                   String str = isExpanded ? "展开了" : "收起了";
-                  WaveToast.show("我$str", context);
+                  Fluttertoast.showToast(msg: "我$str", context);
                 },
               ),
               Text(

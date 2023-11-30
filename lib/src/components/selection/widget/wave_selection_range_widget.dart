@@ -417,16 +417,15 @@ class _WaveRangeSelectionGroupWidgetState
         if (!rangeEntity.isValidRange()) {
           FocusScope.of(context).requestFocus(FocusNode());
           if (rangeEntity.filterType == WaveSelectionFilterType.range) {
-            WaveToast.show(
-                WaveIntl.of(context).localizedResource.enterRangeError,
-                context);
+            Fluttertoast.showToast(
+              msg: WaveIntl.of(context).localizedResource.enterRangeError,
+            );
           } else if (rangeEntity.filterType ==
                   WaveSelectionFilterType.dateRange ||
               rangeEntity.filterType ==
                   WaveSelectionFilterType.dateRangeCalendar) {
-            WaveToast.show(
-                WaveIntl.of(context).localizedResource.selectRangeError,
-                context);
+            Fluttertoast.showToast(
+                msg: WaveIntl.of(context).localizedResource.selectRangeError);
           }
           return;
         }

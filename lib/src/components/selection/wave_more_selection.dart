@@ -5,12 +5,12 @@ import 'package:waveui/src/components/selection/bean/wave_selection_common_entit
 import 'package:waveui/src/components/selection/wave_selection_util.dart';
 import 'package:waveui/src/components/selection/wave_selection_view.dart';
 import 'package:waveui/src/components/selection/widget/wave_selection_more_item_widget.dart';
-import 'package:waveui/src/components/toast/wave_toast.dart';
 import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/l10n/wave_intl.dart';
 import 'package:waveui/src/theme/configs/wave_selection_config.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 /// 更多的多选页面
 /// 展示的内容：
@@ -251,14 +251,13 @@ class _WaveMoreSelectionPageState extends State<WaveMoreSelectionPage>
           if (!node.isValidRange()) {
             isValid = false;
             if (node.filterType == WaveSelectionFilterType.range) {
-              WaveToast.show(
-                  WaveIntl.of(context).localizedResource.enterRangeError,
-                  context);
+              Fluttertoast.showToast(
+                  msg: WaveIntl.of(context).localizedResource.enterRangeError);
             } else if (node.filterType == WaveSelectionFilterType.dateRange ||
                 node.filterType == WaveSelectionFilterType.dateRangeCalendar) {
-              WaveToast.show(
-                  WaveIntl.of(context).localizedResource.enterRangeError,
-                  context);
+              Fluttertoast.showToast(
+                msg: WaveIntl.of(context).localizedResource.enterRangeError,
+              );
             }
             return;
           }

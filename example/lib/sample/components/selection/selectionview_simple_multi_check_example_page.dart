@@ -34,8 +34,8 @@ class _SelectionViewExamplePageState
               maxSelectedCount: 4,
               defaultValue: widget._filterData.defaultValue,
               onSimpleSelectionChanged: (List<ItemEntity> filterParams) {
-                WaveToast.show(
-                    filterParams.map((e) => e.value).toList().join(','),
+                Fluttertoast.showToast(
+                    msg: filterParams.map((e) => e.value).toList().join(','),
                     context);
               },
             ),

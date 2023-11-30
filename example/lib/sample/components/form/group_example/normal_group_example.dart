@@ -30,8 +30,8 @@ class NormalGroupExample extends StatelessWidget {
                   title: "Example Subitem 1",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -39,8 +39,8 @@ class NormalGroupExample extends StatelessWidget {
                   title: "Example Subitem 2",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -48,8 +48,8 @@ class NormalGroupExample extends StatelessWidget {
                   title: "Example Subitem 3",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -74,15 +74,16 @@ class NormalGroupExample extends StatelessWidget {
               isRequire: true,
               isEdit: true,
               onRemoveTap: () {
-                WaveToast.show("Click trigger callback_onRemoveTap", context);
+                Fluttertoast.showToast(
+                    msg: "Click trigger callback_onRemoveTap", context);
               },
               children: [
                 WaveTextInputFormItem(
                   title: "Example Subitem 1",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -90,8 +91,8 @@ class NormalGroupExample extends StatelessWidget {
                   title: "Example Subitem 2",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
@@ -99,8 +100,8 @@ class NormalGroupExample extends StatelessWidget {
                   title: "Example Subitem 3",
                   hint: "Please enter",
                   onChanged: (newValue) {
-                    WaveToast.show(
-                        "Click to trigger callback_${newValue}_onChanged",
+                    Fluttertoast.showToast(
+                        msg: "Click to trigger callback_${newValue}_onChanged",
                         context);
                   },
                 ),
