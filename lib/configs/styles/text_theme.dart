@@ -46,7 +46,7 @@ class WaveTextTheme extends TextTheme {
   @override
   TextStyle? get bodyMedium => TextStyle(
         fontSize: 16,
-        height: 1.25,
+        height: 1.4,
         fontWeight: FontWeight.w400,
         color: WaveColors.textColor(darkMode: isDarkMode),
       );

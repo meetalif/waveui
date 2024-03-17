@@ -4,6 +4,7 @@ import 'package:waveui/src/theme/base/wave_text_style.dart';
 import 'package:waveui/src/theme/wave_theme_configurator.dart';
 import 'package:waveui/src/theme/configs/wave_tag_config.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 /// 选择模式的标签组合
 /// 支持流式和横向布局
@@ -78,9 +79,6 @@ class WaveSelectTag extends StatefulWidget {
     this.fixWidthMode = true,
     this.themeData,
   }) : super(key: key) {
-    if (isSingleSelect == true) {
-      assert(initTagState == null || (initTagState!.length <= 1));
-    }
     themeData ??= WaveTagConfig();
     themeData = WaveThemeConfigurator.instance
         .getConfig(configId: themeData!.configId)
@@ -200,8 +198,8 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
       constraints: BoxConstraints(minWidth: widget.themeData!.tagMinWidth),
       decoration: BoxDecoration(
           color: selected
-              ? (widget.themeData!.selectedTagBackgroundColor.withOpacity(0.12))
-              : (widget.themeData!.tagBackgroundColor),
+              ? Get.theme.colorScheme.primary.withOpacity(0.12)
+              : Colors.grey.withOpacity(0.12),
           borderRadius: BorderRadius.circular(widget.themeData!.tagRadius)),
       width: widget.fixWidthMode ? widget.themeData!.tagWidth : null,
       height: widget.themeData!.tagHeight,
@@ -212,11 +210,19 @@ class _WaveSelectTagState extends State<WaveSelectTag> {
   }
 
   TextStyle _tagTextStyle() {
-    return widget.themeData!.tagTextStyle.generateTextStyle();
+    return Get.textTheme.bodyMedium!.copyWith(
+      color: Get.textTheme.bodySmall!.color,
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    );
   }
 
   TextStyle _selectedTextStyle() {
-    return widget.themeData!.selectTagTextStyle.generateTextStyle();
+    return Get.textTheme.bodyMedium!.copyWith(
+      color: Get.theme.colorScheme.primary,
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    );
   }
 
   @override

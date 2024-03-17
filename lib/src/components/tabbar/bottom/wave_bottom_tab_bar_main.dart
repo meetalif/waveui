@@ -25,6 +25,7 @@ class WaveBottomNavigationBar extends StatelessWidget {
       children: [
         if (showDivider) const Divider(),
         BottomNavigationBar(
+          useLegacyColorScheme: false,
           showSelectedLabels: showSelectedLabels,
           showUnselectedLabels: showUnselectedLabels,
           currentIndex: currentIndex,

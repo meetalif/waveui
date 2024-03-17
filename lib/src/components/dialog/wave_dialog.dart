@@ -3,6 +3,7 @@ import 'package:waveui/src/theme/wave_theme_configurator.dart';
 import 'package:waveui/src/theme/configs/wave_dialog_config.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/material.dart';
+import 'package:waveui/waveui.dart';
 
 ///The click listener callback of the bottom button
 typedef DialogIndexedActionClickCallback = void Function(int index);
@@ -295,7 +296,7 @@ class WaveDialog extends AlertDialog {
         titleText!,
         maxLines: titleMaxLines,
         overflow: TextOverflow.ellipsis,
-        style: WaveDialogUtils.getDialogTitleStyle(dialogConfig),
+        style: Get.textTheme.titleLarge,
         textAlign: dialogConfig.titleTextAlign,
       ),
     );
@@ -318,7 +319,7 @@ class WaveDialog extends AlertDialog {
       child: Center(
         child: Text(
           messageText ?? "",
-          style: dialogConfig.contentTextStyle.generateTextStyle(),
+          style: Get.textTheme.bodyMedium,
           textAlign: dialogConfig.contentTextAlign,
         ),
       ),

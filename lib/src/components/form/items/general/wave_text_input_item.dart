@@ -6,45 +6,20 @@ import 'package:waveui/src/theme/configs/wave_form_config.dart';
 import 'package:waveui/src/constants/wave_fonts_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:waveui/waveui.dart';
 
-///
-/// 文本输入型录入项
-///
-/// 包括"标题"、"副标题"、"错误信息提示"、"必填项提示"、"添加/删除按钮"、"消息提示"、
-/// "文本输入框"等元素
-///
-// ignore: must_be_immutable
 class WaveTextInputFormItem extends StatefulWidget {
-  /// 录入项的焦点控制对象，主要用于控制焦点
   final FocusNode? focusNode;
-
-  /// 选择键盘的完成按钮
   final TextInputAction? textInputAction;
-
-  /// 录入项的唯一标识，主要用于录入类型页面框架中
   final String? label;
-
-  /// 录入项类型，主要用于录入类型页面框架中
   final String type = WaveInputItemType.textInputType;
-
-  /// 录入项标题
   final String title;
-
-  /// 录入项子标题
   final String? subTitle;
-
-  /// 录入项提示（问号图标&文案） 用户点击时触发onTip回调。
-  /// 1. 若赋值为 空字符串（""）时仅展示"问号"图标，
-  /// 2. 若赋值为非空字符串时 展示"问号图标&文案"，
-  /// 3. 若不赋值或赋值为null时 不显示提示项
-  /// 默认值为 3
   final String? tipLabel;
-
-  /// 录入项前缀图标样式 "添加项" "删除项" 详见 [WavePrefixIconType] 类
   final String prefixIconType;
 
   /// 录入项错误提示
-  final String error;
+  final String? error;
 
   /// 录入项是否为必填项（展示*图标） 默认为 false 不必填
   final bool isRequire;
@@ -78,8 +53,7 @@ class WaveTextInputFormItem extends StatefulWidget {
   /// 单位
   final String? unit;
 
-  /// 输入内容类型
-  final String? inputType;
+  final TextInputType? inputType;
 
   /// 是否自动获取焦点
   bool autofocus;
@@ -89,7 +63,7 @@ class WaveTextInputFormItem extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   /// 输入变化回调
-  final ValueChanged<String>? onChanged;
+  final ValueChanged<dynamic>? onChanged;
 
   final TextEditingController? controller;
 
@@ -108,7 +82,7 @@ class WaveTextInputFormItem extends StatefulWidget {
     this.focusNode,
     this.textInputAction,
     this.prefixIconType = WavePrefixIconType.normal,
-    this.error = "",
+    this.error,
     this.isEdit = true,
     this.obscureText = false,
     this.isRequire = false,
@@ -133,8 +107,8 @@ class WaveTextInputFormItem extends StatefulWidget {
         .getConfig(configId: themeData!.configId)
         .formItemConfig
         .merge(themeData);
-    themeData = themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+    themeData =
+        themeData!.merge(WaveFormItemConfig(backgroundColor: backgroundColor));
   }
 
   @override
@@ -199,18 +173,16 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
                   child: TextField(
                     autofocus: widget.autofocus,
                     focusNode: widget.focusNode,
-                    keyboardType: WaveFormUtil.getInputType(widget.inputType),
+                    keyboardType: widget.inputType,
                     textInputAction: widget.textInputAction,
                     enabled: widget.isEdit,
                     obscureText: widget.obscureText,
                     maxLines: 1,
                     maxLength: widget.maxCharCount,
-                    style: WaveFormUtil.getIsEditTextStyle(
-                        widget.themeData!, widget.isEdit),
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintStyle:
-                          WaveFormUtil.getHintTextStyle(widget.themeData!),
+                          Get.textTheme.bodySmall?.copyWith(fontSize: 16),
                       hintText: widget.hint ??
                           WaveIntl.of(context).localizedResource.pleaseEnter,
                       counterText: "",
@@ -245,7 +217,8 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
             ),
           ),
           WaveFormUtil.buildSubTitleWidget(widget.subTitle, widget.themeData!),
-          WaveFormUtil.buildErrorWidget(widget.error, widget.themeData!)
+          if (widget.error != null)
+            WaveFormUtil.buildErrorWidget(widget.error!, widget.themeData!)
         ],
       ),
     );
@@ -255,7 +228,6 @@ class WaveTextInputFormItemState extends State<WaveTextInputFormItem> {
   void dispose() {
     super.dispose();
 
-    // 如果controller由外部创建不需要销毁, 若由内部创建则需要销毁
     if (widget.controller == null) {
       _controller.dispose();
     }

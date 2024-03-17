@@ -199,6 +199,8 @@ export 'src/components/rating/wave_rating_star.dart';
 //Second level switching title
 export 'src/components/tabbar/normal/wave_sub_switch_title.dart';
 
+export 'src/components/faq.dart';
+
 //level one switch title
 export 'src/components/tabbar/normal/wave_switch_title.dart';
 

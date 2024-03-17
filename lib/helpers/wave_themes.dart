@@ -12,12 +12,13 @@ ThemeData WaveTheme({
     scaffoldBackgroundColor: WaveColors.backgroundColor(darkMode: darkMode),
     appBarTheme: _appBarTheme(darkMode: darkMode),
     bottomNavigationBarTheme: _bottomNavigationBarTheme(),
+    navigationBarTheme: _navigationBarTheme(
+      darkMode: darkMode,
+      themeColor: themeColor,
+    ),
+    dropdownMenuTheme: DropdownMenuThemeData(),
     dividerTheme: _dividerTheme(),
-    buttonTheme: _buttonTheme(),
-    filledButtonTheme: _filledButtonTheme(),
     outlinedButtonTheme: _outlinedButtonTheme(themeColor),
-    textButtonTheme: _textButtonTheme(),
-    elevatedButtonTheme: _elevatedButtonTheme(),
     timePickerTheme: _timePickerTheme(darkMode),
     datePickerTheme: _datePickerTheme(darkMode),
     floatingActionButtonTheme: _floatingActionButtonThemeData(),
@@ -70,63 +71,12 @@ DividerThemeData _dividerTheme() {
   );
 }
 
-ButtonThemeData _buttonTheme() {
-  return ButtonThemeData(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(WaveConstants.radius),
-    ),
-  );
-}
-
-FilledButtonThemeData _filledButtonTheme() {
-  return FilledButtonThemeData(
-    style: ButtonStyle(
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(WaveConstants.radius),
-        ),
-      ),
-    ),
-  );
-}
-
 OutlinedButtonThemeData _outlinedButtonTheme(Color accentColor) {
   return OutlinedButtonThemeData(
     style: ButtonStyle(
       side: MaterialStatePropertyAll(
         BorderSide(
           color: accentColor,
-          width: 1.8,
-        ),
-      ),
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(WaveConstants.radius),
-        ),
-      ),
-    ),
-  );
-}
-
-TextButtonThemeData _textButtonTheme() {
-  return TextButtonThemeData(
-    style: ButtonStyle(
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(WaveConstants.radius),
-        ),
-      ),
-    ),
-  );
-}
-
-ElevatedButtonThemeData _elevatedButtonTheme() {
-  return ElevatedButtonThemeData(
-    style: ButtonStyle(
-      surfaceTintColor: const MaterialStatePropertyAll(Colors.transparent),
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(WaveConstants.radius),
         ),
       ),
     ),
@@ -217,6 +167,18 @@ BottomNavigationBarThemeData _bottomNavigationBarTheme() {
   );
 }
 
+NavigationBarThemeData _navigationBarTheme(
+    {required bool darkMode, required Color themeColor}) {
+  return NavigationBarThemeData(
+    backgroundColor: WaveColors.contentBg(darkMode: darkMode),
+    surfaceTintColor: Colors.transparent,
+    indicatorColor: themeColor,
+    labelTextStyle: MaterialStatePropertyAll(
+        WaveTextTheme(isDarkMode: darkMode).labelMedium),
+    elevation: 0,
+  );
+}
+
 DialogTheme _dialogTheme(bool darkMode) {
   return DialogTheme(
     surfaceTintColor: Colors.transparent,
@@ -260,6 +222,8 @@ InputDecorationTheme _inputDecorationTheme(Color themeColor, bool darkMode) =>
       ),
     );
 PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
+      color: Get.theme.cardColor,
+      surfaceTintColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(WaveConstants.radius),
       ),
@@ -267,12 +231,7 @@ PopupMenuThemeData _popupMenuThemeData() => PopupMenuThemeData(
 
 ListTileThemeData _listTileThemeData({bool darkMode = false}) {
   return ListTileThemeData(
-    titleTextStyle: TextStyle(
-      fontSize: 16,
-      height: 1.25,
-      fontWeight: FontWeight.w400,
-      color: WaveColors.textColor(darkMode: darkMode),
-    ),
+    titleTextStyle: WaveTextTheme(isDarkMode: darkMode).bodyMedium,
     subtitleTextStyle: WaveTextTheme(isDarkMode: darkMode).bodySmall,
     leadingAndTrailingTextStyle: WaveTextTheme(isDarkMode: darkMode).labelLarge,
   );
@@ -280,7 +239,7 @@ ListTileThemeData _listTileThemeData({bool darkMode = false}) {
 
 FloatingActionButtonThemeData _floatingActionButtonThemeData() {
   return FloatingActionButtonThemeData(
-    elevation: 0,
+    elevation: 3,
     shape: RoundedRectangleBorder(
       side: BorderSide(
         color: WaveColors.dividerColor,

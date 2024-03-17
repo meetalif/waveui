@@ -11,6 +11,7 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBlurred;
   final bool isCenteredTitle;
   final Function()? onBackPressed;
+  final Color? backgroundColor;
 
   const WaveAppBar({
     super.key,
@@ -22,9 +23,10 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showDivider = true,
     this.isCenteredTitle = true,
     this.onBackPressed,
+    this.backgroundColor,
   });
   @override
-  Size get preferredSize => const Size.fromHeight(61);
+  Size get preferredSize => const Size.fromHeight(65);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,8 @@ class WaveAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: isCenteredTitle,
       bottom: showDivider ? _bottom() : null,
       scrolledUnderElevation: 0,
-      backgroundColor: Get.theme.appBarTheme.backgroundColor!.withOpacity(0.8),
+      backgroundColor: backgroundColor ??
+          Get.theme.appBarTheme.backgroundColor!.withOpacity(0.8),
       flexibleSpace: isBlurred
           ? ClipRect(
               child: BackdropFilter(

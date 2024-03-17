@@ -8,9 +8,10 @@ class WaveScaffold extends StatelessWidget {
     this.body,
     this.bottomNavigationBar,
     this.drawer,
+    this.floatingActionButton,
     this.backgroundColor,
     this.isLoading = false,
-    this.resizeToAvoidBottomInset = false,
+    this.resizeToAvoidBottomInset = true,
   });
 
   final PreferredSizeWidget? appBar;
@@ -22,6 +23,7 @@ class WaveScaffold extends StatelessWidget {
 
   final Widget? body;
   final Widget? bottomNavigationBar;
+  final Widget? floatingActionButton;
   final Drawer? drawer;
   final Color? backgroundColor;
   final bool resizeToAvoidBottomInset;
@@ -40,6 +42,7 @@ class WaveScaffold extends StatelessWidget {
           body: body,
           bottomNavigationBar: bottomNavigationBar,
           drawer: drawer,
+          floatingActionButton: floatingActionButton,
         ),
         if (isLoading) const WavePageLoading(),
       ],

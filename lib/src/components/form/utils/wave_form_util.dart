@@ -4,6 +4,7 @@ import 'package:waveui/src/constants/wave_asset_constants.dart';
 import 'package:waveui/src/theme/wave_theme.dart';
 import 'package:waveui/src/utils/wave_tools.dart';
 import 'package:flutter/widgets.dart';
+import 'package:waveui/waveui.dart';
 
 class WaveFormUtil {
   ///
@@ -96,7 +97,7 @@ class WaveFormUtil {
   static Widget buildTitleWidget(String title, WaveFormItemConfig themeData) {
     return Text(
       title,
-      style: WaveFormUtil.getTitleTextStyle(themeData),
+      style: Get.textTheme.bodyMedium,
     );
   }
 

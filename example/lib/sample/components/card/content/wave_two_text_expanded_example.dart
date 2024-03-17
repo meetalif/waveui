@@ -12,7 +12,7 @@ class _WaveTextExpandedContentExampleState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: WaveAppBar(
+      appBar: const WaveAppBar(
         title: '展开收起文本',
       ),
       body: SingleChildScrollView(
@@ -20,18 +20,18 @@ class _WaveTextExpandedContentExampleState
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
+            const Text(
               '规则',
               style: TextStyle(
                   color: Color(0xFF222222),
                   fontSize: 28,
                   fontWeight: FontWeight.bold),
             ),
-            WaveBubbleText(
+            const WaveBubbleText(
               maxLines: 4,
               text: '显示指定行数的文本，超过的收起，点击更多会显示全部',
             ),
-            Text(
+            const Text(
               '正常案例',
               style: TextStyle(
                 color: Color(0xFF222222),

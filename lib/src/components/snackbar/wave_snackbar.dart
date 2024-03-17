@@ -4,15 +4,13 @@ import 'package:get/get.dart';
 /// A styled snackbar is based on getx
 class WaveSnackbar {
   /// To show snackbar call this functions
-  static show({String? title, Widget? button}) {
+  static show({String? title, Widget? button, Duration? duration}) {
     return Get.showSnackbar(GetSnackBar(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      backgroundColor: Get.theme.colorScheme.background.withOpacity(0.7),
       barBlur: 2,
-      borderColor: Get.theme.dividerColor,
       borderRadius: 8,
       borderWidth: 0.5,
-      duration: 3.seconds,
+      duration: duration ?? 3.seconds,
       animationDuration: const Duration(milliseconds: 400),
       boxShadows: [
         BoxShadow(
@@ -24,7 +22,9 @@ class WaveSnackbar {
       ],
       messageText: Text(
         '$title',
-        style: Get.theme.textTheme.bodyMedium,
+        style: Get.theme.textTheme.bodyMedium?.copyWith(
+          color: Colors.white.withOpacity(0.9),
+        ),
       ),
       mainButton: button,
     ));

@@ -162,7 +162,13 @@ class _AppraiseExampleState extends State<AppraiseExample> {
 
                       ///Must pass in 5 strings, if there is no position pass ''
                       type: WaveAppraiseType.emoji,
-                      iconDescriptions: ['poor', '', 'ok', '', 'very good'],
+                      iconDescriptions: const [
+                        'poor',
+                        '',
+                        'ok',
+                        '',
+                        'very good'
+                      ],
                       config: const WaveAppraiseConfig(
                           indexes: [0, 2, 4], titleMaxLines: 3),
                     );
@@ -196,7 +202,7 @@ class _AppraiseExampleState extends State<AppraiseExample> {
                         Navigator.pop(context);
                       },
                       type: WaveAppraiseType.star,
-                      iconDescriptions: ['poor', 'no', 'ok', 'good'],
+                      iconDescriptions: const ['poor', 'no', 'ok', 'good'],
                       config: const WaveAppraiseConfig(
                           showTextInput: false,
                           count: 4,

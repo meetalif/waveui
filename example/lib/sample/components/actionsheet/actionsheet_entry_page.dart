@@ -252,7 +252,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       WaveCommonActionSheetItem(
         'Option 1: Customize the main title style',
         desc: 'Auxiliary information default style',
-        titleStyle: TextStyle(
+        titleStyle: const TextStyle(
           fontSize: 18,
           color: Color(0xFF123984),
         ),
@@ -262,7 +262,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       WaveCommonActionSheetItem(
         'Option 2: Customize auxiliary information style',
         desc: 'Custom auxiliary information style',
-        descStyle: TextStyle(
+        descStyle: const TextStyle(
           fontSize: 14,
           color: Color(0xFF129834),
         ),
@@ -272,11 +272,11 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       WaveCommonActionSheetItem(
         'Option 3: Custom intercept click event, click is invalid',
         desc: 'Auxiliary information',
-        titleStyle: TextStyle(
+        titleStyle: const TextStyle(
           fontSize: 16,
           color: Color(0xFF999999),
         ),
-        descStyle: TextStyle(
+        descStyle: const TextStyle(
           fontSize: 14,
           color: Color(0xFF999999),
         ),
@@ -350,7 +350,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
             if (!started) {
               started = true;
               //Set timer, loop every 1 second
-              periodTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+              periodTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
                 if (countdown > 0) {
                   countdown = countdown - 1;
                   setState(() {
@@ -418,7 +418,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       customTitle: "customize",
       canClick: true,
     ));
-    WaveShareActionSheet actionSheet = new WaveShareActionSheet(
+    WaveShareActionSheet actionSheet = WaveShareActionSheet(
       firstShareChannels: firstRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
         int channel = shareItem.shareType;
@@ -467,7 +467,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       WaveShareItemConstants.shareWeiBo,
       canClick: false,
     ));
-    WaveShareActionSheet actionSheet = new WaveShareActionSheet(
+    WaveShareActionSheet actionSheet = WaveShareActionSheet(
       firstShareChannels: firstRowList,
       secondShareChannels: secondRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
@@ -507,7 +507,7 @@ class _ActionSheetEntryPageState extends State<ActionSheetEntryPage> {
       customTitle: "自定义",
       canClick: true,
     ));
-    WaveShareActionSheet actionSheet = new WaveShareActionSheet(
+    WaveShareActionSheet actionSheet = WaveShareActionSheet(
       firstShareChannels: firstRowList,
       secondShareChannels: secondRowList,
       clickCallBack: (int section, int index, WaveShareItem shareItem) {
