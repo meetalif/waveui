@@ -6,7 +6,7 @@ class WaveColors {
   }
 
   static Color separator({isDark = false}) {
-    return isDark ? const Color(0xFF303030) : const Color(0xFFF0F0F0);
+    return Colors.grey.withOpacity(0.3);
   }
 
   static Color content({darkMode = false}) {
@@ -14,7 +14,7 @@ class WaveColors {
   }
 
   static Color contentHighlighted({darkMode = false}) {
-    return darkMode ? const Color(0xFFFAFAFA) : const Color(0xFF1D1D1D);
+    return darkMode ? const Color(0xFF1D1D1D) : const Color(0xFFFAFAFA);
   }
 
   static Color text({darkMode = false}) {

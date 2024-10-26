@@ -24,10 +24,45 @@ class WaveTheme {
       appBarTheme: _appBarTheme(isDark),
       cardColor: WaveColors.content(darkMode: isDark),
       buttonTheme: _buttonThemeData(isDark),
+      dividerTheme: DividerThemeData(
+        color: WaveColors.separator(isDark: isDark),
+        space: 0,
+        endIndent: 0,
+        indent: 0,
+        thickness: 1,
+      ),
       filledButtonTheme: _filledButtonThemeData(isDark),
       elevatedButtonTheme: _elevatedButtonThemeData(isDark),
       textButtonTheme: _textButtonThemeData(isDark),
       outlinedButtonTheme: _outlinedButtonThemeData(primaryColor, isDark),
+      popupMenuTheme: PopupMenuThemeData(
+        color: WaveColors.contentHighlighted(darkMode: isDark),
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      badgeTheme: const BadgeThemeData(),
+      dialogTheme: DialogTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        backgroundColor: WaveColors.content(darkMode: isDark),
+      ),
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: WaveColors.content(darkMode: isDark),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        dialBackgroundColor: WaveColors.contentHighlighted(darkMode: isDark),
+      ),
+      datePickerTheme: DatePickerThemeData(
+        backgroundColor: WaveColors.content(darkMode: isDark),
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
     );
   }
 }
@@ -38,7 +73,6 @@ AppBarTheme _appBarTheme(bool isDark) {
     centerTitle: true,
     surfaceTintColor: Colors.transparent,
     elevation: 0,
-    toolbarHeight: 65,
     titleTextStyle: TextStyle(
       color: WaveColors.text(darkMode: isDark),
       fontSize: 17,
